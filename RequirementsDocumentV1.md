@@ -39,27 +39,26 @@ EZElectronics (read EaSy Electronics) is a software application designed to help
 
 # Stakeholders
 
-| Stakeholder name | Description |
-| :--------------: | :---------: |
-| Stakeholder x..  |             |
+| Stakeholder name | Description                                                              |
+| :--------------: | :----------------------------------------------------------------------: |
+| Customer         | Individual who wants to buy something                                    |
+| Manager          | Manager who provides products to the company and manages the application |
+| Banking service  | Service for monetary transactions                                        |
+| Developers       | Group that created the application                                       |
 
 # Context Diagram and interfaces
 
 ## Context Diagram
 
-\<Define here Context diagram using UML use case diagram>
-
-\<actors are a subset of stakeholders>
+![contextDiagram](/contextDiagram.png)
 
 ## Interfaces
 
-\<describe here each interface in the context diagram>
-
-\<GUIs will be described graphically in a separate document>
-
-|   Actor   | Logical Interface | Physical Interface |
-| :-------: | :---------------: | :----------------: |
-| Actor x.. |                   |                    |
+|   Actor          | Logical Interface                                        | Physical Interface |
+| :--------------: | :------------------------------------------------------: | :----------------: |
+| Customer         | GUI (interface for viewing products and purchasing)      | Smartphone / PC    |
+| Manager          | GUI (interface for view, add products and control users) | Smartphone / PC    |
+| Banking service  | APIs                                                     | Internet           |
 
 # Stories and personas
 
