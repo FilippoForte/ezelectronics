@@ -89,15 +89,30 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 
 ## Functional Requirements
 
-\<In the form DO SOMETHING, or VERB NOUN, describe high level capabilities of the system>
-
-\<they match to high level use cases>
-
-|  ID   | Description |
-| :---: | :---------: |
-|  FR1  |             |
-|  FR2  |             |
-| FRx.. |             |
+| ID     | Description                                     |
+|:-----  |:-----------------------------------------------:|
+| **FR1**| **Access management**                           |
+| FR1.1  | User registration                               |
+| FR1.2  | Registered user log in                          |
+| FR1.3  | Registered user log out                         |
+| **FR2**| **User management**                             |
+| FR2.1  | View all registered users                       |
+| FR2.2  | Filter users by role                            |
+| FR2.3  | Search a user by username                       |
+| FR2.4  | Delete a user given its username                |
+| **FR3**| **Product management**                          |
+| FR3.1  | View all products                               |
+| FR3.2  | Add a new product                               |
+| FR3.3  | Remove a product                                |
+| FR3.4  | Register a product's date of arrival            |
+| FR3.5  | Filter products by sale status, category, model |
+| **FR4**| **Shopping cart management**                    |
+| FR4.1  | View the user's current cart                    |
+| FR4.2  | Add a product to cart                           |
+| FR4.3  | Remove a product from the cart                  |
+| FR4.4  | Purchase the products added to the cart         |
+| FR4.5  | View the history of carts the user purchased    |
+| FR4.6  | Delete the current cart                         |
 
 ## Non Functional Requirements
 
