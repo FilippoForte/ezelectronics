@@ -64,11 +64,17 @@ EZElectronics (read EaSy Electronics) is a software application designed to help
 
 # Stories and personas
 
-\<A Persona is a realistic impersonation of an actor. Define here a few personas and describe in plain text how a persona interacts with the system>
+**Typical Client**  
+Description: typical user of EZElectronics' website, ranging from undergraduates to middle-aged married people interested in purchasing consumer electronics products or exploring the site to find the best deals.   
+Goals: to view available products, check their prices, find the best deal among different stores, add products to cart to track them and purchase them later, purchase directly a product he or she is looking for.
 
-\<Persona is-an-instance-of actor>
+**Professional/Expert Client**  
+Description: professionals or expert users in the electronics industry who are seeking specific or niche electronic products for professional or specialized purposes.  
+Goals: to find specialized electronic products that meet specific or professional needs and possibly purchase them.
 
-\<stories will be formalized later as scenarios in use cases>
+**Store Manager**  
+Description: the manager responsible for a physical store's administration.  
+Goals: manage available products, add new products, remove unavailable products, monitor sales, retrieve customer data.
 
 # Functional and non functional requirements
 
