@@ -64,17 +64,26 @@ EZElectronics (read EaSy Electronics) is a software application designed to help
 
 # Stories and personas
 
-**Typical Client**  
-Description: typical user of EZElectronics' website, ranging from undergraduates to middle-aged married people interested in purchasing consumer electronics products or exploring the site to find the best deals.   
-Goals: to view available products, check their prices, find the best deal among different stores, add products to cart to track them and purchase them later, purchase directly a product he or she is looking for.
+**Persona 1**: male, high-income professional, married, with children, 50 years-old  
+Story: wants to purchase a new, <u>state-of-the-art</u> smart-TV for his living room: needs to find the <u>best price/discount</u> among different stores.  
 
-**Professional/Expert Client**  
-Description: professionals or expert users in the electronics industry who are seeking specific or niche electronic products for professional or specialized purposes.  
-Goals: to find specialized electronic products that meet specific or professional needs and possibly purchase them.
+**Persona 2**: female, undergraduate, 20 years-old  
+Story: wants to purchase a <u>cheap</u> smartphone to replace her old and slow one: needs to find the <u>best cost-performance solution</u>.  
+  
+**Persona 3**: female, married, with children, 60 years-old  
+Story: wants to purchase a radio for her 85 year-old mother who lives alone, to keep her company.    
+  
+**Persona 4**: male, has been working for a few years, 28 years-old  
+Story: wants to build a cutting-edge gaming PC: needs to find the best prices for all the components, might buy <u>different items from different stores</u>.  
 
-**Store Manager**  
-Description: the manager responsible for a physical store's administration.  
-Goals: manage available products, add new products, remove unavailable products, monitor sales, retrieve customer data.
+**Persona 5**: male, store manager, 45 years-old  
+Story: needs to <u>add a newly released model</u> of a product to the website and <u>remove an old</u>, out-of-stock one.  
+
+**Persona 6**: female, store manager, 40 years-old  
+Story: needs to <u>retrieve customer data</u> for profiling goals.
+
+**Persona 7**: male, store manager, 50 years-old  
+Story: needs to <u>register the arrival</u> of a set of products and <u>apply a discount</u> for the products of a specific model.
 
 # Functional and non functional requirements
 
