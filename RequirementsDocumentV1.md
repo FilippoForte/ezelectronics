@@ -66,25 +66,55 @@ EZElectronics (read EaSy Electronics) is a software application designed to help
 
 # Stories and personas
 
-\<A Persona is a realistic impersonation of an actor. Define here a few personas and describe in plain text how a persona interacts with the system>
+**Persona 1**: male, high-income professional, married, with children, 50 years-old  
+Story: wants to purchase a new, <u>state-of-the-art</u> smart-TV for his living room: needs to find the <u>best price/discount</u> among different stores.  
 
-\<Persona is-an-instance-of actor>
+**Persona 2**: female, undergraduate, 20 years-old  
+Story: wants to purchase a <u>cheap</u> smartphone to replace her old and slow one: needs to find the <u>best cost-performance solution</u>.  
+  
+**Persona 3**: female, married, with children, 60 years-old  
+Story: wants to purchase a radio for her 85 year-old mother who lives alone, to keep her company.    
+  
+**Persona 4**: male, has been working for a few years, 28 years-old  
+Story: wants to build a cutting-edge gaming PC: needs to find the best prices for all the components, might buy <u>different items from different stores</u>.  
 
-\<stories will be formalized later as scenarios in use cases>
+**Persona 5**: male, store manager, 45 years-old  
+Story: needs to <u>add a newly released model</u> of a product to the website and <u>remove an old</u>, out-of-stock one.  
+
+**Persona 6**: female, store manager, 40 years-old  
+Story: needs to <u>retrieve customer data</u> for profiling goals.
+
+**Persona 7**: male, store manager, 50 years-old  
+Story: needs to <u>register the arrival</u> of a set of products and <u>apply a discount</u> for the products of a specific model.
 
 # Functional and non functional requirements
 
 ## Functional Requirements
 
-\<In the form DO SOMETHING, or VERB NOUN, describe high level capabilities of the system>
-
-\<they match to high level use cases>
-
-|  ID   | Description |
-| :---: | :---------: |
-|  FR1  |             |
-|  FR2  |             |
-| FRx.. |             |
+| ID     | Description                                     |
+|:-----  |:-----------------------------------------------:|
+| **FR1**| **Access management**                           |
+| FR1.1  | User registration                               |
+| FR1.2  | Registered user log in                          |
+| FR1.3  | Registered user log out                         |
+| **FR2**| **User management**                             |
+| FR2.1  | View all registered users                       |
+| FR2.2  | Filter users by role                            |
+| FR2.3  | Search a user by username                       |
+| FR2.4  | Delete a user given its username                |
+| **FR3**| **Product management**                          |
+| FR3.1  | View all products                               |
+| FR3.2  | Add a new product                               |
+| FR3.3  | Remove a product                                |
+| FR3.4  | Register a product's date of arrival            |
+| FR3.5  | Filter products by sale status, category, model |
+| **FR4**| **Shopping cart management**                    |
+| FR4.1  | View the user's current cart                    |
+| FR4.2  | Add a product to cart                           |
+| FR4.3  | Remove a product from the cart                  |
+| FR4.4  | Purchase the products added to the cart         |
+| FR4.5  | View the history of carts the user purchased    |
+| FR4.6  | Delete the current cart                         |
 
 ## Non Functional Requirements
 
