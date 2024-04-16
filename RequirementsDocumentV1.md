@@ -42,10 +42,11 @@ EZElectronics (read EaSy Electronics) is a software application designed to help
 | Stakeholder name | Description                                                              |
 | :--------------: | :----------------------------------------------------------------------: |
 | Customer         | Individual who wants to buy something                                    |
-| Manager          | Manager who provides products to the company and manages the application |
+| Manager          | Manager who provides products to the application                         |
 | Banking service  | Service for monetary transactions                                        |
 | Developers       | Group that created the application                                       |
 | Shipping service | Service for the shipment of products to the user                         |
+| Admin            | Individual who manage the users and the application                      |
 
 # Context Diagram and interfaces
 
@@ -58,7 +59,8 @@ EZElectronics (read EaSy Electronics) is a software application designed to help
 |   Actor          | Logical Interface                                        | Physical Interface |
 | :--------------: | :------------------------------------------------------: | :----------------: |
 | Customer         | GUI (interface for viewing products and purchasing)      | Smartphone / PC    |
-| Manager          | GUI (interface for view, add products and control users) | Smartphone / PC    |
+| Manager          | GUI (interface for view and add products)                | Smartphone / PC    |
+| Admin            | GUI (interface for view, add products and control users) | Smartphone / PC    |
 | Banking service  | APIs                                                     | Internet           |
 | Shipping service | APIs                                                     | Internet           |
 
