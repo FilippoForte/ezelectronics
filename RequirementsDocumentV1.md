@@ -88,42 +88,48 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 
 ## Functional Requirements
 
-| ID     | Description                                     |
-|:-----  |:-----------------------------------------------:|
-| **FR1**| **Access management**                           |
-| FR1.1  | User registration                               |
-| FR1.2  | Registered user log in                          |
-| FR1.3  | Registered user log out                         |
-| **FR2**| **User management**                             |
-| FR2.1  | View all registered users                       |
-| FR2.2  | Filter users by role                            |
-| FR2.3  | Search a user by username                       |
-| FR2.4  | Delete a user given its username                |
-| **FR3**| **Product management**                          |
-| FR3.1  | View all products                               |
-| FR3.2  | Add a new product                               |
-| FR3.3  | Remove a product                                |
-| FR3.4  | Register a product's date of arrival            |
-| FR3.5  | Filter products by sale status, category, model |
-| **FR4**| **Shopping cart management**                    |
-| FR4.1  | View the user's current cart                    |
-| FR4.2  | Add a product to cart                           |
-| FR4.3  | Remove a product from the cart                  |
-| FR4.4  | Purchase the products added to the cart         |
-| FR4.5  | View the history of carts the user purchased    |
-| FR4.6  | Delete the current cart                         |
+| ID        | Description                                     |
+|:----------|:------------------------------------------------|
+| **FR1**   | **Access management**                           |
+| FR1.1     | User registration                               |
+| FR1.2     | Registered user log in                          |
+| FR1.3     | Registered user log out                         |
+| **FR2**   | **User management**                             |
+| FR2.1     | View all registered users                       |
+| FR2.2     | Filter users by role                            |
+| FR2.3     | Search a user by username                       |
+| FR2.4     | Delete a user given its username                |
+| **FR3**   | **Product management**                          |
+| FR3.1     | View all products                               |
+| FR3.2     | Add a new product                               |
+| FR3.3     | Remove a product                                |
+| FR3.4     | Register a product's date of arrival            |
+| FR3.5     | Filter products by sale status, category, model |
+| **FR4**   | **Shopping cart management**                    |
+| FR4.1     | View the user's current cart                    |
+| FR4.2     | Add a product to cart                           |
+| FR4.3     | Remove a product from the cart                  |
+| FR4.4     | Purchase the products added to the cart         |
+| FR4.5     | View the history of carts the user purchased    |
+| FR4.6     | Delete the current cart                         |
 
 ## Non Functional Requirements
 
-\<Describe constraints on functional requirements>
+| ID    | Type (efficiency, reliability, ..) | Description                                                                                                                                                               | Refers to |
+|:------|:----------------------------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------:|
+| NFR1  | Efficiency                         | The system must respond within 0.5 seconds since any user action (excluding page loading times)                                                                           | /         |
+| NFR2  | Efficiency                         | Web pages must load within 6 seconds since last user request (depending on network conditions)                                                                            | /         |
+| NFR3  | Efficiency                         | No app installation needed for the end-user, every functionality has to be accessible from the website via an internet browser                                            | /         |
+| NFR4  | Security                           | Only system administrators can access user management functionalities                                                                                                     | F2.x      |
+| NFR5  | Security                           | User data treatment must meet GDPR                                                                                                                                        | /         |
+| NFR6  | Usability                          | Customers don't need any training                                                                                                                                         | /         |
+| NFR7  | Usability                          | Managers need a maximum of one hour of training                                                                                                                           | /         |
+| NFR8  | Reliability                        | The system cannot exhibit more than 2 malfunctions per year                                                                                                               | /         |
+| NFR9  | Reliability                        | The website cannot require more than one 1 maintenance session every 2 months                                                                                             | /         |
+| NFR10 | Reliability                        | Maintenance sessions cannot last more than 4 hours                                                                                                                        | /         |
+| NFR11 | Reliability                        | Every user should not report more than 1  previously unreported bug per year                                                                                              | /         |
+| NFR12 | Portability                        | The web site must be accessible from the following browsers: Chrome (v: 79), Firefox (v: 72), Safari (v: 13.0.5), Opera (v: 65), Edge (v: 79), Samsung Internet (v: 11.2) | /         |
 
-|   ID    | Type (efficiency, reliability, ..) | Description | Refers to |
-| :-----: | :--------------------------------: | :---------: | :-------: |
-|  NFR1   | Efficiency                         | The system has to respond within 1 second since user action | |
-|  NFR2   | Efficiency                         | No app installation needed for the end-user, every functionality has to be accessible from the website via an internet browser | |
-|  NFR3   | Security                           | Only system administrators can access user management functionalities | F2.x |
-|  NFR4   | Usability                          | Customers need no training           | |
-|  NFR5   | Usability                          | Managers need a maximum of one hour of training | |
 
 # Use case diagram and use cases
 
