@@ -81,10 +81,7 @@ Story: wants to build a cutting-edge gaming PC: needs to find the best prices fo
 **Persona 5**: male, store manager, 45 years-old  
 Story: needs to <u>add a newly released model</u> of a product to the website and <u>remove an old</u>, out-of-stock one.  
 
-**Persona 6**: female, store manager, 40 years-old  
-Story: needs to <u>retrieve customer data</u> for profiling goals.
-
-**Persona 7**: male, store manager, 50 years-old  
+**Persona 6**: female, store manager, 50 years-old  
 Story: needs to <u>register the arrival</u> of a set of products and <u>apply a discount</u> for the products of a specific model.
 
 # Functional and non functional requirements
@@ -122,10 +119,11 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 
 |   ID    | Type (efficiency, reliability, ..) | Description | Refers to |
 | :-----: | :--------------------------------: | :---------: | :-------: |
-|  NFR1   |                                    |             |           |
-|  NFR2   |                                    |             |           |
-|  NFR3   |                                    |             |           |
-| NFRx .. |                                    |             |           |
+|  NFR1   | Efficiency                         | The system has to respond within 1 second since user action | |
+|  NFR2   | Efficiency                         | No app installation needed for the end-user, every functionality has to be accessible from the website via an internet browser | |
+|  NFR3   | Security                           | Only system administrators can access user management functionalities | F2.x |
+|  NFR4   | Usability                          | Customers need no training           | |
+|  NFR5   | Usability                          | Managers need a maximum of one hour of training | |
 
 # Use case diagram and use cases
 
