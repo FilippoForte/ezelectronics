@@ -138,7 +138,7 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 
 ## Use case diagram
 
-\<define here UML Use case diagram UCD summarizing all use cases, and their relationships>
+![useCaseDiagram](/useCaseDiagram.png)
 
 \<next describe here each use case in the UCD>
 
@@ -174,6 +174,73 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 ##### Scenario 1.2
 
 ##### Scenario 1.x
+
+### Use case 2, UC2
+
+| Actors Involved  |                                                                      |
+| :--------------: | :------------------------------------------------------------------: |
+|   Precondition   | \<Boolean expression, must evaluate to true before the UC can start> |
+|  Post condition  |  \<Boolean expression, must evaluate to true after UC is finished>   |
+| Nominal Scenario |         \<Textual description of actions executed by the UC>         |
+|     Variants     |                      \<other normal executions>                      |
+|    Exceptions    |                        \<exceptions, errors >                        |
+
+##### Scenario 2.1
+
+\<describe here scenarios instances of UC1>
+
+\<a scenario is a sequence of steps that corresponds to a particular execution of one use case>
+
+\<a scenario is a more formal description of a story>
+
+\<only relevant scenarios should be described>
+
+|  Scenario 2.1  |                                                                            |
+| :------------: | :------------------------------------------------------------------------: |
+|  Precondition  | \<Boolean expression, must evaluate to true before the scenario can start> |
+| Post condition |  \<Boolean expression, must evaluate to true after scenario is finished>   |
+|     Step#      |                                Description                                 |
+|       1        |                                                                            |
+|       2        |                                                                            |
+|      ...       |                                                                            |
+
+##### Scenario 2.2
+
+##### Scenario 2.x
+
+### Use case 3, UC3
+
+| Actors Involved  |                                                                      |
+| :--------------: | :------------------------------------------------------------------: |
+|   Precondition   | \<Boolean expression, must evaluate to true before the UC can start> |
+|  Post condition  |  \<Boolean expression, must evaluate to true after UC is finished>   |
+| Nominal Scenario |         \<Textual description of actions executed by the UC>         |
+|     Variants     |                      \<other normal executions>                      |
+|    Exceptions    |                        \<exceptions, errors >                        |
+
+##### Scenario 3.1
+
+\<describe here scenarios instances of UC1>
+
+\<a scenario is a sequence of steps that corresponds to a particular execution of one use case>
+
+\<a scenario is a more formal description of a story>
+
+\<only relevant scenarios should be described>
+
+|  Scenario 1.1  |                                                                            |
+| :------------: | :------------------------------------------------------------------------: |
+|  Precondition  | \<Boolean expression, must evaluate to true before the scenario can start> |
+| Post condition |  \<Boolean expression, must evaluate to true after scenario is finished>   |
+|     Step#      |                                Description                                 |
+|       1        |                                                                            |
+|       2        |                                                                            |
+|      ...       |                                                                            |
+
+##### Scenario 3.2
+
+##### Scenario 3.x
+
 
 ### Use case 2, UC2
 
