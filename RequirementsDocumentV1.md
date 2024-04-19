@@ -6,7 +6,7 @@ Version: V1 - description of EZElectronics in CURRENT form (as received by teach
 
 | Version number | Change |
 | :------------: | :----: |
-|                |        |
+|        V1      |        |
 
 # Contents
 
@@ -59,15 +59,15 @@ EZElectronics (read EaSy Electronics) is a software application designed to help
 |   Actor          | Logical Interface                                        | Physical Interface |
 | :--------------: | :------------------------------------------------------: | :----------------: |
 | Customer         | GUI (interface for viewing products and purchasing)      | Smartphone / PC    |
-| Manager          | GUI (interface for view and add products)                | Smartphone / PC    |
-| Admin            | GUI (interface for view, add products and control users) | Smartphone / PC    |
+| Manager          | GUI (interface for viewing and add products)                | Smartphone / PC    |
+| Admin            | GUI (interface for viewing, add products and control users) | Smartphone / PC    |
 | Banking service  | APIs                                                     | Internet           |
 | Shipping service | APIs                                                     | Internet           |
 
 # Stories and personas
 
 **Persona 1**: male, high-income professional, married, with children, 50 years-old  
-Story: wants to purchase a new, <u>state-of-the-art</u> smart-TV for his living room: needs to find the <u>best price/discount</u> among different stores.  
+Story: wants to purchase a new, <u>state-of-the-art</u> smart-TV for his living room: needs to find the <u>best price</u> among the best TVs in the store.
 
 **Persona 2**: female, undergraduate, 20 years-old  
 Story: wants to purchase a <u>cheap</u> smartphone to replace her old and slow one: needs to find the <u>best cost-performance solution</u>.  
@@ -76,7 +76,7 @@ Story: wants to purchase a <u>cheap</u> smartphone to replace her old and slow o
 Story: wants to purchase a radio for her 85 year-old mother who lives alone, to keep her company.    
   
 **Persona 4**: male, has been working for a few years, 28 years-old  
-Story: wants to build a cutting-edge gaming PC: needs to find the best prices for all the components, might buy <u>different items from different stores</u>.  
+Story: wants to build a cutting-edge gaming PC: wants to check the trend of the prices of the components he is interested in.  
 
 **Persona 5**: male, store manager, 45 years-old  
 Story: needs to <u>add a newly released model</u> of a product to the website and <u>remove an old</u>, out-of-stock one.  
@@ -103,7 +103,7 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 | FR3.1     | View all products                               |
 | FR3.2     | Add a new product                               |
 | FR3.3     | Remove a product                                |
-| FR3.4     | Register a product's date of arrival            |
+| FR3.4     | Register the arrival of a new (set of) product(s) |
 | FR3.5     | Filter products by sale status, category, model |
 | **FR4**   | **Shopping cart management**                    |
 | FR4.1     | View the user's current cart                    |
