@@ -138,7 +138,7 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 
 ## Use case diagram
 
-![useCaseDiagram](/useCaseDiagram.png)
+![useCaseDiagram](/diagrammaDeiCasiD'uso.png)
 
 \<next describe here each use case in the UCD>
 
