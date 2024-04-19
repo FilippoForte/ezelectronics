@@ -142,15 +142,15 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 
 \<next describe here each use case in the UCD>
 
-### Use case 1, UC1
+### Use case 1, UC1 : Access management : Autenticazione
 
-| Actors Involved  |                                                                      |
+| Actors Involved  |    Utente                                                                   |
 | :--------------: | :------------------------------------------------------------------: |
-|   Precondition   | \<Boolean expression, must evaluate to true before the UC can start> |
-|  Post condition  |  \<Boolean expression, must evaluate to true after UC is finished>   |
-| Nominal Scenario |         \<Textual description of actions executed by the UC>         |
-|     Variants     |                      \<other normal executions>                      |
-|    Exceptions    |                        \<exceptions, errors >                        |
+|   Precondition   | -- |
+|  Post condition  | L'utente risulta autenticato  |
+| Nominal Scenario | L'utente si autentica nel sistema inserendo username e password e l'autenticazione va a buon fine.      |
+|     Variants     |                     --                   |
+|    Exceptions    | 1.a L'utente non risulta registrato al sistema. <p>   1.b L'utente commette errori nell'inserimento di username e/o password, il sistema mostra un errore e il caso d'uso riprende dall'inserimento dei dati.  </p>          |
 
 ##### Scenario 1.1
 
@@ -241,6 +241,31 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 
 ##### Scenario 3.x
 
+### Use case 4, UC4: Shopping cart management (Add a product to cart)
+
+| Actors Involved  |     Utente                                                                 |
+| :--------------: | :------------------------------------------------------------------: |
+|   Precondition   | L'utente risulta autenticato |
+|  Post condition  |  Il prodotto viene aggiunto correttamente al carrello   |
+| Nominal Scenario |         L'utente aggiunge un prodotto al suo carrello         |
+|     Variants     |                      \<other normal executions>                      |
+|    Exceptions    |       Il prodotto non viene aggiunto correttamente al carrello e viene mostrato un errore            |
+
+##### Scenario 4.1
+
+
+|  Scenario 4.1  |                   Aggiunta di un prodotto al carrello                                                         |
+| :------------: | :------------------------------------------------------------------------: |
+|  Precondition  | L'utente risulta autenticato nel sistema e il prodotto esiste |
+| Post condition | Il prodotto è inserito nel carrello   |
+|     Step#      |                        <b> Description    </b>                               |
+|       1        |  l'utente seleziona il prodotto che vuole aggiungere al carrello                                                                          |
+|       2        |    l'utente aggiunge il prodotto al carrello                                                                        |
+|      3       |     il sistema aggiorna il carrello dell'utente aggiungendo il prodotto                                                                       |
+|      4      |    il caso d'uso termina con successo
+##### Scenario 3.2
+
+##### Scenario 3.x
 
 ### Use case 2, UC2
 
