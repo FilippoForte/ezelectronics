@@ -142,114 +142,190 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 
 \<next describe here each use case in the UCD>
 
-### Use case 1, UC1
+### Use case 1, UC1 Registrazione
 
-| Actors Involved  |                                                                      |
+| Actors Involved  |                                                              Utente, Manager        |
 | :--------------: | :------------------------------------------------------------------: |
-|   Precondition   | \<Boolean expression, must evaluate to true before the UC can start> |
-|  Post condition  |  \<Boolean expression, must evaluate to true after UC is finished>   |
-| Nominal Scenario |         \<Textual description of actions executed by the UC>         |
+|   Precondition   | -- |
+|  Post condition  |  L'utente/manager risulta registrato correttamente nel sistema.  |
+| Nominal Scenario |  L'utente/manager inserisce tutti i dati richiesti per la registrazione e sceglie il ruolo con cui registrarsi nel sistema.        |
 |     Variants     |                      \<other normal executions>                      |
-|    Exceptions    |                        \<exceptions, errors >                        |
+|    Exceptions    |  I dati inseriti non sono corretti o l'utente risulta già registrato, il sistema ritorna un errore e la registrazione non va a buon fine          |
 
 ##### Scenario 1.1
 
-\<describe here scenarios instances of UC1>
-
-\<a scenario is a sequence of steps that corresponds to a particular execution of one use case>
-
-\<a scenario is a more formal description of a story>
-
-\<only relevant scenarios should be described>
-
 |  Scenario 1.1  |                                                                            |
 | :------------: | :------------------------------------------------------------------------: |
-|  Precondition  | \<Boolean expression, must evaluate to true before the scenario can start> |
-| Post condition |  \<Boolean expression, must evaluate to true after scenario is finished>   |
+|  Precondition  | -- |
+| Post condition |  L'utente/manager risulta registrato correttamente nel sistema  |
 |     Step#      |                                Description                                 |
-|       1        |                                                                            |
-|       2        |                                                                            |
-|      ...       |                                                                            |
+|       1        |   L'utente chiede di registrarsi al sistema.                                                         |
+|       2        |                                                        Il sistema chiede i dati necessari per la registrazione                |
+|      3      |                                                          L'utente inserisce i dati richiesti       |
+|       4      |                                                          L'utente seleziona il ruolo con cui registrarsi(manager o utente)             |
+|    5     |                                                           il sistema salva i dati e viene creato il nuovo utente/manager               |
 
-##### Scenario 1.2
 
-##### Scenario 1.x
+### Use case 2, UC2 Login
 
-### Use case 2, UC2
-
-| Actors Involved  |                                                                      |
+| Actors Involved  |    Utente/Manager                                                                  |
 | :--------------: | :------------------------------------------------------------------: |
-|   Precondition   | \<Boolean expression, must evaluate to true before the UC can start> |
-|  Post condition  |  \<Boolean expression, must evaluate to true after UC is finished>   |
-| Nominal Scenario |         \<Textual description of actions executed by the UC>         |
-|     Variants     |                      \<other normal executions>                      |
-|    Exceptions    |                        \<exceptions, errors >                        |
+|   Precondition   | L'utente è registrato nel sistema |
+|  Post condition  | L'utente/manager risulta loggato |
+| Nominal Scenario | L'utente inserisce username e password e accede al sistema    |
+|     Variants     |                   |
+|    Exceptions    | L'utente inserisce dati errati e viene ritornato un errore      |
 
 ##### Scenario 2.1
 
-\<describe here scenarios instances of UC1>
-
-\<a scenario is a sequence of steps that corresponds to a particular execution of one use case>
-
-\<a scenario is a more formal description of a story>
-
-\<only relevant scenarios should be described>
-
 |  Scenario 2.1  |                                                                            |
 | :------------: | :------------------------------------------------------------------------: |
-|  Precondition  | \<Boolean expression, must evaluate to true before the scenario can start> |
-| Post condition |  \<Boolean expression, must evaluate to true after scenario is finished>   |
+|  Precondition  |L'utente è registrato nel sistema |
+| Post condition |L'utente/manager risulta loggato  |
 |     Step#      |                                Description                                 |
-|       1        |                                                                            |
-|       2        |                                                                            |
-|      ...       |                                                                            |
+|       1        |  L'utente chiede di accedere al sistema                                                                          |
+|       2        | Il sistema chiede username e password                                                                           |
+|      3       |                                                         L'utente inserisce username a password         |
+|      4      |                                                         Il sistema valida i dati        |
+|      5      |                                                         L'utente risulta loggato        |
 
-##### Scenario 2.2
 
-##### Scenario 2.x
+### Use case 3, UC3 Logout
 
-### Use case 3, UC3
-
-| Actors Involved  |                                                                      |
+| Actors Involved  |  Utente/Manager                                                                    |
 | :--------------: | :------------------------------------------------------------------: |
-|   Precondition   | \<Boolean expression, must evaluate to true before the UC can start> |
-|  Post condition  |  \<Boolean expression, must evaluate to true after UC is finished>   |
-| Nominal Scenario |         \<Textual description of actions executed by the UC>         |
-|     Variants     |                      \<other normal executions>                      |
-|    Exceptions    |                        \<exceptions, errors >                        |
+|   Precondition   | L'utente è loggato |
+|  Post condition  | Viene eseguito il logout   |
+| Nominal Scenario | L'utente chiede al sistema di effettuare il logout e questo viene effettuato con successo      |
+|     Variants     |                          |
+|    Exceptions    |                             |
 
 ##### Scenario 3.1
 
-\<describe here scenarios instances of UC1>
-
-\<a scenario is a sequence of steps that corresponds to a particular execution of one use case>
-
-\<a scenario is a more formal description of a story>
-
-\<only relevant scenarios should be described>
-
 |  Scenario 1.1  |                                                                            |
 | :------------: | :------------------------------------------------------------------------: |
-|  Precondition  | \<Boolean expression, must evaluate to true before the scenario can start> |
-| Post condition |  \<Boolean expression, must evaluate to true after scenario is finished>   |
+|  Precondition  | L'utente è loggato|
+| Post condition |  Viene eseguito il logout   |
 |     Step#      |                                Description                                 |
-|       1        |                                                                            |
-|       2        |                                                                            |
-|      ...       |                                                                            |
+|       1        |                                                        L'utente chiede al sistema di effettuare il logout                   |
+|       2        |                                                        Il sistema effettua il logout per l'utente                    |
 
-##### Scenario 3.2
+### Use case 4, UC4 Visualizza tutti i prodotti
 
-##### Scenario 3.x
+| Actors Involved  |  Utente/Manager                                                                    |
+| :--------------: | :------------------------------------------------------------------: |
+|   Precondition   | L'utente è loggato |
+|  Post condition  | Vengono mostrati tutti i prodotti   |
+| Nominal Scenario | L'utente chiede al sistema di visualizzare tutti i prodotti e li vengono mostrati     |
+|     Variants     |                          |
+|    Exceptions    |                             |
 
+##### Scenario 4.1
 
-### Use case 2, UC2
+|  Scenario 4.1  |                                                                            |
+| :------------: | :------------------------------------------------------------------------: |
+|  Precondition  | L'utente è loggato|
+| Post condition | Vengono mostrati tutti i prodotti   |
+|     Step#      |                                Description                                 |
+|       1        |                                                        L'utente chiede al sistema di visualizzare tutti i prodotti presenti               |
+|       2        |                                                        Il sistema mostra tutti i prodotti presenti                   |
 
-..
+### Use case 5, UC5 Aggiungi nuovo prodotto
 
-### Use case x, UCx
+| Actors Involved  |  Manager                                                                    |
+| :--------------: | :------------------------------------------------------------------: |
+|   Precondition   | L'utente è loggato ed ha il ruolo Manager |
+|  Post condition  | Il prodotto viene aggiunto correttamente   |
+| Nominal Scenario | Il manager chiede di aggiungere un nuovo prodotto, inserisce tutti i dati richiesti e il prodotto viene aggiunto correttamente     |
+|     Variants     |                          |
+|    Exceptions    | Il prodotto è già presente o la data di arrivo è successiva a quella corrente                            |
 
-..
+##### Scenario 5.1
 
+|  Scenario 5.1  |                                                                            |
+| :------------: | :------------------------------------------------------------------------: |
+|  Precondition  | L'utente è loggato ed ha il ruolo Manager|
+| Post condition | Il prodotto viene aggiunto correttamente   |
+|     Step#      |                                Description                                 |
+|       1        |                                                        Il manager chiede di aggiungere un nuovo prodotto               |
+|       2        |                                                        Il sistema chiede tutti i dati necessari per l'aggiunta                |
+|3 | Il manager inserisce tutti i dati richiesti
+|4 | Il sistema valida i dati e li salva
+|5| Il prodotto viene aggiunto correttamente
+
+### Use case 6, UC6 Rimuovi un prodotto
+
+| Actors Involved  | Manager                                                                    |
+| :--------------: | :------------------------------------------------------------------: |
+|   Precondition   | L'utente è loggato ed ha il ruolo Manager |
+|  Post condition  | Il prodotto viene rimosso    |
+| Nominal Scenario | Il manager chiede al sistema di rimuovere un prodotto e questo viene rimosso correttamente    |
+|     Variants     |                          |
+|    Exceptions    |Il prodotto che si vuole rimuovere non è presente, viene ritornato un errore                           |
+
+##### Scenario 6.1
+
+|  Scenario 6.1  |                                                                            |
+| :------------: | :------------------------------------------------------------------------: |
+|  Precondition  | L'utente è loggato ed ha il ruolo Manager|
+| Post condition | Il prodotto viene rimosso  |
+|     Step#      |                                Description                                 |
+|       1        |                                                        Il manager chiede al sistema di rimuovere un prodotto            |
+|       2        |                                                        Il sistema chiede il codice del prodotto che si vuole rimuovere                   |
+|3| L'utente inserisce il codice
+|4| Il sistema verifica che il codice sia presente 
+|5| Il prodotto viene rimosso
+### Use case 7, UC7 Registra arrivi
+
+| Actors Involved  | Manager                                                                    |
+| :--------------: | :------------------------------------------------------------------: |
+|   Precondition   | L'utente è loggato ed ha il ruolo Manager |
+|  Post condition  | Vengono registrati correttamente l'arrivo di un set di prodotti   |
+| Nominal Scenario | Il manager chiede al sistema di registrare l'arrivo di un set di prodotti dello stesso modello e vengono registrati correttamente    |
+|     Variants     |                          |
+|    Exceptions    |La data di arrivo è successiva a quella corrente e viene mostrato un errore
+##### Scenario 7.1
+
+|  Scenario 7.1  |                                                                            |
+| :------------: | :------------------------------------------------------------------------: |
+|  Precondition  | L'utente è loggato ed ha il ruolo Manager|
+| Post condition | Vengono registrati correttamente l'arrivo di un set di prodotti    |
+|     Step#      |                                Description                                 |
+|       1        |                                                        Il manager chiede al sistema di registrare l'arrivo di un set di prodotti           |
+|       2        |                                                        Il sistema i dati necessari per la registrazione di un arrivo                   |
+|3| L'utente inserisce i dati
+|4| Il sistema valida i dati e li salva
+|5| Il'arrivo viene registrato correttamente
+### Use case 8, UC8 Filtra prodotti
+
+| Actors Involved  | Utente/Manager                                                                    |
+| :--------------: | :------------------------------------------------------------------: |
+|   Precondition   | L'utente è loggato  |
+|  Post condition  | Vengono mostrati i prodotti che rispecchiano il filtro inserito dall'utente  |
+| Nominal Scenario | L'utente chiede di visualizzare solo i prodotti che rispecchiano un determinato filtro    |
+|     Variants     |                          |
+|    Exceptions    |
+##### Scenario 8.1
+
+|  Scenario 8.1  |                                                                     Filtro per categoria       | 
+| :------------: | :------------------------------------------------------------------------: |
+|  Precondition  | L'utente è loggato |
+| Post condition | Vengono mostrati i prodotti che rispecchiano la categoria inserita dall'utente   |
+|     Step#      |                                Description                                 |
+|       1        |                                                        L'utente chiede di visualizzare i prodotti di una certa categoria          |
+|       2        |                                                        Il sistema chiede la categoria             |
+|3| L'utente inserisce la categoria
+|4| Il sistema mostra i prodotti appartenenti alla categoria inserita dall'utente
+##### Scenario 8.2
+|  Scenario 8.2  |                                                                     Filtro per modello       | 
+| :------------: | :------------------------------------------------------------------------: |
+|  Precondition  | L'utente è loggato |
+| Post condition | Vengono mostrati i prodotti che rispecchiano il modello inserito dall'utente   |
+|     Step#      |                                Description                                 |
+|       1        |                                                        L'utente chiede di visualizzare i prodotti di un certo modello          |
+|       2        |                                                        Il sistema chiede il modello            |
+|3| L'utente inserisce il modello
+|4| Il sistema mostra i prodotti con modello corrispondente a quello inserito dall'utente
 # Glossary
 
 ![glossary](./glossary.png)
