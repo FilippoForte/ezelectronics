@@ -1,9 +1,62 @@
 # Graphical User Interface Prototype - CURRENT
 
-Authors:
+Authors: Alessandra Cicciarelli, Filippo Forte, Giulio Arecco, Riccardo Daniele Turco
 
-Date:
+Date: 21/04/2024
 
-Version:
+Version: 1.0
 
-\<Report here the GUI that you propose for EZElectronics in CURRENT form, as received by teachers. You are free to organize it as you prefer. A suggested presentation matches the Use cases and scenarios defined in the Requirement document. The GUI can be shown as a sequence of graphical files (jpg, png) >
+## Pagina Principale
+
+![useCaseDiagram](/img/index.png)
+
+![useCaseDiagram](/img/indexPC.png)
+
+## Scrermata di registrazione
+
+![useCaseDiagram](/img/Register.png)
+
+![useCaseDiagram](/img/RegisterPC.png)
+
+## Scrermata di login
+
+![useCaseDiagram](/img/Login.png)
+
+![useCaseDiagram](/img/LoginPC.png)
+
+## Scrermata di visualizzazione prodotti (da utente customer)
+
+![useCaseDiagram](/img/PaginaCustomer.png)
+
+![useCaseDiagram](/img/PaginaCustomerPC.png)
+
+### Carrello
+
+![useCaseDiagram](/img/Carrello.png)
+
+![useCaseDiagram](/img/CarrelloPC.png)
+
+## Scrermata di visualizzazione prodotti (da utente manager)
+
+![useCaseDiagram](/img/PaginaManager.png)
+
+![useCaseDiagram](/img/PaginaManagerPC.png)
+
+### Inserisci un nuovo prodotto
+
+![useCaseDiagram](/img/InserisciProdotto.png)
+
+![useCaseDiagram](/img/InserisciProdottoPC.png)
+
+### Logout
+
+![useCaseDiagram](/img/Logout.png)
+
+![useCaseDiagram](/img/LogoutPC.png)
+
+### Visualizza prodotti inseriti
+
+![useCaseDiagram](/img/IMieiProdotti.png)
+
+![useCaseDiagram](/img/IMieiProdottiPC.png)
+

@@ -52,7 +52,7 @@ EZElectronics (read EaSy Electronics) is a software application designed to help
 
 ## Context Diagram
 
-![contextDiagram](./contextDiagram.png)
+![contextDiagram](./img/contextDiagram.png)
 
 ## Interfaces
 
@@ -138,7 +138,7 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 
 ## Use case diagram
 
-![useCaseDiagram](/diagrammaDeiCasiD'uso.png)
+![useCaseDiagram](/img/diagrammaDeiCasiD'uso.png)
 
 \<next describe here each use case in the UCD>
 
@@ -328,14 +328,14 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 |4| Il sistema mostra i prodotti con modello corrispondente a quello inserito dall'utente
 # Glossary
 
-![glossary](./glossary.png)
+![glossary](./img/glossary.png)
 
 # System Design
 
 
-![system design](./SystemDesign.png)
+![system design](./img/SystemDesign.png)
 
 # Deployment Diagram
 
 
-![deployment Diagram](./DeploymentDiagram.png)
+![deployment Diagram](./img/DeploymentDiagram.png)
