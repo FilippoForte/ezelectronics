@@ -149,7 +149,7 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 |   Precondition   | -- |
 |  Post condition  |  L'utente/manager risulta registrato correttamente nel sistema.  |
 | Nominal Scenario |  L'utente/manager inserisce tutti i dati richiesti per la registrazione e sceglie il ruolo con cui registrarsi nel sistema.        |
-|     Variants     |                      \<other normal executions>                      |
+|     Variants     |   \<other normal executions>  ??????     |
 |    Exceptions    |  I dati inseriti non sono corretti o l'utente risulta già registrato, il sistema ritorna un errore e la registrazione non va a buon fine          |
 
 ##### Scenario 1.1
@@ -332,9 +332,8 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 
 # System Design
 
-\<describe here system design>
 
-\<must be consistent with Context diagram>
+![system design](./SystemDesign.png)
 
 # Deployment Diagram
 
