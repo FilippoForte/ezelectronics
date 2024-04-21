@@ -8,55 +8,55 @@ Version: 1.0
 
 ## Pagina Principale
 
-![useCaseDiagram](/img/index.png)
+![Index](/img/Index.png)
 
-![useCaseDiagram](/img/indexPC.png)
+![IndexPC](/img/IndexPC.png)
 
 ## Scrermata di registrazione
 
-![useCaseDiagram](/img/Register.png)
+![Register](/img/Register.png)
 
-![useCaseDiagram](/img/RegisterPC.png)
+![RegisterPC](/img/RegisterPC.png)
 
 ## Scrermata di login
 
-![useCaseDiagram](/img/Login.png)
+![Login](/img/Login.png)
 
-![useCaseDiagram](/img/LoginPC.png)
+![LoginPC](/img/LoginPC.png)
 
 ## Scrermata di visualizzazione prodotti (da utente customer)
 
-![useCaseDiagram](/img/PaginaCustomer.png)
+![PaginaCustomer](/img/PaginaCustomer.png)
 
-![useCaseDiagram](/img/PaginaCustomerPC.png)
+![PaginaCustomerPC](/img/PaginaCustomerPC.png)
 
 ### Carrello
 
-![useCaseDiagram](/img/Carrello.png)
+![Carrello](/img/Carrello.png)
 
-![useCaseDiagram](/img/CarrelloPC.png)
+![CarrelloPC](/img/CarrelloPC.png)
 
 ## Scrermata di visualizzazione prodotti (da utente manager)
 
-![useCaseDiagram](/img/PaginaManager.png)
+![PaginaManager](/img/PaginaManager.png)
 
-![useCaseDiagram](/img/PaginaManagerPC.png)
+![PaginaManagerPC](/img/PaginaManagerPC.png)
 
 ### Inserisci un nuovo prodotto
 
-![useCaseDiagram](/img/InserisciProdotto.png)
+![InserisciProdotto](/img/InserisciProdotto.png)
 
-![useCaseDiagram](/img/InserisciProdottoPC.png)
+![InserisciProdottoPC](/img/InserisciProdottoPC.png)
 
 ### Logout
 
-![useCaseDiagram](/img/Logout.png)
+![Logout](/img/Logout.png)
 
-![useCaseDiagram](/img/LogoutPC.png)
+![LogoutPC](/img/LogoutPC.png)
 
 ### Visualizza prodotti inseriti
 
-![useCaseDiagram](/img/IMieiProdotti.png)
+![IMieiProdotti](/img/IMieiProdotti.png)
 
-![useCaseDiagram](/img/IMieiProdottiPC.png)
+![IMieiProdottiPC](/img/IMieiProdottiPC.png)
 
