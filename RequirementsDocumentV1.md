@@ -90,22 +90,18 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 
 | ID        | Description                                     |
 |:----------|:------------------------------------------------|
-| **FR1**   | **Access management**                           |
-| FR1.1     | User registration                               |
-| FR1.2     | Registered user log in                          |
-| FR1.3     | Registered user log out                         |
+| **FR1**   | **Access management**                                                  |
+| FR1.1     | Registered user log in                          |
+| FR1.2     | Registered user log out                         |
 | **FR2**   | **User management**                             |
-| FR2.1     | View all registered users                       |
-| FR2.2     | Filter users by role                            |
-| FR2.3     | Search a user by username                       |
-| FR2.4     | Delete a user given its username                |
+| FR2.1     | User registration                               |
 | **FR3**   | **Product management**                          |
 | FR3.1     | View all products                               |
 | FR3.2     | Add a new product                               |
 | FR3.3     | Remove a product                                |
 | FR3.4     | Register the arrival of a new (set of) product(s) |
 | FR3.5     | Filter products by category, model |
-|FR 3.6     | Mark a produck as sold                          |
+| FR3.6     | Mark a produck as sold                          |
 | **FR4**   | **Shopping cart management**                    |
 | FR4.1     | View the user's current cart                    |
 | FR4.2     | Add a product to cart                           |
