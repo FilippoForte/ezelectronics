@@ -93,6 +93,7 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 | **FR1**   | **Access management**                                                  |
 | FR1.1     | Registered user log in                          |
 | FR1.2     | Registered user log out                         |
+| FR1.3     | Retrieves information about the currently logged in user.                        |
 | **FR2**   | **User management**                             |
 | FR2.1     | User registration                               |
 | **FR3**   | **Product management**                          |
