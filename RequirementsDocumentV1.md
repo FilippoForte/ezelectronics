@@ -104,7 +104,8 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 | FR3.2     | Add a new product                               |
 | FR3.3     | Remove a product                                |
 | FR3.4     | Register the arrival of a new (set of) product(s) |
-| FR3.5     | Filter products by sale status, category, model |
+| FR3.5     | Filter products by category, model |
+|FR 3.6     | Mark a produck as sold                          |
 | **FR4**   | **Shopping cart management**                    |
 | FR4.1     | View the user's current cart                    |
 | FR4.2     | Add a product to cart                           |
