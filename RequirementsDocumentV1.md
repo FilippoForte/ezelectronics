@@ -50,11 +50,11 @@ EZElectronics (read EaSy Electronics) is a software application designed to help
 
 ## Context Diagram
 
-![contextDiagram](./img/contextDiagram.png)
+![contextDiagram](./img/contextDiagramV1.png)
 
 ## Interfaces
 
-|   Attore         | Interfaccia logica                                                            | Interfaccia fisica |
+| Attore           | Interfaccia logica                                                            | Interfaccia fisica |
 | :--------------: | :--------------------------------------------------------------------------:  | :----------------: |
 | Cliente          | GUI (interfaccia per navigare il sito, visualizzare e comprare prodotti)      | Smartphone / PC    |
 | Manager          | GUI (interfaccia per navigare il sito, visualizzare e gestire i prodotti)     | Smartphone / PC    |
