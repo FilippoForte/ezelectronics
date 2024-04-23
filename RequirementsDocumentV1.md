@@ -43,8 +43,7 @@ EZElectronics (read EaSy Electronics) is a software application designed to help
 | :--------------------: | :----------------------------------------------------------------------: |
 | Cliente                | Individuo che accede al sito web per visualizzare o comprare prodotti    |
 | Manager                | Manager dello store fisico che puo' gestire i prodotti sul sito          |
-| Sviluppatori           | Il team di sviluppatori del sistema                                      |
-| Amministratore         | Amministratore del sistema                                               |
+| Sviluppatori           | Il team di sviluppatori del sistema                                      |                                           |
 
 # Context Diagram and interfaces
 
@@ -68,7 +67,7 @@ Storia: vuole acquistare una nuova smart-TV <u>all'avanguardia</u> per il suo sa
 Storia: vuole acquistare uno smartphone <u>economico</u> per sostituire quello vecchio e lento: deve trovare la <u>migliore soluzione costo-prestazioni</u>.  
   
 **Persona 3**: donna, sposata, con figli, 60 anni  
-Storia: vuole acquistare una radio per la madre di 85 anni che vive da sola, per tenerle compagnia.    
+Storia: vuole acquistare una radio per la madre di 85 anni che vive da sola, per tenerle compagnia.
   
 **Persona 4**: uomo, lavora da pochi anni, 28 anni  
 Storia: vuole assemblare un PC da gioco all'avanguardia: vuole controllare l'andamento dei prezzi dei componenti a cui e' interessato.  
@@ -124,14 +123,12 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 | NFR12 | Affidabilita'                         | Ogni utente non deve segnalare piu' di 1 bug non precedentemente segnalato all'anno                                                                                                                                      | /               |
 | NFR13 | Portabilita'                          | Il sito web deve essere accessibile dai seguenti browser (specificata la piu' vecchia versione supportata): Chrome (v: 79), Firefox (v: 72), Safari (v: 13.0.5), Opera (v: 65), Edge (v: 79), Samsung Internet (v: 11.2) | /               |
 
-
-
-
 # Use case diagram and use cases
 
 ## Use case diagram
 
 ![useCaseDiagram](/img/diagrammaDeiCasiD'uso.png)
+
 ### Use case 1.1, UC1.1 Login
 
 | Actors Involved  |    Utente/Manager                                                                  |
@@ -155,7 +152,6 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |      4      |                                                         Il sistema valida i dati        |
 |      5      |                                                         L'utente risulta loggato        |
 
-
 ### Use case 1.2, UC1.2 Logout
 
 | Actors Involved  |  Utente/Manager                                                                    |
@@ -175,6 +171,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |     Step#      |                                Description                                 |
 |       1        |                                                        L'utente chiede al sistema di effettuare il logout                   |
 |       2        |                                                        Il sistema effettua il logout per l'utente                    |
+
 ### Use case 1.3, UC1.3 Possibilità di ottenere le informazioni relative all'utente correntemente loggato
 
 | Actors Involved  |  Utente                                                                    |
@@ -194,6 +191,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |     Step#      |                                Description                                 |
 |       1        |                                                        L'utente chiede al sistema di mostrare le sue informazioni                   |
 |       2        |                                                        Il sistema mostra le informazioni all'utente                 |
+
 ### Use case 2.1 , UC2.1 Registrazione
 
 | Actors Involved  |                                                              Utente, Manager        |
@@ -201,7 +199,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |   Precondition   | -- |
 |  Post condition  |  L'utente/manager risulta registrato correttamente nel sistema.  |
 | Nominal Scenario |  L'utente/manager inserisce tutti i dati richiesti per la registrazione e sceglie il ruolo con cui registrarsi nel sistema.        |
-|     Variants     |   \<other normal executions>  ??????     |
+|     Variants     |        |
 |    Exceptions    |  I dati inseriti non sono corretti o l'utente risulta già registrato, il sistema ritorna un errore e la registrazione non va a buon fine          |
 
 ##### Scenario 2.1
@@ -280,8 +278,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |       1        |                                                        Il manager chiede al sistema di rimuovere un prodotto            |
 |       2        |                                                        Il sistema chiede il codice del prodotto che si vuole rimuovere                   |
 |3| L'utente inserisce il codice
-|4| Il sistema verifica che il codice sia presente 
+|4| Il sistema verifica che il codice sia presente
 |5| Il prodotto viene rimosso
+
 ### Use case 3.4, UC3.4 Registrazione dell'arrivo di un nuovo (insieme di) prodotto/i
 
 | Actors Involved  | Manager                                                                    |
@@ -291,6 +290,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 | Nominal Scenario | Il manager chiede al sistema di registrare l'arrivo di un set di prodotti dello stesso modello e vengono registrati correttamente    |
 |     Variants     |                          |
 |    Exceptions    |La data di arrivo è successiva a quella corrente e viene mostrato un errore
+
 ##### Scenario 3.4
 
 |  Scenario 3.4 |                                                                            |
@@ -303,6 +303,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |3| L'utente inserisce i dati
 |4| Il sistema valida i dati e li salva
 |5| Il'arrivo viene registrato correttamente
+
 ### Use case 3.5, UC3.5 Filtraggio di prodotti per categoria, modello, codice e disponibilità
 
 | Actors Involved  | Utente/Manager                                                                    |
@@ -312,9 +313,10 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 | Nominal Scenario | L'utente chiede di visualizzare solo i prodotti che rispecchiano un determinato filtro    |
 |     Variants     |                          |
 |    Exceptions    |
+
 ##### Scenario 3.5
 
-|  Scenario 3.5  |                                                                     Filtraggio di prodotti per categoria, modello, codice e disponibilità       | 
+|  Scenario 3.5  |                                                                     Filtraggio di prodotti per categoria, modello, codice e disponibilità       |
 | :------------: | :------------------------------------------------------------------------: |
 |  Precondition  | L'utente è loggato |
 | Post condition | Vengono mostrati i prodotti che rispecchiano il filtro inserito dall'utente   |
@@ -323,7 +325,6 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |       2        |                                                        Il sistema chiede il filtro             |
 |3| L'utente inserisce il filtro
 |4| Il sistema mostra i prodotti appartenenti al filtro inserito dall'utente
-
 
 ### Use case 3.6, UC3.6 Cataloga prodotto come venduto
 
@@ -334,9 +335,10 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 | Nominal Scenario | Il manager chiede di catalogare un prodotto come venduto   |
 |     Variants     |                          |
 |    Exceptions    | Il prodotto non esiste, la data di vendita risulta successiva alla data di arrivo o a quella corrente o il prodotto risulta già venduto
+
 ##### Scenario 3.6
 
-|  Scenario 3.6  |                                                                    Cataloga prodotto come venduto    | 
+|  Scenario 3.6  |                                                                    Cataloga prodotto come venduto    |
 | :------------: | :------------------------------------------------------------------------: |
 |  Precondition  | Il manager è loggato |
 | Post condition | Il prodotto viene catalogato come venduto    |
@@ -344,7 +346,6 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |       1        |                                                      Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita        |
 |       2        |                                           Il sistema valida le informazioni          |
 |3| Il prodotto risulta venduto
-
 
 ### Use case 4.1, UC4.1  Visualizzazione del carrello attuale del cliente  
 
@@ -355,16 +356,16 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 | Nominal Scenario | Il cliente chiede di visualizzare il suo carrello attuale e viene mostrato    |
 |     Variants     |                          |
 |    Exceptions    |
+
 ##### Scenario 4.1
 
-|  Scenario 4.1  |                                                                     Visualizzazione del carrello attuale del cliente     | 
+|  Scenario 4.1  |                                                                     Visualizzazione del carrello attuale del cliente     |
 | :------------: | :------------------------------------------------------------------------: |
 |  Precondition  | Il cliente è loggato |
 | Post condition |Viene mostrato il carrello attuale del cliente loggato   |
 |     Step#      |                                Description                                 |
 |       1        |                                                        Il cliente chiede di visualizzare il suo carrello attuale          |
 |       2        |                                                        Il sistema mostra il carrello corrente|
-
 
 ### Use case 4.2, UC4.2 Aggiunta di un prodotto al carrello attuale
 
@@ -375,9 +376,10 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 | Nominal Scenario | Il cliente chiede di aggiungere un prodotto al suo carrello   |
 |     Variants     |                          |
 |    Exceptions    | Il prodotto non esiste, il prodotto è già presente in un altro carrello o il prodotto non è disponibile|
+
 ##### Scenario 4.2
 
-|  Scenario 4.2  |                                                                     Aggiunta di un prodotto al carrello attuale    | 
+|  Scenario 4.2  |                                                                     Aggiunta di un prodotto al carrello attuale    |
 | :------------: | :------------------------------------------------------------------------: |
 |  Precondition  | Il cliente è loggato |
 | Post condition |Il prodotto viene aggiunto correttamente al carrello  |
@@ -386,7 +388,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |       2        |                                                        Il sistema verifica che il prodotto possa essere aggiunto |
 |3| Il prodotto risulta aggiunto al carrello|
 
-### Use case 4.3, UC4.3 Rimozione di un prodotto dal carrello attuale 
+### Use case 4.3, UC4.3 Rimozione di un prodotto dal carrello attuale
 
 | Actors Involved  | Cliente                                                                   |
 | :--------------: | :------------------------------------------------------------------: |
@@ -395,9 +397,10 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 | Nominal Scenario | Il cliente chiede di rimuovere un prodotto dal carrello   |
 |     Variants     |                          |
 |    Exceptions    | Il prodotto non è nel carrello, non esiste, è già stato venduto o il cliente non ha alcun carrello
+
 ##### Scenario 4.3
 
-|  Scenario 4.3  |                                                                     Rimozione di un prodotto dal carrello attuale     | 
+|  Scenario 4.3  |                                                                     Rimozione di un prodotto dal carrello attuale     |
 | :------------: | :------------------------------------------------------------------------: |
 |  Precondition  | Il cliente è loggato |
 | Post condition | Il prodotto viene rimosso dal carrello   |
@@ -415,9 +418,10 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 | Nominal Scenario | Il cliente chiede di acquistare il carrello attuale |
 |     Variants     |                          |
 |    Exceptions    | Il carrello è vuoto, o non esiste alcun carrello per il cliente loggato
+
 ##### Scenario 4.4
 
-|  Scenario 4.4  |                                                                      Acquisto dei prodotti aggiunti al carrello attuale    | 
+|  Scenario 4.4  |                                                                      Acquisto dei prodotti aggiunti al carrello attuale    |
 | :------------: | :------------------------------------------------------------------------: |
 |  Precondition  | Il cliente è loggato |
 | Post condition |L'acquisto del carrello viene effettuato correttamente    |
@@ -436,9 +440,10 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 | Nominal Scenario | Il cliente chiede di visualizzare la storia dei suoi carrelli    |
 |     Variants     |                          |
 |    Exceptions    |
+
 ##### Scenario 4.5
 
-|  Scenario 4.5  |                                                                     Visualizzazione della cronologia dei carrelli     | 
+|  Scenario 4.5  |                                                                     Visualizzazione della cronologia dei carrelli     |
 | :------------: | :------------------------------------------------------------------------: |
 |  Precondition  | Il cliente è loggato |
 | Post condition | Vengono mostrati tutti i carrelli del cliente loggato   |
@@ -455,25 +460,25 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 | Nominal Scenario | Il cliente chiede di cancellare il suo carrello attuale    |
 |     Variants     |                          |
 |    Exceptions    | Il cliente non ha alcun carrello
+
 ##### Scenario 4.6
 
-|  Scenario 4.6  |                                                                     Cancellazione del carrello attuale del cliente     | 
+|  Scenario 4.6  |                                                                     Cancellazione del carrello attuale del cliente     |
 | :------------: | :------------------------------------------------------------------------: |
 |  Precondition  | Il cliente è loggato |
 | Post condition |Viene cancellato il carrello attuale del cliente loggato   |
 |     Step#      |                                Description                                 |
 |       1        |                                                        Il cliente chiede di cancellare il suo carrello attuale          |
 |       2        |                                                        Il sistema elimina il carrello corrente|
+
 # Glossary
 
 ![glossary](./img/glossary.png)
 
 # System Design
 
-
 ![system design](./img/SystemDesign.png)
 
 # Deployment Diagram
-
 
 ![deployment Diagram](./img/DeploymentDiagram.png)
