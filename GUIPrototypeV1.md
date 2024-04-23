@@ -36,6 +36,12 @@ Version: 1.0
 
 ![CarrelloPC](/img/CarrelloPC.png)
 
+### Storia degli acquisti
+
+![History](/img/History.png)
+
+![HistoryPC](/img/HistoryPC.png)
+
 ## Scrermata di visualizzazione prodotti (da utente manager)
 
 ![PaginaManager](/img/PaginaManager.png)

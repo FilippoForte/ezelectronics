@@ -39,95 +39,91 @@ EZElectronics (read EaSy Electronics) is a software application designed to help
 
 # Stakeholders
 
-| Stakeholder name | Description                                                              |
-| :--------------: | :----------------------------------------------------------------------: |
-| Customer         | Individual who wants to buy something                                    |
-| Manager          | Manager who provides products to the application                         |
-| Banking service  | Service for monetary transactions                                        |
-| Developers       | Group that created the application                                       |
-| Shipping service | Service for the shipment of products to the user                         |
-| Admin            | Individual who manage the users and the application                      |
+| Nome dello Stakeholder | Descrizione                                                              |
+| :--------------------: | :----------------------------------------------------------------------: |
+| Cliente                | Individuo che accede al sito web per visualizzare o comprare prodotti    |
+| Manager                | Manager dello store fisico che puo' gestire i prodotti sul sito          |
+| Sviluppatori           | Il team di sviluppatori del sistema                                      |
+| Amministratore         | Amministratore del sistema                                               |
 
 # Context Diagram and interfaces
 
 ## Context Diagram
 
-![contextDiagram](./img/contextDiagram.png)
+![contextDiagram](./img/contextDiagramV1.png)
 
 ## Interfaces
 
-|   Actor          | Logical Interface                                        | Physical Interface |
-| :--------------: | :------------------------------------------------------: | :----------------: |
-| Customer         | GUI (interface for viewing products and purchasing)      | Smartphone / PC    |
-| Manager          | GUI (interface for viewing and add products)                | Smartphone / PC    |
-| Admin            | GUI (interface for viewing, add products and control users) | Smartphone / PC    |
-| Banking service  | APIs                                                     | Internet           |
-| Shipping service | APIs                                                     | Internet           |
+| Attore           | Interfaccia logica                                                            | Interfaccia fisica |
+| :--------------: | :--------------------------------------------------------------------------:  | :----------------: |
+| Cliente          | GUI (interfaccia per navigare il sito, visualizzare e comprare prodotti)      | Smartphone / PC    |
+| Manager          | GUI (interfaccia per navigare il sito, visualizzare e gestire i prodotti)     | Smartphone / PC    |
 
 # Stories and personas
 
-**Persona 1**: male, high-income professional, married, with children, 50 years-old  
-Story: wants to purchase a new, <u>state-of-the-art</u> smart-TV for his living room: needs to find the <u>best price</u> among the best TVs in the store.
+**Persona 1**: uomo, professionista ad alto reddito, sposato, con figli, 50 anni  
+Storia: vuole acquistare una nuova smart-TV <u>all'avanguardia</u> per il suo salotto: deve trovare il <u>prezzo migliore</u> tra le migliori TV presenti nel negozio.
 
-**Persona 2**: female, undergraduate, 20 years-old  
-Story: wants to purchase a <u>cheap</u> smartphone to replace her old and slow one: needs to find the <u>best cost-performance solution</u>.  
+**Persona 2**: donna, studentessa universitaria, 20 anni  
+Storia: vuole acquistare uno smartphone <u>economico</u> per sostituire quello vecchio e lento: deve trovare la <u>migliore soluzione costo-prestazioni</u>.  
   
-**Persona 3**: female, married, with children, 60 years-old  
-Story: wants to purchase a radio for her 85 year-old mother who lives alone, to keep her company.    
+**Persona 3**: donna, sposata, con figli, 60 anni  
+Storia: vuole acquistare una radio per la madre di 85 anni che vive da sola, per tenerle compagnia.    
   
-**Persona 4**: male, has been working for a few years, 28 years-old  
-Story: wants to build a cutting-edge gaming PC: wants to check the trend of the prices of the components he is interested in.  
+**Persona 4**: uomo, lavora da pochi anni, 28 anni  
+Storia: vuole assemblare un PC da gioco all'avanguardia: vuole controllare l'andamento dei prezzi dei componenti a cui e' interessato.  
 
-**Persona 5**: male, store manager, 45 years-old  
-Story: needs to <u>add a newly released model</u> of a product to the website and <u>remove an old</u>, out-of-stock one.  
+**Persona 5**: uomo, manager di un negozio, 45 anni  
+Storia: deve <u>aggiungere al sito web un modello appena uscito</u> di un prodotto e <u>rimuoverne uno vecchio</u>, esaurito.  
 
-**Persona 6**: female, store manager, 50 years-old  
-Story: needs to <u>register the arrival</u> of a set of products and <u>apply a discount</u> for the products of a specific model.
+**Persona 6**: donna, manager del negozio, 50 anni  
+Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare uno sconto</u> per i prodotti di un modello specifico.
 
 # Functional and non functional requirements
 
 ## Functional Requirements
 
-| ID        | Description                                     |
-|:----------|:------------------------------------------------|
-| **FR1**   | **Access management**                                                  |
-| FR1.1     | Registered user log in                          |
-| FR1.2     | Registered user log out                         |
-| **FR2**   | **User management**                             |
-| FR2.1     | User registration                               |
-| **FR3**   | **Product management**                          |
-| FR3.1     | View all products                               |
-| FR3.2     | Add a new product                               |
-| FR3.3     | Remove a product                                |
-| FR3.4     | Register the arrival of a new (set of) product(s) |
-| FR3.5     | Filter products by category, model |
-| FR3.6     | Mark a produck as sold                          |
-| **FR4**   | **Shopping cart management**                    |
-| FR4.1     | View the user's current cart                    |
-| FR4.2     | Add a product to cart                           |
-| FR4.3     | Remove a product from the cart                  |
-| FR4.4     | Purchase the products added to the cart         |
-| FR4.5     | View the history of carts the user purchased    |
-| FR4.6     | Delete the current cart                         |
+| ID      | Descrizione                                                                        |
+|:--------|:-----------------------------------------------------------------------------------|
+| **FR1** | **Gestione degli accessi**                                                         |
+| FR1.1   | Login di un utente registrato                                                      |
+| FR1.2   | Logout di un utente registrato                                                     |
+| FR1.3   | Possibilita' di ottenere le informazioni relative all'utente correntemente loggato |
+| **FR2** | **Gestione degli utenti**                                                          |
+| FR2.1   | Registrazione di un nuovo utente                                                   |
+| **FR3** | **Gestione dei prodotti**                                                          |
+| FR3.1   | Visualizzazione di tutti i prodotti                                                |
+| FR3.2   | Aggiunta di un nuovo prodotto                                                      |
+| FR3.3   | Rimozione di un prodotto                                                           |
+| FR3.4   | Registrazione dell'arrivo di un nuovo (insieme di) prodotti                        |
+| FR3.5   | Filtraggio di prodotti per categoria, modello e disponibilita'                     |
+| FR3.6   | Catalogazione di un prodotto come venduto                                          |
+| **FR4** | **Gestione del carrello**                                                          |
+| FR4.1   | Visualizzazione del carrello attuale del cliente                                   |
+| FR4.2   | Aggiunta di un prodotto al carrello attuale                                        |
+| FR4.3   | Rimozione di un prodotto dal carrello attuale                                      |
+| FR4.4   | Acquisto dei prodotti aggiunti al carrello attuale                                 |
+| FR4.5   | Visualizzazione della cronologia dei carrelli acquistati dal cliente               |
+| FR4.6   | Cancellazione del carrello                                                         |
 
 ## Non Functional Requirements
 
-| ID    | Type (efficiency, reliability, ..) | Description                                                                                                                                                                                                    | Refers to    |
-|:------|:----------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------:|
-| NFR1  | Efficiency                         | The system must respond within 0.5 seconds since any user action (excluding page loading times)                                                                                                                | /            |
-| NFR2  | Efficiency                         | Web pages must load within 6 seconds since last user request (depending on network conditions)                                                                                                                 | /            |
-| NFR3  | Efficiency                         | No app installation needed for the end-user, every functionality has to be accessible from the website via an internet browser                                                                                 | /            |
-| NFR4  | Security                           | Only system administrators can access user management functionalities                                                                                                                                          | F2.x         |
-| NFR5  | Security                           | User data treatment must meet GDPR                                                                                                                                                                             | /            |
-| NFR5  | Security                           | Some product functionalities can only be used by managers                                                                                                                                                      | F3.(2, 3, 4) |
-| NFR5  | Security                           | All shopping cart functionalities can only be used by customers                                                                                                                                                | F4.x         |
-| NFR6  | Usability                          | Customers don't need any training                                                                                                                                                                              | /            |
-| NFR7  | Usability                          | Managers need a maximum of one hour of training                                                                                                                                                                | /            |
-| NFR8  | Reliability                        | The number of malfunctions per year must be less than 2                                                                                                                                                 | /            |
-| NFR9  | Reliability                        | The website cannot require more than one 1 maintenance session every 2 months                                                                                                                                  | /            |
-| NFR10 | Reliability                        | Maintenance sessions cannot last more than 4 hours                                                                                                                                                             | /            |
-| NFR11 | Reliability                        | Every user should not report more than 1  previously unreported bug per year                                                                                                                                   | /            |
-| NFR12 | Portability                        | The web site must be accessible from the following browsers (oldest supported version specified): Chrome (v: 79), Firefox (v: 72), Safari (v: 13.0.5), Opera (v: 65), Edge (v: 79), Samsung Internet (v: 11.2) | /            |
+| ID    | Tipo (efficienza, affidabilita', ...) | Descrizione                                                                                                                                                                                                              | Si riferisce a  |
+|:------|:-------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------:|
+| NFR1  | Efficienza                            | Il sistema deve rispondere entro 0,5 secondi da qualsiasi azione dell'utente (esclusi i tempi di caricamento delle pagine).                                                                                              |        /        |
+| NFR2  | Efficienza                            | Le pagine Web devono essere caricate entro 6 secondi dall'ultima richiesta dell'utente (variabile in base alle condizioni della rete)                                                                                    | /               |
+| NFR3  | Efficienza                            | Non e'richiesta alcuna installazione per l'utente, ogni funzionalita' deve essere accessibile dal sito web tramite un browser internet                                                                                   | /               |
+| NFR4  | Sicurezza                             | Il trattamento dei dati dell'utente deve essere conforme al GDPR                                                                                                                                                         | /               |
+| NFR5  | Sicurezza                             | Le funzionalita' legate alla gestione dei prodotti possono essere utilizzate solo dai manager                                                                                                                            | F3.(2, 3, 4, 6) |
+| NFR6  | Sicurezza                             | Tutte le funzionalita' legate ai carrelli possono essere utilizzate solo dai clienti                                                                                                                                     | F4.x            |
+| NFR7  | Usabilita'                            | I clienti non hanno bisogno di alcuna formazione                                                                                                                                                                         | /               |
+| NFR8  | Usabilita'                            | I manager hanno bisogno al massimo di un'ora di formazione                                                                                                                                                               | /               |
+| NFR9  | Affidabilita'                         | Il numero di malfunzionamenti all'anno deve essere inferiore a 2                                                                                                                                                         | /               |
+| NFR10 | Affidabilita'                         | Il sito web non deve richiedere piu' di 1 sessione di manutenzione ogni 2 mesi                                                                                                                                           | /               |
+| NFR11 | Affidabilita'                         | Una sessione di manutenzione non puo' durare piu' di 4 ore                                                                                                                                                               | /               |
+| NFR12 | Affidabilita'                         | Ogni utente non deve segnalare piu' di 1 bug non precedentemente segnalato all'anno                                                                                                                                      | /               |
+| NFR13 | Portabilita'                          | Il sito web deve essere accessibile dai seguenti browser (specificata la piu' vecchia versione supportata): Chrome (v: 79), Firefox (v: 72), Safari (v: 13.0.5), Opera (v: 65), Edge (v: 79), Samsung Internet (v: 11.2) | /               |
+
 
 
 
@@ -137,48 +133,44 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 
 ![useCaseDiagram](/img/diagrammaDeiCasiD'uso.png)
 
-\<next describe here each use case in the UCD>
 
 ### Use case 1, UC1 Registrazione
 
-| Actors Involved  |                                                              Utente, Manager        |
+| Actors Involved  |                                                              Cliente, Manager (Utente)        |
 | :--------------: | :------------------------------------------------------------------: |
 |   Precondition   | -- |
-|  Post condition  |  L'utente/manager risulta registrato correttamente nel sistema.  |
-| Nominal Scenario |  L'utente/manager inserisce tutti i dati richiesti per la registrazione e sceglie il ruolo con cui registrarsi nel sistema.        |
-|     Variants     |   \<other normal executions>  ??????     |
-|    Exceptions    |  I dati inseriti non sono corretti o l'utente risulta già registrato, il sistema ritorna un errore e la registrazione non va a buon fine          |
+|  Post condition  |  L'utente risulta registrato correttamente nel sistema.  |
+| Nominal Scenario |  L'utente inserisce tutti i dati richiesti (username, nome, cognome, password) per la registrazione e sceglie il ruolo con cui registrarsi nel sistema.        |
+|     Variants     |               |
+|    Exceptions    |  I dati inseriti non sono corretti o l'utente risulta gia' registrato, il sistema ritorna un errore e la registrazione non va a buon fine          |
 
-##### Scenario 1.1
 
 |  Scenario 1.1  |                                                                            |
 | :------------: | :------------------------------------------------------------------------: |
 |  Precondition  | -- |
-| Post condition |  L'utente/manager risulta registrato correttamente nel sistema  |
+| Post condition |  L'utente risulta registrato correttamente nel sistema  |
 |     Step#      |                                Description                                 |
-|       1        |   L'utente chiede di registrarsi al sistema.                                                         |
+|       1        |   L'utente inizia la procedura di registrazione al sistema.                                                         |
 |       2        |                                                        Il sistema chiede i dati necessari per la registrazione                |
-|      3      |                                                          L'utente inserisce i dati richiesti       |
-|       4      |                                                          L'utente seleziona il ruolo con cui registrarsi(manager o utente)             |
-|    5     |                                                           il sistema salva i dati e viene creato il nuovo utente/manager               |
+|      3      |                                                          L'utente inserisce i dati personali e il ruolo con cui registrarsi       |
+|    4     |                                                           Il sistema salva i dati e viene creato il nuovo utente               |
 
 
 ### Use case 2, UC2 Login
 
-| Actors Involved  |    Utente/Manager                                                                  |
+| Actors Involved  |    Cliente/Manager (Utente)                                                             |
 | :--------------: | :------------------------------------------------------------------: |
-|   Precondition   | L'utente è registrato nel sistema |
-|  Post condition  | L'utente/manager risulta loggato |
+|   Precondition   | L'utente e' registrato nel sistema |
+|  Post condition  | L'utente risulta loggato |
 | Nominal Scenario | L'utente inserisce username e password e accede al sistema    |
 |     Variants     |                   |
 |    Exceptions    | L'utente inserisce dati errati e viene ritornato un errore      |
 
-##### Scenario 2.1
 
 |  Scenario 2.1  |                                                                            |
 | :------------: | :------------------------------------------------------------------------: |
-|  Precondition  |L'utente è registrato nel sistema |
-| Post condition |L'utente/manager risulta loggato  |
+|  Precondition  |L'utente e' registrato nel sistema |
+| Post condition |L'utente risulta loggato  |
 |     Step#      |                                Description                                 |
 |       1        |  L'utente chiede di accedere al sistema                                                                          |
 |       2        | Il sistema chiede username e password                                                                           |
@@ -189,19 +181,18 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 
 ### Use case 3, UC3 Logout
 
-| Actors Involved  |  Utente/Manager                                                                    |
+| Actors Involved  |  Cliente/Manager (Utente)                                                                   |
 | :--------------: | :------------------------------------------------------------------: |
-|   Precondition   | L'utente è loggato |
+|   Precondition   | L'utente e' loggato |
 |  Post condition  | Viene eseguito il logout   |
 | Nominal Scenario | L'utente chiede al sistema di effettuare il logout e questo viene effettuato con successo      |
 |     Variants     |                          |
 |    Exceptions    |                             |
 
-##### Scenario 3.1
 
-|  Scenario 1.1  |                                                                            |
+|  Scenario 3.1  |                                                                            |
 | :------------: | :------------------------------------------------------------------------: |
-|  Precondition  | L'utente è loggato|
+|  Precondition  | L'utente e' loggato|
 | Post condition |  Viene eseguito il logout   |
 |     Step#      |                                Description                                 |
 |       1        |                                                        L'utente chiede al sistema di effettuare il logout                   |
@@ -209,19 +200,18 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 
 ### Use case 4, UC4 Visualizza tutti i prodotti
 
-| Actors Involved  |  Utente/Manager                                                                    |
+| Actors Involved  |  Cliente/Manager (Utente)                                                                    |
 | :--------------: | :------------------------------------------------------------------: |
-|   Precondition   | L'utente è loggato |
+|   Precondition   | L'utente e' loggato |
 |  Post condition  | Vengono mostrati tutti i prodotti   |
-| Nominal Scenario | L'utente chiede al sistema di visualizzare tutti i prodotti e li vengono mostrati     |
+| Nominal Scenario | L'utente chiede al sistema di visualizzare tutti i prodotti e gli vengono mostrati     |
 |     Variants     |                          |
 |    Exceptions    |                             |
 
-##### Scenario 4.1
 
 |  Scenario 4.1  |                                                                            |
 | :------------: | :------------------------------------------------------------------------: |
-|  Precondition  | L'utente è loggato|
+|  Precondition  | L'utente e' loggato|
 | Post condition | Vengono mostrati tutti i prodotti   |
 |     Step#      |                                Description                                 |
 |       1        |                                                        L'utente chiede al sistema di visualizzare tutti i prodotti presenti               |
@@ -231,17 +221,16 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 
 | Actors Involved  |  Manager                                                                    |
 | :--------------: | :------------------------------------------------------------------: |
-|   Precondition   | L'utente è loggato ed ha il ruolo Manager |
+|   Precondition   | L'utente e' loggato ed ha il ruolo Manager |
 |  Post condition  | Il prodotto viene aggiunto correttamente   |
 | Nominal Scenario | Il manager chiede di aggiungere un nuovo prodotto, inserisce tutti i dati richiesti e il prodotto viene aggiunto correttamente     |
 |     Variants     |                          |
-|    Exceptions    | Il prodotto è già presente o la data di arrivo è successiva a quella corrente                            |
+|    Exceptions    | Il prodotto e' gia' presente o la data di arrivo e' successiva a quella corrente                            |
 
-##### Scenario 5.1
 
 |  Scenario 5.1  |                                                                            |
 | :------------: | :------------------------------------------------------------------------: |
-|  Precondition  | L'utente è loggato ed ha il ruolo Manager|
+|  Precondition  | L'utente e' loggato ed ha il ruolo Manager|
 | Post condition | Il prodotto viene aggiunto correttamente   |
 |     Step#      |                                Description                                 |
 |       1        |                                                        Il manager chiede di aggiungere un nuovo prodotto               |
@@ -254,17 +243,16 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 
 | Actors Involved  | Manager                                                                    |
 | :--------------: | :------------------------------------------------------------------: |
-|   Precondition   | L'utente è loggato ed ha il ruolo Manager |
+|   Precondition   | L'utente e' loggato ed ha il ruolo Manager |
 |  Post condition  | Il prodotto viene rimosso    |
 | Nominal Scenario | Il manager chiede al sistema di rimuovere un prodotto e questo viene rimosso correttamente    |
 |     Variants     |                          |
-|    Exceptions    |Il prodotto che si vuole rimuovere non è presente, viene ritornato un errore                           |
+|    Exceptions    |Il prodotto che si vuole rimuovere non e' presente, viene ritornato un errore                           |
 
-##### Scenario 6.1
 
 |  Scenario 6.1  |                                                                            |
 | :------------: | :------------------------------------------------------------------------: |
-|  Precondition  | L'utente è loggato ed ha il ruolo Manager|
+|  Precondition  | L'utente e' loggato ed ha il ruolo Manager|
 | Post condition | Il prodotto viene rimosso  |
 |     Step#      |                                Description                                 |
 |       1        |                                                        Il manager chiede al sistema di rimuovere un prodotto            |
@@ -276,53 +264,63 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 
 | Actors Involved  | Manager                                                                    |
 | :--------------: | :------------------------------------------------------------------: |
-|   Precondition   | L'utente è loggato ed ha il ruolo Manager |
-|  Post condition  | Vengono registrati correttamente l'arrivo di un set di prodotti   |
+|   Precondition   | L'utente e' loggato ed ha il ruolo Manager |
+|  Post condition  | Viene registrato correttamente l'arrivo di un set di prodotti   |
 | Nominal Scenario | Il manager chiede al sistema di registrare l'arrivo di un set di prodotti dello stesso modello e vengono registrati correttamente    |
 |     Variants     |                          |
-|    Exceptions    |La data di arrivo è successiva a quella corrente e viene mostrato un errore
-##### Scenario 7.1
+|    Exceptions    |La data di arrivo e' successiva a quella corrente e viene mostrato un errore
 
 |  Scenario 7.1  |                                                                            |
 | :------------: | :------------------------------------------------------------------------: |
-|  Precondition  | L'utente è loggato ed ha il ruolo Manager|
+|  Precondition  | L'utente e' loggato ed ha il ruolo Manager|
 | Post condition | Vengono registrati correttamente l'arrivo di un set di prodotti    |
 |     Step#      |                                Description                                 |
 |       1        |                                                        Il manager chiede al sistema di registrare l'arrivo di un set di prodotti           |
-|       2        |                                                        Il sistema i dati necessari per la registrazione di un arrivo                   |
+|       2        |                                                        Il sistema chiede i dati necessari per la registrazione dell'arrivo                  |
 |3| L'utente inserisce i dati
 |4| Il sistema valida i dati e li salva
-|5| Il'arrivo viene registrato correttamente
+|5| L'arrivo viene registrato correttamente
+
+
 ### Use case 8, UC8 Filtra prodotti
 
-| Actors Involved  | Utente/Manager                                                                    |
+| Actors Involved  | Cliente/Manager (Utente)                                                                    |
 | :--------------: | :------------------------------------------------------------------: |
-|   Precondition   | L'utente è loggato  |
+|   Precondition   | L'utente e' loggato  |
 |  Post condition  | Vengono mostrati i prodotti che rispecchiano il filtro inserito dall'utente  |
-| Nominal Scenario | L'utente chiede di visualizzare solo i prodotti che rispecchiano un determinato filtro    |
+| Nominal Scenario | L'utente chiede di visualizzare solo i prodotti che rispettano i criteri del filtro    |
 |     Variants     |                          |
 |    Exceptions    |
-##### Scenario 8.1
 
 |  Scenario 8.1  |                                                                     Filtro per categoria       | 
 | :------------: | :------------------------------------------------------------------------: |
-|  Precondition  | L'utente è loggato |
+|  Precondition  | L'utente e' loggato |
 | Post condition | Vengono mostrati i prodotti che rispecchiano la categoria inserita dall'utente   |
 |     Step#      |                                Description                                 |
 |       1        |                                                        L'utente chiede di visualizzare i prodotti di una certa categoria          |
 |       2        |                                                        Il sistema chiede la categoria             |
 |3| L'utente inserisce la categoria
-|4| Il sistema mostra i prodotti appartenenti alla categoria inserita dall'utente
-##### Scenario 8.2
+|4| Il sistema mostra i prodotti appartenenti alla categoria inserita dall'utente |
+
+
 |  Scenario 8.2  |                                                                     Filtro per modello       | 
 | :------------: | :------------------------------------------------------------------------: |
-|  Precondition  | L'utente è loggato |
+|  Precondition  | L'utente e' loggato |
 | Post condition | Vengono mostrati i prodotti che rispecchiano il modello inserito dall'utente   |
 |     Step#      |                                Description                                 |
 |       1        |                                                        L'utente chiede di visualizzare i prodotti di un certo modello          |
 |       2        |                                                        Il sistema chiede il modello            |
 |3| L'utente inserisce il modello
-|4| Il sistema mostra i prodotti con modello corrispondente a quello inserito dall'utente
+|4| Il sistema mostra i prodotti con modello corrispondente a quello inserito dall'utente |
+
+|  Scenario 8.3  |                                                                     Filtro per modello       | 
+| :------------: | :------------------------------------------------------------------------: |
+|  Precondition  | L'utente e' loggato |
+| Post condition | Vengono mostrati i prodotti la cui disponibilita' e' stata specificata dall'utente   |
+|     Step#      |                                Description                                 |
+|       1        |                                                        L'utente chiede di visualizzare tutti i prodotti o solo quelli disponibili o solo quelli non disponibili          |
+|2| Il sistema mostra i prodotti corrispondenti al criterio di filtraggio specificato dall'utente |
+
 # Glossary
 
 ![glossary](./img/glossary.png)

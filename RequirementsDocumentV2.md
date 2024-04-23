@@ -39,30 +39,30 @@ EZElectronics (read EaSy Electronics) is a software application designed to help
 
 # Stakeholders
 
-| Stakeholder name | Description                                                              |
-| :--------------: | :----------------------------------------------------------------------: |
-| Customer         | Individual who wants to buy something                                    |
-| Manager          | Manager who provides products to the application                         |
-| Banking service  | Service for monetary transactions                                        |
-| Developers       | Group that created the application                                       |
-| Shipping service | Service for the shipment of products to the user                         |
-| Admin            | Individual who manage the users and the application                      |
+| Nome dello Stakeholder | Descrizione                                                              |
+| :--------------------: | :----------------------------------------------------------------------: |
+| Cliente                | Individuo che accede al sito web per visualizzare o comprare prodotti    |
+| Manager                | Manager dello store fisico che puo' gestire i prodotti sul sito          |
+| Servizio bancario      | Servizio per transazioni monetarie                                       |
+| Sviluppatori           | Il team di sviluppatori del sistema                                      |
+| Servizio di spedizione | Servizio per la spedizione dei prodotti                                  |
+| Amministratore         | Amministratore del sistema                                               |
 
 # Context Diagram and interfaces
 
 ## Context Diagram
 
-![contextDiagram](./contextDiagram.png)
+![contextDiagram](./contextDiagramV2.png)
 
 ## Interfaces
 
-|   Actor          | Logical Interface                                        | Physical Interface |
-| :--------------: | :------------------------------------------------------: | :----------------: |
-| Customer         | GUI (interface for viewing products and purchasing)      | Smartphone / PC    |
-| Manager          | GUI (interface for viewing and add products)                | Smartphone / PC    |
-| Admin            | GUI (interface for viewing, add products and control users) | Smartphone / PC    |
-| Banking service  | APIs                                                     | Internet           |
-| Shipping service | APIs                                                     | Internet           |
+| Attore                 | Interfaccia logica                                                         | Interfaccia fisica |
+| :--------------------: | :-----------------------------------------------------------------------:  | :----------------: |
+| Cliente                | GUI (interfaccia per navigare il sito, visualizzare e comprare prodotti)   | Smartphone / PC    |
+| Manager                | GUI (interfaccia per navigare il sito, visualizzare e gestire i prodotti)  | Smartphone / PC    |
+| Amministratore         | GUI (interfaccia per visualizzare e gestire i prodotti e gli utenti)       | Smartphone / PC    |
+| Servizio bancario      | APIs                                                                       | Internet           |
+| Servizio di spedizione | APIs                                                                       | Internet           |
 
 # Stories and personas
 
