@@ -4,7 +4,7 @@ Authors: Alessandra Cicciarelli, Filippo Forte, Giulio Arecco, Riccardo Daniele 
 
 Date: 21/04/2024
 
-Version: 1.0
+Version: 1.3
 
 ## Pagina Principale
 
@@ -30,13 +30,17 @@ Version: 1.0
 
 ![PaginaCustomerPC](/img/PaginaCustomerPC.png)
 
-### Carrello
+### Carrello (da utente customer)
+
+Si accede alla pagina premendo sull'icona del carrello sulla navbar
 
 ![Carrello](/img/Carrello.png)
 
 ![CarrelloPC](/img/CarrelloPC.png)
 
-### Storia degli acquisti
+### Storia degli acquisti (da utente customer)
+
+Si accede alla pagina tramite la voce nel menu a tendina nella navbar
 
 ![History](/img/History.png)
 
@@ -48,19 +52,23 @@ Version: 1.0
 
 ![PaginaManagerPC](/img/PaginaManagerPC.png)
 
-### Inserisci un nuovo prodotto
+### Inserisci un nuovo prodotto (da utente manager)
+
+Si accede alla pagina tramite il bottone "Aggiungi prodotto" sulla navbar per la versione da PC mentre attraverso il bottone di aggiunta in basso a destra da cellulare
 
 ![InserisciProdotto](/img/InserisciProdotto.png)
 
 ![InserisciProdottoPC](/img/InserisciProdottoPC.png)
 
-### Logout
+### Logout 
 
 ![Logout](/img/Logout.png)
 
 ![LogoutPC](/img/LogoutPC.png)
 
-### Visualizza prodotti inseriti
+### Visualizza prodotti inseriti (da utente manager)
+
+Si accede alla pagina tramite la voce nel menu a tendina nella navbar
 
 ![IMieiProdotti](/img/IMieiProdotti.png)
 
