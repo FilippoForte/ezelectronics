@@ -73,7 +73,7 @@ Story: wants to purchase a new, <u>state-of-the-art</u> smart-TV for his living 
 Story: wants to purchase a <u>cheap</u> smartphone to replace her old and slow one: needs to find the <u>best cost-performance solution</u>.  
   
 **Persona 3**: female, married, with children, 60 years-old  
-Story: wants to purchase a radio for her 85 year-old mother who lives alone, to keep her company.    
+Story: wants to purchase a radio for her 85 year-old mother who lives alone, to keep her company.
   
 **Persona 4**: male, has been working for a few years, 28 years-old  
 Story: wants to build a cutting-edge gaming PC: wants to check the trend of the prices of the components he is interested in.  
@@ -112,6 +112,11 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 | FR4.4     | Purchase the products added to the cart         |
 | FR4.5     | View the history of carts the user purchased    |
 | FR4.6     | Delete the current cart                         |
+| **FR5**   | **Shipping management**                         |
+| FR5.1     | Insert new shipping address                     |
+| FR5.2     | Edit shipping address                           |
+| FR5.3     | Delete Shipping address                         |
+| FR5.4     | Retrieve shipping date                          |
 
 ## Non Functional Requirements
 
@@ -131,8 +136,6 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 | NFR10 | Reliability                        | Maintenance sessions cannot last more than 4 hours                                                                                                                                                             | /            |
 | NFR11 | Reliability                        | Every user should not report more than 1  previously unreported bug per year                                                                                                                                   | /            |
 | NFR12 | Portability                        | The web site must be accessible from the following browsers (oldest supported version specified): Chrome (v: 79), Firefox (v: 72), Safari (v: 13.0.5), Opera (v: 65), Edge (v: 79), Samsung Internet (v: 11.2) | /            |
-
-
 
 # Use case diagram and use cases
 
@@ -165,7 +168,6 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 |       4      |                                                          L'utente seleziona il ruolo con cui registrarsi(manager o utente)             |
 |    5     |                                                           il sistema salva i dati e viene creato il nuovo utente/manager               |
 
-
 ### Use case 2, UC2 Login
 
 | Actors Involved  |    Utente/Manager                                                                  |
@@ -188,7 +190,6 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 |      3       |                                                         L'utente inserisce username a password         |
 |      4      |                                                         Il sistema valida i dati        |
 |      5      |                                                         L'utente risulta loggato        |
-
 
 ### Use case 3, UC3 Logout
 
@@ -273,8 +274,9 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 |       1        |                                                        Il manager chiede al sistema di rimuovere un prodotto            |
 |       2        |                                                        Il sistema chiede il codice del prodotto che si vuole rimuovere                   |
 |3| L'utente inserisce il codice
-|4| Il sistema verifica che il codice sia presente 
+|4| Il sistema verifica che il codice sia presente
 |5| Il prodotto viene rimosso
+
 ### Use case 7, UC7 Registra arrivi
 
 | Actors Involved  | Manager                                                                    |
@@ -284,6 +286,7 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 | Nominal Scenario | Il manager chiede al sistema di registrare l'arrivo di un set di prodotti dello stesso modello e vengono registrati correttamente    |
 |     Variants     |                          |
 |    Exceptions    |La data di arrivo è successiva a quella corrente e viene mostrato un errore
+
 ##### Scenario 7.1
 
 |  Scenario 7.1  |                                                                            |
@@ -296,6 +299,7 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 |3| L'utente inserisce i dati
 |4| Il sistema valida i dati e li salva
 |5| Il'arrivo viene registrato correttamente
+
 ### Use case 8, UC8 Filtra prodotti
 
 | Actors Involved  | Utente/Manager                                                                    |
@@ -305,9 +309,10 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 | Nominal Scenario | L'utente chiede di visualizzare solo i prodotti che rispecchiano un determinato filtro    |
 |     Variants     |                          |
 |    Exceptions    |
+
 ##### Scenario 8.1
 
-|  Scenario 8.1  |                                                                     Filtro per categoria       | 
+|  Scenario 8.1  |                                                                     Filtro per categoria       |
 | :------------: | :------------------------------------------------------------------------: |
 |  Precondition  | L'utente è loggato |
 | Post condition | Vengono mostrati i prodotti che rispecchiano la categoria inserita dall'utente   |
@@ -316,8 +321,10 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 |       2        |                                                        Il sistema chiede la categoria             |
 |3| L'utente inserisce la categoria
 |4| Il sistema mostra i prodotti appartenenti alla categoria inserita dall'utente
+
 ##### Scenario 8.2
-|  Scenario 8.2  |                                                                     Filtro per modello       | 
+
+|  Scenario 8.2  |                                                                     Filtro per modello       |
 | :------------: | :------------------------------------------------------------------------: |
 |  Precondition  | L'utente è loggato |
 | Post condition | Vengono mostrati i prodotti che rispecchiano il modello inserito dall'utente   |
@@ -326,6 +333,7 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 |       2        |                                                        Il sistema chiede il modello            |
 |3| L'utente inserisce il modello
 |4| Il sistema mostra i prodotti con modello corrispondente a quello inserito dall'utente
+
 # Glossary
 
 ![glossary](./glossary.png)
@@ -337,6 +345,5 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 \<must be consistent with Context diagram>
 
 # Deployment Diagram
-
 
 ![deployment Diagram](./DeploymentDiagram.png)
