@@ -102,14 +102,14 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 | FR4.2   | Aggiunta di un prodotto al carrello attuale                                        |
 | FR4.3   | Rimozione di un prodotto dal carrello attuale                                      |
 | FR4.4   | Acquisto dei prodotti aggiunti al carrello attuale                                 |
-| FR4.5   | Visualizzazione della cronologia dei carrelli acquistati dal cliente               |
+| FR4.5   | Visualizzazione dello storico dei carrelli acquistati dal cliente                  |
 | FR4.6   | Cancellazione del carrello                                                         |
 
 ## Non Functional Requirements
 
 | ID    | Tipo (efficienza, affidabilita', ...) | Descrizione                                                                                                                                                                                                              | Si riferisce a  |
 |:------|:-------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------:|
-| NFR3  | Efficienza                            | Non e'richiesta alcuna installazione per l'utente, ogni funzionalita' deve essere accessibile dal sito web tramite un browser internet                                                                                   | /               |
+| NFR3  | Efficienza                            | Non è richiesta alcuna installazione per l'utente, ogni funzionalità deve essere accessibile dal sito web tramite un browser internet                                                                                    | /               |
 | NFR7  | Usabilita'                            | I clienti non hanno bisogno di alcuna formazione                                                                                                                                                                         | /               |
 | NFR8  | Usabilita'                            | I manager hanno bisogno di un massimo di tre ore di formazione                                                                                                                                                           | /               |
 | NFR12 | Affidabilita'                         | Il sistema deve avere un uptime del 99%                                                                                                                                                                                  | /               |
