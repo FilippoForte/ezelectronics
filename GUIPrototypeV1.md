@@ -4,7 +4,7 @@ Authors: Alessandra Cicciarelli, Filippo Forte, Giulio Arecco, Riccardo Daniele 
 
 Date: 21/04/2024
 
-Version: 1.3
+Version: 1.6
 
 ## Pagina Principale
 
