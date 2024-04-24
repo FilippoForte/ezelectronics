@@ -95,7 +95,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 | FR3.2   | Aggiunta di un nuovo prodotto                                                      |
 | FR3.3   | Rimozione di un prodotto                                                           |
 | FR3.4   | Registrazione dell'arrivo di un nuovo (insieme di) prodotti                        |
-| FR3.5   | Filtraggio di prodotti per categoria, modello, codice e disponibilita'                     |
+| FR3.5   | Filtraggio di prodotti per categoria, modello, codice e disponibilita'             |
 | FR3.6   | Catalogazione di un prodotto come venduto                                          |
 | **FR4** | **Gestione del carrello**                                                          |
 | FR4.1   | Visualizzazione del carrello attuale del cliente                                   |
@@ -109,19 +109,10 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 
 | ID    | Tipo (efficienza, affidabilita', ...) | Descrizione                                                                                                                                                                                                              | Si riferisce a  |
 |:------|:-------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------:|
-| NFR1  | Efficienza                            | Il sistema deve rispondere entro 0,5 secondi da qualsiasi azione dell'utente (esclusi i tempi di caricamento delle pagine).                                                                                              |        /        |
-| NFR2  | Efficienza                            | Le pagine Web devono essere caricate entro 6 secondi dall'ultima richiesta dell'utente (variabile in base alle condizioni della rete)                                                                                    | /               |
 | NFR3  | Efficienza                            | Non e'richiesta alcuna installazione per l'utente, ogni funzionalita' deve essere accessibile dal sito web tramite un browser internet                                                                                   | /               |
-| NFR4  | Sicurezza                             | Il trattamento dei dati dell'utente deve essere conforme al GDPR                                                                                                                                                         | /               |
-| NFR5  | Sicurezza                             | Le funzionalita' legate alla gestione dei prodotti possono essere utilizzate solo dai manager                                                                                                                            | F3.(2, 3, 4, 6) |
-| NFR6  | Sicurezza                             | Tutte le funzionalita' legate ai carrelli possono essere utilizzate solo dai clienti                                                                                                                                     | F4.x            |
 | NFR7  | Usabilita'                            | I clienti non hanno bisogno di alcuna formazione                                                                                                                                                                         | /               |
-| NFR8  | Usabilita'                            | I manager hanno bisogno al massimo di un'ora di formazione                                                                                                                                                               | /               |
-| NFR9  | Affidabilita'                         | Il numero di malfunzionamenti all'anno deve essere inferiore a 2                                                                                                                                                         | /               |
-| NFR10 | Affidabilita'                         | Il sito web non deve richiedere piu' di 1 sessione di manutenzione ogni 2 mesi                                                                                                                                           | /               |
-| NFR11 | Affidabilita'                         | Una sessione di manutenzione non puo' durare piu' di 4 ore                                                                                                                                                               | /               |
-| NFR12 | Affidabilita'                         | Ogni utente non deve segnalare piu' di 1 bug non precedentemente segnalato all'anno                                                                                                                                      | /               |
-| NFR13 | Portabilita'                          | Il sito web deve essere accessibile dai seguenti browser (specificata la piu' vecchia versione supportata): Chrome (v: 79), Firefox (v: 72), Safari (v: 13.0.5), Opera (v: 65), Edge (v: 79), Samsung Internet (v: 11.2) | /               |
+| NFR8  | Usabilita'                            | I manager hanno bisogno di un massimo di tre ore di formazione                                                                                                                                                           | /               |
+| NFR12 | Affidabilita'                         | Il sistema deve avere un uptime del 99%                                                                                                                                                                                  | /               |
 
 # Use case diagram and use cases
 
