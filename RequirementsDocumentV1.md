@@ -124,10 +124,10 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 
 ### Use case 1.1, UC1.1 Login
 
-| Actors Involved  |    Utente/Manager                                                                  |
+| Actors Involved  |    Utente                                          |
 | :--------------: | :------------------------------------------------------------------: |
 |   Precondition   | L'utente è registrato nel sistema |
-|  Post condition  | L'utente/manager risulta loggato |
+|  Post condition  | L'utente risulta loggato |
 | Nominal Scenario | L'utente inserisce username e password e accede al sistema    |
 |     Variants     |                   |
 |    Exceptions    | L'utente inserisce dati errati e viene ritornato un errore      |
@@ -137,7 +137,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |  Scenario 1.1  |                                                                            |
 | :------------: | :------------------------------------------------------------------------: |
 |  Precondition  |L'utente è registrato nel sistema |
-| Post condition |L'utente/manager risulta loggato  |
+| Post condition |L'utente risulta loggato  |
 |     Step#      |                                Description                                 |
 |       1        |  L'utente chiede di accedere al sistema                                                                          |
 |       2        | Il sistema chiede username e password                                                                           |
@@ -147,7 +147,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 
 ### Use case 1.2, UC1.2 Logout
 
-| Actors Involved  |  Utente/Manager                                                                    |
+| Actors Involved  |  Utente                                            |
 | :--------------: | :------------------------------------------------------------------: |
 |   Precondition   | L'utente è loggato |
 |  Post condition  | Viene eseguito il logout   |
@@ -187,11 +187,11 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 
 ### Use case 2.1 , UC2.1 Registrazione
 
-| Actors Involved  |                                                              Utente, Manager        |
+| Actors Involved  |                                                              Utente guest     |
 | :--------------: | :------------------------------------------------------------------: |
 |   Precondition   | -- |
-|  Post condition  |  L'utente/manager risulta registrato correttamente nel sistema.  |
-| Nominal Scenario |  L'utente/manager inserisce tutti i dati richiesti per la registrazione e sceglie il ruolo con cui registrarsi nel sistema.        |
+|  Post condition  |  L'utente risulta registrato correttamente nel sistema.  |
+| Nominal Scenario |  L'utente inserisce tutti i dati richiesti per la registrazione e sceglie il ruolo con cui registrarsi nel sistema.        |
 |     Variants     |        |
 |    Exceptions    |  I dati inseriti non sono corretti o l'utente risulta già registrato, il sistema ritorna un errore e la registrazione non va a buon fine          |
 
