@@ -88,35 +88,48 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 
 ## Functional Requirements
 
-| ID        | Description                                     |
-|:----------|:------------------------------------------------|
-| **FR1**   | **Access management**                           |
-| FR1.1     | User registration                               |
-| FR1.2     | Registered user log in                          |
-| FR1.3     | Registered user log out                         |
-| **FR2**   | **User management**                             |
-| FR2.1     | View all registered users                       |
-| FR2.2     | Filter users by role                            |
-| FR2.3     | Search a user by username                       |
-| FR2.4     | Delete a user given its username                |
-| **FR3**   | **Product management**                          |
-| FR3.1     | View all products                               |
-| FR3.2     | Add a new product                               |
-| FR3.3     | Remove a product                                |
-| FR3.4     | Register the arrival of a new (set of) product(s) |
-| FR3.5     | Filter products by sale status, category, model |
-| **FR4**   | **Shopping cart management**                    |
-| FR4.1     | View the user's current cart                    |
-| FR4.2     | Add a product to cart                           |
-| FR4.3     | Remove a product from the cart                  |
-| FR4.4     | Purchase the products added to the cart         |
-| FR4.5     | View the history of carts the user purchased    |
-| FR4.6     | Delete the current cart                         |
-| **FR5**   | **Shipping management**                         |
-| FR5.1     | Insert new shipping address                     |
-| FR5.2     | Edit shipping address                           |
-| FR5.3     | Delete Shipping address                         |
-| FR5.4     | Retrieve shipping date                          |
+| ID| Descrizione                                                          |
+|:--------|:-----------------------------------------------------------------------------------|
+| **FR1** | **Gestione degli accessi**                                           |
+| FR1.1| Login di un utente registrato                                        |
+| FR1.2| Logout di un utente registrato                                       |
+| FR1.3| Possibilità di ottenere le informazioni relative all'utente correntemente loggato |
+| **FR2** | **Gestione degli utenti**                                         |
+| FR2.1| Registrazione di un nuovo utente                                     |
+| FR2.2| Modifica informazioni utente********                                 |
+| **FR3** | **Gestione dei prodotti**                                         |
+| FR3.1| Visualizzazione di tutti i prodotti                                  |
+| FR3.2| Aggiunta di un nuovo prodotto                                        |
+| FR3.3| Rimozione di un prodotto                                             |
+| FR3.4| Registrazione dell'arrivo di un nuovo (insieme di) prodotti          |
+| FR3.5| Filtraggio di prodotti per categoria, modello, codice e disponibilità|
+| FR3.6| Catalogazione di un prodotto come venduto                            |
+| FR3.7| Aggiungi sconto ad un prodotto*************                          |
+| FR3.8| Filtra prodotti per sconto***************                            |
+| FR3.9| Traccia prezzo di un prodotto***************                         |
+| FR3.10| Crea lista dei desideri***************                              |
+| FR3.10| Aggiungi prodotto alla lista dei desideri***************            |
+| FR3.10| Rimuovi prodotto dalla lista dei desideri***************            |
+| **FR4** | **Gestione del carrello**                                         |
+| FR4.1| Visualizzazione del carrello attuale del cliente                     |
+| FR4.2| Aggiunta di un prodotto al carrello attuale                          |
+| FR4.3| Rimozione di un prodotto dal carrello attuale                        |
+| FR4.4| Acquisto dei prodotti aggiunti al carrello attuale                   |
+| FR4.5| Visualizzazione della cronologia dei carrelli acquistati dal cliente |
+| FR4.6| Cancellazione del carrello                                           |
+| **FR5** | **Gestione spedizioni**                                           |
+| FR5.1| Aggiunta indirizzo di spedizione*************                        |
+| FR5.2| Modifica indirizzo di spedizione*************                        |
+| FR5.3| Eliminazione indirizzo di spedizione*************                    |
+| FR5.4| Segna carrello come spedito*************                             |
+| **FR5** | **Gestione pagamenti**                                            |
+| FR5.1| Aggiungi metodo di pagamento*************                            |
+| FR5.2| Rimuovi metodo di pagamento*************                             |
+| FR5.3| Segna prodotto come pagato*************                              |
+| **FR6** | **Gestione statistiche**                                          |
+| FR6.1| Visualizza statistiche ordini*************                           |
+| FR6.2| Visualizza statistiche prodotti*************                         |
+
 
 ## Non Functional Requirements
 
