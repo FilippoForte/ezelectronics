@@ -122,13 +122,15 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 | FR5.2| Modifica indirizzo di spedizione*************                        |
 | FR5.3| Eliminazione indirizzo di spedizione*************                    |
 | FR5.4| Segna carrello come spedito*************                             |
-| **FR5** | **Gestione pagamenti**                                            |
-| FR5.1| Aggiungi metodo di pagamento*************                            |
-| FR5.2| Rimuovi metodo di pagamento*************                             |
-| FR5.3| Segna prodotto come pagato*************                              |
-| **FR6** | **Gestione statistiche**                                          |
-| FR6.1| Visualizza statistiche ordini*************                           |
-| FR6.2| Visualizza statistiche prodotti*************                         |
+| FR5.5| Visualizza stato ordine*************                                 |
+| **FR6** | **Gestione pagamenti**                                            |
+| FR6.1| Aggiungi metodo di pagamento*************                            |
+| FR6.2| Rimuovi metodo di pagamento*************                             |
+| **FR7** | **Gestione statistiche**                                          |
+| FR7.1| Visualizza statistiche ordini*************                           |
+| FR7.2| Visualizza statistiche prodotti*************                         |
+| **FR8** | **Gestione notifiche**                                            |
+| FR8.1| Gestione notifiche*************                                      |
 
 
 ## Non Functional Requirements
