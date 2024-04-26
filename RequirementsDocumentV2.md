@@ -375,6 +375,83 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 |       1        |                                                      Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita        |
 |       2        |                                           Il sistema valida le informazioni          |
 |3| Il prodotto risulta venduto
+### Use case 3.7, UC3.7 Aggiungi sconto ad un prodotto
+
+| Actors Involved  |Manager                                                                    |
+| :--------------: | :------------------------------------------------------------------: |
+|   Precondition   | Il manager è loggato  |
+|  Post condition  | Lo sconto viene aggiunto al prodotto  |
+| Nominal Scenario | Il manager aggiunge uno sconto ad un prodotto   |
+|     Variants     |                          |
+|    Exceptions    | Il prodotto non esiste
+
+##### Scenario 3.7
+
+|  Scenario 3.7 |                                                                    Aggiungi sconto ad un prodottp  |
+| :------------: | :------------------------------------------------------------------------: |
+|  Precondition  | Il manager è loggato |
+| Post condition | Lo sconto viene aggiunto al prodotto     |
+|     Step#      |                                Description                                 |
+|       1        | Il manager seleziona il prodotto a cui vuole aggiungere lo sconto        |
+|       2        | Il manager inserisce la percentuale di sconto                   |
+|3| Lo sconto viene aggiunto correttamente al prodotto
+
+### Use case 3., UC3. Visualizza lista dei desideri
+
+| Actors Involved  |Cliente                                                                    |
+| :--------------: | :------------------------------------------------------------------: |
+|   Precondition   | Il cliente è loggato  |
+|  Post condition  | La lista dei desideri viene visualizzata corretamente |
+| Nominal Scenario | Il cliente chiede di visualizzare la sua lista dei desideri e questa viene visualizzata correttamente  |
+|     Variants     |                          |
+|    Exceptions    | 
+##### Scenario 3.
+
+|  Scenario 3.  |                                                                    Visualizza lista dei desideri    |
+| :------------: | :------------------------------------------------------------------------: |
+|  Precondition  | Il cliente è loggato |
+| Post condition |  La lista dei desideri viene visualizzata corretamente   |
+|     Step#      |                                Description                                 |
+|       1        |Il cliente chiede di visualizzare la sua lista dei desideri      |
+|       2        |Il sistema mostra al cliente la sua lista dei desideri          |
+### Use case 3., UC3. Aggiungi prodotto alla lista dei desideri
+
+| Actors Involved  |Cliente                                                                    |
+| :--------------: | :------------------------------------------------------------------: |
+|   Precondition   | Il cliente è loggato  |
+|  Post condition  | Il prodotto viene aggiunto ala lista |
+| Nominal Scenario | Il cliente chiede di aggiungere un prodotto alla lista dei desideri e questo viene aggiunto  |
+|     Variants     |                          |
+|    Exceptions    | Il prodotto non esiste
+
+##### Scenario 3.
+
+|  Scenario 3. |                                                                    Aggiungi prodotto alla lista dei desideri    |
+| :------------: | :------------------------------------------------------------------------: |
+|  Precondition  | Il cliente è loggato |
+| Post condition | Il prodotto viene aggiunto alla lista    |
+|     Step#      |                                Description                                 |
+|       1        |Il cliente chiede di aggiungere un prodotto alla lista dei desideri   |
+|       2        | Il sistema aggiunge il prodotto alla lista
+
+### Use case 3., UC3. Rimuovi prodotto dalla lista dei desideri
+
+| Actors Involved  |Cliente                                                                    |
+| :--------------: | :------------------------------------------------------------------: |
+|   Precondition   | Il cliente è loggato  |
+|  Post condition  | Il prodotto viene rimosso dalla lista |
+| Nominal Scenario | Il cliente chiede di rimuovere un prodotto alla lista dei desideri e questo viene rimosso   |
+|     Variants     |                          |
+|    Exceptions    | 
+##### Scenario 3.
+
+|  Scenario 3. |                                                                    Rimuovi prodotto dalla lista dei desideri  |
+| :------------: | :------------------------------------------------------------------------: |
+|  Precondition  | Il cliente è loggato, il prodotto è nella lista |
+| Post condition | Il prodotto viene rimosso dalla lista   |
+|     Step#      |                                Description                                 |
+|       1        | Il cliente chiede di aggiungere un prodotto alla lista dei desideri    |
+|       2        | Il sistema rimuove il prodotto dalla lista
 
 ### Use case 4.1, UC4.1  Visualizzazione del carrello attuale del cliente  
 
