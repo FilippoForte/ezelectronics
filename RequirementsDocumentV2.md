@@ -39,20 +39,21 @@ EZElectronics (read EaSy Electronics) is a software application designed to help
 
 # Stakeholders
 
-| Nome dello Stakeholder | Descrizione                                                              |
-| :--------------------: | :----------------------------------------------------------------------: |
-| Cliente                | Individuo che accede al sito web per visualizzare o comprare prodotti    |
-| Manager                | Manager dello store fisico che puo' gestire i prodotti sul sito          |
-| Servizio bancario      | Servizio per transazioni monetarie                                       |
-| Sviluppatori           | Il team di sviluppatori del sistema                                      |
-| Servizio di spedizione | Servizio per la spedizione dei prodotti                                  |
-| Amministratore         | Amministratore del sistema                                               |
+| Nome dello Stakeholder | Descrizione                                                                     |
+| :--------------------: | :-----------------------------------------------------------------------------: |
+| Cliente                | Individuo che accede al sito web per visualizzare o comprare prodotti           |
+| Manager                | Manager dello store fisico che puo' gestire i prodotti sul sito                 |
+| Servizio bancario      | Servizio per transazioni monetarie                                              |
+| Sviluppatori           | Il team di sviluppatori del sistema                                             |
+| Servizio di spedizione | Servizio per la spedizione dei prodotti                                         |
+| Amministratore         | Amministratore del sistema                                                      |
+| Utente guest           | Utente che non ha ancora effettuato la fase di login o la fase di registrazione |
 
 # Context Diagram and interfaces
 
 ## Context Diagram
 
-![contextDiagram](./contextDiagramV2.png)
+![contextDiagram](./img/contextDiagramV2.png)
 
 ## Interfaces
 
@@ -60,7 +61,8 @@ EZElectronics (read EaSy Electronics) is a software application designed to help
 | :--------------------: | :-----------------------------------------------------------------------:  | :----------------: |
 | Cliente                | GUI (interfaccia per navigare il sito, visualizzare e comprare prodotti)   | Smartphone / PC    |
 | Manager                | GUI (interfaccia per navigare il sito, visualizzare e gestire i prodotti)  | Smartphone / PC    |
-| Amministratore         | GUI (interfaccia per visualizzare e gestire i prodotti e gli utenti)       | Smartphone / PC    |
+| Utente guest           | GUI (interfaccia per visualizzare i prodotti e per l'autenticazione)       | Smartphone / PC    |
+| Amministratore         | GUI (interfaccia per visualizzare e gestire i prodotti e gli utenti)       | Console            |
 | Servizio bancario      | APIs                                                                       | Internet           |
 | Servizio di spedizione | APIs                                                                       | Internet           |
 
