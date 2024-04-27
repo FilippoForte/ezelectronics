@@ -113,7 +113,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR3.7| Aggiungi sconto ad un prodotto*************                          |
 | FR3.8| Filtra prodotti per sconto***************                            |
 | FR3.9| Traccia prezzo di un prodotto***************                         |
-| FR3.10| Visualizza lista dei desideri***************                        |
+| FR3.10| Visualizza lista dei desideri*************** (serve macro req)      |
 | FR3.10| Aggiungi prodotto alla lista dei desideri***************            |
 | FR3.10| Rimuovi prodotto dalla lista dei desideri***************            |
 | **FR4** | **Gestione del carrello**                                         |
@@ -136,17 +136,17 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR7.1| Visualizza statistiche ordini*************                           |
 | FR7.2| Visualizza statistiche prodotti*************                         |
 | **FR8** | **Gestione notifiche**                                            |
-| FR8.1| Gestione notifiche*************                                      |
+| FR8.1| Gestione notifiche************* (da ampliare con sottocasi: invio notifica quando succede evento x, y,...)|
 
 
 ## Non Functional Requirements
 
 | ID    | Tipo (efficienza, affidabilità, ...) | Descrizione                                                                                                                                                                                                              | Si riferisce a |
 |:------|:------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------:|
-| NFR1  | Efficienza                           | Il sistema deve rispondere entro 0,5 secondi a partire da qualsiasi azione dell'utente (esclusi i tempi di caricamento delle pagine).                                                                                              |                |
+| NFR1  | Efficienza                           | Il sistema deve rispondere entro 0,5 secondi a partire da qualsiasi azione dell'utente (esclusi i tempi di caricamento delle pagine).                                                                                    |     /          |
 | NFR2  | Efficienza                           | Le pagine Web devono essere caricate entro 6 secondi dall'ultima richiesta dell'utente (a seconda delle condizioni della rete)                                                                                           | /              |
 | NFR3  | Efficienza                           | Non è necessaria l'installazione di app per l'utente finale, ogni funzionalità deve essere accessibile dal sito web tramite un browser internet                                                                          | /              |
-| NFR4  | Sicurezza                            | Il trattamento dei dati dell'utente deve essere conforme al GDPR                                                                                                                                                         | /              |
+| NFR4  | Sicurezza                            | Il trattamento dei dati personali degli utenti deve essere conforme al GDPR                                                                                                                                              | /              |
 | NFR5  | Usabilità                            | I clienti non hanno bisogno di alcuna formazione                                                                                                                                                                         | /              |
 | NFR6  | Usabilità                            | I manager hanno bisogno di un massimo di tre ore di formazione                                                                                                                                                           | /              |
 | NFR7  | Affidabilità                         | Il numero di malfunzionamenti all'anno deve essere inferiore a 2                                                                                                                                                         | /              |
