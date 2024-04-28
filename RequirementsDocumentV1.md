@@ -644,7 +644,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |       2        | Il sistema rileva un errore in quanto non esiste alcun carrello del cliente e lo comunica al cliente
 # Glossary
 
-![glossary](./img/glossary.png)
+![glossary](./img/glossaryV1.png)
 
 # System Design
 

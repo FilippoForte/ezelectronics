@@ -869,7 +869,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 
 # Glossary
 
-![glossary](./img/glossary.png)
+![glossary](./img/glossaryV2.png)
 
 # System Design
 
