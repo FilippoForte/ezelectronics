@@ -163,200 +163,200 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 
 ### Use case 1.1, UC1.1 Login
 
-| Actors Involved |    Utente                                                               |
-| :--------------:| :------------------------------------------------------------------:|
-|   Precondition  | L'utente è registrato nel sistema|
-|  Post condition | L'utente risulta loggato|
-| Nominal Scenario| L'utente inserisce username e password e accede al sistema   |
-|     Variants    |                  |
-|    Exceptions   | L'utente inserisce dati errati e viene ritornato un errore     |
+| Actors Involved  |                           Utente                           |
+| :--------------: | :--------------------------------------------------------: |
+|   Precondition   |             L'utente è registrato nel sistema              |
+|  Post condition  |                  L'utente risulta loggato                  |
+| Nominal Scenario | L'utente inserisce username e password e accede al sistema |
+|     Variants     |                                                            |
+|    Exceptions    | L'utente inserisce dati errati e viene ritornato un errore |
 
 #### Scenario 1.1
 
-|  Scenario 1.1 |                                                                           |
-| :------------:| :------------------------------------------------------------------------:|
-|  Precondition |L'utente è registrato nel sistema|
-| Post condition|L'utente risulta loggato |
-|     Step#     |                                Description                                |
-|       1       |  L'utente chiede di accedere al sistema                                                                         |
-|       2       | Il sistema chiede username e password                                                                          |
-|      3      |                                                         L'utente inserisce username a password        |
-|      4     |                                                         Il sistema valida i dati       |
-|      5     |                                                         L'utente risulta loggato       |
+|  Scenario 1.1  |                                        |
+| :------------: | :------------------------------------: |
+|  Precondition  |   L'utente è registrato nel sistema    |
+| Post condition |        L'utente risulta loggato        |
+|     Step#      |              Description               |
+|       1        | L'utente chiede di accedere al sistema |
+|       2        | Il sistema chiede username e password  |
+|       3        | L'utente inserisce username a password |
+|       4        |        Il sistema valida i dati        |
+|       5        |        L'utente risulta loggato        |
 
 ### Use case 1.2, UC1.2 Logout
 
-| Actors Involved |  Utente                                                                  |
-| :--------------:| :------------------------------------------------------------------:|
-|   Precondition  | L'utente è loggato|
-|  Post condition | Viene eseguito il logout  |
-| Nominal Scenario| L'utente chiede al sistema di effettuare il logout e questo viene effettuato con successo     |
-|     Variants    |                         |
-|    Exceptions   |                            |
+| Actors Involved  |                                          Utente                                           |
+| :--------------: | :---------------------------------------------------------------------------------------: |
+|   Precondition   |                                    L'utente è loggato                                     |
+|  Post condition  |                                 Viene eseguito il logout                                  |
+| Nominal Scenario | L'utente chiede al sistema di effettuare il logout e questo viene effettuato con successo |
+|     Variants     |                                                                                           |
+|    Exceptions    |                                                                                           |
 
 #### Scenario 1.2
 
-|  Scenario 1.2 |                                                                           |
-| :------------:| :------------------------------------------------------------------------:|
-|  Precondition | L'utente è loggato|
-| Post condition|  Viene eseguito il logout  |
-|     Step#     |                                Description                                |
-|       1       |                                                        L'utente chiede al sistema di effettuare il logout                  |
-|       2       |                                                        Il sistema effettua il logout per l'utente                   |
+|  Scenario 1.2  |                                                    |
+| :------------: | :------------------------------------------------: |
+|  Precondition  |                 L'utente è loggato                 |
+| Post condition |              Viene eseguito il logout              |
+|     Step#      |                    Description                     |
+|       1        | L'utente chiede al sistema di effettuare il logout |
+|       2        |     Il sistema effettua il logout per l'utente     |
 
 ### Use case 1.3, UC1.3 Possibilità di ottenere le informazioni relative all'utente correntemente loggato
 
-| Actors Involved |  Utente                                                                   |
-| :--------------:| :------------------------------------------------------------------:|
-|   Precondition  | L'utente è loggato|
-|  Post condition | Vengono mostrate le informazioni dell'utente attualmente loggato  |
-| Nominal Scenario| L'utente chiede al sistema di visualizzare le sue informazioni e li vengono mostrate     |
-|     Variants    |                         |
-|    Exceptions   |                            |
+| Actors Involved  |                                        Utente                                        |
+| :--------------: | :----------------------------------------------------------------------------------: |
+|   Precondition   |                                  L'utente è loggato                                  |
+|  Post condition  |           Vengono mostrate le informazioni dell'utente attualmente loggato           |
+| Nominal Scenario | L'utente chiede al sistema di visualizzare le sue informazioni e li vengono mostrate |
+|     Variants     |                                                                                      |
+|    Exceptions    |                                                                                      |
 
 #### Scenario 1.3
 
-|  Scenario 1.3 |                                 |
-| :------------:| :------------------------------------------------------------------------:|
-|  Precondition | L'utente è loggato|
-| Post condition|  Vengono mostrate le informazioni dell'utente attualmente loggato  |
-|     Step#     |                                Description                                |
-|       1       |                                                        L'utente chiede al sistema di mostrare le sue informazioni                  |
-|       2       |                                                        Il sistema mostra le informazioni all'utente                |
+|  Scenario 1.3  |                                                                  |
+| :------------: | :--------------------------------------------------------------: |
+|  Precondition  |                        L'utente è loggato                        |
+| Post condition | Vengono mostrate le informazioni dell'utente attualmente loggato |
+|     Step#      |                           Description                            |
+|       1        |    L'utente chiede al sistema di mostrare le sue informazioni    |
+|       2        |           Il sistema mostra le informazioni all'utente           |
 
 ### Use case 2.1 , UC2.1 Registrazione
 
-| Actors Involved |                                                              Utente guest      |
-| :--------------:| :------------------------------------------------------------------:|
-|   Precondition  | --|
-|  Post condition |  L'utente/manager risulta registrato correttamente nel sistema. |
-| Nominal Scenario|  L'utente/manager inserisce tutti i dati richiesti per la registrazione e sceglie il ruolo con cui registrarsi nel sistema.       |
-|     Variants    |       |
-|    Exceptions   |  I dati inseriti non sono corretti o l'utente risulta già registrato, il sistema ritorna un errore e la registrazione non va a buon fine         |
+| Actors Involved  |                                Utente guest                                  |
+| :--------------: | :---------------------------------------------------------------------------:|
+|   Precondition   |                                --                                            |
+|  Post condition  |     L'utente/manager risulta registrato correttamente nel sistema.           |
+| Nominal Scenario |  L'utente/manager inserisce tutti i dati richiesti per la registrazione e sceglie il ruolo con cui registrarsi nel sistema. |
+|    Variants      |                                                                              |
+|    Exceptions    | I dati inseriti non sono corretti o l'utente risulta già registrato, il sistema ritorna un errore e la registrazione non va a buon fine |
 
 #### Scenario 2.1
 
-|  Scenario 2.1 |                                                                           |
-| :------------:| :------------------------------------------------------------------------:|
-|  Precondition | --|
-| Post condition|  L'utente/manager risulta registrato correttamente nel sistema |
-|     Step#     |                                Description                                |
-|       1       |   L'utente chiede di registrarsi al sistema.                                                        |
-|       2       |                                                        Il sistema chiede i dati necessari per la registrazione               |
-|      3     |                                                          L'utente inserisce i dati richiesti      |
-|       4     |                                                          L'utente seleziona il ruolo con cui registrarsi(manager o utente)            |
-|    5    |                                                           il sistema salva i dati e viene creato il nuovo utente/manager              |
+|  Scenario 2.1  |                                                                   |
+| :------------: | :---------------------------------------------------------------: |
+|  Precondition  |                                --                                 |
+| Post condition |   L'utente/manager risulta registrato correttamente nel sistema   |
+|     Step#      |                            Description                            |
+|       1        |            L'utente chiede di registrarsi al sistema.             |
+|       2        |      Il sistema chiede i dati necessari per la registrazione      |
+|       3        |                L'utente inserisce i dati richiesti                |
+|       4        | L'utente seleziona il ruolo con cui registrarsi(manager o utente) |
+|       5        |  il sistema salva i dati e viene creato il nuovo utente/manager   |
 
 ### Use case 3.1, UC3.1 Visualizza tutti i prodotti
 
-| Actors Involved |  Utente/Manager                                                                   |
-| :--------------:| :------------------------------------------------------------------:|
-|   Precondition  | L'utente è loggato|
-|  Post condition | Vengono mostrati tutti i prodotti  |
-| Nominal Scenario| L'utente chiede al sistema di visualizzare tutti i prodotti e li vengono mostrati    |
-|     Variants    |                         |
-|    Exceptions   |                            |
+| Actors Involved  |                                  Utente/Manager                                   |
+| :--------------: | :-------------------------------------------------------------------------------: |
+|   Precondition   |                                L'utente è loggato                                 |
+|  Post condition  |                         Vengono mostrati tutti i prodotti                         |
+| Nominal Scenario | L'utente chiede al sistema di visualizzare tutti i prodotti e li vengono mostrati |
+|     Variants     |                                                                                   |
+|    Exceptions    |                                                                                   |
 
 #### Scenario 3.1
 
-|  Scenario 3.1 |                                                                           |
-| :------------:| :------------------------------------------------------------------------:|
-|  Precondition | L'utente è loggato|
-| Post condition| Vengono mostrati tutti i prodotti  |
-|     Step#     |                                Description                                |
-|       1       |                                                        L'utente chiede al sistema di visualizzare tutti i prodotti presenti              |
-|       2       |                                                        Il sistema mostra tutti i prodotti presenti                  |
+|  Scenario 3.1  |                                                                      |
+| :------------: | :------------------------------------------------------------------: |
+|  Precondition  |                          L'utente è loggato                          |
+| Post condition |                  Vengono mostrati tutti i prodotti                   |
+|     Step#      |                             Description                              |
+|       1        | L'utente chiede al sistema di visualizzare tutti i prodotti presenti |
+|       2        |             Il sistema mostra tutti i prodotti presenti              |
 
 ### Use case 3.2, UC3.2 Aggiungi nuovo prodotto
 
-| Actors Involved |  Manager                                                                   |
-| :--------------:| :------------------------------------------------------------------:|
-|   Precondition  | L'utente è loggato ed ha il ruolo Manager|
-|  Post condition | Il prodotto viene aggiunto correttamente  |
-| Nominal Scenario| Il manager chiede di aggiungere un nuovo prodotto, inserisce tutti i dati richiesti e il prodotto viene aggiunto correttamente    |
-|     Variants    |                         |
-|    Exceptions   | Il prodotto è già presente o la data di arrivo è successiva a quella corrente                           |
+| Actors Involved  |                            Manager                                   |
+| :--------------: | :------------------------------------------------------------------: |
+|   Precondition   |               L'utente è loggato ed ha il ruolo Manager              |
+|  Post condition  |          Il prodotto viene aggiunto correttamente                    |
+| Nominal Scenario | Il manager chiede di aggiungere un nuovo prodotto, inserisce tutti i dati richiesti e il prodotto viene aggiunto correttamente |
+|     Variants     |                                                                      |
+|    Exceptions    |Il prodotto è già presente o la data di arrivo è successiva a quella corrente |
 
 #### Scenario 3.2
 
-|  Scenario 3.2 |                                                                           |
-| :------------:| :------------------------------------------------------------------------:|
-|  Precondition | L'utente è loggato ed ha il ruolo Manager|
-| Post condition| Il prodotto viene aggiunto correttamente  |
-|     Step#     |                                Description                                |
-|       1       |                                                        Il manager chiede di aggiungere un nuovo prodotto              |
-|       2       |                                                        Il sistema chiede tutti i dati necessari per l'aggiunta               |
-|3| Il manager inserisce tutti i dati richiesti|
-|4| Il sistema valida i dati e li salva|
-|5| Il prodotto viene aggiunto correttamente|
+|  Scenario 3.2  |                                                         |
+| :------------: | :-----------------------------------------------------: |
+|  Precondition  |        L'utente è loggato ed ha il ruolo Manager        |
+| Post condition |        Il prodotto viene aggiunto correttamente         |
+|     Step#      |                       Description                       |
+|       1        |    Il manager chiede di aggiungere un nuovo prodotto    |
+|       2        | Il sistema chiede tutti i dati necessari per l'aggiunta |
+|       3        |       Il manager inserisce tutti i dati richiesti       |
+|       4        |           Il sistema valida i dati e li salva           |
+|       5        |        Il prodotto viene aggiunto correttamente         |
 
 ### Use case 3.3, UC3.3 Rimozione di un prodotto
 
-| Actors Involved | Manager                                                                   |
-| :--------------:| :------------------------------------------------------------------:|
-|   Precondition  | L'utente è loggato ed ha il ruolo Manager|
-|  Post condition | Il prodotto viene rimosso   |
-| Nominal Scenario| Il manager chiede al sistema di rimuovere un prodotto e questo viene rimosso correttamente   |
-|     Variants    |                         |
-|    Exceptions   |Il prodotto che si vuole rimuovere non è presente, viene ritornato un errore                          |
+| Actors Involved  |                                          Manager                                           |
+| :--------------: | :----------------------------------------------------------------------------------------: |
+|   Precondition   |                         L'utente è loggato ed ha il ruolo Manager                          |
+|  Post condition  |                                 Il prodotto viene rimosso                                  |
+| Nominal Scenario | Il manager chiede al sistema di rimuovere un prodotto e questo viene rimosso correttamente |
+|     Variants     |                                                                                            |
+|    Exceptions    |        Il prodotto che si vuole rimuovere non è presente, viene ritornato un errore        |
 
 #### Scenario 3.3
 
-|  Scenario 3.3 |                                                                           |
-| :------------:| :------------------------------------------------------------------------:|
-|  Precondition | L'utente è loggato ed ha il ruolo Manager|
-| Post condition| Il prodotto viene rimosso |
-|     Step#     |                                Description                                |
-|       1       |                                                        Il manager chiede al sistema di rimuovere un prodotto           |
-|       2       |                                                        Il sistema chiede il codice del prodotto che si vuole rimuovere                  |
-|3| L'utente inserisce il codice|
-|4| Il sistema verifica che il codice sia presente|
-|5| Il prodotto viene rimosso|
+|  Scenario 3.3  |                                                                 |
+| :------------: | :-------------------------------------------------------------: |
+|  Precondition  |            L'utente è loggato ed ha il ruolo Manager            |
+| Post condition |                    Il prodotto viene rimosso                    |
+|     Step#      |                           Description                           |
+|       1        |      Il manager chiede al sistema di rimuovere un prodotto      |
+|       2        | Il sistema chiede il codice del prodotto che si vuole rimuovere |
+|       3        |                  L'utente inserisce il codice                   |
+|       4        |         Il sistema verifica che il codice sia presente          |
+|       5        |                    Il prodotto viene rimosso                    |
 
 ### Use case 3.4, UC3.4 Registrazione dell'arrivo di un nuovo (insieme di) prodotto/i
 
-| Actors Involved | Manager                                                                   |
-| :--------------:| :------------------------------------------------------------------:|
-|   Precondition  | L'utente è loggato ed ha il ruolo Manager|
-|  Post condition | Vengono registrati correttamente l'arrivo di un set di prodotti  |
-| Nominal Scenario| Il manager chiede al sistema di registrare l'arrivo di un set di prodotti dello stesso modello e vengono registrati correttamente   |
-|     Variants    |                         |
-|    Exceptions   |La data di arrivo è successiva a quella corrente e viene mostrato un errore|
+| Actors Involved  |                Manager                                        |
+| :--------------: | :-----------------------------------------------------------: |
+|   Precondition   |                 L'utente è loggato ed ha il ruolo Manager             |
+|  Post condition  |   Vengono registrati correttamente l'arrivo di un set di prodotti     |
+| Nominal Scenario | Il manager chiede al sistema di registrare l'arrivo di un set di prodotti dello stesso modello e vengono registrati correttamente |
+|     Variants     |                                                                       |
+|    Exceptions    | La data di arrivo è successiva a quella corrente e viene mostrato un errore  |
 
 #### Scenario 3.4
 
-|  Scenario 3.4|                                                                           |
-| :------------:| :------------------------------------------------------------------------:|
-|  Precondition | L'utente è loggato ed ha il ruolo Manager|
-| Post condition| Vengono registrati correttamente l'arrivo di un set di prodotti   |
-|     Step#     |                                Description                                |
-|       1       |                                                        Il manager chiede al sistema di registrare l'arrivo di un set di prodotti          |
-|       2       |                                                        Il sistema i dati necessari per la registrazione di un arrivo                  |
-|3| L'utente inserisce i dati|
-|4| Il sistema valida i dati e li salva|
-|5| L'arrivo viene registrato correttamente|
+|  Scenario 3.4  |                                                                           |
+| :------------: | :-----------------------------------------------------------------------: |
+|  Precondition  |                 L'utente è loggato ed ha il ruolo Manager                 |
+| Post condition |      Vengono registrati correttamente l'arrivo di un set di prodotti      |
+|     Step#      |                                Description                                |
+|       1        | Il manager chiede al sistema di registrare l'arrivo di un set di prodotti |
+|       2        |       Il sistema i dati necessari per la registrazione di un arrivo       |
+|       3        |                         L'utente inserisce i dati                         |
+|       4        |                    Il sistema valida i dati e li salva                    |
+|       5        |                  L'arrivo viene registrato correttamente                  |
 
 ### Use case 3.5, UC3.5 Filtraggio di prodotti per categoria, modello, codice e disponibilità
 
-| Actors Involved | Utente/Manager                                                                   |
-| :--------------:| :------------------------------------------------------------------:|
-|   Precondition  | L'utente è loggato |
-|  Post condition | Vengono mostrati i prodotti che rispecchiano il filtro inserito dall'utente |
-| Nominal Scenario| L'utente chiede di visualizzare solo i prodotti che rispecchiano un determinato filtro   |
-|     Variants    |                         |
-|    Exceptions   ||
+| Actors Involved  |                                     Utente/Manager                                     |
+| :--------------: | :------------------------------------------------------------------------------------: |
+|   Precondition   |                                   L'utente è loggato                                   |
+|  Post condition  |      Vengono mostrati i prodotti che rispecchiano il filtro inserito dall'utente       |
+| Nominal Scenario | L'utente chiede di visualizzare solo i prodotti che rispecchiano un determinato filtro |
+|     Variants     |                                                                                        |
+|    Exceptions    |                                                                                        |
 
 #### Scenario 3.5
 
-|  Scenario 3.5 |                                                                     Filtraggio di prodotti per categoria, modello, codice e disponibilità      |
-| :------------:| :------------------------------------------------------------------------:|
-|  Precondition | L'utente è loggato|
-| Post condition| Vengono mostrati i prodotti che rispecchiano il filtro inserito dall'utente  |
-|     Step#     |                                Description                                |
-|       1       |                                                        L'utente chiede di visualizzare i prodotti che rispecchiano un determinato filtro         |
-|       2       |                                                        Il sistema chiede il filtro            |
-|3| L'utente inserisce il filtro|
-|4| Il sistema mostra i prodotti appartenenti al filtro inserito dall'utente|
+|  Scenario 3.5  |       Filtraggio di prodotti per categoria, modello, codice e disponibilità       |
+| :------------: | :-------------------------------------------------------------------------------: |
+|  Precondition  |                                L'utente è loggato                                 |
+| Post condition |    Vengono mostrati i prodotti che rispecchiano il filtro inserito dall'utente    |
+|     Step#      |                                    Description                                    |
+|       1        | L'utente chiede di visualizzare i prodotti che rispecchiano un determinato filtro |
+|       2        |                            Il sistema chiede il filtro                            |
+|       3        |                           L'utente inserisce il filtro                            |
+|       4        |     Il sistema mostra i prodotti appartenenti al filtro inserito dall'utente      |
 
 ### Use case 3.6, UC3.6 Cataloga prodotto come venduto
 
@@ -370,253 +370,259 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 
 #### Scenario 3.6
 
-|  Scenario 3.6 |                                                                    Cataloga prodotto come venduto   |
-| :------------:| :------------------------------------------------------------------------:|
-|  Precondition | Il manager è loggato|
-| Post condition| Il prodotto viene catalogato come venduto   |
-|     Step#     |                                Description                                |
-|       1       |                                                      Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita       |
-|       2       |                                           Il sistema valida le informazioni         |
-|3| Il prodotto risulta venduto|
+|  Scenario 3.6  |                                  Cataloga prodotto come venduto                                   |
+| :------------: | :-----------------------------------------------------------------------------------------------: |
+|  Precondition  |                                       Il manager è loggato                                        |
+| Post condition |                             Il prodotto viene catalogato come venduto                             |
+|     Step#      |                                            Description                                            |
+|       1        | Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita |
+|       2        |                                 Il sistema valida le informazioni                                 |
+|       3        |                                    Il prodotto risulta venduto                                    |
 
 ### Use case 3.7, UC3.7 Aggiungi sconto ad un prodotto
 
-| Actors Involved |Manager                                                                   |
-| :--------------:| :------------------------------------------------------------------:|
-|   Precondition  | Il manager è loggato |
-|  Post condition | Lo sconto viene aggiunto al prodotto |
-| Nominal Scenario| Il manager aggiunge uno sconto ad un prodotto  |
-|     Variants    |                         |
-|    Exceptions   | Il prodotto non esiste|
+| Actors Involved  |                    Manager                    |
+| :--------------: | :-------------------------------------------: |
+|   Precondition   |             Il manager è loggato              |
+|  Post condition  |     Lo sconto viene aggiunto al prodotto      |
+| Nominal Scenario | Il manager aggiunge uno sconto ad un prodotto |
+|     Variants     |                                               |
+|    Exceptions    |            Il prodotto non esiste             |
 
 #### Scenario 3.7
 
-|  Scenario 3.7 |                                                                    Aggiungi sconto ad un prodotto  |
-| :------------: | :------------------------------------------------------------------------: |
-|  Precondition  | Il manager è loggato |
-| Post condition | Lo sconto viene aggiunto al prodotto     |
-|     Step#      |                                Description                                 |
-|       1        | Il manager seleziona il prodotto a cui vuole aggiungere lo sconto        |
-|       2        | Il manager inserisce la percentuale di sconto                   |
-|3| Lo sconto viene aggiunto correttamente al prodotto
+|  Scenario 3.7  |                  Aggiungi sconto ad un prodotto                   |
+| :------------: | :---------------------------------------------------------------: |
+|  Precondition  |                       Il manager è loggato                        |
+| Post condition |               Lo sconto viene aggiunto al prodotto                |
+|     Step#      |                            Description                            |
+|       1        | Il manager seleziona il prodotto a cui vuole aggiungere lo sconto |
+|       2        |           Il manager inserisce la percentuale di sconto           |
+|       3        |        Lo sconto viene aggiunto correttamente al prodotto         |
+
 ### Use case 3.8, UC3.8 Filtra prodotti per sconto (????)
 
-| Actors Involved  |Cliente                                                                    |
-| :--------------: | :------------------------------------------------------------------: |
-|   Precondition   | Il cliente è loggato  |
-|  Post condition  | Vengono mostrati i prodotti filtrati in base allo sconto inserito dal cliente  |
-| Nominal Scenario | Il cliente inserisce uno sconto e vengono mostrati solo i prodotti che rispecchiano il filtro   |
-|     Variants     |                          |
-|    Exceptions    |
+| Actors Involved  |                                            Cliente                                            |
+| :--------------: | :-------------------------------------------------------------------------------------------: |
+|   Precondition   |                                     Il cliente è loggato                                      |
+|  Post condition  |         Vengono mostrati i prodotti filtrati in base allo sconto inserito dal cliente         |
+| Nominal Scenario | Il cliente inserisce uno sconto e vengono mostrati solo i prodotti che rispecchiano il filtro |
+|     Variants     |                                                                                               |
+|    Exceptions    |                                                                                               |
 
-##### Scenario 3.8
+#### Scenario 3.8
 
-|  Scenario 3.8 |                                                                    Filtra prodotti per sconto  |
-| :------------: | :------------------------------------------------------------------------: |
-|  Precondition  | Il cliente è loggato |
-| Post condition | Vengono mostrati i prodotti filtrati in base allo sconto inserito dal cliente     |
-|     Step#      |                                Description                                 |
-|       1        | Il cliente chiede di filtrare i prodotti per sconto e inserisce lo sconto
-|       2        | Il sistema mostra solo i prodotti che risultano avere lo sconto inserito dall'utente
-### Use case 3.9, UC3.9 Traccia prezzo di un prodotto 
+|  Scenario 3.8  |                              Filtra prodotti per sconto                              |
+| :------------: | :----------------------------------------------------------------------------------: |
+|  Precondition  |                                 Il cliente è loggato                                 |
+| Post condition |    Vengono mostrati i prodotti filtrati in base allo sconto inserito dal cliente     |
+|     Step#      |                                     Description                                      |
+|       1        |      Il cliente chiede di filtrare i prodotti per sconto e inserisce lo sconto       |
+|       2        | Il sistema mostra solo i prodotti che risultano avere lo sconto inserito dall'utente |
 
-| Actors Involved  |Cliente                     |
-| :--------------: | :------------------------------------------------------------------: |
-|   Precondition   | Il cliente è loggato  |
-|  Post condition  |??? |
-| Nominal Scenario | Il cliente vuole tracciare il prezzo di un prodotto e ogni volta che questo cambia gli viene inviata una notifica   |
-|     Variants     |                          |
-|    Exceptions    | Il prodotto non esiste
+### Use case 3.9, UC3.9 Traccia prezzo di un prodotto
 
-##### Scenario 3.9
+| Actors Involved  |                                                      Cliente                                                      |
+| :--------------: | :---------------------------------------------------------------------------------------------------------------: |
+|   Precondition   |                                               Il cliente è loggato                                                |
+|  Post condition  |                                                        ???                                                        |
+| Nominal Scenario | Il cliente vuole tracciare il prezzo di un prodotto e ogni volta che questo cambia gli viene inviata una notifica |
+|     Variants     |                                                                                                                   |
+|    Exceptions    |                                              Il prodotto non esiste                                               |
 
-|  Scenario 3.9 |Traccia prezzo di un prodotto |
-| :------------: | :------------------------------------------------------------------------: |
-|  Precondition  | Il cliente è loggato |
-| Post condition | ???    |
-|     Step#      |                                Description                                 |
-|       1        | Il cliente seleziona il prodotto di cui vuole tracciare il prezzo     |
-|       2        | Il sistema invia una notifica ogni volta che il prezzo del prodotto selezionato cambia
+#### Scenario 3.9
+
+|  Scenario 3.9  |                             Traccia prezzo di un prodotto                              |
+| :------------: | :------------------------------------------------------------------------------------: |
+|  Precondition  |                                  Il cliente è loggato                                  |
+| Post condition |                                          ???                                           |
+|     Step#      |                                      Description                                       |
+|       1        |           Il cliente seleziona il prodotto di cui vuole tracciare il prezzo            |
+|       2        | Il sistema invia una notifica ogni volta che il prezzo del prodotto selezionato cambia |
+
 ### Use case 3.10, UC3.10 Visualizza lista dei desideri
 
-| Actors Involved  |Cliente                                                                    |
-| :--------------: | :------------------------------------------------------------------: |
-|   Precondition   | Il cliente è loggato  |
-|  Post condition  | La lista dei desideri viene visualizzata corretamente |
-| Nominal Scenario | Il cliente chiede di visualizzare la sua lista dei desideri e questa viene visualizzata correttamente  |
-|     Variants     |                          |
-|    Exceptions    | 
-##### Scenario 3.10
+| Actors Involved  |                                                Cliente                                                |
+| :--------------: | :---------------------------------------------------------------------------------------------------: |
+|   Precondition   |                                         Il cliente è loggato                                          |
+|  Post condition  |                         La lista dei desideri viene visualizzata corretamente                         |
+| Nominal Scenario | Il cliente chiede di visualizzare la sua lista dei desideri e questa viene visualizzata correttamente |
+|     Variants     |                                                                                                       |
+|    Exceptions    |                                                                                                       |
 
-|  Scenario 3.10  |                                                                    Visualizza lista dei desideri    |
-| :------------: | :------------------------------------------------------------------------: |
-|  Precondition  | Il cliente è loggato |
-| Post condition |  La lista dei desideri viene visualizzata corretamente   |
-|     Step#      |                                Description                                 |
-|       1        |Il cliente chiede di visualizzare la sua lista dei desideri      |
-|       2        |Il sistema mostra al cliente la sua lista dei desideri          |
+#### Scenario 3.10
+
+| Scenario 3.10  |                Visualizza lista dei desideri                |
+| :------------: | :---------------------------------------------------------: |
+|  Precondition  |                    Il cliente è loggato                     |
+| Post condition |    La lista dei desideri viene visualizzata corretamente    |
+|     Step#      |                         Description                         |
+|       1        | Il cliente chiede di visualizzare la sua lista dei desideri |
+|       2        |   Il sistema mostra al cliente la sua lista dei desideri    |
+
 ### Use case 3.11, UC3.11 Aggiungi prodotto alla lista dei desideri
 
-| Actors Involved  |Cliente                                                                    |
-| :--------------: | :------------------------------------------------------------------: |
-|   Precondition   | Il cliente è loggato  |
-|  Post condition  | Il prodotto viene aggiunto ala lista |
-| Nominal Scenario | Il cliente chiede di aggiungere un prodotto alla lista dei desideri e questo viene aggiunto  |
-|     Variants     |                          |
-|    Exceptions    | Il prodotto non esiste
+| Actors Involved  |                                           Cliente                                           |
+| :--------------: | :-----------------------------------------------------------------------------------------: |
+|   Precondition   |                                    Il cliente è loggato                                     |
+|  Post condition  |                            Il prodotto viene aggiunto ala lista                             |
+| Nominal Scenario | Il cliente chiede di aggiungere un prodotto alla lista dei desideri e questo viene aggiunto |
+|     Variants     |                                                                                             |
+|    Exceptions    |                                   Il prodotto non esiste                                    |
 
-##### Scenario 3.11
+#### Scenario 3.11
 
-|  Scenario 3.11 |                                                                    Aggiungi prodotto alla lista dei desideri    |
-| :------------: | :------------------------------------------------------------------------: |
-|  Precondition  | Il cliente è loggato |
-| Post condition | Il prodotto viene aggiunto alla lista    |
-|     Step#      |                                Description                                 |
-|       1        |Il cliente chiede di aggiungere un prodotto alla lista dei desideri   |
-|       2        | Il sistema aggiunge il prodotto alla lista
+| Scenario 3.11  |              Aggiungi prodotto alla lista dei desideri              |
+| :------------: | :-----------------------------------------------------------------: |
+|  Precondition  |                        Il cliente è loggato                         |
+| Post condition |                Il prodotto viene aggiunto alla lista                |
+|     Step#      |                             Description                             |
+|       1        | Il cliente chiede di aggiungere un prodotto alla lista dei desideri |
+|       2        |             Il sistema aggiunge il prodotto alla lista              |
 
 ### Use case 3.12, UC3.12 Rimuovi prodotto dalla lista dei desideri
 
-| Actors Involved  |Cliente                                                                    |
-| :--------------: | :------------------------------------------------------------------: |
-|   Precondition   | Il cliente è loggato  |
-|  Post condition  | Il prodotto viene rimosso dalla lista |
-| Nominal Scenario | Il cliente chiede di rimuovere un prodotto alla lista dei desideri e questo viene rimosso   |
-|     Variants     |                          |
-|    Exceptions    | 
-##### Scenario 3.12
+| Actors Involved  |                                          Cliente                                          |
+| :--------------: | :---------------------------------------------------------------------------------------: |
+|   Precondition   |                                   Il cliente è loggato                                    |
+|  Post condition  |                           Il prodotto viene rimosso dalla lista                           |
+| Nominal Scenario | Il cliente chiede di rimuovere un prodotto alla lista dei desideri e questo viene rimosso |
+|     Variants     |                                                                                           |
+|    Exceptions    |                                                                                           |
 
-|  Scenario 3.12 |                                                                    Rimuovi prodotto dalla lista dei desideri  |
-| :------------: | :------------------------------------------------------------------------: |
-|  Precondition  | Il cliente è loggato, il prodotto è nella lista |
-| Post condition | Il prodotto viene rimosso dalla lista   |
-|     Step#      |                                Description                                 |
-|       1        | Il cliente chiede di aggiungere un prodotto alla lista dei desideri    |
-|       2        | Il sistema rimuove il prodotto dalla lista
+#### Scenario 3.12
 
-### Use case 4.1, UC4.1  Visualizzazione del carrello attuale del cliente  
+| Scenario 3.12  |              Rimuovi prodotto dalla lista dei desideri              |
+| :------------: | :-----------------------------------------------------------------: |
+|  Precondition  |           Il cliente è loggato, il prodotto è nella lista           |
+| Post condition |                Il prodotto viene rimosso dalla lista                |
+|     Step#      |                             Description                             |
+|       1        | Il cliente chiede di aggiungere un prodotto alla lista dei desideri |
+|       2        |             Il sistema rimuove il prodotto dalla lista              |
 
-| Actors Involved | Cliente                                                                  |
-| :--------------:| :------------------------------------------------------------------:|
-|   Precondition  | Il cliente è loggato |
-|  Post condition | Viene mostrato il carrello attuale del cliente loggato |
-| Nominal Scenario| Il cliente chiede di visualizzare il suo carrello attuale e viene mostrato   |
-|     Variants    |                         |
-|    Exceptions   ||
+### Use case 4.1, UC4.1 Visualizzazione del carrello attuale del cliente
+
+| Actors Involved  |                                  Cliente                                   |
+| :--------------: | :------------------------------------------------------------------------: |
+|   Precondition   |                            Il cliente è loggato                            |
+|  Post condition  |           Viene mostrato il carrello attuale del cliente loggato           |
+| Nominal Scenario | Il cliente chiede di visualizzare il suo carrello attuale e viene mostrato |
+|     Variants     |                                                                            |
+|    Exceptions    |                                                                            |
 
 #### Scenario 4.1
 
-|  Scenario 4.1 |                                                                     Visualizzazione del carrello attuale del cliente    |
-| :------------:| :------------------------------------------------------------------------:|
-|  Precondition | Il cliente è loggato|
-| Post condition|Viene mostrato il carrello attuale del cliente loggato  |
-|     Step#     |                                Description                                |
-|       1       |                                                        Il cliente chiede di visualizzare il suo carrello attuale         |
-|       2       |                                                        Il sistema mostra il carrello corrente|
+|  Scenario 4.1  |     Visualizzazione del carrello attuale del cliente      |
+| :------------: | :-------------------------------------------------------: |
+|  Precondition  |                   Il cliente è loggato                    |
+| Post condition |  Viene mostrato il carrello attuale del cliente loggato   |
+|     Step#      |                        Description                        |
+|       1        | Il cliente chiede di visualizzare il suo carrello attuale |
+|       2        |          Il sistema mostra il carrello corrente           |
 
 ### Use case 4.2, UC4.2 Aggiunta di un prodotto al carrello attuale
 
-| Actors Involved | Cliente                                                                  |
-| :--------------:| :------------------------------------------------------------------:|
-|   Precondition  | Il cliente è loggato |
-|  Post condition | Il prodotto viene aggiunto correttamente al carrello attuale |
-| Nominal Scenario| Il cliente chiede di aggiungere un prodotto al suo carrello  |
-|     Variants    |                         |
-|    Exceptions   | Il prodotto non esiste, il prodotto è già presente in un altro carrello o il prodotto non è disponibile|
+| Actors Involved  |                                                 Cliente                                                 |
+| :--------------: | :-----------------------------------------------------------------------------------------------------: |
+|   Precondition   |                                          Il cliente è loggato                                           |
+|  Post condition  |                      Il prodotto viene aggiunto correttamente al carrello attuale                       |
+| Nominal Scenario |                       Il cliente chiede di aggiungere un prodotto al suo carrello                       |
+|     Variants     |                                                                                                         |
+|    Exceptions    | Il prodotto non esiste, il prodotto è già presente in un altro carrello o il prodotto non è disponibile |
 
 #### Scenario 4.2
 
-|  Scenario 4.2 |                                                                     Aggiunta di un prodotto al carrello attuale   |
-| :------------:| :------------------------------------------------------------------------:|
-|  Precondition | Il cliente è loggato|
-| Post condition|Il prodotto viene aggiunto correttamente al carrello |
-|     Step#     |                                Description                                |
-|       1       |                                                        Il cliente seleziona il prodotto da aggiungere al carrello         |
-|       2       |                                                        Il sistema verifica che il prodotto possa essere aggiunto|
-|3| Il prodotto risulta aggiunto al carrello|
+|  Scenario 4.2  |        Aggiunta di un prodotto al carrello attuale         |
+| :------------: | :--------------------------------------------------------: |
+|  Precondition  |                    Il cliente è loggato                    |
+| Post condition |    Il prodotto viene aggiunto correttamente al carrello    |
+|     Step#      |                        Description                         |
+|       1        | Il cliente seleziona il prodotto da aggiungere al carrello |
+|       2        | Il sistema verifica che il prodotto possa essere aggiunto  |
+|       3        |          Il prodotto risulta aggiunto al carrello          |
 
 ### Use case 4.3, UC4.3 Rimozione di un prodotto dal carrello attuale
 
-| Actors Involved | Cliente                                                                  |
-| :--------------:| :------------------------------------------------------------------:|
-|   Precondition  | Il cliente è loggato |
-|  Post condition | Il prodotto viene rimosso dal carrello |
-| Nominal Scenario| Il cliente chiede di rimuovere un prodotto dal carrello  |
-|     Variants    |                         |
-|    Exceptions   | Il prodotto non è nel carrello, non esiste, è già stato venduto o il cliente non ha alcun carrello|
+| Actors Involved  |                                              Cliente                                               |
+| :--------------: | :------------------------------------------------------------------------------------------------: |
+|   Precondition   |                                        Il cliente è loggato                                        |
+|  Post condition  |                               Il prodotto viene rimosso dal carrello                               |
+| Nominal Scenario |                      Il cliente chiede di rimuovere un prodotto dal carrello                       |
+|     Variants     |                                                                                                    |
+|    Exceptions    | Il prodotto non è nel carrello, non esiste, è già stato venduto o il cliente non ha alcun carrello |
 
 #### Scenario 4.3
 
-|  Scenario 4.3 |                                                                     Rimozione di un prodotto dal carrello attuale    |
-| :------------:| :------------------------------------------------------------------------:|
-|  Precondition | Il cliente è loggato|
-| Post condition| Il prodotto viene rimosso dal carrello  |
-|     Step#     |                                Description                                |
-|       1       |                                                        Il cliente chiede di rimuovere un prodotto dal suo carrello        |
-|       2       |                                                        Il sistema verifica che il prodotto sia rimovibile|
-|3| Il prodotto risulta rimosso correttamente|
+|  Scenario 4.3  |        Rimozione di un prodotto dal carrello attuale        |
+| :------------: | :---------------------------------------------------------: |
+|  Precondition  |                    Il cliente è loggato                     |
+| Post condition |           Il prodotto viene rimosso dal carrello            |
+|     Step#      |                         Description                         |
+|       1        | Il cliente chiede di rimuovere un prodotto dal suo carrello |
+|       2        |     Il sistema verifica che il prodotto sia rimovibile      |
+|       3        |          Il prodotto risulta rimosso correttamente          |
 
 ### Use case 4.4, UC4.4 Acquisto dei prodotti aggiunti al carrello attuale
 
-| Actors Involved | Cliente                                                                  |
-| :--------------:| :------------------------------------------------------------------:|
-|   Precondition  | Il cliente è loggato |
-|  Post condition | L'acquisto del carrello viene effettuato correttamente |
-| Nominal Scenario| Il cliente chiede di acquistare il carrello attuale|
-|     Variants    |                         |
-|    Exceptions   | Il carrello è vuoto, o non esiste alcun carrello per il cliente loggato|
+| Actors Involved  |                                 Cliente                                 |
+| :--------------: | :---------------------------------------------------------------------: |
+|   Precondition   |                          Il cliente è loggato                           |
+|  Post condition  |         L'acquisto del carrello viene effettuato correttamente          |
+| Nominal Scenario |           Il cliente chiede di acquistare il carrello attuale           |
+|     Variants     |                                                                         |
+|    Exceptions    | Il carrello è vuoto, o non esiste alcun carrello per il cliente loggato |
 
 #### Scenario 4.4
 
-|  Scenario 4.4 |                                                                      Acquisto dei prodotti aggiunti al carrello attuale   |
-| :------------:| :------------------------------------------------------------------------:|
-|  Precondition | Il cliente è loggato|
-| Post condition|L'acquisto del carrello viene effettuato correttamente   |
-|     Step#     |                                Description                                |
-|       1       |                                                        Il cliente chiede di acquistare i prodotti presenti nel suo carrello attuale         |
-|       2       |                                                        Il sistema verifica che la richiesta sia valida|
-|3| Il sistema calcola il totale del carrello e imposta la data di pagamento|
-|4| Il carrello risulta acquistato|
+|  Scenario 4.4  |              Acquisto dei prodotti aggiunti al carrello attuale              |
+| :------------: | :--------------------------------------------------------------------------: |
+|  Precondition  |                             Il cliente è loggato                             |
+| Post condition |            L'acquisto del carrello viene effettuato correttamente            |
+|     Step#      |                                 Description                                  |
+|       1        | Il cliente chiede di acquistare i prodotti presenti nel suo carrello attuale |
+|       2        |               Il sistema verifica che la richiesta sia valida                |
+|       3        |   Il sistema calcola il totale del carrello e imposta la data di pagamento   |
+|       4        |                        Il carrello risulta acquistato                        |
 
 ### Use case 4.5 , UC4.5 Visualizzazione della cronologia dei carrelli acquistati dal cliente
 
-| Actors Involved | Cliente                                                                  |
-| :--------------:| :------------------------------------------------------------------:|
-|   Precondition  | Il cliente è loggato |
-|  Post condition | Vengono mostrati tutti i carrelli del cliente loggato |
-| Nominal Scenario| Il cliente chiede di visualizzare la storia dei suoi carrelli   |
-|     Variants    |                         |
-|    Exceptions   ||
+| Actors Involved  |                            Cliente                            |
+| :--------------: | :-----------------------------------------------------------: |
+|   Precondition   |                     Il cliente è loggato                      |
+|  Post condition  |     Vengono mostrati tutti i carrelli del cliente loggato     |
+| Nominal Scenario | Il cliente chiede di visualizzare la storia dei suoi carrelli |
+|     Variants     |                                                               |
+|    Exceptions    |                                                               |
 
 #### Scenario 4.5
 
-|  Scenario 4.5 |                                                                     Visualizzazione della cronologia dei carrelli    |
-| :------------:| :------------------------------------------------------------------------:|
-|  Precondition | Il cliente è loggato|
-| Post condition| Vengono mostrati tutti i carrelli del cliente loggato  |
-|     Step#     |                                Description                                |
-|       1       |                                                        Il cliente chiede di visualizzare la storia dei suoi carrelli         |
-|       2       |                                                        Il sistema mostra la storia dei carrelli del cliente|
+|  Scenario 4.5  |         Visualizzazione della cronologia dei carrelli         |
+| :------------: | :-----------------------------------------------------------: |
+|  Precondition  |                     Il cliente è loggato                      |
+| Post condition |     Vengono mostrati tutti i carrelli del cliente loggato     |
+|     Step#      |                          Description                          |
+|       1        | Il cliente chiede di visualizzare la storia dei suoi carrelli |
+|       2        |     Il sistema mostra la storia dei carrelli del cliente      |
 
 ### Use case 4.6 , UC4.6 Cancellazione del carrello
 
-| Actors Involved | Cliente                                                                  |
-| :--------------:| :------------------------------------------------------------------:|
-|   Precondition  | Il cliente è loggato |
-|  Post condition | Viene cancellato il carrello attuale del cliente loggato |
-| Nominal Scenario| Il cliente chiede di cancellare il suo carrello attuale   |
-|     Variants    |                         |
-|    Exceptions   | Il cliente non ha alcun carrello|
+| Actors Involved  |                         Cliente                          |
+| :--------------: | :------------------------------------------------------: |
+|   Precondition   |                   Il cliente è loggato                   |
+|  Post condition  | Viene cancellato il carrello attuale del cliente loggato |
+| Nominal Scenario | Il cliente chiede di cancellare il suo carrello attuale  |
+|     Variants     |                                                          |
+|    Exceptions    |             Il cliente non ha alcun carrello             |
 
 #### Scenario 4.6
 
-|  Scenario 4.6 |                                                                     Cancellazione del carrello attuale del cliente    |
-| :------------:| :------------------------------------------------------------------------:|
-|  Precondition | Il cliente è loggato|
-| Post condition|Viene cancellato il carrello attuale del cliente loggato  |
-|     Step#     |                                Description                                |
-|       1       |                                                        Il cliente chiede di cancellare il suo carrello attuale         |
-|       2       |                                                        Il sistema elimina il carrello corrente|
+|  Scenario 4.6  |      Cancellazione del carrello attuale del cliente      |
+| :------------: | :------------------------------------------------------: |
+|  Precondition  |                   Il cliente è loggato                   |
+| Post condition | Viene cancellato il carrello attuale del cliente loggato |
+|     Step#      |                       Description                        |
+|       1        | Il cliente chiede di cancellare il suo carrello attuale  |
+|       2        |         Il sistema elimina il carrello corrente          |
 
 ### Use case 5.1 , UC5.1 Aggiunta nuovo indirizzo di spedizione
 
