@@ -113,3 +113,9 @@ Si accede alla pagina tramite il bottone "Registrazione Arrivi" sulla navbar per
 ![Sconto](/img/Sconto.png)
 
 ![ScontoPC](/img/ScontoPC.png)
+
+## Profilo (da utente customer e manager)
+
+![Profilo](/img/Profilo.png)
+
+![ProfiloPC](/img/ProfiloPC.png)

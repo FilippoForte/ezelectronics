@@ -68,8 +68,14 @@ Si accede alla pagina tramite il bottone "Registrazione Arrivi" sulla navbar per
 
 ![RegistrazioneArriviPC](/img/RegistrazioneArriviPC.png)
 
-### Logout 
+### Logout (da utente customer e manager)
 
 ![Logout](/img/Logout.png)
 
 ![LogoutPC](/img/LogoutPC.png)
+
+## Profilo (da utente customer e manager)
+
+![Profilo](/img/Profilo.png)
+
+![ProfiloPC](/img/ProfiloPC.png)
