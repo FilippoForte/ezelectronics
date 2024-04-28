@@ -705,7 +705,87 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |     Step#      |                        Description                         |
 |       1        | Il cliente chiede di di visualizzare lo stato di un ordine |
 |       2        |       Il sistema mostra l'attuale stato dell'ordine        |
+## Gestione pagamenti
+### Use case 6.1, UC6.1  Aggiungi metodo di pagamento
 
+| Actors Involved  | Cliente                                                                   |
+| :--------------: | :------------------------------------------------------------------: |
+|   Precondition   | Il cliente è loggato  |
+|  Post condition  | Il metodo di pagamento è aggiunto correttamente   |
+| Nominal Scenario | Il cliente chiede di aggiungere un nuovo metodo di pagamento    |
+|     Variants     |                          |
+|    Exceptions    |
+
+##### Scenario 6.1
+
+|  Scenario 6.1  |                                                                     Aggiungi metodo di pagamento    |
+| :------------: | :------------------------------------------------------------------------: |
+|  Precondition  | Il cliente è loggato |
+| Post condition |Il metodo di pagamento è aggiunto correttamente   |
+|     Step#      |                                Description                                 |
+|       1        |                                                        Il cliente chiede di aggiungere un nuovo metodo di pagamento          |
+|       2        |                                                        Il cliente seleziona la tipologia di metodo di pagamento che vuole inserire (carta, buono regalo,..)|
+|       3        | Il cliente aggiunge i dettagli relativi al metodo di pagamento selezionato (dati carta, dati buono,..)|
+|       4        | Il metodo di pagamento selezionato viene aggiunto correttamente
+
+### Use case 6.2, UC6.2 Rimuovi metodo di pagamento
+| Actors Involved  | Cliente                                                                   |
+| :--------------: | :------------------------------------------------------------------: |
+|   Precondition   | Il cliente è loggato  |
+|  Post condition  | Il metodo di pagamento viene rimosso  |
+| Nominal Scenario | Il cliente chiede di rimuovere un metodo di pagamento   |
+|     Variants     |                          |
+|    Exceptions    | |
+
+##### Scenario 6.2
+
+|  Scenario 6.2  |                                                                     Rimuovi metodo di pagamento    |
+| :------------: | :------------------------------------------------------------------------: |
+|  Precondition  | Il cliente è loggato |
+| Post condition |Il metodo di pagamento viene rimosso  |
+|     Step#      |                                Description                                 |
+|       1        |                                                        Il cliente seleziona il metodo di pagamento che vuole rimuovere         |
+|       2        |                                                        Il sistema rimuove il metodo di pagamento selezionato dal cliente|
+
+### Use case 7.1, UC7.1  Visualizza statistiche ordini (???)
+| Actors Involved  | Cliente                                                                   |
+| :--------------: | :------------------------------------------------------------------: |
+|   Precondition   | Il cliente è loggato  |
+|  Post condition  |   |
+| Nominal Scenario |    |
+|     Variants     |                          |
+|    Exceptions    |
+
+##### Scenario 7.1
+
+|  Scenario 7.1  |                                                                        |
+| :------------: | :------------------------------------------------------------------------: |
+|  Precondition  | Il cliente è loggato |
+| Post condition |  |
+|     Step#      |                                Description                                 |
+|       1        |                                                                 |
+|       2        |                                                        |
+
+### Use case 7.2, UC7.2 Visualizza statistiche prodotti venduti 
+
+| Actors Involved  | Manager                                                                   |
+| :--------------: | :------------------------------------------------------------------: |
+|   Precondition   | Il manager è loggato  |
+|  Post condition  | Vengono visualizzate le statistiche relative ai prodotti venduti in un periodo scelto dal manager |
+| Nominal Scenario | Il manager chiede di visualizzare le statistiche dei prodotti venduti in un range di date  |
+|     Variants     |                          |
+|    Exceptions    | La data di inizio è successiva a quella di fine range|
+
+##### Scenario 7.2
+
+|  Scenario 7.2  |                                                                     Visualizza statistiche prodotti venduti    |
+| :------------: | :------------------------------------------------------------------------: |
+|  Precondition  | Il manager è loggato |
+| Post condition |Vengono visualizzate le statistiche relative ai prodotti venduti in un periodo scelto dal manager |
+|     Step#      |                                Description                                 |
+|       1        |                                                        Il manager chiede di visualizzare le statistiche relative ai prodotti venduti          |
+|       2        |                                                        Il manager inserisce il range di date all'interno del quale vuole visualizzare le statistiche dei prodotti venduti |
+|3| Il sistema mostra le statistiche relative alle vendite dei prodotti nel range di date inserito dal manager|
 # Glossary
 
 ![glossary](./glossary.png)
