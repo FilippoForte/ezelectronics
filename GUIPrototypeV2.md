@@ -4,13 +4,13 @@ Authors: Alessandra Cicciarelli, Filippo Forte, Giulio Arecco, Riccardo Daniele 
 
 Date: 23/04/2024
 
-Version: 2.2
+Version: 2.3
 
 ## Pagina Principale
 
-![Index](/img/Index.png)
+![Index](/img/IndexV2.png)
 
-![IndexPC](/img/IndexPC.png)
+![IndexPC](/img/IndexV2PC.png)
 
 ## Scrermata di registrazione
 
@@ -26,31 +26,65 @@ Version: 2.2
 
 ## Scrermata di visualizzazione prodotti (da utente customer)
 
-![PaginaCustomer](/img/PaginaCustomer.png)
+![PaginaCustomer](/img/PaginaCustomerV2.png)
 
-![PaginaCustomerPC](/img/PaginaCustomerPC.png)
+![PaginaCustomerPC](/img/PaginaCustomerV2PC.png)
+
+### Prodotto (da utente customer)
+
+Si accede alla pagina premendo sull'icona del prodotto desiderato
+
+![Prodotto](/img/Prodotto.png)
+
+![ProdottoPC](/img/ProdottoPC.png)
 
 ### Carrello (da utente customer)
 
 Si accede alla pagina premendo sull'icona del carrello sulla navbar
 
-![Carrello](/img/Carrello.png)
+![Carrello](/img/CarrelloV2.png)
 
-![CarrelloPC](/img/CarrelloPC.png)
+![CarrelloPC](/img/CarrelloV2PC.png)
 
-### Storia degli acquisti (da utente customer)
+### Acquista (da utente customer)
+
+![Acquista](/img/Acquista.png)
+
+![AcquistaPC](/img/AcquistaPC.png)
+
+### Storia dei carrelli (da utente customer)
+
+Si accede alla pagina tramite la voce nel menu a tendina nella navbar o tramite i pulsanti appositi
+
+![History](/img/HistoryV2.png)
+
+![HistoryPC](/img/HistoryV2PC.png)
+
+### Stato della spedizione (da utente customer)
+
+![Stato](/img/Stato.png)
+
+![StatoPC](/img/StatoPC.png)
+
+### Lista dei desideri (da utente customer)
 
 Si accede alla pagina tramite la voce nel menu a tendina nella navbar
 
-![History](/img/History.png)
+![ListaDesideri](/img/ListaDesideri.png)
 
-![HistoryPC](/img/HistoryPC.png)
+![ListaDesideriPC](/img/ListaDesideriPC.png)
+
+### Centro notifiche (da utente customer)
+
+![Notifiche](/img/Notifiche.png)
+
+![NotifichePC](/img/NotifichePC.png)
 
 ## Scrermata di visualizzazione prodotti (da utente manager)
 
-![PaginaManager](/img/PaginaManager.png)
+![PaginaManager](/img/PaginaManagerV2.png)
 
-![PaginaManagerPC](/img/PaginaManagerPC.png)
+![PaginaManagerPC](/img/PaginaManagerV2PC.png)
 
 ### Inserisci un nuovo prodotto (da utente manager)
 
@@ -64,21 +98,18 @@ Si accede alla pagina tramite il bottone "Aggiungi Prodotto" sulla navbar per la
 
 Si accede alla pagina tramite il bottone "Registrazione Arrivi" sulla navbar per la versione da PC mentre attraverso il bottone corrispondente situato in basso da cellulare
 
-![InserisciProdotto](/img/RegistrazioneArrivi.png)
+![RegistrazioneArrivi](/img/RegistrazioneArrivi.png)
 
-![InserisciProdottoPC](/img/RegistrazioneArriviPC.png)
+![RegistrazioneArriviPC](/img/RegistrazioneArriviPC.png)
 
-### Logout 
+### Modifica prodotto (da utente manager)
 
-![Logout](/img/Logout.png)
+![ModificaProdotto](/img/ModificaProdotto.png)
 
-![LogoutPC](/img/LogoutPC.png)
+![ModificaProdottoPC](/img/ModificaProdottoPC.png)
 
-### Visualizza prodotti inseriti (da utente manager)
+### Sconta prodotto (da utente manager)
 
-Si accede alla pagina tramite la voce nel menu a tendina nella navbar
+![Sconto](/img/Sconto.png)
 
-![IMieiProdotti](/img/IMieiProdotti.png)
-
-![IMieiProdottiPC](/img/IMieiProdottiPC.png)
-
+![ScontoPC](/img/ScontoPC.png)

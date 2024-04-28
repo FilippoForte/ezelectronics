@@ -38,7 +38,7 @@ Si accede alla pagina premendo sull'icona del carrello sulla navbar
 
 ![CarrelloPC](/img/CarrelloPC.png)
 
-### Storia degli acquisti (da utente customer)
+### Storia dei carrelli (da utente customer)
 
 Si accede alla pagina tramite la voce nel menu a tendina nella navbar
 
@@ -64,9 +64,9 @@ Si accede alla pagina tramite il bottone "Aggiungi Prodotto" sulla navbar per la
 
 Si accede alla pagina tramite il bottone "Registrazione Arrivi" sulla navbar per la versione da PC mentre attraverso il bottone corrispondente situato in basso da cellulare
 
-![InserisciProdotto](/img/RegistrazioneArrivi.png)
+![RegistrazioneArrivi](/img/RegistrazioneArrivi.png)
 
-![InserisciProdottoPC](/img/RegistrazioneArriviPC.png)
+![RegistrazioneArriviPC](/img/RegistrazioneArriviPC.png)
 
 ### Logout 
 
