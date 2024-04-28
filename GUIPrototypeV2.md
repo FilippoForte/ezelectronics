@@ -4,7 +4,7 @@ Authors: Alessandra Cicciarelli, Filippo Forte, Giulio Arecco, Riccardo Daniele 
 
 Date: 23/04/2024
 
-Version: 2.0
+Version: 2.2
 
 ## Pagina Principale
 
@@ -30,13 +30,17 @@ Version: 2.0
 
 ![PaginaCustomerPC](/img/PaginaCustomerPC.png)
 
-### Carrello
+### Carrello (da utente customer)
+
+Si accede alla pagina premendo sull'icona del carrello sulla navbar
 
 ![Carrello](/img/Carrello.png)
 
 ![CarrelloPC](/img/CarrelloPC.png)
 
-### Storia degli acquisti
+### Storia degli acquisti (da utente customer)
+
+Si accede alla pagina tramite la voce nel menu a tendina nella navbar
 
 ![History](/img/History.png)
 
@@ -48,23 +52,33 @@ Version: 2.0
 
 ![PaginaManagerPC](/img/PaginaManagerPC.png)
 
-### Inserisci un nuovo prodotto
+### Inserisci un nuovo prodotto (da utente manager)
+
+Si accede alla pagina tramite il bottone "Aggiungi Prodotto" sulla navbar per la versione da PC mentre attraverso il bottone corrispondente situato in basso da cellulare
 
 ![InserisciProdotto](/img/InserisciProdotto.png)
 
 ![InserisciProdottoPC](/img/InserisciProdottoPC.png)
 
-### Logout
+### Registrazione arrivi (da utente manager)
+
+Si accede alla pagina tramite il bottone "Registrazione Arrivi" sulla navbar per la versione da PC mentre attraverso il bottone corrispondente situato in basso da cellulare
+
+![InserisciProdotto](/img/RegistrazioneArrivi.png)
+
+![InserisciProdottoPC](/img/RegistrazioneArriviPC.png)
+
+### Logout 
 
 ![Logout](/img/Logout.png)
 
 ![LogoutPC](/img/LogoutPC.png)
 
-### Visualizza prodotti inseriti
+### Visualizza prodotti inseriti (da utente manager)
+
+Si accede alla pagina tramite la voce nel menu a tendina nella navbar
 
 ![IMieiProdotti](/img/IMieiProdotti.png)
 
 ![IMieiProdottiPC](/img/IMieiProdottiPC.png)
-
-## Scrermata di visualizzazione prodotti (da utente admin)
 

@@ -39,20 +39,21 @@ EZElectronics (read EaSy Electronics) is a software application designed to help
 
 # Stakeholders
 
-| Nome dello Stakeholder | Descrizione                                                              |
-| :--------------------: | :----------------------------------------------------------------------: |
-| Cliente                | Individuo che accede al sito web per visualizzare o comprare prodotti    |
-| Manager                | Manager dello store fisico che puo' gestire i prodotti sul sito          |
-| Servizio bancario      | Servizio per transazioni monetarie                                       |
-| Sviluppatori           | Il team di sviluppatori del sistema                                      |
-| Servizio di spedizione | Servizio per la spedizione dei prodotti                                  |
-| Amministratore         | Amministratore del sistema                                               |
+| Nome dello Stakeholder | Descrizione                                                                     |
+| :--------------------: | :-----------------------------------------------------------------------------: |
+| Cliente                | Individuo che accede al sito web per visualizzare o comprare prodotti           |
+| Manager                | Manager dello store fisico che puo' gestire i prodotti sul sito                 |
+| Servizio bancario      | Servizio per transazioni monetarie                                              |
+| Sviluppatori           | Il team di sviluppatori del sistema                                             |
+| Servizio di spedizione | Servizio per la spedizione dei prodotti                                         |
+| Amministratore         | Amministratore del sistema                                                      |
+| Utente guest           | Utente che non ha ancora effettuato la fase di login o la fase di registrazione |
 
 # Context Diagram and interfaces
 
 ## Context Diagram
 
-![contextDiagram](./contextDiagramV2.png)
+![contextDiagram](./img/contextDiagramV2.png)
 
 ## Interfaces
 
@@ -60,29 +61,36 @@ EZElectronics (read EaSy Electronics) is a software application designed to help
 | :--------------------: | :-----------------------------------------------------------------------:  | :----------------: |
 | Cliente                | GUI (interfaccia per navigare il sito, visualizzare e comprare prodotti)   | Smartphone / PC    |
 | Manager                | GUI (interfaccia per navigare il sito, visualizzare e gestire i prodotti)  | Smartphone / PC    |
-| Amministratore         | GUI (interfaccia per visualizzare e gestire i prodotti e gli utenti)       | Smartphone / PC    |
+| Utente guest           | GUI (interfaccia per visualizzare i prodotti e per l'autenticazione)       | Smartphone / PC    |
+| Amministratore         | GUI (interfaccia per visualizzare e gestire i prodotti e gli utenti)       | Console            |
 | Servizio bancario      | APIs                                                                       | Internet           |
 | Servizio di spedizione | APIs                                                                       | Internet           |
 
 # Stories and personas
 
-**Persona 1**: male, high-income professional, married, with children, 50 years-old  
-Story: wants to purchase a new, <u>state-of-the-art</u> smart-TV for his living room: needs to find the <u>best price</u> among the best TVs in the store.
+**Persona 1**: uomo, professionista ad alto reddito, sposato, con figli, 50 anni  
+Storia: vuole acquistare una nuova smart-TV <u>all'avanguardia</u> per il suo salotto: deve trovare il <u>prezzo migliore</u> tra le migliori TV presenti nel negozio.
 
-**Persona 2**: female, undergraduate, 20 years-old  
-Story: wants to purchase a <u>cheap</u> smartphone to replace her old and slow one: needs to find the <u>best cost-performance solution</u>.  
+**Persona 2**: donna, studentessa universitaria, 20 anni  
+Storia: vuole acquistare uno smartphone <u>economico</u> per sostituire quello vecchio e lento: deve trovare la <u>migliore soluzione costo-prestazioni</u>.  
   
-**Persona 3**: female, married, with children, 60 years-old  
-Story: wants to purchase a radio for her 85 year-old mother who lives alone, to keep her company.
+**Persona 3**: donna, sposata, con figli, 60 anni  
+Storia: vuole acquistare una radio per la madre di 85 anni che vive da sola, per tenerle compagnia.
   
-**Persona 4**: male, has been working for a few years, 28 years-old  
-Story: wants to build a cutting-edge gaming PC: wants to check the trend of the prices of the components he is interested in.  
+**Persona 4**: uomo, lavora da pochi anni, 28 anni  
+Storia: vuole assemblare un PC da gioco all'avanguardia: vuole controllare l'andamento dei prezzi dei componenti a cui e' interessato.  
 
-**Persona 5**: male, store manager, 45 years-old  
-Story: needs to <u>add a newly released model</u> of a product to the website and <u>remove an old</u>, out-of-stock one.  
+**Persona 5**: uomo, manager di un negozio, 45 anni  
+Storia: deve <u>aggiungere al sito web un modello appena uscito</u> di un prodotto e <u>rimuoverne uno vecchio</u>, esaurito.  
 
-**Persona 6**: female, store manager, 50 years-old  
-Story: needs to <u>register the arrival</u> of a set of products and <u>apply a discount</u> for the products of a specific model.
+**Persona 6**: donna, manager del negozio, 50 anni  
+Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare uno sconto</u> per i prodotti di un modello specifico.
+
+**Persona 7**: uomo, appena sposato, 30 anni  
+Storia: si deve trasferire nella sua nuova casa e sta aspettando di essere <u>notificato</u> del fatto che gli articoli da cucina che ha aggiunto alla <u>lista dei desideri</u> sono stati <u>scontati</u>.
+
+**Persona 8**: donna, sposata, con figli, 38 anni  
+Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un indirizzo diverso</u> da quello a cui vive per evitare di insospettirlo. 
 
 # Functional and non functional requirements
 
@@ -107,9 +115,9 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 | FR3.7| Aggiungi sconto ad un prodotto*************                          |
 | FR3.8| Filtra prodotti per sconto***************                            |
 | FR3.9| Traccia prezzo di un prodotto***************                         |
-| FR3.10| Visualizza lista dei desideri***************                        |
-| FR3.11| Aggiungi prodotto alla lista dei desideri***************            |
-| FR3.12| Rimuovi prodotto dalla lista dei desideri***************            |
+| FR3.10| Visualizza lista dei desideri*************** (serve macro req)      |
+| FR3.10| Aggiungi prodotto alla lista dei desideri***************            |
+| FR3.10| Rimuovi prodotto dalla lista dei desideri***************            |
 | **FR4** | **Gestione del carrello**                                         |
 | FR4.1| Visualizzazione del carrello attuale del cliente                     |
 | FR4.2| Aggiunta di un prodotto al carrello attuale                          |
@@ -130,27 +138,25 @@ Story: needs to <u>register the arrival</u> of a set of products and <u>apply a 
 | FR7.1| Visualizza statistiche ordini*************                           |
 | FR7.2| Visualizza statistiche prodotti*************                         |
 | **FR8** | **Gestione notifiche**                                            |
-| FR8.1| Gestione notifiche*************                                      |
+| FR8.1| Gestione notifiche************* (da ampliare con sottocasi: invio notifica quando succede evento x, y,...)|
 
 
 ## Non Functional Requirements
 
-| ID    | Type (efficiency, reliability, ..) | Description                                                                                                                                                                                                    | Refers to    |
-|:------|:----------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------:|
-| NFR1  | Efficiency                         | The system must respond within 0.5 seconds since any user action (excluding page loading times)                                                                                                                | /            |
-| NFR2  | Efficiency                         | Web pages must load within 6 seconds since last user request (depending on network conditions)                                                                                                                 | /            |
-| NFR3  | Efficiency                         | No app installation needed for the end-user, every functionality has to be accessible from the website via an internet browser                                                                                 | /            |
-| NFR4  | Security                           | Only system administrators can access user management functionalities                                                                                                                                          | F2.x         |
-| NFR5  | Security                           | User data treatment must meet GDPR                                                                                                                                                                             | /            |
-| NFR5  | Security                           | Some product functionalities can only be used by managers                                                                                                                                                      | F3.(2, 3, 4) |
-| NFR5  | Security                           | All shopping cart functionalities can only be used by customers                                                                                                                                                | F4.x         |
-| NFR6  | Usability                          | Customers don't need any training                                                                                                                                                                              | /            |
-| NFR7  | Usability                          | Managers need a maximum of three hours of training                                                                                                                                                                | /            |
-| NFR8  | Reliability                        | The number of malfunctions per year must be less than 2                                                                                                                                                 | /            |
-| NFR9  | Reliability                        | The website cannot require more than one 1 maintenance session every 2 months                                                                                                                                  | /            |
-| NFR10 | Reliability                        | Maintenance sessions cannot last more than 4 hours                                                                                                                                                             | /            |
-| NFR11 | Reliability                        | Every user should not report more than 1  previously unreported bug per year                                                                                                                                   | /            |
-| NFR12 | Portability                        | The web site must be accessible from the following browsers (oldest supported version specified): Chrome (v: 79), Firefox (v: 72), Safari (v: 13.0.5), Opera (v: 65), Edge (v: 79), Samsung Internet (v: 11.2) | /            |
+| ID    | Tipo (efficienza, affidabilità, ...) | Descrizione                                                                                                                                                                                                              | Si riferisce a |
+|:------|:------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------:|
+| NFR1  | Efficienza                           | Il sistema deve rispondere entro 0,5 secondi a partire da qualsiasi azione dell'utente (esclusi i tempi di caricamento delle pagine).                                                                                    |     /          |
+| NFR2  | Efficienza                           | Le pagine Web devono essere caricate entro 6 secondi dall'ultima richiesta dell'utente (a seconda delle condizioni della rete)                                                                                           | /              |
+| NFR3  | Efficienza                           | Non è necessaria l'installazione di app per l'utente finale, ogni funzionalità deve essere accessibile dal sito web tramite un browser internet                                                                          | /              |
+| NFR4  | Sicurezza                            | Il trattamento dei dati personali degli utenti deve essere conforme al GDPR                                                                                                                                              | /              |
+| NFR5  | Usabilità                            | I clienti non hanno bisogno di alcuna formazione                                                                                                                                                                         | /              |
+| NFR6  | Usabilità                            | I manager hanno bisogno di un massimo di tre ore di formazione                                                                                                                                                           | /              |
+| NFR7  | Affidabilità                         | Il numero di malfunzionamenti all'anno deve essere inferiore a 2                                                                                                                                                         | /              |
+| NFR8  | Affidabilità                         | Il sistema deve avere un uptime del 99% (considerando operazioni di manutenzione e malfunzionamenti)                                                                                                                                             | /              |
+| NFR9  | Affidabilità                         | Ogni operazione di manutenzione non deve durare più di 4 ore                                                                                                                                                      | /              |
+| NFR10 | Affidabilità                         | Ogni utente non deve segnalare più di 1 bug non segnalato in precedenza all'anno                                                                                                                                         | /              |
+| NFR11 | Portabilità                          | Il sito web deve essere accessibile dai seguenti browser (specificando la versione più vecchia supportata): Chrome (v: 79), Firefox (v: 72), Safari (v: 13.0.5), Opera (v: 65), Edge (v: 79), Samsung Internet (v: 11.2) | /              |
+
 
 # Use case diagram and use cases
 

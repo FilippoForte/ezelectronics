@@ -73,12 +73,3 @@ Si accede alla pagina tramite il bottone "Registrazione Arrivi" sulla navbar per
 ![Logout](/img/Logout.png)
 
 ![LogoutPC](/img/LogoutPC.png)
-
-### Visualizza prodotti inseriti (da utente manager)
-
-Si accede alla pagina tramite la voce nel menu a tendina nella navbar
-
-![IMieiProdotti](/img/IMieiProdotti.png)
-
-![IMieiProdottiPC](/img/IMieiProdottiPC.png)
-
