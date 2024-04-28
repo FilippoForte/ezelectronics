@@ -104,7 +104,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR1.3| Possibilità di ottenere le informazioni relative all'utente correntemente loggato|
 | **FR2**| **Gestione degli utenti**                                         |
 | FR2.1| Registrazione di un nuovo utente                                    |
-| FR2.2| Modifica informazioni utente (se vogliamo aggiungere l'email, modificare casi d'uso)********|
+| FR2.2| Modifica informazioni utente (se vogliamo aggiungere l'email, modificare casi d'uso ecc.)********|
 | **FR3**| **Gestione dei prodotti**                                         |
 | FR3.1| Visualizzazione di tutti i prodotti                                 |
 | FR3.2| Aggiunta di un nuovo prodotto                                       |
@@ -137,10 +137,11 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR7.1| Visualizza statistiche ordini*************                          |
 | FR7.2| Visualizza statistiche prodotti*************                        |
 | **FR8**| **Gestione notifiche**                                            |
-| FR8.1| Visualizzazione delle notifiche (se vogliamo inviare una notifica per prodotti out of stock al manager, modificare caso d'uso corrispondente per incorporare manager) ************* |
+| FR8.1| Visualizzazione delle notifiche************* |
 | FR8.2| Invio di una notifica al cliente quando un prodotto all'interno della sua lista dei desideri riceve uno sconto************* |
 | FR8.3| Invio di una notifica al cliente quando lo stato della sua spedizione viene aggiornato************* |
 | FR8.4| Invio di una notifica al cliente quando un prodotto nel suo carrello viene esaurito (prima che lui lo acquisti)*************|
+| FR8.5| Invio di una notifica al manager quando un prodotto viene esaurito*************|
 
 ## Non Functional Requirements
 
@@ -849,11 +850,11 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 
 ### Use case 8.1, UC8.1  Visualizzazione delle notifiche
 
-| Actors Involved  | Cliente                                                                   |
+| Actors Involved  | Utente                                                                  |
 | :--------------: | :------------------------------------------------------------------: |
-|   Precondition   | Il cliente è loggato  |
-|  Post condition  | Il cliente visualizza le notifiche ricevute  |
-| Nominal Scenario | Il cliente chiede di visualizzare le notifiche ricevute dal sistema  |
+|   Precondition   | L'utente loggato  |
+|  Post condition  | L'utente visualizza le notifiche ricevute  |
+| Nominal Scenario | L'utente chiede di visualizzare le notifiche ricevute dal sistema  |
 |     Variants     |                          |
 |    Exceptions    |
 
@@ -861,13 +862,48 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 
 |  Scenario 8.1  |                                                                        |
 | :------------: | :------------------------------------------------------------------------: |
-|  Precondition  | Il cliente è loggato |
-| Post condition | Il cliente visualizza le notifiche ricevute |
+|  Precondition  | L'utente è loggato |
+| Post condition | L'utente visualizza le notifiche ricevute |
 |     Step#      |                                Description                                 |
-|       1        |  Il cliente chiede di visualizzare le sue notifiche |
+|       1        |  L'utente chiede di visualizzare le sue notifiche |
 |       2        |  Il sistema mostra le notifiche inviate al cliente |
 
 # Glossary
+
+- Utente
+  - Persona registrata al sistema
+  - Può visualizzare i prodotti
+  - Può avere ruolo di cliente o di manager
+  - Riceve notifiche diverse in base al suo ruolo
+- Cliente 
+  - Utente che dispone di un carrello in cui inserire i prodotti che vuole acquistare
+  - Può visualizzare lo stato (della spedizione) del carrello corrente (quello dei carrelli passati è "Consegnato")
+  - Può visualizzare lo storico dei carrelli che ha acquistato, quindi possiede almeno un carrello (quello corrente) ed eventualmente tutti quelli acquistati precedentemente
+  - Dispone di almeno un indirizzo di spedizione, dove farsi spedire i prodotti contenuti nel carrello che acquista
+  - Dispone di almeno un metodo di pagamento, con cui acquistare il suo carrello
+  - Dispone di una (e una sola) lista dei desideri a cui aggiungere prodotti a cui è interessato
+- Manager 
+  - Utente responsabile del negozio fisico
+  - Ogni manager ha la possibilità di gestire (aggiungere, rimuovere, registrare una nuova fornitura, registrare uno sconto, ...) i prodotti sul sito web
+- Prodotto
+  - Prodotto in vendita sul sito web
+  - Il codice di un prodotto è legato al modello/variante del prodotto e le relative unità disponibili in magazzino sono tracciate mediante l'attributo "Quantità" (a differenza di V1, per cui ogni singolo prodotto aveva un codice univoco) 
+  - Ogni prodotto viene aggiunto da un manager al sito web
+  - L'esaurimento di un prodotto viene notificato ai manager del negozio
+- Carrello
+  - Ogni carrello è proprietà di un singolo cliente
+  - Contiene i prodotti in esso inseriti dal cliente proprietario
+  - Ogni carrello è dotato di uno stato: {Non Acquistato, Richiesta Spedizione, Preparazione Spedizione, In Transito, Consegnato}
+  - Il cliente viene notificato dell'esaurimento di un prodotto contenuto nel suo carrello corrente
+- Lista dei desideri
+  - Proprietà esclusiva di un singolo utente
+  - Contiene prodotti aggiunti dal cliente
+  - Notifica il cliente della registrazione di uno sconto per un prodotto in essa contenuto
+- Indirizzo di spedizione
+  - Contiene i dati relativi alla posizione geografica a cui spedire i prodotti acquistati da un cliente
+  - Nel contesto del sistema, un indirizzo di spedizione esiste solo se aggiunto da un cliente (ovvero non esistono a priori tutti gli indirizzi del pianeta)
+- Metodo di pagamento
+  - Definisce il metodo di pagamento e i relativi dati (IBAN / Numero di Carta / ...) aggiunto da un cliente
 
 ![glossary](./img/glossaryV2.png)
 

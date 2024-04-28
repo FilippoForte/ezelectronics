@@ -72,7 +72,7 @@ Storia: vuole acquistare uno smartphone <u>economico</u> per sostituire quello v
 Storia: vuole acquistare una radio per la madre di 85 anni che vive da sola, per tenerle compagnia.
   
 **Persona 4**: uomo, lavora da pochi anni, 28 anni  
-Storia: vuole assemblare un PC da gioco all'avanguardia: vuole controllare l'andamento dei prezzi dei componenti a cui e' interessato.  
+Storia: vuole assemblare un PC da gioco all'avanguardia: vuole controllare i prezzi dei componenti a cui e' interessato.  
 
 **Persona 5**: uomo, manager di un negozio, 45 anni  
 Storia: deve <u>aggiungere al sito web un modello appena uscito</u> di un prodotto e <u>rimuoverne uno vecchio</u>, esaurito.  
@@ -643,6 +643,23 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |       1        |                                                        Il cliente chiede di cancellare il suo carrello attuale          |
 |       2        | Il sistema rileva un errore in quanto non esiste alcun carrello del cliente e lo comunica al cliente
 # Glossary
+- Utente
+  - Persona registrata al sistema
+  - Può visualizzare i prodotti
+  - Può avere ruolo di cliente o di manager
+- Cliente 
+  - Utente che dispone di un carrello in cui inserire i prodotti che vuole acquistare
+  - Può visualizzare lo storico dei carrelli per cui ha pagato, quindi possiede almeno un carrello (quello corrente) ed eventualmente tutti quelli acquistati precedentemente
+- Manager 
+  - Utente responsabile del negozio fisico
+  - Ogni manager ha la possibilità di gestire (aggiungere, rimuovere, registrare una nuova fornitura, ...) i prodotti sul sito web
+- Prodotto
+  - Prodotto in vendita sul sito web
+  - Ogni singolo prodotto ha un codice univoco
+  - Ogni prodotto viene aggiunto da un manager al sito web
+- Carrello
+  - Ogni carrello è proprietà di un singolo cliente
+  - Contiene i prodotti in esso inseriti dal cliente proprietario
 
 ![glossary](./img/glossaryV1.png)
 
