@@ -97,7 +97,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 | FR3.2   | Aggiunta di un nuovo prodotto                                                      |
 | FR3.3   | Rimozione di un prodotto                                                           |
 | FR3.4   | Registrazione dell'arrivo di un nuovo (insieme di) prodotti                        |
-| FR3.5   | Filtraggio di prodotti per categoria, modello, codice e disponibilita'             |
+| FR3.5   | Filtraggio (e visualizzazione) di prodotti per categoria, modello, codice e disponibilita'|
 | FR3.6   | Catalogazione di un prodotto come venduto                                          |
 | **FR4** | **Gestione del carrello**                                                          |
 | FR4.1   | Visualizzazione del carrello attuale del cliente                                   |

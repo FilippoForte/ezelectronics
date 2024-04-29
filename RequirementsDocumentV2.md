@@ -110,7 +110,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR3.2| Aggiunta di un nuovo prodotto                                       |
 | FR3.3| Rimozione di un prodotto                                            |
 | FR3.4| Registrazione dell'arrivo di un nuovo (insieme di) prodotti         |
-| FR3.5| Filtraggio di prodotti per categoria, modello, codice e disponibilità|
+| FR3.5| Filtraggio (e visualizzazione) di prodotti per categoria, modello, codice e disponibilità|
 | FR3.6| Registrazione automatica della vendita di un prodotto quando un cliente lo acquista************* |
 | FR3.7| Aggiungi sconto ad un prodotto*************                         |
 | FR3.8| Filtra prodotti per sconto***************                           |
