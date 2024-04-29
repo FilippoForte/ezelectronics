@@ -893,6 +893,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 - Carrello
   - Ogni carrello è proprietà di un singolo cliente
   - Contiene i prodotti in esso inseriti dal cliente proprietario
+  - La data di pagamento viene aggiunta solo quando il cliente paga per il carrello
   - Ogni carrello è dotato di uno stato: {Non Acquistato, Richiesta Spedizione, Preparazione Spedizione, In Transito, Consegnato}
   - Il cliente viene notificato dell'esaurimento di un prodotto contenuto nel suo carrello corrente
 - Lista dei desideri

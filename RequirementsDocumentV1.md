@@ -660,6 +660,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 - Carrello
   - Ogni carrello è proprietà di un singolo cliente
   - Contiene i prodotti in esso inseriti dal cliente proprietario
+  - Quando il cliente paga per il carrello, l'evento viene registrato insieme alla data in cui è avvenuto
 
 ![glossary](./img/glossaryV1.png)
 
