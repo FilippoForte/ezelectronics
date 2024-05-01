@@ -12,11 +12,17 @@ Version: 2.5
 
 ![IndexPC](./img/IndexV2PC.png)
 
-## Scrermata di registrazione
+## Scrermata di registrazione Customer
 
-![Register](./img/RegisterV2.png)
+![RegisterC](./img/RegisterCV2.png)
 
-![RegisterPC](./img/RegisterV2PC.png)
+![RegisterCPC](./img/RegisterCV2PC.png)
+
+## Scrermata di registrazione Manager
+
+![RegisterM](./img/RegisterMV2.png)
+
+![RegisterMPC](./img/RegisterMV2PC.png)
 
 ## Scrermata di login
 
