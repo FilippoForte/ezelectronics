@@ -111,6 +111,29 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 
 \* Le API utilizzate solo per testing non sono state considerate nei Functional Requirements
 
+## Table of rights
+
+| Codice - Descrizione                                                                             | Utente Guest | Cliente | Manager |
+| ------------------------------------------------------------------------------------------------ | ------------ | ------- | ------- |
+| FR1.1 Login di un utente registrato                                                              |              |    X    |    X    |
+| FR1.2 Logout di un utente registrato                                                             |              |    X    |    X    |
+| FR1.3 Possibilità di ottenere le informazioni relative all'utente correntemente loggato          |              |    X    |    X    |
+| FR2.1 Registrazione di un nuovo utente                                                           |       X      |         |         |
+| FR3.1 Visualizzazione di tutti i prodotti                                                        |              |    X    |    X    |
+| FR3.2 Aggiunta di un nuovo prodotto                                                              |              |         |    X    |
+| FR3.3 Rimozione di un prodotto                                                                   |              |         |    X    |
+| FR3.4 Registrazione dell'arrivo di un nuovo (insieme di) prodotti                                |              |         |    X    |
+| FR3.5 Visualizza informazioni prodotti di una certa categoria (opzionale: parametro disponibile) |              |    X    |    X    |
+| FR3.6 Visualizza informazioni prodotti di un certo modello (opzionale: parametro disponibile)    |              |    X    |    X    |
+| FR3.7 Visualizza informazioni di un prodotto con un determinato codice                           |              |    X    |    X    |
+| FR3.8 Catalogazione prodotto come venduto                                                        |              |         |    X    |
+| FR4.1 Visualizzazione del carrello attuale del cliente                                           |              |    X    |         |
+| FR4.2 Aggiunta di un prodotto al carrello attuale                                                |              |    X    |         |
+| FR4.3 Rimozione di un prodotto dal carrello attuale                                              |              |    X    |         |
+| FR4.4 Acquisto del carrello (----) attuale                                                       |              |    X    |         |
+| FR4.5 Visualizzazione dello storico dei carrelli acquistati dal cliente                          |              |    X    |         |
+| FR4.6 Cancellazione del carrello                                                                 |              |    X    |         |
+
 ## Non Functional Requirements
 
 | ID    | Tipo (efficienza, affidabilita', ...) | Descrizione                              | Si riferisce a  |
@@ -125,9 +148,10 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 ## Use case diagram
 
 ![useCaseDiagram](./img/diagrammaCasiDuso.png)
+
 ### Use case 1.1, UC1.1 Login
 
-| Actors Involved  |                                           Utente Guest                                           |
+| Actors Involved  |                                           Cliente/Manager                                        |
 | :--------------: | :----------------------------------------------------------------------------------------------: |
 |   Precondition   |                                L'utente è registrato nel sistema                                 |
 |  Post condition  |                                     L'utente risulta loggato                                     |
@@ -186,7 +210,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 | :--------------: | :----------------------------------------------------------------------------------: |
 |   Precondition   |                                  L'utente è loggato                                  |
 |  Post condition  |           Vengono mostrate le informazioni dell'utente attualmente loggato           |
-| Nominal Scenario | L'utente chiede al sistema di visualizzare le sue informazioni e li vengono mostrate |
+| Nominal Scenario | L'utente chiede al sistema di visualizzare le sue informazioni e vengono mostrate |
 |     Variants     |                                                                                      |
 |    Exceptions    |                                                                                      |
 
@@ -202,13 +226,13 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 
 ### Use case 2.1 , UC2.1 Registrazione
 
-| Actors Involved  |                                                              Utente guest     |
+| Actors Involved  |                                    Utente guest                      |
 | :--------------: | :------------------------------------------------------------------: |
-|   Precondition   | -- |
-|  Post condition  |  L'utente risulta registrato correttamente nel sistema.  |
+|   Precondition   | --                                                                   |
+|  Post condition  |  L'utente risulta registrato correttamente nel sistema.              |
 | Nominal Scenario |  L'utente inserisce tutti i dati richiesti per la registrazione e sceglie il ruolo con cui registrarsi nel sistema.  (2.1)     |
-|     Variants     |        |
-|    Exceptions    | L'utente risulta già registrato  (2.1.1)       |
+|     Variants     |                                                                      |
+|    Exceptions    | L'utente risulta già registrato  (2.1.1)                             |
 
 #### Scenario 2.1
 
@@ -289,7 +313,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       1        |                     Il manager chiede di aggiungere un nuovo prodotto                      |
 |       2        |                  Il sistema chiede tutti i dati necessari per l'aggiunta                   |
 |       3        |                        Il manager inserisce tutti i dati richiesti                         |
-|       4        | Il sistema rileva un errore in quanto il prodotto è già esistente e lo comunica all'utente |
+|       4        | Il sistema rileva un errore in quanto il prodotto è già esistente e lo comunica al manager |
 
 ##### Scenario 3.2.2
 
@@ -301,7 +325,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       1        |                                Il manager chiede di aggiungere un nuovo prodotto                                |
 |       2        |                             Il sistema chiede tutti i dati necessari per l'aggiunta                             |
 |       3        |                                   Il manager inserisce tutti i dati richiesti                                   |
-|       4        | Il sistema rileva un errore in quanto la data di arrivo è successiva a quella corrente e lo comunica all'utente |
+|       4        | Il sistema rileva un errore in quanto la data di arrivo è successiva a quella corrente e lo comunica al manager |
 
 ### Use case 3.3, UC3.3 Rimozione di un prodotto
 
@@ -322,7 +346,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |     Step#      |                           Description                           |
 |       1        |      Il manager chiede al sistema di rimuovere un prodotto      |
 |       2        | Il sistema chiede il codice del prodotto che si vuole rimuovere |
-|       3        |                  L'utente inserisce il codice                   |
+|       3        |                  Il manager inserisce il codice                   |
 |       4        |         Il sistema verifica che il codice sia presente          |
 |       5        |                    Il prodotto viene rimosso                    |
 
@@ -335,8 +359,8 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |     Step#      |                                           Description                                           |
 |       1        |                      Il manager chiede al sistema di rimuovere un prodotto                      |
 |       2        |                 Il sistema chiede il codice del prodotto che si vuole rimuovere                 |
-|       3        |                                  L'utente inserisce il codice                                   |
-|       4        | Il sistema rileva un errore in quanto il prodotto non risulta presente e lo comunica all'utente |
+|       3        |                                  Il manager inserisce il codice                                 |
+|       4        | Il sistema rileva un errore in quanto il prodotto non risulta presente e lo comunica al manager |
 
 ### Use case 3.4, UC3.4 Registrazione dell'arrivo di un nuovo (insieme di) prodotto/i
 
@@ -357,7 +381,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |     Step#      |                                Description                                |
 |       1        | Il manager chiede al sistema di registrare l'arrivo di un set di prodotti |
 |       2        |       Il sistema i dati necessari per la registrazione di un arrivo       |
-|       3        |                         L'utente inserisce i dati                         |
+|       3        |                         Il manager inserisce i dati                         |
 |       4        |                    Il sistema valida i dati e li salva                    |
 |       5        |                  L'arrivo viene registrato correttamente                  |
 
@@ -370,8 +394,8 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |     Step#      |                                                   Description                                                   |
 |       1        |                    Il manager chiede al sistema di registrare l'arrivo di un set di prodotti                    |
 |       2        |                          Il sistema i dati necessari per la registrazione di un arrivo                          |
-|       3        |                                            L'utente inserisce i dati                                            |
-|       4        | Il sistema rileva un errore in quanto la data di arrivo è successiva a quella corrente e lo comunica all'utente |
+|       3        |                                            Il manager inserisce i dati                                          |
+|       4        | Il sistema rileva un errore in quanto la data di arrivo è successiva a quella corrente e lo comunica al manager |
 
 ### Use case 3.5, UC3.5 Filtraggio di prodotti per categoria, modello, codice e disponibilità
 
@@ -546,7 +570,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 | Post condition |                                                                                               |
 |     Step#      |                                          Description                                          |
 |       1        |                  Il cliente chiede di rimuovere un prodotto dal suo carrello                  |
-|       2        | Il sistema rileva un errore in quanto il prodotto non è nel carrello e lo comunica all'utente |
+|       2        | Il sistema rileva un errore in quanto il prodotto non è nel carrello e lo comunica al cliente |
 
 ##### Scenario 4.3.2
 
@@ -556,7 +580,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 | Post condition |                                                                                       |
 |     Step#      |                                      Description                                      |
 |       1        |              Il cliente chiede di rimuovere un prodotto dal suo carrello              |
-|       2        | Il sistema rileva un errore in quanto il prodotto non esiste e lo comunica all'utente |
+|       2        | Il sistema rileva un errore in quanto il prodotto non esiste e lo comunica al cliente |
 
 ##### Scenario 4.3.3
 
@@ -566,7 +590,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 | Post condition |                                                                                                |
 |     Step#      |                                          Description                                           |
 |       1        |                  Il cliente chiede di rimuovere un prodotto dal suo carrello                   |
-|       2        | Il sistema rileva un errore in quanto il prodotto è già stato venduto e lo comunica all'utente |
+|       2        | Il sistema rileva un errore in quanto il prodotto è già stato venduto e lo comunica al cliente |
 
 ##### Scenario 4.3.4
 
@@ -576,7 +600,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 | Post condition |                                                                                                 |
 |     Step#      |                                           Description                                           |
 |       1        |                   Il cliente chiede di rimuovere un prodotto dal suo carrello                   |
-|       2        | Il sistema rileva un errore in quanto il cliente non ha alcun carrello e lo comunica all'utente |
+|       2        | Il sistema rileva un errore in quanto il cliente non ha alcun carrello e lo comunica al cliente |
 
 ### Use case 4.4, UC4.4 Acquisto del carrello attuale
 
