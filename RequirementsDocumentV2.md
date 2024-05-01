@@ -43,7 +43,7 @@ EZElectronics (read EaSy Electronics) is a software application designed to help
 | :--------------------:| :-----------------------------------------------------------------------------:|
 | Cliente               | Individuo che accede al sito web per visualizzare o comprare prodotti          |
 | Manager               | Manager dello store fisico che puo' gestire i prodotti sul sito                |
-| Servizio bancario     | Servizio per transazioni monetarie                                             |
+| Servizio di pagamento | Servizio per transazioni monetarie                                             |
 | Sviluppatori          | Il team di sviluppatori del sistema                                            |
 | Servizio di spedizione| Servizio per la spedizione dei prodotti                                        |
 | Amministratore        | Amministratore del sistema                                                     |
@@ -65,7 +65,7 @@ EZElectronics (read EaSy Electronics) is a software application designed to help
 | Manager               | GUI (interfaccia per navigare il sito, visualizzare e gestire i prodotti) | Smartphone / PC   |
 | Utente guest          | GUI (interfaccia per visualizzare i prodotti e per l'autenticazione)      | Smartphone / PC   |
 | Amministratore        | GUI (interfaccia per visualizzare e gestire i prodotti e gli utenti)      | Console           |
-| Servizio bancario     | APIs                                                                      | Internet          |
+| Servizio di pagamento | APIs                                                                      | Internet          |
 | Servizio di spedizione| APIs                                                                      | Internet          |
 | Validazione mail      | APIs                                                                      | Internet          |
 | Invio mail            | APIs                                                                      | Internet          |
@@ -105,6 +105,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | **FR1**| **Gestione degli accessi**                                                          |
 | FR1.1| Login di un utente registrato                                                         |
 | FR1.2| Logout di un utente registrato                                                        |
+<<<<<<< HEAD
 | FR1.3| Possibilità di ottenere le informazioni relative all'utente correntemente loggato     |
 | **FR2**| **Gestione degli utenti**                                                           |
 | FR2.1| Registrazione di un nuovo utente                                                      |
@@ -119,6 +120,18 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR3.2| Aggiunta di un nuovo prodotto                                                         |
 | FR3.3| Rimozione di un prodotto                                                              |
 | FR3.4| Registrazione dell'arrivo di un nuovo (insieme di) prodotti                           |
+=======
+| FR1.3| Possibilità di ottenere le informazioni relative all'utente correntemente loggato|
+| **FR2**| **Gestione degli utenti**                                         |
+| FR2.1| Registrazione di un nuovo utente                                    |
+| FR2.2| Modifica profilo utente loggato ********|
+| FR2.3| Eliminare il proprio profilo ******** (AGGIUNTO)|
+| **FR3**| **Gestione dei prodotti**                                         |
+| FR3.1| Visualizzazione di tutti i prodotti                                 |
+| FR3.2| Aggiunta di un nuovo prodotto                                       |
+| FR3.3| Rimozione di un prodotto                                            |
+| FR3.4| Registrazione dell'arrivo di un nuovo (insieme di) prodotti         |
+>>>>>>> 9df7bb918781fe4867b37321615ad1a7a5566555
 | FR3.5| Filtraggio (e visualizzazione) di prodotti per categoria, modello, codice e disponibilità|
 | FR3.6| DIVIDERE FILTRAGGIO COME NELLA v1                                                     |
 | FR3.7| Aggiungi sconto ad un prodotto*************                                           |
@@ -150,7 +163,54 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |**FR9**| **Gestione lista dei desideri**                                                     |
 | FR9.1| Visualizza lista dei desideri*************** (serve macro req)                       |
 | FR9.2| Aggiungi prodotto alla lista dei desideri***************                             |
-| FR| Rimuovi prodotto dalla lista dei desideri***************                                |
+| FR9.3| Rimuovi prodotto dalla lista dei desideri***************                                |
+
+## Table of rights
+
+| Codice - Descrizione                                                                            |Utente Guest | Cliente | Manager |
+| ----------------------------------------------------------------------------------------------- |:----------: | :-----: | :-----: |
+| FR1.1 Login di un utente registrato                                                             |           |     X     |     X     |
+| FR1.2 Logout di un utente registrato                                                            |           |     X     |     X     |
+| FR1.3 Possibilità di ottenere le informazioni relative all'utente correntemente loggato         |           |     X     |     X     |
+| FR2.1 Registrazione di un nuovo utente                                                          |     X     |           |           |
+| FR2.2 Modifica profilo utente loggato (se vogliamo aggiungere l'email, modificare casi d'uso ecc.)                                                                                             |           |     X     |     X     |
+| FR2.3 Eliminare il proprio profilo     (DA FARE)                                                |           |     X     |     X     |
+| FR2.4 Elimina profilo utente                    (DA FARE)                                       |           |           |           |
+| FR2.5 Visualizza utenti (?? anche per ruolo)                                                    |           |           |           |
+| FR3.1 Visualizzazione di tutti i prodotti                                                       |           |     X     |     X     |
+| FR3.2 Aggiunta di un nuovo prodotto                                                             |           |           |     X     |
+| FR3.3 Rimozione di un prodotto                                                                  |           |           |     X     |
+| FR3.4 Registrazione dell'arrivo di un nuovo (insieme di) prodotti                               |           |           |     X     |
+| FR3.5 Visualizza informazioni prodotti di una certa categoria (opzionale: parametro disponibile)|           |     X     |     X     |
+| FR3.6 Visualizza informazioni prodotti di un certo modello (opzionale: parametro disponibile)   |           |     X     |     X     |
+| FR3.7 Visualizza informazioni di un prodotto con un determinato codice                          |           |     X     |     X     |
+| FR3.8 Aggiungi sconto ad un prodotto                                                            |           |           |     X     |
+| FR3.9 Filtra prodotti per sconto                                                                |           |     X     |     X     |
+| FR3.10 Visualizza storico prezzi di un prodotto                                                 |           |     X     |     X     |
+| FR3.11 Aggiungi prodotto alla lista dei desideri                                                |           |           |     X     |
+| FR3.12 Rimuovi prodotto dalla lista dei desideri                                                |           |           |     X     |
+| FR4.1 Visualizzazione del carrello attuale del cliente                                          |           |     X     |           |
+| FR4.2 Aggiunta di un prodotto al carrello attuale                                               |           |     X     |           |
+| FR4.3 Rimozione di un prodotto dal carrello attuale                                             |           |     X     |           |
+| FR4.4 Acquisto dei prodotti aggiunti al carrello attuale                                        |           |     X     |           |
+| FR4.5 Visualizzazione della cronologia dei carrelli acquistati dal cliente                      |           |     X     |           |
+| FR4.6 Cancellazione del carrello attuale                                                        |           |     X     |           |
+| FR5.1 Aggiunta indirizzo di spedizione                                                          |           |     X     |           |
+| FR5.2 Modifica indirizzo di spedizione                                                          |           |     X     |           |
+| FR5.3 Visualizza stato della spedizione del carrello acquistato                                 |           |     X     |           |
+| FR5.4 Visualizza stato ordine                                                                   |           |     X     |           |
+| FR6.1 Aggiungi metodo di pagamento                                                              |           |     X     |           |
+| FR6.2 Rimuovi metodo di pagamento                                                               |           |     X     |           |
+| FR7.1 Visualizza statistiche relative allo stato degli ordini     (DA FARE)                     |           |           |     X     |
+| FR7.2 Visualizza statistiche prodotti venduti in un range di date                               |           |           |     X     |
+| FR8.1 Visualizzazione delle notifiche                                                           |           |           |           |
+| FR8.2 Invio di una notifica al cliente quando un prodotto all'interno della sua lista dei desideri riceve uno sconto                                                                                            |           |           |           |
+| FR8.3 Invio di una notifica al cliente quando lo stato della sua spedizione viene aggiornato    |           |           |           |
+| FR8.4 Invio di una notifica al cliente quando un prodotto nel suo carrello viene esaurito       |           |           |           |
+| FR8.5 Invio di una notifica al manager quando un prodotto viene esaurito                        |           |           |           |
+| FR9.1 Visualizza lista dei desideri                                                             |           |           |           |
+| FR9.2 Aggiungi prodotto alla lista dei desideri                                                 |           |           |           |
+| FR9.3 Rimuovi prodotto dalla lista dei desideri                                                 |           |           |           |
 
 ## Non Functional Requirements
 
@@ -262,7 +322,11 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 
 ### Use case 2.2 , UC2.2 Modifica delle informazioni utente: username di un cliente loggato
 
+<<<<<<< HEAD
 | Actors Involved  |                                          Cliente                                           |
+=======
+| Actors Involved  |                                     Cliente/Manager                                       |
+>>>>>>> 9df7bb918781fe4867b37321615ad1a7a5566555
 | :--------------: | :---------------------------------------------------------------------------------------: |
 |   Precondition   |                                    Il cliente è loggato                                     |
 |  Post condition  |              Lo username del cliente risulta modificato correttamente               |
@@ -376,7 +440,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 
 ### Use case 3.1, UC3.1 Visualizza tutti i prodotti
 
-| Actors Involved  |                                  Utente/Manager                                   |
+| Actors Involved  |                                 Cliente/Manager                                   |
 | :--------------: | :-------------------------------------------------------------------------------: |
 |   Precondition   |                                L'utente è loggato                                 |
 |  Post condition  |                         Vengono mostrati tutti i prodotti                         |
@@ -529,11 +593,11 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 
 ### Use case 3.8, UC3.8 Filtra prodotti per sconto (????)
 
-| Actors Involved  |                                            Cliente                                            |
+| Actors Involved  |                                      Cliente/Manager                                          |
 | :--------------: | :-------------------------------------------------------------------------------------------: |
-|   Precondition   |                                     Il cliente è loggato                                      |
+|   Precondition   |                                     L'utente è loggato                                        |
 |  Post condition  |         Vengono mostrati i prodotti filtrati in base allo sconto inserito dal cliente         |
-| Nominal Scenario | Il cliente inserisce uno sconto e vengono mostrati solo i prodotti che rispecchiano il filtro |
+| Nominal Scenario | L'utente inserisce uno sconto e vengono mostrati solo i prodotti che rispecchiano il filtro   |
 |     Variants     |                                                                                               |
 |    Exceptions    |                                                                                               |
 
@@ -541,17 +605,17 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 
 |  Scenario 3.8  |                                           Filtra prodotti per sconto                                            |
 | :------------: | :-------------------------------------------------------------------------------------------------------------: |
-|  Precondition  |                                              Il cliente è loggato                                               |
-| Post condition |                  Vengono mostrati i prodotti filtrati in base allo sconto inserito dal cliente                  |
+|  Precondition  |                                              L'utente è loggato                                                 |
+| Post condition |                  Vengono mostrati i prodotti filtrati in base allo sconto inserito dall'utente                  |
 |     Step#      |                                                   Description                                                   |
-|       1        |                    Il cliente chiede di filtrare i prodotti per sconto e inserisce lo sconto                    |
+|       1        |                    L'utente chiede di filtrare i prodotti per sconto e inserisce lo sconto                      |
 |       2        | Il sistema mostra solo i prodotti che risultano avere lo sconto uguale o maggiore a quello inserito dall'utente |
 
 ### Use case 3.9, UC3.9 Traccia prezzo di un prodotto
 
-| Actors Involved  |                          Cliente                             |
+| Actors Involved  |                      Cliente/Manager                         |
 | :--------------: | :----------------------------------------------------------: |
-|   Precondition   |                   Il cliente è loggato                       |
+|   Precondition   |                    L'utente è loggato                       |
 |  Post condition  |                             ???                              |
 | Nominal Scenario | Il cliente vuole tracciare il prezzo di un prodotto e ogni volta che questo cambia gli viene inviata una notifica |
 |     Variants     |                                                              |
@@ -837,7 +901,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 
 ### Use case 6.1, UC6.1 Aggiungi metodo di pagamento
 
-| Actors Involved  |                           Cliente                            |
+| Actors Involved  |             Cliente, Servizio di pagamento                   |
 | :--------------: | :----------------------------------------------------------: |
 |   Precondition   |                     Il cliente è loggato                     |
 |  Post condition  |       Il metodo di pagamento è aggiunto correttamente        |
@@ -859,7 +923,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 
 ### Use case 6.2, UC6.2 Rimuovi metodo di pagamento
 
-| Actors Involved  |                        Cliente                        |
+| Actors Involved  |             Cliente, Servizio di pagamento            |
 | :--------------: | :---------------------------------------------------: |
 |   Precondition   |                 Il cliente è loggato                  |
 |  Post condition  |         Il metodo di pagamento viene rimosso          |
