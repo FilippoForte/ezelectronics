@@ -108,10 +108,8 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR1.3| Possibilità di ottenere le informazioni relative all'utente correntemente loggato|
 | **FR2**| **Gestione degli utenti**                                         |
 | FR2.1| Registrazione di un nuovo utente                                    |
-| FR2.2| Modifica profilo utente loggato (se vogliamo aggiungere l'email, modificare casi d'uso ecc.)********|
+| FR2.2| Modifica profilo utente loggato ********|
 | FR2.3| Eliminare il proprio profilo ******** (AGGIUNTO)|
-| FR2.4| Elimina profilo utente |
-| FR2.5| Visualizza utenti (?? anche per ruolo)
 | **FR3**| **Gestione dei prodotti**                                         |
 | FR3.1| Visualizzazione di tutti i prodotti                                 |
 | FR3.2| Aggiunta di un nuovo prodotto                                       |
