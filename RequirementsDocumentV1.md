@@ -114,7 +114,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 ## Table of rights
 
 | Codice - Descrizione                                                                             | Utente Guest | Cliente | Manager |
-| ------------------------------------------------------------------------------------------------ | ------------ | ------- | ------- |
+| ------------------------------------------------------------------------------------------------ | :----------: | :-----: | :-----: |
 | FR1.1 Login di un utente registrato                                                              |              |    X    |    X    |
 | FR1.2 Logout di un utente registrato                                                             |              |    X    |    X    |
 | FR1.3 Possibilità di ottenere le informazioni relative all'utente correntemente loggato          |              |    X    |    X    |
