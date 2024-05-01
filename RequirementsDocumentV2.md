@@ -105,7 +105,6 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | **FR1**| **Gestione degli accessi**                                                          |
 | FR1.1| Login di un utente registrato                                                         |
 | FR1.2| Logout di un utente registrato                                                        |
-<<<<<<< HEAD
 | FR1.3| Possibilità di ottenere le informazioni relative all'utente correntemente loggato     |
 | **FR2**| **Gestione degli utenti**                                                           |
 | FR2.1| Registrazione di un nuovo utente                                                      |
@@ -120,18 +119,6 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR3.2| Aggiunta di un nuovo prodotto                                                         |
 | FR3.3| Rimozione di un prodotto                                                              |
 | FR3.4| Registrazione dell'arrivo di un nuovo (insieme di) prodotti                           |
-=======
-| FR1.3| Possibilità di ottenere le informazioni relative all'utente correntemente loggato|
-| **FR2**| **Gestione degli utenti**                                         |
-| FR2.1| Registrazione di un nuovo utente                                    |
-| FR2.2| Modifica profilo utente loggato ********|
-| FR2.3| Eliminare il proprio profilo ******** (AGGIUNTO)|
-| **FR3**| **Gestione dei prodotti**                                         |
-| FR3.1| Visualizzazione di tutti i prodotti                                 |
-| FR3.2| Aggiunta di un nuovo prodotto                                       |
-| FR3.3| Rimozione di un prodotto                                            |
-| FR3.4| Registrazione dell'arrivo di un nuovo (insieme di) prodotti         |
->>>>>>> 9df7bb918781fe4867b37321615ad1a7a5566555
 | FR3.5| Filtraggio (e visualizzazione) di prodotti per categoria, modello, codice e disponibilità|
 | FR3.6| DIVIDERE FILTRAGGIO COME NELLA v1                                                     |
 | FR3.7| Aggiungi sconto ad un prodotto*************                                           |
