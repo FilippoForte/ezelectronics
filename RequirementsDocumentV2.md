@@ -322,11 +322,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 
 ### Use case 2.2 , UC2.2 Modifica delle informazioni utente: username di un cliente loggato
 
-<<<<<<< HEAD
 | Actors Involved  |                                          Cliente                                           |
-=======
-| Actors Involved  |                                     Cliente/Manager                                       |
->>>>>>> 9df7bb918781fe4867b37321615ad1a7a5566555
 | :--------------: | :---------------------------------------------------------------------------------------: |
 |   Precondition   |                                    Il cliente è loggato                                     |
 |  Post condition  |              Lo username del cliente risulta modificato correttamente               |
