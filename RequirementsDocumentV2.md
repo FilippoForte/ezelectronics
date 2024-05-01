@@ -105,13 +105,15 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | **FR1**| **Gestione degli accessi**                                                          |
 | FR1.1| Login di un utente registrato                                                         |
 | FR1.2| Logout di un utente registrato                                                        |
-| FR1.3| Possibilità di ottenere le informazioni relative all'utente correntemente loggato|
+| FR1.3| Possibilità di ottenere le informazioni relative all'utente correntemente loggato     |
 | **FR2**| **Gestione degli utenti**                                                           |
 | FR2.1| Registrazione di un nuovo utente                                                      |
-| FR2.2| Modifica profilo utente loggato (se vogliamo aggiungere l'email, modificare casi d'uso ecc.)********|
-| FR2.3| Eliminare il proprio profilo ******** (AGGIUNTO)                                      |
-| FR2.4| Elimina profilo utente                                                                |
-| FR2.5| Visualizza utenti (?? anche per ruolo)                                                |
+| FR2.2| Modifica informazioni utente: username di un cliente loggato                          |
+| FR2.3| Modifica informazioni utente: email di un cliente loggato                             |
+| FR2.4| Modifica informazioni utente: password di un utente loggato                           |
+| FR2.5| Eliminare il proprio profilo ******** (AGGIUNTO)                                      |
+| FR2.6| Elimina profilo utente                                                                |
+| FR2.7| Visualizza utenti (?? anche per ruolo)                                                |
 | **FR3**| **Gestione dei prodotti**                                                           |
 | FR3.1| Visualizzazione di tutti i prodotti                                                   |
 | FR3.2| Aggiunta di un nuovo prodotto                                                         |
@@ -258,61 +260,119 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       4        | L'utente seleziona il ruolo con cui registrarsi(manager o utente) |
 |       5        |  il sistema salva i dati e viene creato il nuovo utente/manager   |
 
-### Use case 2.2 , UC2.2 Modifica informazioni utente
+### Use case 2.2 , UC2.2 Modifica delle informazioni utente: username di un cliente loggato
 
-| Actors Involved  |                                          Utente                                           |
+| Actors Involved  |                                          Cliente                                           |
 | :--------------: | :---------------------------------------------------------------------------------------: |
-|   Precondition   |                                    L'utente è loggato                                     |
-|  Post condition  |              Le informazioni dell'utente risultano modificate correttamente               |
-| Nominal Scenario | L'utente inserisce le nuove informazioni (username e/o password) da memorizzare a sistema |
+|   Precondition   |                                    Il cliente è loggato                                     |
+|  Post condition  |              Lo username del cliente risulta modificato correttamente               |
+| Nominal Scenario | Il cliente inserisce il nuovo username da sostituire al precedente |
 |     Variants     |                                                                                           |
-|    Exceptions    |          Lo username esiste già o la conferma della password non va a buon fine           |
+|    Exceptions    |          Lo username esiste già          |
 
-#### Scenario 2.2
+#### Scenario 2.2.1
 
 | Scenario 2.2.1 |                       Modifica dello username (a buon fine)                        |
 | :------------: | :--------------------------------------------------------------------------------: |
-|  Precondition  |                                 L'utente è loggato                                 |
-| Post condition |           Le informazioni dell'utente risultano modificate correttamente           |
+|  Precondition  |                                 Il cliente è loggato                                 |
+| Post condition |           Il nuovo username fornito dal cliente viene salvato correttamente        |
 |     Step#      |                                    Description                                     |
-|       1        |           L'utente chiede di modificare le informazioni del suo account            |
-|       2        |                  Il sistema chiede di inserire un nuovo username                   |
-|       3        |                        L'utente inserisce il nuovo username                        |
-|       4        |                Il sistema verifica che lo username sia disponibile                 |
-|       5        | Lo username è disponibile: il sistema salva il nuovo username per l'utente attuale |
+|       1        |           Il cliente chiede di modificare le informazioni del proprio profilo      |
+|       2        |           Il cliente chiede di modificare il suo username     |
+|       3        |                  Il sistema chiede di inserire un nuovo username                   |
+|       4        |                        Il cliente inserisce il nuovo username                        |
+|       5        |                Il sistema verifica che lo username sia disponibile                 |
+|       6        | Lo username è disponibile: il sistema salva il nuovo username per il cliente attuale |
 
-| Scenario 2.2.2 |                   Modifica dello username (username non disponibile)                    |
-| :------------: | :-------------------------------------------------------------------------------------: |
-|  Precondition  |                                   L'utente è loggato                                    |
-| Post condition | Lo username inserito non è disponibile, le informazioni dell'utente risultano invariate |
-|     Step#      |                                       Description                                       |
-|       1        |              L'utente chiede di modificare le informazioni del suo account              |
-|       2        |                     Il sistema chiede di inserire un nuovo username                     |
-|       3        |                          L'utente inserisce il nuovo username                           |
-|       4        |                   Il sistema verifica che lo username sia disponibile                   |
-|       5        | Lo username non è disponibile: il sistema mostra un errore e chiede all'utente di provare ad inserire un altro username |
+#### Scenario 2.2.2
 
-| Scenario 2.2.3 |                      Modifica della password (a buon fine)                      |
+| Scenario 2.2.2 |                       Modifica dello username (il nuovo username esiste già nel sistema)|
+| :------------: | :--------------------------------------------------------------------------------: |
+|  Precondition  |                                 Il cliente è loggato                                 |
+| Post condition |           Lo username non è disponibile, le informazioni del cliente risultano invariate        |
+|     Step#      |                                    Description                                     |
+|       1        |           Il cliente chiede di modificare le informazioni del proprio profilo      |
+|       2        |           Il cliente chiede di modificare il suo username            |
+|       3        |                  Il sistema chiede di inserire un nuovo username                   |
+|       4        |                        Il cliente inserisce il nuovo username                        |
+|       5        |                Il sistema verifica che lo username sia disponibile                 |
+|       6        | Lo username non è disponibile: il sistema mostra un errore e la procedura riprende dallo step #3 |
+
+### Use case 2.3 , UC2.3 Modifica delle informazioni utente: email di un cliente loggato
+
+| Actors Involved  |                                          Cliente                                           |
+| :--------------: | :---------------------------------------------------------------------------------------: |
+|   Precondition   |                                    Il cliente è loggato                                     |
+|  Post condition  |              L'email del cliente risulta modificato correttamente               |
+| Nominal Scenario | Il cliente inserisce la nuova email da sostituire alla precedente |
+|     Variants     |                                                                                           |
+|    Exceptions    |          La verifica dell'email non va a buon fine         |
+
+#### Scenario 2.3.1
+
+| Scenario 2.3.1 |                       Modifica dell'email (a buon fine)                        |
+| :------------: | :--------------------------------------------------------------------------------: |
+|  Precondition  |                                 Il cliente è loggato                                 |
+| Post condition |           La nuova email fornita dal cliente viene salvata correttamente        |
+|     Step#      |                                    Description                                     |
+|       1        |           Il cliente chiede di modificare le informazioni del proprio profilo      |
+|       2        |           Il cliente chiede di modificare la sua email |
+|       3        |                  Il sistema chiede di inserire una nuova email                   |
+|       4        |                        Il cliente inserisce la sua nuova email                       |
+|       5        |                Il sistema invia un'email di verifica alla casella di posta elettronica del cliente |
+|       6        | Il cliente verifica correttamente la sua nuova email, che viene sostituita alla precedente |
+
+#### Scenario 2.3.2
+
+| Scenario 2.3.2 |                       Modifica dell'email (verifica email non va a buon fine)      |
+| :------------: | :--------------------------------------------------------------------------------: |
+|  Precondition  |                                 Il cliente è loggato                                 |
+| Post condition |           La nuova email fornita dal cliente non viene verificata correttamente: le informazioni del cliente risultano invariate        |
+|     Step#      |                                    Description                                     |
+|       1        |           Il cliente chiede di modificare le informazioni del proprio profilo      |
+|       2        |           Il cliente chiede di modificare la sua email |
+|       3        |                  Il sistema chiede di inserire una nuova email                   |
+|       4        |                        Il cliente inserisce la sua nuova email                       |
+|       5        |                Il sistema invia un'email di verifica alla casella di posta elettronica del cliente |
+|       6        | Il sistema non riceve conferma della verifica della nuova email, le informazioni del cliente risultano invariate |
+
+### Use case 2.4 , UC2.4 Modifica delle informazioni utente: password di un utente loggato
+
+| Actors Involved  |                                          Utente                                          |
+| :--------------: | :---------------------------------------------------------------------------------------: |
+|   Precondition   |                                    L'utente è loggato                                     |
+|  Post condition  |              La password dell'utente risulta modificata correttamente               |
+| Nominal Scenario | L'utente inserisce e conferma la nuova password da sostituire alla precedente |
+|     Variants     |                                                                                           |
+|    Exceptions    |          Le due password inserite dall'utente non combaciano         |
+
+#### Scenario 2.4.1
+
+| Scenario 2.4.1 |                      Modifica della password (a buon fine)                      |
 | :------------: | :-----------------------------------------------------------------------------: |
 |  Precondition  |                               L'utente è loggato                                |
-| Post condition |         Le informazioni dell'utente risultano modificate correttamente          |
+| Post condition |         La password dell'utente risulta modificata correttamente         |
 |     Step#      |                                   Description                                   |
 |       1        |          L'utente chiede di modificare le informazioni del suo account          |
-|       2        |            Il sistema chiede di inserire due volte la nuova password            |
-|       3        |                 L'utente inserisce due volte la nuova password                  |
-|       4        |             Il sistema verifica che le password inserite combacino              |
-|       5        | Le password combaciano: il sistema salva la nuova password per l'utente attuale |
+|       2        |          L'utente chiede di modificare la sua password         |
+|       3        |            Il sistema chiede di inserire due volte la nuova password            |
+|       4        |                 L'utente inserisce due volte la nuova password                  |
+|       5        |             Il sistema verifica che le password inserite combacino              |
+|       6        | Le password combaciano: il sistema salva la nuova password per l'utente attuale |
 
-| Scenario 2.2.4 |               Modifica della password (la conferma password non va a buon fine)                |
+#### Scenario 2.4.2
+
+| Scenario 2.4.2 |               Modifica della password (la conferma password non va a buon fine)                |
 | :------------: | :--------------------------------------------------------------------------------------------: |
 |  Precondition  |                                       L'utente è loggato                                       |
 | Post condition | La modifica della password non va a buon fine, le informazioni dell'utente risultano invariate |
 |     Step#      |                                          Description                                           |
-|       1        |                 L'utente chiede di modificare le informazioni del suo account                  |
-|       2        |                   Il sistema chiede di inserire due volte la nuova password                    |
-|       3        |                         L'utente inserisce due volte la nuova password                         |
-|       4        |                     Il sistema verifica che le password inserite combacino                     |
-|       5        | Le password non combaciano: il sistema mostra un errore e chiede all'utente di provare a reinserire la nuova password |
+|       1        |          L'utente chiede di modificare le informazioni del suo account          |
+|       2        |                 L'utente chiede di modificare la sua password                 |
+|       3        |                   Il sistema chiede di inserire due volte la nuova password                    |
+|       4        |                         L'utente inserisce due volte la nuova password                         |
+|       5        |                     Il sistema verifica che le password inserite combacino                     |
+|       6        | Le password non combaciano: il sistema mostra un errore e la procedura riprende dallo step #3 |
 
 ### Use case 3.1, UC3.1 Visualizza tutti i prodotti
 
