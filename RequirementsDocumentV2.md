@@ -148,9 +148,9 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR8.4| Invio di una notifica al cliente quando un prodotto nel suo carrello viene esaurito (prima che lui lo acquisti)************* (AGGIUNTO)|
 | FR8.5| Invio di una notifica al manager quando un prodotto viene esaurito************* (AGGIUNTO)|
 |**FR9**| **Gestione lista dei desideri**                                                     |
-| FR9.1| Visualizza lista dei desideri*************** (serve macro req)                       |
+| FR9.1| Visualizza lista dei desideri***************                                         |
 | FR9.2| Aggiungi prodotto alla lista dei desideri***************                             |
-| FR9.3| Rimuovi prodotto dalla lista dei desideri***************                                |
+| FR9.3| Rimuovi prodotto dalla lista dei desideri***************                             |
 
 ## Table of rights
 
@@ -174,8 +174,8 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR3.8 Aggiungi sconto ad un prodotto                                                            |           |           |     X     |
 | FR3.9 Filtra prodotti per sconto                                                                |           |     X     |     X     |
 | FR3.10 Visualizza storico prezzi di un prodotto                                                 |           |     X     |     X     |
-| FR3.11 Aggiungi prodotto alla lista dei desideri                                                |           |           |     X     |
-| FR3.12 Rimuovi prodotto dalla lista dei desideri                                                |           |           |     X     |
+| FR3.11 Aggiungi prodotto alla lista dei desideri                                                |           |     X     |           |
+| FR3.12 Rimuovi prodotto dalla lista dei desideri                                                |           |     X     |           |
 | FR4.1 Visualizzazione del carrello attuale del cliente                                          |           |     X     |           |
 | FR4.2 Aggiunta di un prodotto al carrello attuale                                               |           |     X     |           |
 | FR4.3 Rimozione di un prodotto dal carrello attuale                                             |           |     X     |           |
@@ -185,7 +185,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR5.1 Aggiunta indirizzo di spedizione                                                          |           |     X     |           |
 | FR5.2 Modifica indirizzo di spedizione                                                          |           |     X     |           |
 | FR5.3 Visualizza stato della spedizione del carrello acquistato                                 |           |     X     |           |
-| FR5.4 Visualizza stato ordine                                                                   |           |     X     |           |
+| FR5.4 Visualizza stato ordine (non corrisponde a req funzionale??)                              |           |     X     |           |
 | FR6.1 Aggiungi metodo di pagamento                                                              |           |     X     |           |
 | FR6.2 Rimuovi metodo di pagamento                                                               |           |     X     |           |
 | FR7.1 Visualizza statistiche relative allo stato degli ordini     (DA FARE)                     |           |           |     X     |
@@ -195,9 +195,9 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR8.3 Invio di una notifica al cliente quando lo stato della sua spedizione viene aggiornato    |           |           |           |
 | FR8.4 Invio di una notifica al cliente quando un prodotto nel suo carrello viene esaurito       |           |           |           |
 | FR8.5 Invio di una notifica al manager quando un prodotto viene esaurito                        |           |           |           |
-| FR9.1 Visualizza lista dei desideri                                                             |           |           |           |
-| FR9.2 Aggiungi prodotto alla lista dei desideri                                                 |           |           |           |
-| FR9.3 Rimuovi prodotto dalla lista dei desideri                                                 |           |           |           |
+| FR9.1 Visualizza lista dei desideri                                                             |           |     X     |           |
+| FR9.2 Aggiungi prodotto alla lista dei desideri                                                 |           |     X     |           |
+| FR9.3 Rimuovi prodotto dalla lista dei desideri                                                 |           |     X     |           |
 
 ## Non Functional Requirements
 
