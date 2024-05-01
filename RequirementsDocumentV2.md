@@ -100,70 +100,71 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 
 ## Functional Requirements
 
-| ID| Descrizione                                                         |
+| ID| Descrizione                                                                              |
 |:--------|:-----------------------------------------------------------------------------------|
-| **FR1**| **Gestione degli accessi**                                          |
-| FR1.1| Login di un utente registrato                                       |
-| FR1.2| Logout di un utente registrato                                      |
+| **FR1**| **Gestione degli accessi**                                                          |
+| FR1.1| Login di un utente registrato                                                         |
+| FR1.2| Logout di un utente registrato                                                        |
 | FR1.3| Possibilità di ottenere le informazioni relative all'utente correntemente loggato|
-| **FR2**| **Gestione degli utenti**                                         |
-| FR2.1| Registrazione di un nuovo utente                                    |
+| **FR2**| **Gestione degli utenti**                                                           |
+| FR2.1| Registrazione di un nuovo utente                                                      |
 | FR2.2| Modifica profilo utente loggato (se vogliamo aggiungere l'email, modificare casi d'uso ecc.)********|
-| FR2.3| Eliminare il proprio profilo ******** (AGGIUNTO)|
-| FR2.4| Elimina profilo utente |
-| FR2.5| Visualizza utenti (?? anche per ruolo)
-| **FR3**| **Gestione dei prodotti**                                         |
-| FR3.1| Visualizzazione di tutti i prodotti                                 |
-| FR3.2| Aggiunta di un nuovo prodotto                                       |
-| FR3.3| Rimozione di un prodotto                                            |
-| FR3.4| Registrazione dell'arrivo di un nuovo (insieme di) prodotti         |
+| FR2.3| Eliminare il proprio profilo ******** (AGGIUNTO)                                      |
+| FR2.4| Elimina profilo utente                                                                |
+| FR2.5| Visualizza utenti (?? anche per ruolo)                                                |
+| **FR3**| **Gestione dei prodotti**                                                           |
+| FR3.1| Visualizzazione di tutti i prodotti                                                   |
+| FR3.2| Aggiunta di un nuovo prodotto                                                         |
+| FR3.3| Rimozione di un prodotto                                                              |
+| FR3.4| Registrazione dell'arrivo di un nuovo (insieme di) prodotti                           |
 | FR3.5| Filtraggio (e visualizzazione) di prodotti per categoria, modello, codice e disponibilità|
-| FR3.6| DIVIDERE FILTRAGGIO COME NELLA v1
-| FR3.7| Aggiungi sconto ad un prodotto*************                         |
-| FR3.8| Filtra prodotti per sconto***************                           |
-| FR3.9| Visualizza storico prezzi di un prodotto***************            (MODIFICATO)             |
-| **FR4**| **Gestione del carrello**                                         |
-| FR4.1| Visualizzazione del carrello attuale del cliente                    |
-| FR4.2| Aggiunta di un prodotto al carrello attuale                         |
-| FR4.3| Rimozione di un prodotto dal carrello attuale                       |
-| FR4.4| Acquisto dei prodotti aggiunti al carrello attuale                  |
-| FR4.5| Visualizzazione della cronologia dei carrelli acquistati dal cliente|
-| FR4.6| Cancellazione del carrello attuale                                  |
-| **FR5**| **Gestione spedizioni**                                           |
-| FR5.1| Aggiunta indirizzo di spedizione*************  (MODIFICATO)               |
-| FR5.2| Modifica indirizzo di spedizione*************                       |
-| FR5.3| Visualizza stato della spedizione del carrello acquistato*************|
-| **FR6**| **Gestione pagamenti**                                            |
-| FR6.1| Aggiungi metodo di pagamento*************                           |
-| FR6.2| Rimuovi metodo di pagamento*************                            |
-| **FR7**| **Gestione statistiche**                                          |
-| FR7.1| Visualizza statistiche relative allo stato degli ordini************* (ORDINI IN CORSO, SPEDITI, ECC.)                         |
-| FR7.2| Visualizza statistiche prodotti venduti in un range di date*************                        |
-| **FR8**| **Gestione notifiche(sul sito e per email)**                                            |
-| FR8.1| Visualizzazione delle notifiche************* |
+| FR3.6| DIVIDERE FILTRAGGIO COME NELLA v1                                                     |
+| FR3.7| Aggiungi sconto ad un prodotto*************                                           |
+| FR3.8| Filtra prodotti per sconto***************                                             |
+| FR3.9| Visualizza storico prezzi di un prodotto***************      (MODIFICATO)             |
+| **FR4**| **Gestione del carrello**                                                           |
+| FR4.1| Visualizzazione del carrello attuale del cliente                                      |
+| FR4.2| Aggiunta di un prodotto al carrello attuale                                           |
+| FR4.3| Rimozione di un prodotto dal carrello attuale                                         |
+| FR4.4| Acquisto dei prodotti aggiunti al carrello attuale                                    |
+| FR4.5| Visualizzazione della cronologia dei carrelli acquistati dal cliente                  |
+| FR4.6| Cancellazione del carrello attuale                                                    |
+| **FR5**| **Gestione spedizioni**                                                             |
+| FR5.1| Aggiunta indirizzo di spedizione*************  (MODIFICATO)                           |
+| FR5.2| Modifica indirizzo di spedizione*************                                         |
+| FR5.3| Visualizza stato della spedizione del carrello acquistato*************                |
+| **FR6**| **Gestione pagamenti**                                                              |
+| FR6.1| Aggiungi metodo di pagamento*************                                             |
+| FR6.2| Rimuovi metodo di pagamento*************                                              |
+| **FR7**| **Gestione statistiche**                                                            |
+| FR7.1| Visualizza statistiche relative allo stato degli ordini************* (ORDINI IN CORSO, SPEDITI, ECC.)                                                                                          |
+| FR7.2| Visualizza statistiche prodotti venduti in un range di date*************              |
+| **FR8**| **Gestione notifiche(sul sito e per email)**                                        |
+| FR8.1| Visualizzazione delle notifiche*************                                          |
 | FR8.2| Invio di una notifica al cliente quando un prodotto all'interno della sua lista dei desideri riceve uno sconto************* (AGGIUNTO)|
 | FR8.3| Invio di una notifica al cliente quando lo stato della sua spedizione viene aggiornato************* (AGGIUNTO) |
 | FR8.4| Invio di una notifica al cliente quando un prodotto nel suo carrello viene esaurito (prima che lui lo acquisti)************* (AGGIUNTO)|
 | FR8.5| Invio di una notifica al manager quando un prodotto viene esaurito************* (AGGIUNTO)|
-|**FR9**| **Gestione lista dei desideri** |
-| FR9.1| Visualizza lista dei desideri*************** (serve macro req)     |
-| FR9.2| Aggiungi prodotto alla lista dei desideri***************           |
-| FR| Rimuovi prodotto dalla lista dei desideri***************          |
+|**FR9**| **Gestione lista dei desideri**                                                     |
+| FR9.1| Visualizza lista dei desideri*************** (serve macro req)                       |
+| FR9.2| Aggiungi prodotto alla lista dei desideri***************                             |
+| FR| Rimuovi prodotto dalla lista dei desideri***************                                |
+
 ## Non Functional Requirements
 
 | ID| Tipo (efficienza, affidabilità, ...)| Descrizione             | Si riferisce a|
 |:-:|:-----------------------------------:|:------------------------|:-------------:|
-| NFR1 | Efficienza | Il sistema deve rispondere entro 0,5 secondi a partire da qualsiasi azione dell'utente (esclusi i tempi di caricamento delle pagine). |/|
-| NFR2 | Efficienza | Le pagine Web devono essere caricate entro 6 secondi dall'ultima richiesta dell'utente (a seconda delle condizioni della rete) |/|
-| NFR3 | Efficienza | Non è necessaria l'installazione di app per l'utente finale, ogni funzionalità deve essere accessibile dal sito web tramite un browser internet |/|
-| NFR4 | Sicurezza | Il trattamento dei dati personali degli utenti deve essere conforme al GDPR |/|
-| NFR5 | Usabilità | I clienti non hanno bisogno di alcuna formazione |/|
-| NFR6 | Usabilità | I manager hanno bisogno di un massimo di tre ore di formazione  |/|
+| NFR1 |  Efficienza  | Il sistema deve rispondere entro 0,5 secondi a partire da qualsiasi azione dell'utente (esclusi i tempi di caricamento delle pagine). |/|
+| NFR2 |  Efficienza  | Le pagine Web devono essere caricate entro 6 secondi dall'ultima richiesta dell'utente (a seconda delle condizioni della rete) |/|
+| NFR3 |  Efficienza  | Non è necessaria l'installazione di app per l'utente finale, ogni funzionalità deve essere accessibile dal sito web tramite un browser internet |/|
+| NFR4 |  Sicurezza   | Il trattamento dei dati personali degli utenti deve essere conforme al GDPR |/|
+| NFR5 |  Usabilità   | I clienti non hanno bisogno di alcuna formazione |/|
+| NFR6 |  Usabilità   | I manager hanno bisogno di un massimo di tre ore di formazione  |/|
 | NFR7 | Affidabilità | Il numero di malfunzionamenti all'anno deve essere inferiore a 2 |/|
 | NFR8 | Affidabilità | Il sistema deve avere un uptime del 99% (considerando operazioni di manutenzione e malfunzionamenti) |/|
 | NFR9 | Affidabilità | Ogni operazione di manutenzione non deve durare più di 4 ore |/|
 | NFR10| Affidabilità | Ogni utente non deve segnalare più di 1 bug non segnalato in precedenza all'anno |/|
-| NFR11| Portabilità | Il sito web deve essere accessibile dai seguenti browser (specificando la versione più vecchia supportata): Chrome (v: 79), Firefox (v: 72), Safari (v: 13.0.5), Opera (v: 65), Edge (v: 79), Samsung Internet (v: 11.2) |/|
+| NFR11| Portabilità  | Il sito web deve essere accessibile dai seguenti browser (specificando la versione più vecchia supportata): Chrome (v: 79), Firefox (v: 72), Safari (v: 13.0.5), Opera (v: 65), Edge (v: 79), Samsung Internet (v: 11.2) |/|
 
 # Use case diagram and use cases
 
@@ -236,12 +237,12 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 
 ### Use case 2.1 , UC2.1 Registrazione
 
-| Actors Involved  |                                Utente guest                                  |
-| :--------------: | :---------------------------------------------------------------------------:|
-|   Precondition   |                                --                                            |
-|  Post condition  |     L'utente risulta registrato correttamente nel sistema.           |
-| Nominal Scenario |  L'utente inserisce tutti i dati richiesti per la registrazione e sceglie il ruolo con cui registrarsi nel sistema. |
-|    Variants      |                                                                              |
+| Actors Involved  |                      Utente guest                      |
+| :-------------:  | :----------------------------------------------------: |
+|  Precondition    |                           --                           |
+| Post condition   | L'utente risulta registrato correttamente nel sistema. |
+| Nominal Scenario |           L'utente inserisce tutti i dati richiesti per la registrazione e sceglie il ruolo con cui registrarsi nel sistema.    |
+|     Variants     |                                                        |
 |    Exceptions    | I dati inseriti non sono corretti o l'utente risulta già registrato, il sistema ritorna un errore e la registrazione non va a buon fine |
 
 #### Scenario 2.1
@@ -249,7 +250,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |  Scenario 2.1  |                                                                   |
 | :------------: | :---------------------------------------------------------------: |
 |  Precondition  |                                --                                 |
-| Post condition |   L'utente risulta registrato correttamente nel sistema   |
+| Post condition |       L'utente risulta registrato correttamente nel sistema       |
 |     Step#      |                            Description                            |
 |       1        |            L'utente chiede di registrarsi al sistema.             |
 |       2        |      Il sistema chiede i dati necessari per la registrazione      |
@@ -259,59 +260,59 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 
 ### Use case 2.2 , UC2.2 Modifica informazioni utente
 
-| Actors Involved  |                                Utente                                        |
-| :--------------: | :---------------------------------------------------------------------------:|
-|   Precondition   |                                L'utente è loggato                            |
-|  Post condition  |     Le informazioni dell'utente risultano modificate correttamente           |
-| Nominal Scenario |  L'utente inserisce le nuove informazioni (username e/o password) da memorizzare a sistema |
-|    Variants      |                                                                              |
-|    Exceptions    | Lo username esiste già o la conferma della password non va a buon fine |
+| Actors Involved  |                                          Utente                                           |
+| :--------------: | :---------------------------------------------------------------------------------------: |
+|   Precondition   |                                    L'utente è loggato                                     |
+|  Post condition  |              Le informazioni dell'utente risultano modificate correttamente               |
+| Nominal Scenario | L'utente inserisce le nuove informazioni (username e/o password) da memorizzare a sistema |
+|     Variants     |                                                                                           |
+|    Exceptions    |          Lo username esiste già o la conferma della password non va a buon fine           |
 
 #### Scenario 2.2
 
-|  Scenario 2.2.1  | Modifica dello username (a buon fine)                             |
-| :------------: | :---------------------------------------------------------------: |
-|  Precondition  |                                L'utente è loggato                 |
-| Post condition |   Le informazioni dell'utente risultano modificate correttamente  |
-|     Step#      |                            Description                            |
-|       1        | L'utente chiede di modificare le informazioni del suo account  |
-|       2        |      Il sistema chiede di inserire un nuovo username              |
-|       3        |                L'utente inserisce il nuovo username               |
-|       4        |      Il sistema verifica che lo username sia disponibile          |
-|       5        |  Lo username è disponibile: il sistema salva il nuovo username per l'utente attuale |
+| Scenario 2.2.1 |                       Modifica dello username (a buon fine)                        |
+| :------------: | :--------------------------------------------------------------------------------: |
+|  Precondition  |                                 L'utente è loggato                                 |
+| Post condition |           Le informazioni dell'utente risultano modificate correttamente           |
+|     Step#      |                                    Description                                     |
+|       1        |           L'utente chiede di modificare le informazioni del suo account            |
+|       2        |                  Il sistema chiede di inserire un nuovo username                   |
+|       3        |                        L'utente inserisce il nuovo username                        |
+|       4        |                Il sistema verifica che lo username sia disponibile                 |
+|       5        | Lo username è disponibile: il sistema salva il nuovo username per l'utente attuale |
 
-|  Scenario 2.2.2  | Modifica dello username (username non disponibile)                |
-| :------------: | :---------------------------------------------------------------: |
-|  Precondition  |                                L'utente è loggato                 |
-| Post condition |   Lo username inserito non è disponibile, le informazioni dell'utente risultano invariate  |
-|     Step#      |                            Description                            |
-|       1        | L'utente chiede di modificare le informazioni del suo account  |
-|       2        |      Il sistema chiede di inserire un nuovo username              |
-|       3        |                L'utente inserisce il nuovo username               |
-|       4        |      Il sistema verifica che lo username sia disponibile          |
-|       5        |  Lo username non è disponibile: il sistema mostra un errore e chiede all'utente di provare ad inserire un altro username |
+| Scenario 2.2.2 |                   Modifica dello username (username non disponibile)                    |
+| :------------: | :-------------------------------------------------------------------------------------: |
+|  Precondition  |                                   L'utente è loggato                                    |
+| Post condition | Lo username inserito non è disponibile, le informazioni dell'utente risultano invariate |
+|     Step#      |                                       Description                                       |
+|       1        |              L'utente chiede di modificare le informazioni del suo account              |
+|       2        |                     Il sistema chiede di inserire un nuovo username                     |
+|       3        |                          L'utente inserisce il nuovo username                           |
+|       4        |                   Il sistema verifica che lo username sia disponibile                   |
+|       5        | Lo username non è disponibile: il sistema mostra un errore e chiede all'utente di provare ad inserire un altro username |
 
-|  Scenario 2.2.3  | Modifica della password (a buon fine)                             |
-| :------------: | :---------------------------------------------------------------: |
-|  Precondition  |                                L'utente è loggato                 |
-| Post condition |   Le informazioni dell'utente risultano modificate correttamente  |
-|     Step#      |                            Description                            |
-|       1        | L'utente chiede di modificare le informazioni del suo account     |
-|       2        |      Il sistema chiede di inserire due volte la nuova password    |
-|       3        |                L'utente inserisce due volte la nuova password     |
-|       4        |      Il sistema verifica che le password inserite combacino       |
-|       5        |  Le password combaciano: il sistema salva la nuova password per l'utente attuale |
+| Scenario 2.2.3 |                      Modifica della password (a buon fine)                      |
+| :------------: | :-----------------------------------------------------------------------------: |
+|  Precondition  |                               L'utente è loggato                                |
+| Post condition |         Le informazioni dell'utente risultano modificate correttamente          |
+|     Step#      |                                   Description                                   |
+|       1        |          L'utente chiede di modificare le informazioni del suo account          |
+|       2        |            Il sistema chiede di inserire due volte la nuova password            |
+|       3        |                 L'utente inserisce due volte la nuova password                  |
+|       4        |             Il sistema verifica che le password inserite combacino              |
+|       5        | Le password combaciano: il sistema salva la nuova password per l'utente attuale |
 
-|  Scenario 2.2.4  | Modifica della password (la conferma password non va a buon fine)|
-| :------------: | :---------------------------------------------------------------: |
-|  Precondition  |                                L'utente è loggato                 |
-| Post condition |   La modifica della password non va a buon fine, le informazioni dell'utente risultano invariate  |
-|     Step#      |                            Description                            |
-|       1        | L'utente chiede di modificare le informazioni del suo account     |
-|       2        |      Il sistema chiede di inserire due volte la nuova password    |
-|       3        |                L'utente inserisce due volte la nuova password     |
-|       4        |      Il sistema verifica che le password inserite combacino       |
-|       5        |  Le password non combaciano: il sistema mostra un errore e chiede all'utente di provare a reinserire la nuova password |
+| Scenario 2.2.4 |               Modifica della password (la conferma password non va a buon fine)                |
+| :------------: | :--------------------------------------------------------------------------------------------: |
+|  Precondition  |                                       L'utente è loggato                                       |
+| Post condition | La modifica della password non va a buon fine, le informazioni dell'utente risultano invariate |
+|     Step#      |                                          Description                                           |
+|       1        |                 L'utente chiede di modificare le informazioni del suo account                  |
+|       2        |                   Il sistema chiede di inserire due volte la nuova password                    |
+|       3        |                         L'utente inserisce due volte la nuova password                         |
+|       4        |                     Il sistema verifica che le password inserite combacino                     |
+|       5        | Le password non combaciano: il sistema mostra un errore e chiede all'utente di provare a reinserire la nuova password |
 
 ### Use case 3.1, UC3.1 Visualizza tutti i prodotti
 
@@ -335,13 +336,13 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 
 ### Use case 3.2, UC3.2 Aggiungi nuovo prodotto
 
-| Actors Involved  |                            Manager                                   |
-| :--------------: | :------------------------------------------------------------------: |
-|   Precondition   |               L'utente è loggato ed ha il ruolo Manager              |
-|  Post condition  |          Il prodotto viene aggiunto correttamente                    |
+| Actors Involved  |                                   Manager                                     |
+| :--------------: | :---------------------------------------------------------------------------: |
+|  Precondition    |                L'utente è loggato ed ha il ruolo Manager                      |
+| Post condition   |                      Il prodotto viene aggiunto                               |
 | Nominal Scenario | Il manager chiede di aggiungere un nuovo prodotto, inserisce tutti i dati richiesti e il prodotto viene aggiunto correttamente |
-|     Variants     |                                                                      |
-|    Exceptions    |Il prodotto è già presente o la data di arrivo è successiva a quella corrente |
+|     Variants     |                                                                               |
+|    Exceptions    | Il prodotto è già presente o la data di arrivo è successiva a quella corrente |
 
 #### Scenario 3.2
 
@@ -381,13 +382,13 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 
 ### Use case 3.4, UC3.4 Registrazione dell'arrivo di un nuovo (insieme di) prodotto/i
 
-| Actors Involved  |                Manager                                        |
-| :--------------: | :-----------------------------------------------------------: |
-|   Precondition   |                 L'utente è loggato ed ha il ruolo Manager             |
-|  Post condition  |   Vengono registrati correttamente l'arrivo di un set di prodotti     |
+| Actors Involved  |                                         Manager                                           |
+| :--------------: | :---------------------------------------------------------------------------------------: |
+|   Precondition   |                         L'utente è loggato ed ha il ruolo Manager                         |
+|  Post condition  |                 Vengono registrati correttamente l'arrivo di un set di prodotti           |
 | Nominal Scenario | Il manager chiede al sistema di registrare l'arrivo di un set di prodotti dello stesso modello e vengono registrati correttamente |
-|     Variants     |                                                                       |
-|    Exceptions    | La data di arrivo è successiva a quella corrente e viene mostrato un errore  |
+|     Variants     |                                                                                           |
+|    Exceptions    |        La data di arrivo è successiva a quella corrente e viene mostrato un errore        |
 
 #### Scenario 3.4
 
@@ -426,13 +427,13 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 
 ### Use case 3.6, UC3.6 Cataloga prodotto come venduto
 
-| Actors Involved |Manager                                                                   |
-| :--------------:| :------------------------------------------------------------------:|
-|   Precondition  | Il manager è loggato |
-|  Post condition | Il prodotto viene catalogato come venduto |
-| Nominal Scenario| Il manager chiede di catalogare un prodotto come venduto  |
-|     Variants    |                         |
-|    Exceptions   | Il prodotto non esiste, la data di vendita risulta successiva alla data di arrivo o a quella corrente o il prodotto risulta già venduto|
+| Actors Involved  |                               Manager                                |
+| :--------------: | :------------------------------------------------------------------: |
+|   Precondition   |                         Il manager è loggato                         |
+|  Post condition  |              Il prodotto viene catalogato come venduto               |
+| Nominal Scenario |       Il manager chiede di catalogare un prodotto come venduto       |
+|     Variants     |                                                                      |
+|    Exceptions    | Il prodotto non esiste, la data di vendita risulta successiva alla data di arrivo o a quella corrente o il prodotto risulta già venduto |
 
 #### Scenario 3.6
 
@@ -478,23 +479,23 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 
 #### Scenario 3.8
 
-|  Scenario 3.8  |                              Filtra prodotti per sconto                              |
-| :------------: | :----------------------------------------------------------------------------------: |
-|  Precondition  |                                 Il cliente è loggato                                 |
-| Post condition |    Vengono mostrati i prodotti filtrati in base allo sconto inserito dal cliente     |
-|     Step#      |                                     Description                                      |
-|       1        |      Il cliente chiede di filtrare i prodotti per sconto e inserisce lo sconto       |
+|  Scenario 3.8  |                                           Filtra prodotti per sconto                                            |
+| :------------: | :-------------------------------------------------------------------------------------------------------------: |
+|  Precondition  |                                              Il cliente è loggato                                               |
+| Post condition |                  Vengono mostrati i prodotti filtrati in base allo sconto inserito dal cliente                  |
+|     Step#      |                                                   Description                                                   |
+|       1        |                    Il cliente chiede di filtrare i prodotti per sconto e inserisce lo sconto                    |
 |       2        | Il sistema mostra solo i prodotti che risultano avere lo sconto uguale o maggiore a quello inserito dall'utente |
 
 ### Use case 3.9, UC3.9 Traccia prezzo di un prodotto
 
-| Actors Involved  |                                                      Cliente                                                      |
-| :--------------: | :---------------------------------------------------------------------------------------------------------------: |
-|   Precondition   |                                               Il cliente è loggato                                                |
-|  Post condition  |                                                        ???                                                        |
+| Actors Involved  |                          Cliente                             |
+| :--------------: | :----------------------------------------------------------: |
+|   Precondition   |                   Il cliente è loggato                       |
+|  Post condition  |                             ???                              |
 | Nominal Scenario | Il cliente vuole tracciare il prezzo di un prodotto e ogni volta che questo cambia gli viene inviata una notifica |
-|     Variants     |                                                                                                                   |
-|    Exceptions    |                                              Il prodotto non esiste                                               |
+|     Variants     |                                                              |
+|    Exceptions    |                      Il prodotto non esiste                  |
 
 #### Scenario 3.9
 
@@ -774,108 +775,108 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 
 ## Gestione pagamenti
 
-### Use case 6.1, UC6.1  Aggiungi metodo di pagamento
+### Use case 6.1, UC6.1 Aggiungi metodo di pagamento
 
-| Actors Involved  | Cliente                                                                   |
-| :--------------: | :------------------------------------------------------------------: |
-|   Precondition   | Il cliente è loggato  |
-|  Post condition  | Il metodo di pagamento è aggiunto correttamente   |
-| Nominal Scenario | Il cliente chiede di aggiungere un nuovo metodo di pagamento    |
-|     Variants     |                          |
-|    Exceptions    | |
+| Actors Involved  |                           Cliente                            |
+| :--------------: | :----------------------------------------------------------: |
+|   Precondition   |                     Il cliente è loggato                     |
+|  Post condition  |       Il metodo di pagamento è aggiunto correttamente        |
+| Nominal Scenario | Il cliente chiede di aggiungere un nuovo metodo di pagamento |
+|     Variants     |                                                              |
+|    Exceptions    |                                                              |
 
 #### Scenario 6.1
 
-|  Scenario 6.1  |                                                                     Aggiungi metodo di pagamento    |
-| :------------: | :------------------------------------------------------------------------: |
-|  Precondition  | Il cliente è loggato |
-| Post condition |Il metodo di pagamento è aggiunto correttamente   |
-|     Step#      |                                Description                                 |
-|       1        |                                                        Il cliente chiede di aggiungere un nuovo metodo di pagamento          |
-|       2        |                                                        Il cliente seleziona la tipologia di metodo di pagamento che vuole inserire (carta, buono regalo,..)|
-|       3        | Il cliente aggiunge i dettagli relativi al metodo di pagamento selezionato (dati carta, dati buono,..)|
-|       4        | Il metodo di pagamento selezionato viene aggiunto correttamente
+|  Scenario 6.1  |                                      Aggiungi metodo di pagamento                                      |
+| :------------: | :----------------------------------------------------------------------------------------------------: |
+|  Precondition  |                                          Il cliente è loggato                                          |
+| Post condition |                            Il metodo di pagamento è aggiunto correttamente                             |
+|     Step#      |                                              Description                                               |
+|       1        |                      Il cliente chiede di aggiungere un nuovo metodo di pagamento                      |
+|       2        |  Il cliente seleziona la tipologia di metodo di pagamento che vuole inserire (carta, buono regalo,..)  |
+|       3        | Il cliente aggiunge i dettagli relativi al metodo di pagamento selezionato (dati carta, dati buono,..) |
+|       4        |                    Il metodo di pagamento selezionato viene aggiunto correttamente                     |
 
 ### Use case 6.2, UC6.2 Rimuovi metodo di pagamento
 
-| Actors Involved  | Cliente                                                                   |
-| :--------------: | :------------------------------------------------------------------: |
-|   Precondition   | Il cliente è loggato  |
-|  Post condition  | Il metodo di pagamento viene rimosso  |
-| Nominal Scenario | Il cliente chiede di rimuovere un metodo di pagamento   |
-|     Variants     |                          |
-|    Exceptions    | |
+| Actors Involved  |                        Cliente                        |
+| :--------------: | :---------------------------------------------------: |
+|   Precondition   |                 Il cliente è loggato                  |
+|  Post condition  |         Il metodo di pagamento viene rimosso          |
+| Nominal Scenario | Il cliente chiede di rimuovere un metodo di pagamento |
+|     Variants     |                                                       |
+|    Exceptions    |                                                       |
 
 #### Scenario 6.2
 
-|  Scenario 6.2  |                                                                     Rimuovi metodo di pagamento    |
-| :------------: | :------------------------------------------------------------------------: |
-|  Precondition  | Il cliente è loggato |
-| Post condition |Il metodo di pagamento viene rimosso  |
-|     Step#      |                                Description                                 |
-|       1        |                                                        Il cliente seleziona il metodo di pagamento che vuole rimuovere         |
-|       2        |                                                        Il sistema rimuove il metodo di pagamento selezionato dal cliente|
+|  Scenario 6.2  |                    Rimuovi metodo di pagamento                    |
+| :------------: | :---------------------------------------------------------------: |
+|  Precondition  |                       Il cliente è loggato                        |
+| Post condition |               Il metodo di pagamento viene rimosso                |
+|     Step#      |                            Description                            |
+|       1        |  Il cliente seleziona il metodo di pagamento che vuole rimuovere  |
+|       2        | Il sistema rimuove il metodo di pagamento selezionato dal cliente |
 
-### Use case 7.1, UC7.1  Visualizza statistiche ordini (???)
+### Use case 7.1, UC7.1 Visualizza statistiche ordini (???)
 
-| Actors Involved  | Cliente                                                                   |
-| :--------------: | :------------------------------------------------------------------: |
-|   Precondition   | Il cliente è loggato  |
-|  Post condition  |   |
-| Nominal Scenario |    |
-|     Variants     |                          |
-|    Exceptions    | |
+| Actors Involved  |       Cliente        |
+| :--------------: | :------------------: |
+|   Precondition   | Il cliente è loggato |
+|  Post condition  |                      |
+| Nominal Scenario |                      |
+|     Variants     |                      |
+|    Exceptions    |                      |
 
 #### Scenario 7.1
 
-|  Scenario 7.1  |                                                                        |
-| :------------: | :------------------------------------------------------------------------: |
+|  Scenario 7.1  |                      |
+| :------------: | :------------------: |
 |  Precondition  | Il cliente è loggato |
-| Post condition |  |
-|     Step#      |                                Description                                 |
-|       1        |                                                                 |
-|       2        |                                                        |
+| Post condition |                      |
+|     Step#      |     Description      |
+|       1        |                      |
+|       2        |                      |
 
 ### Use case 7.2, UC7.2 Visualizza statistiche prodotti venduti
 
-| Actors Involved  | Manager                                                                   |
-| :--------------: | :------------------------------------------------------------------: |
-|   Precondition   | Il manager è loggato  |
+| Actors Involved  |                                              Manager                                              |
+| :--------------: | :-----------------------------------------------------------------------------------------------: |
+|   Precondition   |                                       Il manager è loggato                                        |
 |  Post condition  | Vengono visualizzate le statistiche relative ai prodotti venduti in un periodo scelto dal manager |
-| Nominal Scenario | Il manager chiede di visualizzare le statistiche dei prodotti venduti in un range di date  |
-|     Variants     |                          |
-|    Exceptions    | La data di inizio è successiva a quella di fine range|
+| Nominal Scenario |     Il manager chiede di visualizzare le statistiche dei prodotti venduti in un range di date     |
+|     Variants     |                                                                                                   |
+|    Exceptions    |                       La data di inizio è successiva a quella di fine range                       |
 
 #### Scenario 7.2
 
-|  Scenario 7.2  |                                                                     Visualizza statistiche prodotti venduti    |
-| :------------: | :------------------------------------------------------------------------: |
-|  Precondition  | Il manager è loggato |
-| Post condition |Vengono visualizzate le statistiche relative ai prodotti venduti in un periodo scelto dal manager |
-|     Step#      |                                Description                                 |
-|       1        |                                                        Il manager chiede di visualizzare le statistiche relative ai prodotti venduti          |
-|       2        |                                                        Il manager inserisce il range di date all'interno del quale vuole visualizzare le statistiche dei prodotti venduti |
-|3| Il sistema mostra le statistiche relative alle vendite dei prodotti nel range di date inserito dal manager|
+|  Scenario 7.2  |                                      Visualizza statistiche prodotti venduti                                       |
+| :------------: | :----------------------------------------------------------------------------------------------------------------: |
+|  Precondition  |                                                Il manager è loggato                                                |
+| Post condition |         Vengono visualizzate le statistiche relative ai prodotti venduti in un periodo scelto dal manager          |
+|     Step#      |                                                    Description                                                     |
+|       1        |                   Il manager chiede di visualizzare le statistiche relative ai prodotti venduti                    |
+|       2        | Il manager inserisce il range di date all'interno del quale vuole visualizzare le statistiche dei prodotti venduti |
+|       3        |     Il sistema mostra le statistiche relative alle vendite dei prodotti nel range di date inserito dal manager     |
 
-### Use case 8.1, UC8.1  Visualizzazione delle notifiche
+### Use case 8.1, UC8.1 Visualizzazione delle notifiche
 
-| Actors Involved  | Utente                                                                  |
-| :--------------: | :------------------------------------------------------------------: |
-|   Precondition   | L'utente loggato  |
-|  Post condition  | L'utente visualizza le notifiche ricevute  |
-| Nominal Scenario | L'utente chiede di visualizzare le notifiche ricevute dal sistema  |
-|     Variants     |                          |
-|    Exceptions    | |
+| Actors Involved  |                              Utente                               |
+| :--------------: | :---------------------------------------------------------------: |
+|   Precondition   |                         L'utente loggato                          |
+|  Post condition  |             L'utente visualizza le notifiche ricevute             |
+| Nominal Scenario | L'utente chiede di visualizzare le notifiche ricevute dal sistema |
+|     Variants     |                                                                   |
+|    Exceptions    |                                                                   |
 
 #### Scenario 8.1
 
-|  Scenario 8.1  |                                                                        |
-| :------------: | :------------------------------------------------------------------------: |
-|  Precondition  | L'utente è loggato |
-| Post condition | L'utente visualizza le notifiche ricevute |
-|     Step#      |                                Description                                 |
-|       1        |  L'utente chiede di visualizzare le sue notifiche |
-|       2        |  Il sistema mostra le notifiche inviate al cliente |
+|  Scenario 8.1  |                                                   |
+| :------------: | :-----------------------------------------------: |
+|  Precondition  |                L'utente è loggato                 |
+| Post condition |     L'utente visualizza le notifiche ricevute     |
+|     Step#      |                    Description                    |
+|       1        | L'utente chiede di visualizzare le sue notifiche  |
+|       2        | Il sistema mostra le notifiche inviate al cliente |
 
 # Glossary
 
