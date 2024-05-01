@@ -48,6 +48,8 @@ EZElectronics (read EaSy Electronics) is a software application designed to help
 | Servizio di spedizione| Servizio per la spedizione dei prodotti                                        |
 | Amministratore        | Amministratore del sistema                                                     |
 | Utente guest          | Utente che non ha ancora effettuato la fase di login o la fase di registrazione|
+| Validazione mail      | Servizio per la validazione che le mail inserite siano corrette                |
+| Invio mail            | Servizio per scrivere ed inviare delle mail                                    |
 
 # Context Diagram and interfaces
 
@@ -65,6 +67,8 @@ EZElectronics (read EaSy Electronics) is a software application designed to help
 | Amministratore        | GUI (interfaccia per visualizzare e gestire i prodotti e gli utenti)      | Console           |
 | Servizio bancario     | APIs                                                                      | Internet          |
 | Servizio di spedizione| APIs                                                                      | Internet          |
+| Validazione mail      | APIs                                                                      | Internet          |
+| Invio mail            | APIs                                                                      | Internet          |
 
 # Stories and personas
 
@@ -104,20 +108,20 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR1.3| Possibilità di ottenere le informazioni relative all'utente correntemente loggato|
 | **FR2**| **Gestione degli utenti**                                         |
 | FR2.1| Registrazione di un nuovo utente                                    |
-| FR2.2| Modifica informazioni utente (se vogliamo aggiungere l'email, modificare casi d'uso ecc.)********|
+| FR2.2| Modifica profilo utente loggato (se vogliamo aggiungere l'email, modificare casi d'uso ecc.)********|
+| FR2.3| Eliminare il proprio profilo ******** (AGGIUNTO)|
+| FR2.4| Elimina profilo utente |
+| FR2.5| Visualizza utenti (?? anche per ruolo)
 | **FR3**| **Gestione dei prodotti**                                         |
 | FR3.1| Visualizzazione di tutti i prodotti                                 |
 | FR3.2| Aggiunta di un nuovo prodotto                                       |
 | FR3.3| Rimozione di un prodotto                                            |
 | FR3.4| Registrazione dell'arrivo di un nuovo (insieme di) prodotti         |
 | FR3.5| Filtraggio (e visualizzazione) di prodotti per categoria, modello, codice e disponibilità|
-| FR3.6| Registrazione automatica della vendita di un prodotto quando un cliente lo acquista************* |
+| FR3.6| DIVIDERE FILTRAGGIO COME NELLA v1
 | FR3.7| Aggiungi sconto ad un prodotto*************                         |
 | FR3.8| Filtra prodotti per sconto***************                           |
-| FR3.9| Traccia prezzo di un prodotto***************                        |
-| FR3.10| Visualizza lista dei desideri*************** (serve macro req)     |
-| FR3.10| Aggiungi prodotto alla lista dei desideri***************           |
-| FR3.10| Rimuovi prodotto dalla lista dei desideri***************           |
+| FR3.9| Visualizza storico prezzi di un prodotto***************            (MODIFICATO)             |
 | **FR4**| **Gestione del carrello**                                         |
 | FR4.1| Visualizzazione del carrello attuale del cliente                    |
 | FR4.2| Aggiunta di un prodotto al carrello attuale                         |
@@ -126,23 +130,25 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR4.5| Visualizzazione della cronologia dei carrelli acquistati dal cliente|
 | FR4.6| Cancellazione del carrello attuale                                  |
 | **FR5**| **Gestione spedizioni**                                           |
-| FR5.1| Aggiunta nuovo indirizzo di spedizione*************                 |
+| FR5.1| Aggiunta indirizzo di spedizione*************  (MODIFICATO)               |
 | FR5.2| Modifica indirizzo di spedizione*************                       |
-| FR5.3| Eliminazione indirizzo di spedizione*************                   |
-| FR5.4| Visualizza stato della spedizione del carrello acquistato*************|
+| FR5.3| Visualizza stato della spedizione del carrello acquistato*************|
 | **FR6**| **Gestione pagamenti**                                            |
 | FR6.1| Aggiungi metodo di pagamento*************                           |
 | FR6.2| Rimuovi metodo di pagamento*************                            |
 | **FR7**| **Gestione statistiche**                                          |
-| FR7.1| Visualizza statistiche ordini*************                          |
-| FR7.2| Visualizza statistiche prodotti*************                        |
-| **FR8**| **Gestione notifiche**                                            |
+| FR7.1| Visualizza statistiche relative allo stato degli ordini************* (ORDINI IN CORSO, SPEDITI, ECC.)                         |
+| FR7.2| Visualizza statistiche prodotti venduti in un range di date*************                        |
+| **FR8**| **Gestione notifiche(sul sito e per email)**                                            |
 | FR8.1| Visualizzazione delle notifiche************* |
-| FR8.2| Invio di una notifica al cliente quando un prodotto all'interno della sua lista dei desideri riceve uno sconto************* |
-| FR8.3| Invio di una notifica al cliente quando lo stato della sua spedizione viene aggiornato************* |
-| FR8.4| Invio di una notifica al cliente quando un prodotto nel suo carrello viene esaurito (prima che lui lo acquisti)*************|
-| FR8.5| Invio di una notifica al manager quando un prodotto viene esaurito*************|
-
+| FR8.2| Invio di una notifica al cliente quando un prodotto all'interno della sua lista dei desideri riceve uno sconto************* (AGGIUNTO)|
+| FR8.3| Invio di una notifica al cliente quando lo stato della sua spedizione viene aggiornato************* (AGGIUNTO) |
+| FR8.4| Invio di una notifica al cliente quando un prodotto nel suo carrello viene esaurito (prima che lui lo acquisti)************* (AGGIUNTO)|
+| FR8.5| Invio di una notifica al manager quando un prodotto viene esaurito************* (AGGIUNTO)|
+|**FR9**| **Gestione lista dei desideri** |
+| FR9.1| Visualizza lista dei desideri*************** (serve macro req)     |
+| FR9.2| Aggiungi prodotto alla lista dei desideri***************           |
+| FR| Rimuovi prodotto dalla lista dei desideri***************          |
 ## Non Functional Requirements
 
 | ID| Tipo (efficienza, affidabilità, ...)| Descrizione             | Si riferisce a|
@@ -478,7 +484,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Post condition |    Vengono mostrati i prodotti filtrati in base allo sconto inserito dal cliente     |
 |     Step#      |                                     Description                                      |
 |       1        |      Il cliente chiede di filtrare i prodotti per sconto e inserisce lo sconto       |
-|       2        | Il sistema mostra solo i prodotti che risultano avere lo sconto inserito dall'utente |
+|       2        | Il sistema mostra solo i prodotti che risultano avere lo sconto uguale o maggiore a quello inserito dall'utente |
 
 ### Use case 3.9, UC3.9 Traccia prezzo di un prodotto
 
