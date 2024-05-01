@@ -63,7 +63,7 @@ EZElectronics (read EaSy Electronics) is a software application designed to help
 # Stories and personas
 
 **Persona 1**: uomo, professionista ad alto reddito, sposato, con figli, 50 anni  
-Storia: vuole acquistare una nuova smart-TV <u>all'avanguardia</u> per il suo salotto: deve trovare il <u>prezzo migliore</u> tra le migliori TV presenti nel negozio.
+Storia: vuole acquistare una nuova smart-TV <u>all'avanguardia</u> per il suo salotto: deve trovare il <u>prezzo migliore</u> tra le TV top di gamma presenti nel negozio.
 
 **Persona 2**: donna, studentessa universitaria, 20 anni  
 Storia: vuole acquistare uno smartphone <u>economico</u> per sostituire quello vecchio e lento: deve trovare la <u>migliore soluzione costo-prestazioni</u>.  
@@ -72,13 +72,13 @@ Storia: vuole acquistare uno smartphone <u>economico</u> per sostituire quello v
 Storia: vuole acquistare una radio per la madre di 85 anni che vive da sola, per tenerle compagnia.
   
 **Persona 4**: uomo, lavora da pochi anni, 28 anni  
-Storia: vuole assemblare un PC da gioco all'avanguardia: vuole controllare i prezzi dei componenti a cui e' interessato.  
+Storia: vuole acquistare un PC da gioco all'avanguardia: vuole controllare i prezzi dei PC a cui è interessato.  
 
 **Persona 5**: uomo, manager di un negozio, 45 anni  
 Storia: deve <u>aggiungere al sito web un modello appena uscito</u> di un prodotto e <u>rimuoverne uno vecchio</u>, esaurito.  
 
 **Persona 6**: donna, manager del negozio, 50 anni  
-Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare uno sconto</u> per i prodotti di un modello specifico.
+Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quantità.
 
 # Functional and non functional requirements
 
@@ -97,13 +97,15 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 | FR3.2   | Aggiunta di un nuovo prodotto                                                      |
 | FR3.3   | Rimozione di un prodotto                                                           |
 | FR3.4   | Registrazione dell'arrivo di un nuovo (insieme di) prodotti                        |
-| FR3.5   | Filtraggio (e visualizzazione) di prodotti per categoria, modello, codice e disponibilita'|
-| FR3.6   | Catalogazione di un prodotto come venduto                                          |
+| FR3.5   | Visualizza informazioni prodotti di una certa categoria (opzionale: parametro disponibile)|
+| FR3.6   | Visualizza informazioni prodotti di un certo modello (opzionale: parametro disponibile) |
+| FR3.7   | Visualizza informazioni di un prodotto con un determinato codice |
+| FR3.8   | Catalogazione prodotto come venduto |
 | **FR4** | **Gestione del carrello**                                                          |
 | FR4.1   | Visualizzazione del carrello attuale del cliente                                   |
 | FR4.2   | Aggiunta di un prodotto al carrello attuale                                        |
 | FR4.3   | Rimozione di un prodotto dal carrello attuale                                      |
-| FR4.4   | Acquisto dei prodotti aggiunti al carrello attuale                                 |
+| FR4.4   | Acquisto del carrello (----) attuale                                 |
 | FR4.5   | Visualizzazione dello storico dei carrelli acquistati dal cliente                  |
 | FR4.6   | Cancellazione del carrello                                                         |
 
@@ -120,11 +122,11 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 
 ## Use case diagram
 
-![useCaseDiagram](/img/diagrammaCasiDuso.png)
+![useCaseDiagram](./img/diagrammaCasiDuso.png)
 
 ### Use case 1.1, UC1.1 Login
 
-| Actors Involved  |    Utente                                          |
+| Actors Involved  |    Utente Guest                                         |
 | :--------------: | :------------------------------------------------------------------: |
 |   Precondition   | L'utente è registrato nel sistema |
 |  Post condition  | L'utente risulta loggato |
@@ -159,7 +161,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 
 ### Use case 1.2, UC1.2 Logout
 
-| Actors Involved  |  Utente                                            |
+| Actors Involved  |  Cliente/Manager                                           |
 | :--------------: | :------------------------------------------------------------------: |
 |   Precondition   | L'utente è loggato |
 |  Post condition  | Viene eseguito il logout   |
@@ -179,7 +181,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 
 ### Use case 1.3, UC1.3 Possibilità di ottenere le informazioni relative all'utente correntemente loggato
 
-| Actors Involved  |  Utente                                                                    |
+| Actors Involved  |  Cliente/Manager                                                                     |
 | :--------------: | :------------------------------------------------------------------: |
 |   Precondition   | L'utente è loggato |
 |  Post condition  | Vengono mostrate le informazioni dell'utente attualmente loggato   |
@@ -233,7 +235,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |    5     | Il sistema rileva un errore in quanto l'username dell'utente esiste già e lo comunica all'utente   |
 ### Use case 3.1, UC3.1 Visualizza tutti i prodotti
 
-| Actors Involved  |  Utente/Manager                                                                    |
+| Actors Involved  |  Cliente/Manager                                                                    |
 | :--------------: | :------------------------------------------------------------------: |
 |   Precondition   | L'utente è loggato |
 |  Post condition  | Vengono mostrati tutti i prodotti   |
@@ -363,7 +365,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |4| Il sistema rileva un errore in quanto la data di arrivo è successiva a quella corrente e lo comunica all'utente
 ### Use case 3.5, UC3.5 Filtraggio di prodotti per categoria, modello, codice e disponibilità
 
-| Actors Involved  | Utente/Manager                                                                    |
+| Actors Involved  | Cliente/Manager                                                                    |
 | :--------------: | :------------------------------------------------------------------: |
 |   Precondition   | L'utente è loggato  |
 |  Post condition  | Vengono mostrati i prodotti che rispecchiano il filtro inserito dall'utente  |
@@ -555,7 +557,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |       1        |                                                        Il cliente chiede di rimuovere un prodotto dal suo carrello         |
 |       2        | Il sistema rileva un errore in quanto il cliente non ha alcun carrello e lo comunica all'utente
 
-### Use case 4.4, UC4.4 Acquisto dei prodotti aggiunti al carrello attuale
+### Use case 4.4, UC4.4 Acquisto del carrello attuale
 
 | Actors Involved  | Cliente                                                                   |
 | :--------------: | :------------------------------------------------------------------: |
@@ -567,7 +569,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 
 ##### Scenario 4.4
 
-|  Scenario 4.4  |                                                                    Acquisto corretto dei prodotti aggiunti al carrello attuale    |
+|  Scenario 4.4  |                                                                    Acquisto corretto del carrello  |
 | :------------: | :------------------------------------------------------------------------: |
 |  Precondition  | Il cliente è loggato |
 | Post condition |L'acquisto del carrello viene effettuato correttamente    |
@@ -578,7 +580,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |4| Il carrello risulta acquistato
 ##### Scenario 4.4.1
 
-|  Scenario 4.4.1  |                                                                    Acquisto errato dei prodotti aggiunti al carrello attuale    |
+|  Scenario 4.4.1  |                                                                    Acquisto errato del carrello attuale    |
 | :------------: | :------------------------------------------------------------------------: |
 |  Precondition  | Il cliente è loggato |
 | Post condition |  |
@@ -587,7 +589,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |       2        | Il sistema rileva un errore in quanto il carrello risulta vuoto e lo comunica al cliente
 ##### Scenario 4.4.2
 
-|  Scenario 4.4.2  |                                                                    Acquisto errato dei prodotti aggiunti al carrello attuale    |
+|  Scenario 4.4.2  |                                                                    Acquisto errato del carrello attuale    |
 | :------------: | :------------------------------------------------------------------------: |
 |  Precondition  | Il cliente è loggato |
 | Post condition |    |

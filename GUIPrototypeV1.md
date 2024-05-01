@@ -8,74 +8,74 @@ Version: 1.6
 
 ## Pagina Principale
 
-![Index](/img/Index.png)
+![Index](./img/Index.png)
 
-![IndexPC](/img/IndexPC.png)
+![IndexPC](./img/IndexPC.png)
 
-## Scrermata di registrazione
+## Schermata di registrazione
 
-![Register](/img/Register.png)
+![Register](./img/Register.png)
 
-![RegisterPC](/img/RegisterPC.png)
+![RegisterPC](./img/RegisterPC.png)
 
-## Scrermata di login
+## Schermata di login
 
-![Login](/img/Login.png)
+![Login](./img/Login.png)
 
-![LoginPC](/img/LoginPC.png)
+![LoginPC](./img/LoginPC.png)
 
-## Scrermata di visualizzazione prodotti (da utente customer)
+## Schermata di visualizzazione prodotti (da utente customer)
 
-![PaginaCustomer](/img/PaginaCustomer.png)
+![PaginaCustomer](./img/PaginaCustomer.png)
 
-![PaginaCustomerPC](/img/PaginaCustomerPC.png)
+![PaginaCustomerPC](./img/PaginaCustomerPC.png)
 
 ### Carrello (da utente customer)
 
 Si accede alla pagina premendo sull'icona del carrello sulla navbar
 
-![Carrello](/img/Carrello.png)
+![Carrello](./img/Carrello.png)
 
-![CarrelloPC](/img/CarrelloPC.png)
+![CarrelloPC](./img/CarrelloPC.png)
 
 ### Storia dei carrelli (da utente customer)
 
 Si accede alla pagina tramite la voce nel menu a tendina nella navbar
 
-![History](/img/History.png)
+![History](./img/History.png)
 
-![HistoryPC](/img/HistoryPC.png)
+![HistoryPC](./img/HistoryPC.png)
 
-## Scrermata di visualizzazione prodotti (da utente manager)
+## Schermata di visualizzazione prodotti (da utente manager)
 
-![PaginaManager](/img/PaginaManager.png)
+![PaginaManager](./img/PaginaManager.png)
 
-![PaginaManagerPC](/img/PaginaManagerPC.png)
+![PaginaManagerPC](./img/PaginaManagerPC.png)
 
 ### Inserisci un nuovo prodotto (da utente manager)
 
 Si accede alla pagina tramite il bottone "Aggiungi Prodotto" sulla navbar per la versione da PC mentre attraverso il bottone corrispondente situato in basso da cellulare
 
-![InserisciProdotto](/img/InserisciProdotto.png)
+![InserisciProdotto](./img/InserisciProdotto.png)
 
-![InserisciProdottoPC](/img/InserisciProdottoPC.png)
+![InserisciProdottoPC](./img/InserisciProdottoPC.png)
 
 ### Registrazione arrivi (da utente manager)
 
 Si accede alla pagina tramite il bottone "Registrazione Arrivi" sulla navbar per la versione da PC mentre attraverso il bottone corrispondente situato in basso da cellulare
 
-![RegistrazioneArrivi](/img/RegistrazioneArrivi.png)
+![RegistrazioneArrivi](./img/RegistrazioneArrivi.png)
 
-![RegistrazioneArriviPC](/img/RegistrazioneArriviPC.png)
+![RegistrazioneArriviPC](./img/RegistrazioneArriviPC.png)
 
 ### Logout (da utente customer e manager)
 
-![Logout](/img/Logout.png)
+![Logout](./img/Logout.png)
 
-![LogoutPC](/img/LogoutPC.png)
+![LogoutPC](./img/LogoutPC.png)
 
 ## Profilo (da utente customer e manager)
 
-![Profilo](/img/Profilo.png)
+![Profilo](./img/Profilo.png)
 
-![ProfiloPC](/img/ProfiloPC.png)
+![ProfiloPC](./img/ProfiloPC.png)
