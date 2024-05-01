@@ -765,7 +765,9 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |     Step#      |                        Description                         |
 |       1        | Il cliente chiede di di visualizzare lo stato di un ordine |
 |       2        |       Il sistema mostra l'attuale stato dell'ordine        |
+
 ## Gestione pagamenti
+
 ### Use case 6.1, UC6.1  Aggiungi metodo di pagamento
 
 | Actors Involved  | Cliente                                                                   |
@@ -774,9 +776,9 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |  Post condition  | Il metodo di pagamento è aggiunto correttamente   |
 | Nominal Scenario | Il cliente chiede di aggiungere un nuovo metodo di pagamento    |
 |     Variants     |                          |
-|    Exceptions    |
+|    Exceptions    | |
 
-##### Scenario 6.1
+#### Scenario 6.1
 
 |  Scenario 6.1  |                                                                     Aggiungi metodo di pagamento    |
 | :------------: | :------------------------------------------------------------------------: |
@@ -789,6 +791,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       4        | Il metodo di pagamento selezionato viene aggiunto correttamente
 
 ### Use case 6.2, UC6.2 Rimuovi metodo di pagamento
+
 | Actors Involved  | Cliente                                                                   |
 | :--------------: | :------------------------------------------------------------------: |
 |   Precondition   | Il cliente è loggato  |
@@ -797,7 +800,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |     Variants     |                          |
 |    Exceptions    | |
 
-##### Scenario 6.2
+#### Scenario 6.2
 
 |  Scenario 6.2  |                                                                     Rimuovi metodo di pagamento    |
 | :------------: | :------------------------------------------------------------------------: |
@@ -815,9 +818,9 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |  Post condition  |   |
 | Nominal Scenario |    |
 |     Variants     |                          |
-|    Exceptions    |
+|    Exceptions    | |
 
-##### Scenario 7.1
+#### Scenario 7.1
 
 |  Scenario 7.1  |                                                                        |
 | :------------: | :------------------------------------------------------------------------: |
@@ -827,7 +830,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        |                                                                 |
 |       2        |                                                        |
 
-### Use case 7.2, UC7.2 Visualizza statistiche prodotti venduti 
+### Use case 7.2, UC7.2 Visualizza statistiche prodotti venduti
 
 | Actors Involved  | Manager                                                                   |
 | :--------------: | :------------------------------------------------------------------: |
@@ -837,7 +840,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |     Variants     |                          |
 |    Exceptions    | La data di inizio è successiva a quella di fine range|
 
-##### Scenario 7.2
+#### Scenario 7.2
 
 |  Scenario 7.2  |                                                                     Visualizza statistiche prodotti venduti    |
 | :------------: | :------------------------------------------------------------------------: |
@@ -856,9 +859,9 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |  Post condition  | L'utente visualizza le notifiche ricevute  |
 | Nominal Scenario | L'utente chiede di visualizzare le notifiche ricevute dal sistema  |
 |     Variants     |                          |
-|    Exceptions    |
+|    Exceptions    | |
 
-##### Scenario 8.1
+#### Scenario 8.1
 
 |  Scenario 8.1  |                                                                        |
 | :------------: | :------------------------------------------------------------------------: |
@@ -875,19 +878,19 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
   - Può visualizzare i prodotti
   - Può avere ruolo di cliente o di manager
   - Riceve notifiche diverse in base al suo ruolo
-- Cliente 
+- Cliente
   - Utente che dispone di un carrello in cui inserire i prodotti che vuole acquistare
   - Può visualizzare lo stato (della spedizione) del carrello corrente (quello dei carrelli passati è "Consegnato")
   - Può visualizzare lo storico dei carrelli che ha acquistato, quindi possiede almeno un carrello (quello corrente) ed eventualmente tutti quelli acquistati precedentemente
   - Dispone di almeno un indirizzo di spedizione, dove farsi spedire i prodotti contenuti nel carrello che acquista
   - Dispone di almeno un metodo di pagamento, con cui acquistare il suo carrello
   - Dispone di una (e una sola) lista dei desideri a cui aggiungere prodotti a cui è interessato
-- Manager 
+- Manager
   - Utente responsabile del negozio fisico
   - Ogni manager ha la possibilità di gestire (aggiungere, rimuovere, registrare una nuova fornitura, registrare uno sconto, ...) i prodotti sul sito web
 - Prodotto
   - Prodotto in vendita sul sito web
-  - Il codice di un prodotto è legato al modello/variante del prodotto e le relative unità disponibili in magazzino sono tracciate mediante l'attributo "Quantità" (a differenza di V1, per cui ogni singolo prodotto aveva un codice univoco) 
+  - Il codice di un prodotto è legato al modello/variante del prodotto e le relative unità disponibili in magazzino sono tracciate mediante l'attributo "Quantità" (a differenza di V1, per cui ogni singolo prodotto aveva un codice univoco)
   - Ogni prodotto viene aggiunto da un manager al sito web
   - L'esaurimento di un prodotto viene notificato ai manager del negozio
 - Carrello
@@ -910,10 +913,8 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 
 # System Design
 
-\<describe here system design>
-
-\<must be consistent with Context diagram>
+![system design](./img/SystemDesignV2.png)
 
 # Deployment Diagram
 
-![deployment Diagram](./img/DeploymentDiagram.png)
+![deployment Diagram](./img/DeploymentDiagramV2.png)

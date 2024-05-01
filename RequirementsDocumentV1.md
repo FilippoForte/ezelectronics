@@ -105,7 +105,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 | FR4.3   | Rimozione di un prodotto dal carrello attuale                                      |
 | FR4.4   | Acquisto dei prodotti aggiunti al carrello attuale                                 |
 | FR4.5   | Visualizzazione dello storico dei carrelli acquistati dal cliente                  |
-| FR4.6   | Cancellazione del carrello                                                         |
+| FR4.6   | Cancellazione del carrello                                  |
+
+\* Le API utilizzate solo per testing non sono state considerate nei Functional Requirements
 
 ## Non Functional Requirements
 
@@ -114,7 +116,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 | NFR1  | Efficienza                            | Non è richiesta alcuna installazione per l'utente, ogni funzionalità deve essere accessibile dal sito web tramite un browser internet                                                                                    | /               |
 | NFR2  | Usabilita'                            | I clienti non hanno bisogno di alcuna formazione                                                                                                                                                                         | /               |
 | NFR3  | Usabilita'                            | I manager hanno bisogno di un massimo di tre ore di formazione                                                                                                                                                           | /               |
-| NFR4 | Affidabilita'                         | Il sistema deve avere un uptime del 99%                                                                                                                                                                                  | /               |
+| NFR4 | Affidabilita'                         | Il sistema deve avere un uptime del 99%                                                                                                              | /               |
 
 # Use case diagram and use cases
 
@@ -124,7 +126,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 
 ### Use case 1.1, UC1.1 Login
 
-| Actors Involved  |    Utente                                          |
+| Actors Involved  |    Utente guest       |
 | :--------------: | :------------------------------------------------------------------: |
 |   Precondition   | L'utente è registrato nel sistema |
 |  Post condition  | L'utente risulta loggato |
@@ -132,7 +134,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |     Variants     |                   |
 |    Exceptions    | L'utente inserisce dati errati (non previsto dalle API, ma presente nel file userDAO.ts)  (1.1.1)   |
 
-##### Scenario 1.1
+#### Scenario 1.1
 
 |  Scenario 1.1  | Login corretto                                                                       |
 | :------------: | :------------------------------------------------------------------------: |
@@ -144,6 +146,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |      3       |                                                         L'utente inserisce username a password         |
 |      4      |                                                         Il sistema valida i dati        |
 |      5      |                                                         L'utente risulta loggato        |
+
 ##### Scenario 1.1.1
 
 |  Scenario 1.1.1  |  Login errato                                                                         |
@@ -155,7 +158,6 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |       2        | Il sistema chiede username e password                                                                           |
 |      3       |                                                         L'utente inserisce username a password         |
 |      4      | Il sistema rileva un errore nei dati e lo comunica all'utente   |
-|      
 
 ### Use case 1.2, UC1.2 Logout
 
@@ -167,7 +169,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |     Variants     |                          |
 |    Exceptions    |                             |
 
-##### Scenario 1.2
+#### Scenario 1.2
 
 |  Scenario 1.2  |                                                                            |
 | :------------: | :------------------------------------------------------------------------: |
@@ -187,7 +189,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |     Variants     |                          |
 |    Exceptions    |                             |
 
-##### Scenario 1.3
+#### Scenario 1.3
 
 |  Scenario 1.3  |                                  |
 | :------------: | :------------------------------------------------------------------------: |
@@ -207,7 +209,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |     Variants     |        |
 |    Exceptions    | L'utente risulta già registrato  (2.1.1)       |
 
-##### Scenario 2.1
+#### Scenario 2.1
 
 |  Scenario 2.1  |  Registrazione corretta                                                                        |
 | :------------: | :------------------------------------------------------------------------: |
@@ -219,6 +221,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |      3      |                                                          L'utente inserisce i dati richiesti       |
 |       4      |                                                          L'utente seleziona il ruolo con cui registrarsi(manager o utente)             |
 |    5     |                                                           Il sistema salva i dati e viene creato il nuovo utente/manager               |
+
 ##### Scenario 2.1.1
 
 |  Scenario 2.1.1  |   Registrazione errata                                                                       |
@@ -231,6 +234,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |      3      |                                                          L'utente inserisce i dati richiesti       |
 |       4      |                                                          L'utente seleziona il ruolo con cui registrarsi(manager o utente)             |
 |    5     | Il sistema rileva un errore in quanto l'username dell'utente esiste già e lo comunica all'utente   |
+
 ### Use case 3.1, UC3.1 Visualizza tutti i prodotti
 
 | Actors Involved  |  Utente/Manager                                                                    |
@@ -241,7 +245,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |     Variants     |                          |
 |    Exceptions    |                             |
 
-##### Scenario 3.1
+#### Scenario 3.1
 
 |  Scenario 3.1  |                                                                            |
 | :------------: | :------------------------------------------------------------------------: |
@@ -261,7 +265,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |     Variants     |                          |
 |    Exceptions    | Il prodotto è già presente (3.2.1) o la data di arrivo è successiva a quella corrente (3.2.2)                     |
 
-##### Scenario 3.2
+#### Scenario 3.2
 
 |  Scenario 3.2  | Aggiunta corretta di un nuovo prodotto                                                                            |
 | :------------: | :------------------------------------------------------------------------: |
@@ -270,9 +274,10 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |     Step#      |                                Description                                 |
 |       1        |                                                        Il manager chiede di aggiungere un nuovo prodotto               |
 |       2        |                                                        Il sistema chiede tutti i dati necessari per l'aggiunta                |
-|3 | Il manager inserisce tutti i dati richiesti
-|4 | Il sistema valida i dati e li salva
-|5| Il prodotto viene aggiunto correttamente
+|3 | Il manager inserisce tutti i dati richiesti|
+|4 | Il sistema valida i dati e li salva|
+|5| Il prodotto viene aggiunto correttamente|
+
 ##### Scenario 3.2.1
 
 |  Scenario 3.2.1  | Aggiunta errata di un nuovo prodotto (prodotto esistente)                                                                           |
@@ -282,8 +287,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |     Step#      |                                Description                                 |
 |       1        |                                                        Il manager chiede di aggiungere un nuovo prodotto               |
 |       2        |                                                        Il sistema chiede tutti i dati necessari per l'aggiunta                |
-|3 | Il manager inserisce tutti i dati richiesti
-|4 | Il sistema rileva un errore in quanto il prodotto è già esistente e lo comunica all'utente
+|3 | Il manager inserisce tutti i dati richiesti|
+|4 | Il sistema rileva un errore in quanto il prodotto è già esistente e lo comunica all'utente|
+
 ##### Scenario 3.2.2
 
 |  Scenario 3.2.2 | Aggiunta errata di un nuovo prodotto (data di arrivo successiva alla data corrente)                                                                          |
@@ -293,8 +299,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |     Step#      |                                Description                                 |
 |       1        |                                                        Il manager chiede di aggiungere un nuovo prodotto               |
 |       2        |                                                        Il sistema chiede tutti i dati necessari per l'aggiunta                |
-|3 | Il manager inserisce tutti i dati richiesti
-|4 | Il sistema rileva un errore in quanto la data di arrivo è successiva a quella corrente e lo comunica all'utente
+|3 | Il manager inserisce tutti i dati richiesti|
+|4 | Il sistema rileva un errore in quanto la data di arrivo è successiva a quella corrente e lo comunica all'utente|
+
 ### Use case 3.3, UC3.3 Rimozione di un prodotto
 
 | Actors Involved  | Manager                                                                    |
@@ -305,7 +312,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |     Variants     |                          |
 |    Exceptions    |Il prodotto che si vuole rimuovere non è presente (3.3.1)  |
 
-##### Scenario 3.3
+#### Scenario 3.3
 
 |  Scenario 3.3  | Rimozione corretta  |
 | :------------: | :------------------------------------------------------------------------: |
@@ -314,9 +321,10 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |     Step#      |                                Description                                 |
 |       1        |                                                        Il manager chiede al sistema di rimuovere un prodotto            |
 |       2        |                                                        Il sistema chiede il codice del prodotto che si vuole rimuovere                   |
-|3| L'utente inserisce il codice
-|4| Il sistema verifica che il codice sia presente
-|5| Il prodotto viene rimosso
+|3| L'utente inserisce il codice|
+|4| Il sistema verifica che il codice sia presente|
+|5| Il prodotto viene rimosso|
+
 ##### Scenario 3.3.1
 
 |  Scenario 3.3.1  |Rimozione errata   |
@@ -326,8 +334,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |     Step#      |                                Description                                 |
 |       1        |                                                        Il manager chiede al sistema di rimuovere un prodotto            |
 |       2        |                                                        Il sistema chiede il codice del prodotto che si vuole rimuovere                   |
-|3| L'utente inserisce il codice
-|4| Il sistema rileva un errore in quanto il prodotto non risulta presente e lo comunica all'utente
+|3| L'utente inserisce il codice|
+|4| Il sistema rileva un errore in quanto il prodotto non risulta presente e lo comunica all'utente|
+
 ### Use case 3.4, UC3.4 Registrazione dell'arrivo di un nuovo (insieme di) prodotto/i
 
 | Actors Involved  | Manager                                                                    |
@@ -336,9 +345,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |  Post condition  | Vengono registrati correttamente l'arrivo di un set di prodotti   |
 | Nominal Scenario | Il manager chiede al sistema di registrare l'arrivo di un set di prodotti dello stesso modello e vengono registrati correttamente (3.4)   |
 |     Variants     |                          |
-|    Exceptions    |La data di arrivo è successiva a quella corrente (3.4.1)
+|    Exceptions    |La data di arrivo è successiva a quella corrente (3.4.1)|
 
-##### Scenario 3.4
+#### Scenario 3.4
 
 |  Scenario 3.4 |  Registrazione arrivi corretta                                                                          |
 | :------------: | :------------------------------------------------------------------------: |
@@ -347,9 +356,10 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |     Step#      |                                Description                                 |
 |       1        |                                                        Il manager chiede al sistema di registrare l'arrivo di un set di prodotti           |
 |       2        |                                                        Il sistema i dati necessari per la registrazione di un arrivo                   |
-|3| L'utente inserisce i dati
-|4| Il sistema valida i dati e li salva
-|5| L'arrivo viene registrato correttamente
+|3| L'utente inserisce i dati|
+|4| Il sistema valida i dati e li salva|
+|5| L'arrivo viene registrato correttamente|
+
 ##### Scenario 3.4.1
 
 |  Scenario 3.4.1 |  Registrazione arrivi errata                                                                          |
@@ -359,8 +369,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |     Step#      |                                Description                                 |
 |       1        |                                                        Il manager chiede al sistema di registrare l'arrivo di un set di prodotti           |
 |       2        |                                                        Il sistema i dati necessari per la registrazione di un arrivo                   |
-|3| L'utente inserisce i dati
-|4| Il sistema rileva un errore in quanto la data di arrivo è successiva a quella corrente e lo comunica all'utente
+|3| L'utente inserisce i dati|
+|4| Il sistema rileva un errore in quanto la data di arrivo è successiva a quella corrente e lo comunica all'utente|
+
 ### Use case 3.5, UC3.5 Filtraggio di prodotti per categoria, modello, codice e disponibilità
 
 | Actors Involved  | Utente/Manager                                                                    |
@@ -369,9 +380,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |  Post condition  | Vengono mostrati i prodotti che rispecchiano il filtro inserito dall'utente  |
 | Nominal Scenario | L'utente chiede di visualizzare solo i prodotti che rispecchiano un determinato filtro    |
 |     Variants     |                          |
-|    Exceptions    |
+|    Exceptions    ||
 
-##### Scenario 3.5
+#### Scenario 3.5
 
 |  Scenario 3.5  |                                                                     Filtraggio di prodotti per categoria, modello, codice e disponibilità       |
 | :------------: | :------------------------------------------------------------------------: |
@@ -380,8 +391,8 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |     Step#      |                                Description                                 |
 |       1        |                                                        L'utente chiede di visualizzare i prodotti che rispecchiano un determinato filtro          |
 |       2        |                                                        Il sistema chiede il filtro             |
-|3| L'utente inserisce il filtro
-|4| Il sistema mostra i prodotti appartenenti al filtro inserito dall'utente
+|3| L'utente inserisce il filtro|
+|4| Il sistema mostra i prodotti appartenenti al filtro inserito dall'utente|
 
 ### Use case 3.6, UC3.6 Cataloga prodotto come venduto
 
@@ -391,9 +402,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |  Post condition  | Il prodotto viene catalogato come venduto  |
 | Nominal Scenario | Il manager chiede di catalogare un prodotto come venduto (3.6)  |
 |     Variants     |                          |
-|    Exceptions    | Il prodotto non esiste (3.6.1), la data di vendita risulta precedente alla data di arrivo o successiva a quella corrente (3.6.2) o il prodotto risulta già venduto (3.6.3)
+|    Exceptions    | Il prodotto non esiste (3.6.1), la data di vendita risulta precedente alla data di arrivo o successiva a quella corrente (3.6.2) o il prodotto risulta già venduto (3.6.3)|
 
-##### Scenario 3.6
+#### Scenario 3.6
 
 |  Scenario 3.6  |                                                                    Catalogazione corretta del prodotto come venduto    |
 | :------------: | :------------------------------------------------------------------------: |
@@ -402,7 +413,8 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |     Step#      |                                Description                                 |
 |       1        |                                                      Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita        |
 |       2        |                                           Il sistema valida le informazioni          |
-|3| Il prodotto risulta venduto
+|3| Il prodotto risulta venduto|
+
 ##### Scenario 3.6.1
 
 |  Scenario 3.6.1  |                                                                    Catalogazione errata del prodotto come venduto    |
@@ -411,7 +423,8 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 | Post condition | Il prodotto viene catalogato come venduto    |
 |     Step#      |                                Description                                 |
 |       1        |                                                      Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita        |
-|       2        |  Il sistema rileva un errore in quanto il prodotto non esiste e lo comunica al manager
+|       2        |  Il sistema rileva un errore in quanto il prodotto non esiste e lo comunica al manager|
+
 ##### Scenario 3.6.2
 
 |  Scenario 3.6.2  |                                                                    Catalogazione errata del prodotto come venduto    |
@@ -420,7 +433,8 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 | Post condition | Il prodotto viene catalogato come venduto    |
 |     Step#      |                                Description                                 |
 |       1        |                                                      Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita        |
-|       2        |Il sistema rileva un errore in quanto la data di vendita risulta precedente alla data di arrivo o successiva a quella corrente e lo comunica al manager  
+|       2        |Il sistema rileva un errore in quanto la data di vendita risulta precedente alla data di arrivo o successiva a quella corrente e lo comunica al manager |
+
 ##### Scenario 3.6.3
 
 |  Scenario 3.6.3  |                                                                    Catalogazione errata del prodotto come venduto    |
@@ -429,7 +443,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 | Post condition | Il prodotto viene catalogato come venduto    |
 |     Step#      |                                Description                                 |
 |       1        |                                                      Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita        |
-|       2        |  Il sistema rileva un errore in quanto il prodotto risulta già venduto e lo comunica al manager
+|       2        |  Il sistema rileva un errore in quanto il prodotto risulta già venduto e lo comunica al manager|
 
 ### Use case 4.1, UC4.1  Visualizzazione del carrello attuale del cliente  
 
@@ -439,9 +453,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |  Post condition  | Viene mostrato il carrello attuale del cliente loggato  |
 | Nominal Scenario | Il cliente chiede di visualizzare il suo carrello attuale e viene mostrato    |
 |     Variants     |                          |
-|    Exceptions    |
+|    Exceptions    ||
 
-##### Scenario 4.1
+#### Scenario 4.1
 
 |  Scenario 4.1  |                                                                     Visualizzazione del carrello attuale del cliente     |
 | :------------: | :------------------------------------------------------------------------: |
@@ -461,7 +475,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |     Variants     |                          |
 |    Exceptions    | Il prodotto non esiste (4.2.1), il prodotto è già presente in un altro carrello (4.2.2) o il prodotto non è disponibile (4.2.3)|
 
-##### Scenario 4.2
+#### Scenario 4.2
 
 |  Scenario 4.2  |                                                                     Aggiunta corretta di un prodotto al carrello attuale    |
 | :------------: | :------------------------------------------------------------------------: |
@@ -471,6 +485,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |       1        |                                                        Il cliente seleziona il prodotto da aggiungere al carrello          |
 |       2        |                                                        Il sistema verifica che il prodotto possa essere aggiunto |
 |3| Il prodotto risulta aggiunto al carrello|
+
 ##### Scenario 4.2.1
 
 |  Scenario 4.2.1  |                                                                     Aggiunta errata di un prodotto al carrello attuale    |
@@ -479,7 +494,8 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 | Post condition |  |
 |     Step#      |                                Description                                 |
 |       1        |                                                        Il cliente seleziona il prodotto da aggiungere al carrello          |
-|       2        |                                                        Il sistema rileva un errore in quanto il prodotto non è esistente e lo comunica al cliente
+|       2        |                                                        Il sistema rileva un errore in quanto il prodotto non è esistente e lo comunica al cliente|
+
 ##### Scenario 4.2.2
 
 |  Scenario 4.2.2  |                                                                     Aggiunta errata di un prodotto al carrello attuale    |
@@ -488,7 +504,8 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 | Post condition |  |
 |     Step#      |                                Description                                 |
 |       1        |                                                        Il cliente seleziona il prodotto da aggiungere al carrello          |
-|       2        |                                                        Il sistema rileva un errore in quanto il prodotto risulta essere presente in un altro carrello e lo comunica al cliente
+|       2        |                                                        Il sistema rileva un errore in quanto il prodotto risulta essere presente in un altro carrello e lo comunica al cliente|
+
 ##### Scenario 4.2.3
 
 |  Scenario 4.2.3  |                                                                     Aggiunta errata di un prodotto al carrello attuale    |
@@ -497,7 +514,8 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 | Post condition | |
 |     Step#      |                                Description                                 |
 |       1        |                                                        Il cliente seleziona il prodotto da aggiungere al carrello          |
-|       2        |                                                        Il sistema rileva un errore in quanto il prodotto risulta venduto (non disponibile) e lo comunica al cliente
+|       2        |                                                        Il sistema rileva un errore in quanto il prodotto risulta venduto (non disponibile) e lo comunica al cliente|
+
 ### Use case 4.3, UC4.3 Rimozione di un prodotto dal carrello attuale
 
 | Actors Involved  | Cliente                                                                   |
@@ -506,9 +524,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |  Post condition  | Il prodotto viene rimosso dal carrello  |
 | Nominal Scenario | Il cliente chiede di rimuovere un prodotto dal carrello e questo viene rimosso correttamente (4.3)  |
 |     Variants     |                          |
-|    Exceptions    | Il prodotto non è nel carrello (4.3.1), non esiste (4.3.2), è già stato venduto (4.3.3) o il cliente non ha alcun carrello (4.3.4)
+|    Exceptions    | Il prodotto non è nel carrello (4.3.1), non esiste (4.3.2), è già stato venduto (4.3.3) o il cliente non ha alcun carrello (4.3.4)|
 
-##### Scenario 4.3
+#### Scenario 4.3
 
 |  Scenario 4.3  |                                                                     Rimozione corretta di un prodotto dal carrello attuale     |
 | :------------: | :------------------------------------------------------------------------: |
@@ -517,7 +535,8 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |     Step#      |                                Description                                 |
 |       1        |                                                        Il cliente chiede di rimuovere un prodotto dal suo carrello         |
 |       2        |                                                        Il sistema verifica che il prodotto sia rimovibile|
-|3| Il prodotto risulta rimosso correttamente
+|3| Il prodotto risulta rimosso correttamente|
+
 ##### Scenario 4.3.1
 
 |  Scenario 4.3.1  |                                                                     Rimozione errata di un prodotto dal carrello attuale     |
@@ -526,7 +545,8 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 | Post condition |   |
 |     Step#      |                                Description                                 |
 |       1        |                                                        Il cliente chiede di rimuovere un prodotto dal suo carrello         |
-|       2        |                                                        Il sistema rileva un errore in quanto il prodotto non è nel carrello e lo comunica all'utente
+|       2        |                                                        Il sistema rileva un errore in quanto il prodotto non è nel carrello e lo comunica all'utente|
+
 ##### Scenario 4.3.2
 
 |  Scenario 4.3.2  |                                                                     Rimozione errata di un prodotto dal carrello attuale     |
@@ -535,7 +555,8 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 | Post condition |  |
 |     Step#      |                                Description                                 |
 |       1        |                                                        Il cliente chiede di rimuovere un prodotto dal suo carrello         |
-|       2        |                                                        Il sistema rileva un errore in quanto il prodotto non esiste e lo comunica all'utente
+|       2        |                                                        Il sistema rileva un errore in quanto il prodotto non esiste e lo comunica all'utente|
+
 ##### Scenario 4.3.3
 
 |  Scenario 4.3.3  |                                                                     Rimozione errata di un prodotto dal carrello attuale     |
@@ -544,7 +565,8 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 | Post condition |   |
 |     Step#      |                                Description                                 |
 |       1        |                                                        Il cliente chiede di rimuovere un prodotto dal suo carrello         |
-|       2        |  Il sistema rileva un errore in quanto il prodotto è già stato venduto e lo comunica all'utente
+|       2        |  Il sistema rileva un errore in quanto il prodotto è già stato venduto e lo comunica all'utente|
+
 ##### Scenario 4.3.4
 
 |  Scenario 4.3.4  |                                                                     Rimozione errata di un prodotto dal carrello attuale     |
@@ -553,7 +575,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 | Post condition |  |
 |     Step#      |                                Description                                 |
 |       1        |                                                        Il cliente chiede di rimuovere un prodotto dal suo carrello         |
-|       2        | Il sistema rileva un errore in quanto il cliente non ha alcun carrello e lo comunica all'utente
+|       2        | Il sistema rileva un errore in quanto il cliente non ha alcun carrello e lo comunica all'utente|
 
 ### Use case 4.4, UC4.4 Acquisto dei prodotti aggiunti al carrello attuale
 
@@ -563,9 +585,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |  Post condition  | L'acquisto del carrello viene effettuato correttamente  |
 | Nominal Scenario | Il cliente chiede di acquistare il carrello attuale e questo viene eseguito correttamente (4.4) |
 |     Variants     |                          |
-|    Exceptions    | Il carrello è vuoto (4.4.1), o non esiste alcun carrello per il cliente loggato (4.4.2)
+|    Exceptions    | Il carrello è vuoto (4.4.1), o non esiste alcun carrello per il cliente loggato (4.4.2)|
 
-##### Scenario 4.4
+#### Scenario 4.4
 
 |  Scenario 4.4  |                                                                    Acquisto corretto dei prodotti aggiunti al carrello attuale    |
 | :------------: | :------------------------------------------------------------------------: |
@@ -574,8 +596,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |     Step#      |                                Description                                 |
 |       1        |                                                        Il cliente chiede di acquistare i prodotti presenti nel suo carrello attuale          |
 |       2        |                                                        Il sistema verifica che la richiesta sia valida|
-|3| Il sistema calcola il totale del carrello e imposta la data di pagamento
-|4| Il carrello risulta acquistato
+|3| Il sistema calcola il totale del carrello e imposta la data di pagamento|
+|4| Il carrello risulta acquistato|
+
 ##### Scenario 4.4.1
 
 |  Scenario 4.4.1  |                                                                    Acquisto errato dei prodotti aggiunti al carrello attuale    |
@@ -584,7 +607,8 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 | Post condition |  |
 |     Step#      |                                Description                                 |
 |       1        |                                                        Il cliente chiede di acquistare i prodotti presenti nel suo carrello attuale          |
-|       2        | Il sistema rileva un errore in quanto il carrello risulta vuoto e lo comunica al cliente
+|       2        | Il sistema rileva un errore in quanto il carrello risulta vuoto e lo comunica al cliente |
+
 ##### Scenario 4.4.2
 
 |  Scenario 4.4.2  |                                                                    Acquisto errato dei prodotti aggiunti al carrello attuale    |
@@ -593,7 +617,8 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 | Post condition |    |
 |     Step#      |                                Description                                 |
 |       1        |                                                        Il cliente chiede di acquistare i prodotti presenti nel suo carrello attuale          |
-|       2        | Il sistema rileva un errore in quanto il cliente non risulta avere alcun carrello e lo comunica al cliente
+|       2        | Il sistema rileva un errore in quanto il cliente non risulta avere alcun carrello e lo comunica al cliente|
+
 ### Use case 4.5 , UC4.5 Visualizzazione della cronologia dei carrelli acquistati dal cliente
 
 | Actors Involved  | Cliente                                                                   |
@@ -602,9 +627,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 |  Post condition  | Vengono mostrati tutti i carrelli del cliente loggato  |
 | Nominal Scenario | Il cliente chiede di visualizzare la storia dei suoi carrelli    |
 |     Variants     |                          |
-|    Exceptions    |
+|    Exceptions    ||
 
-##### Scenario 4.5
+#### Scenario 4.5
 
 |  Scenario 4.5  |                                                                     Visualizzazione della cronologia dei carrelli     |
 | :------------: | :------------------------------------------------------------------------: |
@@ -616,41 +641,45 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 
 ### Use case 4.6 , UC4.6 Cancellazione del carrello
 
-| Actors Involved  | Cliente                                                                   |
-| :--------------: | :------------------------------------------------------------------: |
-|   Precondition   | Il cliente è loggato  |
-|  Post condition  | Viene cancellato il carrello attuale del cliente loggato  |
+| Actors Involved  |                                            Cliente                                             |
+| :--------------: | :--------------------------------------------------------------------------------------------: |
+|   Precondition   |                                      Il cliente è loggato                                      |
+|  Post condition  |                    Viene cancellato il carrello attuale del cliente loggato                    |
 | Nominal Scenario | Il cliente chiede di cancellare il suo carrello attuale e viene cancellato correttamente (4.6) |
-|     Variants     |                          |
-|    Exceptions    | Il cliente non ha alcun carrello (4.6.1)
+|     Variants     |                                                                                                |
+|    Exceptions    |                            Il cliente non ha alcun carrello (4.6.1)                            |
 
-##### Scenario 4.6
+#### Scenario 4.6
 
-|  Scenario 4.6  |                                                                     Cancellazione corretta del carrello attuale del cliente     |
-| :------------: | :------------------------------------------------------------------------: |
-|  Precondition  | Il cliente è loggato |
-| Post condition |Viene cancellato il carrello attuale del cliente loggato   |
-|     Step#      |                                Description                                 |
-|       1        |                                                        Il cliente chiede di cancellare il suo carrello attuale          |
-|       2        |                                                        Il sistema elimina il carrello corrente|
+|  Scenario 4.6  | Cancellazione corretta del carrello attuale del cliente  |
+| :------------: | :------------------------------------------------------: |
+|  Precondition  |                   Il cliente è loggato                   |
+| Post condition | Viene cancellato il carrello attuale del cliente loggato |
+|     Step#      |                       Description                        |
+|       1        | Il cliente chiede di cancellare il suo carrello attuale  |
+|       2        |         Il sistema elimina il carrello corrente          |
+
 ##### Scenario 4.6.1
 
-|  Scenario 4.6.1 |                                                                     Cancellazione errata del carrello attuale del cliente     |
-| :------------: | :------------------------------------------------------------------------: |
-|  Precondition  | Il cliente è loggato |
-| Post condition | |
-|     Step#      |                                Description                                 |
-|       1        |                                                        Il cliente chiede di cancellare il suo carrello attuale          |
-|       2        | Il sistema rileva un errore in quanto non esiste alcun carrello del cliente e lo comunica al cliente
+| Scenario 4.6.1 |                        Cancellazione errata del carrello attuale del cliente                         |
+| :------------: | :--------------------------------------------------------------------------------------------------: |
+|  Precondition  |                                         Il cliente è loggato                                         |
+| Post condition |                                                                                                      |
+|     Step#      |                                             Description                                              |
+|       1        |                       Il cliente chiede di cancellare il suo carrello attuale                        |
+|       2        | Il sistema rileva un errore in quanto non esiste alcun carrello del cliente e lo comunica al cliente |
+
+
 # Glossary
+
 - Utente
   - Persona registrata al sistema
   - Può visualizzare i prodotti
   - Può avere ruolo di cliente o di manager
-- Cliente 
+- Cliente
   - Utente che dispone di un carrello in cui inserire i prodotti che vuole acquistare
   - Può visualizzare lo storico dei carrelli per cui ha pagato, quindi possiede almeno un carrello (quello corrente) ed eventualmente tutti quelli acquistati precedentemente
-- Manager 
+- Manager
   - Utente responsabile del negozio fisico
   - Ogni manager ha la possibilità di gestire (aggiungere, rimuovere, registrare una nuova fornitura, ...) i prodotti sul sito web
 - Prodotto
@@ -666,8 +695,8 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e <u>applicare 
 
 # System Design
 
-![system design](./img/SystemDesign.png)
+![system design](./img/SystemDesignV1.png)
 
 # Deployment Diagram
 
-![deployment Diagram](./img/DeploymentDiagram.png)
+![deployment Diagram](./img/DeploymentDiagramV1.png)
