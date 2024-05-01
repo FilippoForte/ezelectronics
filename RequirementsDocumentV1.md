@@ -23,12 +23,57 @@ Version: V1 - description of EZElectronics in CURRENT form (as received by teach
   - [Non Functional Requirements](#non-functional-requirements)
 - [Use case diagram and use cases](#use-case-diagram-and-use-cases)
   - [Use case diagram](#use-case-diagram)
-    - [Use case 1, UC1](#use-case-1-uc1)
-      - [Scenario 1.1](#scenario-11)
+    - [Use case 1.1, UC1.1](#use-case-11-uc11)
+      - [Scenario 1.1.1](#scenario-111)
+      - [Scenario 1.1.2](#scenario-112)
+    - [Use case 1.2, UC1.2](#use-case-12-uc12)
       - [Scenario 1.2](#scenario-12)
-      - [Scenario 1.x](#scenario-1x)
-    - [Use case 2, UC2](#use-case-2-uc2)
-    - [Use case x, UCx](#use-case-x-ucx)
+    - [Use case 1.3, UC1.3](#use-case-13-uc13)
+      - [Scenario 1.3](#scenario-13)
+    - [Use case 2.1, UC2.1](#use-case-21-uc21)
+      - [Scenario 2.1.1](#scenario-211)
+      - [Scenario 2.1.2](#scenario-212)
+    - [Use case 3.1, UC3.1](#use-case-31-uc31)
+      - [Scenario 3.1](#scenario-31)
+    - [Use case 3.2, UC3.2](#use-case-32-uc32)
+      - [Scenario 3.2.1](#scenario-321)
+      - [Scenario 3.2.2](#scenario-322)
+      - [Scenario 3.2.3](#scenario-323)
+    - [Use case 3.3, UC3.3](#use-case-33-uc33)
+      - [Scenario 3.3.1](#scenario-331)
+      - [Scenario 3.3.2](#scenario-332)
+    - [Use case 3.4, UC3.4](#use-case-34-uc34)
+      - [Scenario 3.4.1](#scenario-341)
+      - [Scenario 3.4.2](#scenario-342)
+    - [Use case 3.5, UC3.5](#use-case-35-uc35)
+      - [Scenario 3.5](#scenario-35)
+    - [Use case 3.6, UC3.6](#use-case-36-uc36)
+      - [Scenario 3.6.1](#scenario-361)
+      - [Scenario 3.6.2](#scenario-362)
+      - [Scenario 3.6.3](#scenario-363)
+      - [Scenario 3.6.4](#scenario-364)
+    - [Use case 4.1, UC4.1](#use-case-41-uc41)
+      - [Scenario 4.1](#scenario-41)
+    - [Use case 4.2, UC4.2](#use-case-42-uc42)
+      - [Scenario 4.2.1](#scenario-421)
+      - [Scenario 4.2.2](#scenario-422)
+      - [Scenario 4.2.3](#scenario-423)
+      - [Scenario 4.2.4](#scenario-424)
+    - [Use case 4.3, UC4.3](#use-case-43-uc43)
+      - [Scenario 4.3.1](#scenario-431)
+      - [Scenario 4.3.2](#scenario-432)
+      - [Scenario 4.3.3](#scenario-433)
+      - [Scenario 4.3.4](#scenario-434)
+      - [Scenario 4.3.5](#scenario-435)
+    - [Use case 4.4, UC4.4](#use-case-44-uc44)
+      - [Scenario 4.4.1](#scenario-441)
+      - [Scenario 4.4.2](#scenario-442)
+      - [Scenario 4.4.3](#scenario-443)
+    - [Use case 4.5, UC4.5](#use-case-45-uc45)
+      - [Scenario 4.5](#scenario-45)
+    - [Use case 4.6, UC4.6](#use-case-46-uc46)
+      - [Scenario 4.6.1](#scenario-461)
+      - [Scenario 4.6.2](#scenario-462)
 - [Glossary](#glossary)
 - [System Design](#system-design)
 - [Deployment Diagram](#deployment-diagram)
@@ -149,7 +194,8 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 
 ![useCaseDiagram](./img/diagrammaCasiDuso.png)
 
-### Use case 1.1, UC1.1 Login
+
+### Use case 1.1, UC1.1
 
 | Actors Involved  |                                           Cliente/Manager                                        |
 | :--------------: | :----------------------------------------------------------------------------------------------: |
@@ -159,9 +205,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |     Variants     |                                                                                                  |
 |    Exceptions    | L'utente inserisce dati errati (non previsto dalle API, ma presente nel file userDAO.ts) (1.1.1) |
 
-#### Scenario 1.1
+#### Scenario 1.1.1
 
-|  Scenario 1.1  |             Login corretto             |
+|  Scenario 1.1.1  |             Login corretto             |
 | :------------: | :------------------------------------: |
 |  Precondition  |   L'utente è registrato nel sistema    |
 | Post condition |        L'utente risulta loggato        |
@@ -172,9 +218,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       4        |        Il sistema valida i dati        |
 |       5        |        L'utente risulta loggato        |
 
-##### Scenario 1.1.1
+##### Scenario 1.1.2
 
-| Scenario 1.1.1 |                         Login errato                          |
+| Scenario 1.1.2 |                         Login errato                          |
 | :------------: | :-----------------------------------------------------------: |
 |  Precondition  |               L'utente è registrato nel sistema               |
 | Post condition |                                                               |
@@ -184,7 +230,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       3        |            L'utente inserisce username a password             |
 |       4        | Il sistema rileva un errore nei dati e lo comunica all'utente |
 
-### Use case 1.2, UC1.2 Logout
+### Use case 1.2, UC1.2
 
 | Actors Involved  |                                      Cliente/Manager                                      |
 | :--------------: | :---------------------------------------------------------------------------------------: |
@@ -204,7 +250,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       1        | L'utente chiede al sistema di effettuare il logout |
 |       2        |     Il sistema effettua il logout per l'utente     |
 
-### Use case 1.3, UC1.3 Possibilità di ottenere le informazioni relative all'utente correntemente loggato
+### Use case 1.3, UC1.3
 
 | Actors Involved  |                                   Cliente/Manager                                    |
 | :--------------: | :----------------------------------------------------------------------------------: |
@@ -224,7 +270,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       1        |    L'utente chiede al sistema di mostrare le sue informazioni    |
 |       2        |           Il sistema mostra le informazioni all'utente           |
 
-### Use case 2.1 , UC2.1 Registrazione
+### Use case 2.1, UC2.1
 
 | Actors Involved  |                                    Utente guest                      |
 | :--------------: | :------------------------------------------------------------------: |
@@ -234,9 +280,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |     Variants     |                                                                      |
 |    Exceptions    | L'utente risulta già registrato  (2.1.1)                             |
 
-#### Scenario 2.1
+#### Scenario 2.1.1
 
-|  Scenario 2.1  |                      Registrazione corretta                       |
+|  Scenario 2.1.1  |                      Registrazione corretta                       |
 | :------------: | :---------------------------------------------------------------: |
 |  Precondition  |                                --                                 |
 | Post condition |   L'utente/manager risulta registrato correttamente nel sistema   |
@@ -247,9 +293,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       4        | L'utente seleziona il ruolo con cui registrarsi(manager o utente) |
 |       5        |  Il sistema salva i dati e viene creato il nuovo utente/manager   |
 
-##### Scenario 2.1.1
+##### Scenario 2.1.2
 
-| Scenario 2.1.1 |                                       Registrazione errata                                       |
+| Scenario 2.1.2 |                                       Registrazione errata                                       |
 | :------------: | :----------------------------------------------------------------------------------------------: |
 |  Precondition  |                                                --                                                |
 | Post condition |                                                                                                  |
@@ -260,7 +306,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       4        |                L'utente seleziona il ruolo con cui registrarsi(manager o utente)                 |
 |       5        | Il sistema rileva un errore in quanto l'username dell'utente esiste già e lo comunica all'utente |
 
-### Use case 3.1, UC3.1 Visualizza tutti i prodotti
+### Use case 3.1, UC3.1
 
 | Actors Involved  |                                  Cliente/Manager                                  |
 | :--------------: | :-------------------------------------------------------------------------------: |
@@ -280,7 +326,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       1        | L'utente chiede al sistema di visualizzare tutti i prodotti presenti |
 |       2        |             Il sistema mostra tutti i prodotti presenti              |
 
-### Use case 3.2, UC3.2 Aggiungi nuovo prodotto
+### Use case 3.2, UC3.2
 
 | Actors Involved  |                                                               Manager                                                                |
 | :--------------: | :----------------------------------------------------------------------------------------------------------------------------------: |
@@ -290,9 +336,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |     Variants     |                                                                                                                                      |
 |    Exceptions    |                    Il prodotto è già presente (3.2.1) o la data di arrivo è successiva a quella corrente (3.2.2)                     |
 
-#### Scenario 3.2
+#### Scenario 3.2.1
 
-|  Scenario 3.2  |         Aggiunta corretta di un nuovo prodotto          |
+|  Scenario 3.2.1  |         Aggiunta corretta di un nuovo prodotto          |
 | :------------: | :-----------------------------------------------------: |
 |  Precondition  |        L'utente è loggato ed ha il ruolo Manager        |
 | Post condition |        Il prodotto viene aggiunto correttamente         |
@@ -303,9 +349,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       4        |           Il sistema valida i dati e li salva           |
 |       5        |        Il prodotto viene aggiunto correttamente         |
 
-##### Scenario 3.2.1
+##### Scenario 3.2.2
 
-| Scenario 3.2.1 |                 Aggiunta errata di un nuovo prodotto (prodotto esistente)                  |
+| Scenario 3.2.2 |                 Aggiunta errata di un nuovo prodotto (prodotto esistente)                  |
 | :------------: | :----------------------------------------------------------------------------------------: |
 |  Precondition  |                         L'utente è loggato ed ha il ruolo Manager                          |
 | Post condition |                                                                                            |
@@ -315,9 +361,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       3        |                        Il manager inserisce tutti i dati richiesti                         |
 |       4        | Il sistema rileva un errore in quanto il prodotto è già esistente e lo comunica al manager |
 
-##### Scenario 3.2.2
+##### Scenario 3.2.3
 
-| Scenario 3.2.2 |               Aggiunta errata di un nuovo prodotto (data di arrivo successiva alla data corrente)               |
+| Scenario 3.2.3 |               Aggiunta errata di un nuovo prodotto (data di arrivo successiva alla data corrente)               |
 | :------------: | :-------------------------------------------------------------------------------------------------------------: |
 |  Precondition  |                                    L'utente è loggato ed ha il ruolo Manager                                    |
 | Post condition |                                    Il prodotto viene aggiunto correttamente                                     |
@@ -327,7 +373,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       3        |                                   Il manager inserisce tutti i dati richiesti                                   |
 |       4        | Il sistema rileva un errore in quanto la data di arrivo è successiva a quella corrente e lo comunica al manager |
 
-### Use case 3.3, UC3.3 Rimozione di un prodotto
+### Use case 3.3, UC3.3
 
 | Actors Involved  |                                             Manager                                              |
 | :--------------: | :----------------------------------------------------------------------------------------------: |
@@ -337,9 +383,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |     Variants     |                                                                                                  |
 |    Exceptions    |                    Il prodotto che si vuole rimuovere non è presente (3.3.1)                     |
 
-#### Scenario 3.3
+#### Scenario 3.3.1
 
-|  Scenario 3.3  |                       Rimozione corretta                        |
+|  Scenario 3.3.1  |                       Rimozione corretta                        |
 | :------------: | :-------------------------------------------------------------: |
 |  Precondition  |            L'utente è loggato ed ha il ruolo Manager            |
 | Post condition |                    Il prodotto viene rimosso                    |
@@ -350,9 +396,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       4        |         Il sistema verifica che il codice sia presente          |
 |       5        |                    Il prodotto viene rimosso                    |
 
-##### Scenario 3.3.1
+##### Scenario 3.3.2
 
-| Scenario 3.3.1 |                                        Rimozione errata                                         |
+| Scenario 3.3.2 |                                        Rimozione errata                                         |
 | :------------: | :---------------------------------------------------------------------------------------------: |
 |  Precondition  |                            L'utente è loggato ed ha il ruolo Manager                            |
 | Post condition |                                                                                                 |
@@ -362,7 +408,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       3        |                                  Il manager inserisce il codice                                 |
 |       4        | Il sistema rileva un errore in quanto il prodotto non risulta presente e lo comunica al manager |
 
-### Use case 3.4, UC3.4 Registrazione dell'arrivo di un nuovo (insieme di) prodotto/i
+### Use case 3.4, UC3.4
 
 | Actors Involved  |                                                                 Manager                                                                 |
 | :--------------: | :-------------------------------------------------------------------------------------------------------------------------------------: |
@@ -372,9 +418,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |     Variants     |                                                                                                                                         |
 |    Exceptions    |                                        La data di arrivo è successiva a quella corrente (3.4.1)                                         |
 
-#### Scenario 3.4
+#### Scenario 3.4.1
 
-|  Scenario 3.4  |                       Registrazione arrivi corretta                       |
+|  Scenario 3.4.1  |                       Registrazione arrivi corretta                       |
 | :------------: | :-----------------------------------------------------------------------: |
 |  Precondition  |                 L'utente è loggato ed ha il ruolo Manager                 |
 | Post condition |      Vengono registrati correttamente l'arrivo di un set di prodotti      |
@@ -385,9 +431,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       4        |                    Il sistema valida i dati e li salva                    |
 |       5        |                  L'arrivo viene registrato correttamente                  |
 
-##### Scenario 3.4.1
+##### Scenario 3.4.2
 
-| Scenario 3.4.1 |                                           Registrazione arrivi errata                                           |
+| Scenario 3.4.2 |                                           Registrazione arrivi errata                                           |
 | :------------: | :-------------------------------------------------------------------------------------------------------------: |
 |  Precondition  |                                    L'utente è loggato ed ha il ruolo Manager                                    |
 | Post condition |                                                                                                                 |
@@ -397,7 +443,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       3        |                                            Il manager inserisce i dati                                          |
 |       4        | Il sistema rileva un errore in quanto la data di arrivo è successiva a quella corrente e lo comunica al manager |
 
-### Use case 3.5, UC3.5 Filtraggio di prodotti per categoria, modello, codice e disponibilità
+### Use case 3.5, UC3.5 
 
 | Actors Involved  |                                    Cliente/Manager                                     |
 | :--------------: | :------------------------------------------------------------------------------------: |
@@ -419,7 +465,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       3        |                           L'utente inserisce il filtro                            |
 |       4        |     Il sistema mostra i prodotti appartenenti al filtro inserito dall'utente      |
 
-### Use case 3.6, UC3.6 Cataloga prodotto come venduto
+### Use case 3.6, UC3.6
 
 | Actors Involved  |                            Manager                             |
 | :--------------: | :------------------------------------------------------------: |
@@ -429,9 +475,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |     Variants     |                                                                |
 |    Exceptions    | Il prodotto non esiste (3.6.1), la data di vendita risulta precedente alla data di arrivo o successiva a quella corrente (3.6.2) o il prodotto risulta già venduto (3.6.3) |
 
-#### Scenario 3.6
+#### Scenario 3.6.1
 
-|  Scenario 3.6  |                         Catalogazione corretta del prodotto come venduto                          |
+|  Scenario 3.6.1  |                         Catalogazione corretta del prodotto come venduto                          |
 | :------------: | :-----------------------------------------------------------------------------------------------: |
 |  Precondition  |                                       Il manager è loggato                                        |
 | Post condition |                             Il prodotto viene catalogato come venduto                             |
@@ -439,16 +485,6 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       1        | Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita |
 |       2        |                                 Il sistema valida le informazioni                                 |
 |       3        |                                    Il prodotto risulta venduto                                    |
-
-##### Scenario 3.6.1
-
-| Scenario 3.6.1 |                          Catalogazione errata del prodotto come venduto                           |
-| :------------: | :-----------------------------------------------------------------------------------------------: |
-|  Precondition  |                                       Il manager è loggato                                        |
-| Post condition |                             Il prodotto viene catalogato come venduto                             |
-|     Step#      |                                            Description                                            |
-|       1        | Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita |
-|       2        |       Il sistema rileva un errore in quanto il prodotto non esiste e lo comunica al manager       |
 
 ##### Scenario 3.6.2
 
@@ -458,7 +494,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 | Post condition |                             Il prodotto viene catalogato come venduto                             |
 |     Step#      |                                            Description                                            |
 |       1        | Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita |
-|       2        | Il sistema rileva un errore in quanto la data di vendita risulta precedente alla data di arrivo o successiva a quella corrente e lo comunica al manager |
+|       2        |       Il sistema rileva un errore in quanto il prodotto non esiste e lo comunica al manager       |
 
 ##### Scenario 3.6.3
 
@@ -468,9 +504,19 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 | Post condition |                             Il prodotto viene catalogato come venduto                             |
 |     Step#      |                                            Description                                            |
 |       1        | Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita |
+|       2        | Il sistema rileva un errore in quanto la data di vendita risulta precedente alla data di arrivo o successiva a quella corrente e lo comunica al manager |
+
+##### Scenario 3.6.4
+
+| Scenario 3.6.4 |                          Catalogazione errata del prodotto come venduto                           |
+| :------------: | :-----------------------------------------------------------------------------------------------: |
+|  Precondition  |                                       Il manager è loggato                                        |
+| Post condition |                             Il prodotto viene catalogato come venduto                             |
+|     Step#      |                                            Description                                            |
+|       1        | Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita |
 |       2        |  Il sistema rileva un errore in quanto il prodotto risulta già venduto e lo comunica al manager   |
 
-### Use case 4.1, UC4.1 Visualizzazione del carrello attuale del cliente
+### Use case 4.1, UC4.1
 
 | Actors Involved  |                                  Cliente                                   |
 | :--------------: | :------------------------------------------------------------------------: |
@@ -490,7 +536,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       1        | Il cliente chiede di visualizzare il suo carrello attuale |
 |       2        |          Il sistema mostra il carrello corrente           |
 
-### Use case 4.2, UC4.2 Aggiunta di un prodotto al carrello attuale
+### Use case 4.2, UC4.2
 
 | Actors Involved  |                                                 Cliente                                                 |
 | :--------------: | :-----------------------------------------------------------------------------------------------------: |
@@ -500,9 +546,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |     Variants     |                                                                                                         |
 |    Exceptions    | Il prodotto non esiste (4.2.1), il prodotto è già presente in un altro carrello (4.2.2) o il prodotto non è disponibile (4.2.3) |
 
-#### Scenario 4.2
+#### Scenario 4.2.1
 
-|  Scenario 4.2  |    Aggiunta corretta di un prodotto al carrello attuale    |
+|  Scenario 4.2.1  |    Aggiunta corretta di un prodotto al carrello attuale    |
 | :------------: | :--------------------------------------------------------: |
 |  Precondition  |                    Il cliente è loggato                    |
 | Post condition |    Il prodotto viene aggiunto correttamente al carrello    |
@@ -511,9 +557,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       2        | Il sistema verifica che il prodotto possa essere aggiunto  |
 |       3        |          Il prodotto risulta aggiunto al carrello          |
 
-##### Scenario 4.2.1
+##### Scenario 4.2.2
 
-| Scenario 4.2.1 |                     Aggiunta errata di un prodotto al carrello attuale                     |
+| Scenario 4.2.2 |                     Aggiunta errata di un prodotto al carrello attuale                     |
 | :------------: | :----------------------------------------------------------------------------------------: |
 |  Precondition  |                                    Il cliente è loggato                                    |
 | Post condition |                                                                                            |
@@ -521,9 +567,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       1        |                 Il cliente seleziona il prodotto da aggiungere al carrello                 |
 |       2        | Il sistema rileva un errore in quanto il prodotto non è esistente e lo comunica al cliente |
 
-##### Scenario 4.2.2
+##### Scenario 4.2.3
 
-| Scenario 4.2.2 |     Aggiunta errata di un prodotto al carrello attuale     |
+| Scenario 4.2.3 |     Aggiunta errata di un prodotto al carrello attuale     |
 | :------------: | :--------------------------------------------------------: |
 |  Precondition  |                    Il cliente è loggato                    |
 | Post condition |                                                            |
@@ -531,9 +577,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       1        | Il cliente seleziona il prodotto da aggiungere al carrello |
 |       2        | Il sistema rileva un errore in quanto il prodotto risulta essere presente in un altro carrello e lo comunica al cliente |
 
-##### Scenario 4.2.3
+##### Scenario 4.2.4
 
-| Scenario 4.2.3 |                              Aggiunta errata di un prodotto al carrello attuale                              |
+| Scenario 4.2.4 |                              Aggiunta errata di un prodotto al carrello attuale                              |
 | :------------: | :----------------------------------------------------------------------------------------------------------: |
 |  Precondition  |                                             Il cliente è loggato                                             |
 | Post condition |                                                                                                              |
@@ -541,7 +587,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       1        |                          Il cliente seleziona il prodotto da aggiungere al carrello                          |
 |       2        | Il sistema rileva un errore in quanto il prodotto risulta venduto (non disponibile) e lo comunica al cliente |
 
-### Use case 4.3, UC4.3 Rimozione di un prodotto dal carrello attuale
+### Use case 4.3, UC4.3
 
 | Actors Involved  |                                              Cliente                                               |
 | :--------------: | :------------------------------------------------------------------------------------------------: |
@@ -551,9 +597,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |     Variants     |                                                                                                    |
 |    Exceptions    | Il prodotto non è nel carrello (4.3.1), non esiste (4.3.2), è già stato venduto (4.3.3) o il cliente non ha alcun carrello (4.3.4) |
 
-#### Scenario 4.3
+#### Scenario 4.3.1
 
-|  Scenario 4.3  |   Rimozione corretta di un prodotto dal carrello attuale    |
+|  Scenario 4.3.1  |   Rimozione corretta di un prodotto dal carrello attuale    |
 | :------------: | :---------------------------------------------------------: |
 |  Precondition  |                    Il cliente è loggato                     |
 | Post condition |           Il prodotto viene rimosso dal carrello            |
@@ -562,9 +608,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       2        |     Il sistema verifica che il prodotto sia rimovibile      |
 |       3        |          Il prodotto risulta rimosso correttamente          |
 
-##### Scenario 4.3.1
+##### Scenario 4.3.2
 
-| Scenario 4.3.1 |                     Rimozione errata di un prodotto dal carrello attuale                      |
+| Scenario 4.3.2 |                     Rimozione errata di un prodotto dal carrello attuale                      |
 | :------------: | :-------------------------------------------------------------------------------------------: |
 |  Precondition  |                                     Il cliente è loggato                                      |
 | Post condition |                                                                                               |
@@ -572,9 +618,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       1        |                  Il cliente chiede di rimuovere un prodotto dal suo carrello                  |
 |       2        | Il sistema rileva un errore in quanto il prodotto non è nel carrello e lo comunica al cliente |
 
-##### Scenario 4.3.2
+##### Scenario 4.3.3
 
-| Scenario 4.3.2 |                 Rimozione errata di un prodotto dal carrello attuale                  |
+| Scenario 4.3.3 |                 Rimozione errata di un prodotto dal carrello attuale                  |
 | :------------: | :-----------------------------------------------------------------------------------: |
 |  Precondition  |                                 Il cliente è loggato                                  |
 | Post condition |                                                                                       |
@@ -582,9 +628,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       1        |              Il cliente chiede di rimuovere un prodotto dal suo carrello              |
 |       2        | Il sistema rileva un errore in quanto il prodotto non esiste e lo comunica al cliente |
 
-##### Scenario 4.3.3
+##### Scenario 4.3.4
 
-| Scenario 4.3.3 |                      Rimozione errata di un prodotto dal carrello attuale                      |
+| Scenario 4.3.4 |                      Rimozione errata di un prodotto dal carrello attuale                      |
 | :------------: | :--------------------------------------------------------------------------------------------: |
 |  Precondition  |                                      Il cliente è loggato                                      |
 | Post condition |                                                                                                |
@@ -592,9 +638,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       1        |                  Il cliente chiede di rimuovere un prodotto dal suo carrello                   |
 |       2        | Il sistema rileva un errore in quanto il prodotto è già stato venduto e lo comunica al cliente |
 
-##### Scenario 4.3.4
+##### Scenario 4.3.5
 
-| Scenario 4.3.4 |                      Rimozione errata di un prodotto dal carrello attuale                       |
+| Scenario 4.3.5 |                      Rimozione errata di un prodotto dal carrello attuale                       |
 | :------------: | :---------------------------------------------------------------------------------------------: |
 |  Precondition  |                                      Il cliente è loggato                                       |
 | Post condition |                                                                                                 |
@@ -602,7 +648,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       1        |                   Il cliente chiede di rimuovere un prodotto dal suo carrello                   |
 |       2        | Il sistema rileva un errore in quanto il cliente non ha alcun carrello e lo comunica al cliente |
 
-### Use case 4.4, UC4.4 Acquisto del carrello attuale
+### Use case 4.4, UC4.4
 
 | Actors Involved  |                                             Cliente                                             |
 | :--------------: | :---------------------------------------------------------------------------------------------: |
@@ -612,9 +658,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |     Variants     |                                                                                                 |
 |    Exceptions    |     Il carrello è vuoto (4.4.1), o non esiste alcun carrello per il cliente loggato (4.4.2)     |
 
-#### Scenario 4.4
+#### Scenario 4.4.1
 
-|  Scenario 4.4  |                        Acquisto corretto del carrello                        |
+|  Scenario 4.4.1  |                        Acquisto corretto del carrello                        |
 | :------------: | :--------------------------------------------------------------------------: |
 |  Precondition  |                             Il cliente è loggato                             |
 | Post condition |            L'acquisto del carrello viene effettuato correttamente            |
@@ -624,9 +670,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       3        |   Il sistema calcola il totale del carrello e imposta la data di pagamento   |
 |       4        |                        Il carrello risulta acquistato                        |
 
-##### Scenario 4.4.1
+##### Scenario 4.4.2
 
-| Scenario 4.4.1 |                           Acquisto errato del carrello attuale                           |
+| Scenario 4.4.2 |                           Acquisto errato del carrello attuale                           |
 | :------------: | :--------------------------------------------------------------------------------------: |
 |  Precondition  |                                   Il cliente è loggato                                   |
 | Post condition |                                                                                          |
@@ -634,9 +680,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       1        |       Il cliente chiede di acquistare i prodotti presenti nel suo carrello attuale       |
 |       2        | Il sistema rileva un errore in quanto il carrello risulta vuoto e lo comunica al cliente |
 
-##### Scenario 4.4.2
+##### Scenario 4.4.3
 
-| Scenario 4.4.2 |                                    Acquisto errato del carrello attuale                                    |
+| Scenario 4.4.3 |                                    Acquisto errato del carrello attuale                                    |
 | :------------: | :--------------------------------------------------------------------------------------------------------: |
 |  Precondition  |                                            Il cliente è loggato                                            |
 | Post condition |                                                                                                            |
@@ -644,7 +690,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       1        |                Il cliente chiede di acquistare i prodotti presenti nel suo carrello attuale                |
 |       2        | Il sistema rileva un errore in quanto il cliente non risulta avere alcun carrello e lo comunica al cliente |
 
-### Use case 4.5 , UC4.5 Visualizzazione della cronologia dei carrelli acquistati dal cliente
+### Use case 4.5, UC4.5 
 
 | Actors Involved  |                            Cliente                            |
 | :--------------: | :-----------------------------------------------------------: |
@@ -664,7 +710,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       1        | Il cliente chiede di visualizzare la storia dei suoi carrelli |
 |       2        |     Il sistema mostra la storia dei carrelli del cliente      |
 
-### Use case 4.6 , UC4.6 Cancellazione del carrello
+### Use case 4.6, UC4.6
 
 | Actors Involved  |                                            Cliente                                             |
 | :--------------: | :--------------------------------------------------------------------------------------------: |
@@ -674,9 +720,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |     Variants     |                                                                                                |
 |    Exceptions    |                            Il cliente non ha alcun carrello (4.6.1)                            |
 
-#### Scenario 4.6
+#### Scenario 4.6.1
 
-|  Scenario 4.6  | Cancellazione corretta del carrello attuale del cliente  |
+|  Scenario 4.6.1  | Cancellazione corretta del carrello attuale del cliente  |
 | :------------: | :------------------------------------------------------: |
 |  Precondition  |                   Il cliente è loggato                   |
 | Post condition | Viene cancellato il carrello attuale del cliente loggato |
@@ -684,9 +730,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       1        | Il cliente chiede di cancellare il suo carrello attuale  |
 |       2        |         Il sistema elimina il carrello corrente          |
 
-##### Scenario 4.6.1
+##### Scenario 4.6.2
 
-| Scenario 4.6.1 |                        Cancellazione errata del carrello attuale del cliente                         |
+| Scenario 4.6.2 |                        Cancellazione errata del carrello attuale del cliente                         |
 | :------------: | :--------------------------------------------------------------------------------------------------: |
 |  Precondition  |                                         Il cliente è loggato                                         |
 | Post condition |                                                                                                      |

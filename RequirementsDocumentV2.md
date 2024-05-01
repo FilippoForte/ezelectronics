@@ -1001,6 +1001,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
   - Dispone di una (e una sola) lista dei desideri a cui aggiungere prodotti a cui è interessato
 - Manager
   - Utente responsabile del negozio fisico
+  - Dispone di una email aziendale verificata in fase di registrazione e di un codice aziendale univoco
   - Ogni manager ha la possibilità di gestire (aggiungere, rimuovere, registrare una nuova fornitura, registrare uno sconto, ...) i prodotti sul sito web
 - Prodotto
   - Prodotto in vendita sul sito web
