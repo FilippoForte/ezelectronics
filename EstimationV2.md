@@ -62,7 +62,9 @@ Consider the EZElectronics  project in FUTURE version (as proposed by your team 
 
 # Summary
 
-Report here the results of the three estimation approaches. The  estimates may differ. Discuss here the possible reasons for the difference
+Consideriamo la stima "by size" la meno precisa visto che tiene conto solo delle linee di codice scritte e non del tempo impiegato per
+le fasi di project management, planning e la creazione dei documenti ad esso necessari.
+Le altre due stime sono piu' precise in quanto tengono conto delle altre fasi di progetto.
 
 |                                    | Effort stimata (person hour)            | Durata stimata     (calendar weeks) |
 | ---------------------------------- | --------------------------------------- | ----------------------------------- |
