@@ -150,7 +150,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 | FR4.1   | Visualizzazione del carrello attuale del cliente                                   |
 | FR4.2   | Aggiunta di un prodotto al carrello attuale                                        |
 | FR4.3   | Rimozione di un prodotto dal carrello attuale                                      |
-| FR4.4   | Acquisto del carrello (----) attuale                                 |
+| FR4.4   | Acquisto del carrello attuale                                 |
 | FR4.5   | Visualizzazione dello storico dei carrelli acquistati dal cliente                  |
 | FR4.6   | Cancellazione del carrello                                  |
 
@@ -190,11 +190,10 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 
 # Use case diagram and use cases
 
-## Use case diagram
-
-![useCaseDiagram](./img/diagrammaCasiDuso.png)
-
-
+## Use case diagram Summary
+![useCaseDiagram](./img/diagrammaCasiDusoSummaryv1.png)
+## Use case diagram 
+![useCaseDiagram](./img/diagrammaCasiDusov1.png)
 ### Use case 1.1, UC1.1
 
 | Actors Involved  |                                           Cliente/Manager                                        |
@@ -443,78 +442,115 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       3        |                                            Il manager inserisce i dati                                          |
 |       4        | Il sistema rileva un errore in quanto la data di arrivo è successiva a quella corrente e lo comunica al manager |
 
-### Use case 3.5, UC3.5 
+### Use case 3.5, UC3.5 Visualizza informazioni prodotti di una certa categoria (opzionale: parametro disponibile)
 
-| Actors Involved  |                                    Cliente/Manager                                     |
-| :--------------: | :------------------------------------------------------------------------------------: |
-|   Precondition   |                                   L'utente è loggato                                   |
-|  Post condition  |      Vengono mostrati i prodotti che rispecchiano il filtro inserito dall'utente       |
-| Nominal Scenario | L'utente chiede di visualizzare solo i prodotti che rispecchiano un determinato filtro |
-|     Variants     |                                                                                        |
-|    Exceptions    |                                                                                        |
+| Actors Involved  | Cliente/Manager                                                                    |
+| :--------------: | :------------------------------------------------------------------: |
+|   Precondition   | L'utente è loggato  |
+|  Post condition  | Vengono mostrati i prodotti che rispecchiano la categoria inserita dall'utente  |
+| Nominal Scenario | L'utente chiede di visualizzare solo i prodotti che rispecchiano una determinata categoria   |
+|     Variants     |                          |
+|    Exceptions    |
 
-#### Scenario 3.5
+##### Scenario 3.5
 
-|  Scenario 3.5  |       Filtraggio di prodotti per categoria, modello, codice e disponibilità       |
-| :------------: | :-------------------------------------------------------------------------------: |
-|  Precondition  |                                L'utente è loggato                                 |
-| Post condition |    Vengono mostrati i prodotti che rispecchiano il filtro inserito dall'utente    |
-|     Step#      |                                    Description                                    |
-|       1        | L'utente chiede di visualizzare i prodotti che rispecchiano un determinato filtro |
-|       2        |                            Il sistema chiede il filtro                            |
-|       3        |                           L'utente inserisce il filtro                            |
-|       4        |     Il sistema mostra i prodotti appartenenti al filtro inserito dall'utente      |
+|  Scenario 3.5  | Visualizza informazioni prodotti di una certa categoria (opzionale: parametro disponibile)      |
+| :------------: | :------------------------------------------------------------------------: |
+|  Precondition  | L'utente è loggato |
+| Post condition | Vengono mostrati i prodotti che rispecchiano la categoria inserita dall'utente   |
+|     Step#      |                                Description                                 |
+|       1        |                                                        L'utente chiede di visualizzare i prodotti che rispecchiano una determinata categoria          |
+|       2        |                                                        Il sistema chiede la categoria             |
+|3| L'utente inserisce la categoria
+|4| Il sistema mostra i prodotti appartenenti alla categoria inserita dall'utente
+### Use case 3.6, UC3.6 Visualizza informazioni prodotti di un certo modello (opzionale: parametro disponibile)
 
-### Use case 3.6, UC3.6
+| Actors Involved  | Cliente/Manager                                                                    |
+| :--------------: | :------------------------------------------------------------------: |
+|   Precondition   | L'utente è loggato  |
+|  Post condition  | Vengono mostrati i prodotti che rispecchiano il modello inserito dall'utente  |
+| Nominal Scenario | L'utente chiede di visualizzare solo i prodotti che rispecchiano un determinato modello   |
+|     Variants     |                          |
+|    Exceptions    |
 
-| Actors Involved  |                            Manager                             |
-| :--------------: | :------------------------------------------------------------: |
-|   Precondition   |                      Il manager è loggato                      |
-|  Post condition  |           Il prodotto viene catalogato come venduto            |
-| Nominal Scenario | Il manager chiede di catalogare un prodotto come venduto (3.6) |
-|     Variants     |                                                                |
-|    Exceptions    | Il prodotto non esiste (3.6.1), la data di vendita risulta precedente alla data di arrivo o successiva a quella corrente (3.6.2) o il prodotto risulta già venduto (3.6.3) |
+##### Scenario 3.6
 
-#### Scenario 3.6.1
+|  Scenario 3.6  | Visualizza informazioni prodotti di un certo modello(opzionale: parametro disponibile)      |
+| :------------: | :------------------------------------------------------------------------: |
+|  Precondition  | L'utente è loggato |
+| Post condition | Vengono mostrati i prodotti che rispecchiano il modello inserito dall'utente   |
+|     Step#      |                                Description                                 |
+|       1        |                                                        L'utente chiede di visualizzare i prodotti che rispecchiano un determinato modello |
+|       2        |                                                        Il sistema chiede il modello            |
+|3| L'utente inserisce il modello
+|4| Il sistema mostra i prodotti appartenenti al modello inserito dall'utente
+### Use case 3.7, UC3.7 Visualizza informazioni di un prodotto con un determinato codice
+| Actors Involved  | Cliente/Manager                                                                    |
+| :--------------: | :------------------------------------------------------------------: |
+|   Precondition   | L'utente è loggato  |
+|  Post condition  | Vengono mostrate le informazioni del prodotto con il codice inserito dall'utente  |
+| Nominal Scenario | L'utente chiede di visualizzare un prodotto inserendo il suo codice e gli viene mostrato   |
+|     Variants     |                          |
+|    Exceptions    |
 
-|  Scenario 3.6.1  |                         Catalogazione corretta del prodotto come venduto                          |
-| :------------: | :-----------------------------------------------------------------------------------------------: |
-|  Precondition  |                                       Il manager è loggato                                        |
-| Post condition |                             Il prodotto viene catalogato come venduto                             |
-|     Step#      |                                            Description                                            |
+##### Scenario 3.7
+
+|  Scenario 3.7  | Visualizza informazioni prodotti di un certo modello(opzionale: parametro disponibile)      |
+| :------------: | :------------------------------------------------------------------------: |
+|  Precondition  | L'utente è loggato |
+| Post condition | Vengono mostrate le informazioni del prodotto con il codice inserito dall'utente   |
+|     Step#      |                                Description                                 |
+|       1        |                                                        L'utente chiede di visualizzare le informazioni di un prodotto di cui inserisce il codice |
+|       2        |                                                        Il sistema chiede il codice            |
+|3| L'utente inserisce il codice
+|4| Il sistema mostra il prodotto corrispondente al codice inserito
+### Use case 3.8, UC3.8 Cataloga prodotto come venduto
+
+| Actors Involved  |Manager                                                                    |
+| :--------------: | :------------------------------------------------------------------: |
+|   Precondition   | Il manager è loggato  |
+|  Post condition  | Il prodotto viene catalogato come venduto  |
+| Nominal Scenario | Il manager chiede di catalogare un prodotto come venduto (3.8)  |
+|     Variants     |                          |
+|    Exceptions    | Il prodotto non esiste (3.8.1), la data di vendita risulta precedente alla data di arrivo o successiva a quella corrente (3.8.2) o il prodotto risulta già venduto (3.8.3)
+
+##### Scenario 3.8
+
+|  Scenario 3.8 |                                                                    Catalogazione corretta del prodotto come venduto    |
+| :------------: | :------------------------------------------------------------------------: |
+|  Precondition  | Il manager è loggato |
+| Post condition | Il prodotto viene catalogato come venduto    |
+|     Step#      |                                Description                                 |
+|       1        |                                                      Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita        |
+|       2        |                                           Il sistema valida le informazioni          |
+|3| Il prodotto risulta venduto
+##### Scenario 3.8.1
+
+|  Scenario 3.8.1  |                                                                    Catalogazione errata del prodotto come venduto    |
+| :------------: | :------------------------------------------------------------------------: |
+|  Precondition  | Il manager è loggato |
+| Post condition | Il prodotto viene catalogato come venduto    |
+|     Step#      |                                Description                                 |
+|       1        |                                                      Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita        |
+|       2        |  Il sistema rileva un errore in quanto il prodotto non esiste e lo comunica al manager
+##### Scenario 3.8.2
+
+|  Scenario 3.8.2  |                                                                    Catalogazione errata del prodotto come venduto    |
+| :------------: | :------------------------------------------------------------------------: |
+|  Precondition  | Il manager è loggato |
+| Post condition | Il prodotto viene catalogato come venduto    |
+|     Step#      |                                Description                                 |
+|       1        |                                                      Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita        |
+|       2        |Il sistema rileva un errore in quanto la data di vendita risulta precedente alla data di arrivo o successiva a quella corrente e lo comunica al manager  
+##### Scenario 3.8.3
+
+|  Scenario 3.8.3  |                                                                    Catalogazione errata del prodotto come venduto    |
+| :------------: | :------------------------------------------------------------------------: |
+|  Precondition  | Il manager è loggato |
+| Post condition | Il prodotto viene catalogato come venduto    |
+|     Step#      |                                Description                                 |
 |       1        | Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita |
-|       2        |                                 Il sistema valida le informazioni                                 |
-|       3        |                                    Il prodotto risulta venduto                                    |
-
-##### Scenario 3.6.2
-
-| Scenario 3.6.2 |                          Catalogazione errata del prodotto come venduto                           |
-| :------------: | :-----------------------------------------------------------------------------------------------: |
-|  Precondition  |                                       Il manager è loggato                                        |
-| Post condition |                             Il prodotto viene catalogato come venduto                             |
-|     Step#      |                                            Description                                            |
-|       1        | Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita |
-|       2        |       Il sistema rileva un errore in quanto il prodotto non esiste e lo comunica al manager       |
-
-##### Scenario 3.6.3
-
-| Scenario 3.6.3 |                          Catalogazione errata del prodotto come venduto                           |
-| :------------: | :-----------------------------------------------------------------------------------------------: |
-|  Precondition  |                                       Il manager è loggato                                        |
-| Post condition |                             Il prodotto viene catalogato come venduto                             |
-|     Step#      |                                            Description                                            |
-|       1        | Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita |
-|       2        | Il sistema rileva un errore in quanto la data di vendita risulta precedente alla data di arrivo o successiva a quella corrente e lo comunica al manager |
-
-##### Scenario 3.6.4
-
-| Scenario 3.6.4 |                          Catalogazione errata del prodotto come venduto                           |
-| :------------: | :-----------------------------------------------------------------------------------------------: |
-|  Precondition  |                                       Il manager è loggato                                        |
-| Post condition |                             Il prodotto viene catalogato come venduto                             |
-|     Step#      |                                            Description                                            |
-|       1        | Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita |
-|       2        |  Il sistema rileva un errore in quanto il prodotto risulta già venduto e lo comunica al manager   |
+|       2        | Il sistema rileva un errore in quanto il prodotto risulta già venduto e lo comunica al manager
 
 ### Use case 4.1, UC4.1
 
