@@ -48,8 +48,7 @@ EZElectronics (read EaSy Electronics) is a software application designed to help
 | Servizio di spedizione| Servizio per la spedizione dei prodotti                                        |
 | Amministratore        | Amministratore del sistema                                                     |
 | Utente guest          | Utente che non ha ancora effettuato la fase di login o la fase di registrazione|
-| Validazione mail      | Servizio per la validazione che le mail inserite siano corrette                |
-| Invio mail            | Servizio per scrivere ed inviare delle mail                                    |
+| Servizio mail         | Servizio per scrivere ed inviare delle mail                                    |
 
 # Context Diagram and interfaces
 
@@ -67,8 +66,7 @@ EZElectronics (read EaSy Electronics) is a software application designed to help
 | Amministratore        | GUI (interfaccia per visualizzare e gestire i prodotti e gli utenti)      | Console           |
 | Servizio di pagamento | APIs                                                                      | Internet          |
 | Servizio di spedizione| APIs                                                                      | Internet          |
-| Validazione mail      | APIs                                                                      | Internet          |
-| Invio mail            | APIs                                                                      | Internet          |
+| Servizio mail         | APIs                                                                      | Internet          |
 
 # Stories and personas
 
