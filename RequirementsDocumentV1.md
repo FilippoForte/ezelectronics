@@ -142,8 +142,8 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 | FR3.2   | Aggiunta di un nuovo prodotto                                                      |
 | FR3.3   | Rimozione di un prodotto                                                           |
 | FR3.4   | Registrazione dell'arrivo di un nuovo (insieme di) prodotti                        |
-| FR3.5   | Visualizza informazioni prodotti di una certa categoria (opzionale: parametro disponibile)|
-| FR3.6   | Visualizza informazioni prodotti di un certo modello (opzionale: parametro disponibile) |
+| FR3.5   | Visualizza informazioni prodotti di una certa categoria (opzionale: selezione per disponibilità)|
+| FR3.6   | Visualizza informazioni prodotti di un certo modello (opzionale: selezione per disponibilità) |
 | FR3.7   | Visualizza informazioni di un prodotto con un determinato codice |
 | FR3.8   | Catalogazione prodotto come venduto |
 | **FR4** | **Gestione del carrello**                                                          |
