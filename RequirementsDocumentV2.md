@@ -124,6 +124,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR3.8| Filtraggio dei prodotti per disponibilità                                             |
 | FR3.9| Aggiungi sconto ad un prodotto*************                                           |
 | FR3.10| Filtraggio informazioni prodotti per sconto (maggiore o uguale a quello indicato)    |
+| FR3.11| Aggiorna la quantità disponibile di un prodotto quando viene venduto                 |
 | **FR4**| **Gestione del carrello**                                                           |
 | FR4.1| Visualizzazione del carrello attuale del cliente                                      |
 | FR4.2| Aggiunta di un prodotto al carrello attuale                                           |
@@ -138,17 +139,18 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | **FR6**| **Gestione pagamenti**                                                              |
 | FR6.1| Aggiungi metodo di pagamento*************                                             |
 | FR6.2| Rimuovi metodo di pagamento*************                                              |
-| **FR7**| **Gestione vendite**                                                            |
-| FR7.1| Visualizza vendite (filtri opzionali: intervallo di date, categoria prodotto, modello prodotto)                                                                                      |
+| **FR7**| **Analisi vendite**                                                                 |
+| FR7.1| Visualizza carrelli venduti (filtri opzionali: intervallo di date, categoria prodotto, modello prodotto)                                                                                      |
+| FR7.2| Visualizza totale dei prodotti venduti (in base ai filtri specificati in FR7.1)                                                    |
 | **FR8**| **Gestione notifiche(sul sito e per email)**                                        |
 | FR8.1| Invio di una email di notifica al cliente quando un prodotto all'interno della sua lista dei desideri riceve uno sconto|
 | FR8.3| Invio di una email di notifica al cliente quando lo stato della sua spedizione viene aggiornato |
 | FR8.4| Invio di una email di notifica al cliente quando un prodotto nel suo carrello viene esaurito (prima che lui lo acquisti)|
-| FR8.5| Invio di una email di notifica al manager quando un prodotto viene esaurito|
-|**FR9**| **Gestione lista dei desideri**                                                     |
-| FR9.1| Visualizza lista dei desideri                                                        |
-| FR9.2| Aggiungi prodotto alla lista dei desideri                                            |
-| FR9.3| Rimuovi prodotto dalla lista dei desideri                                            |
+| FR8.5| Invio di una email di notifica al manager quando un prodotto viene esaurito           |
+|**FR9**| **Gestione lista dei desideri**                                                      |
+| FR9.1| Visualizza lista dei desideri                                                         |
+| FR9.2| Aggiungi prodotto alla lista dei desideri                                             |
+| FR9.3| Rimuovi prodotto dalla lista dei desideri                                             |
 
 ## Table of rights
 
