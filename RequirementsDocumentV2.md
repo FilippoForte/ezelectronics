@@ -48,7 +48,8 @@ EZElectronics (read EaSy Electronics) is a software application designed to help
 | Servizio di spedizione| Servizio per la spedizione dei prodotti                                        |
 | Amministratore        | Amministratore del sistema                                                     |
 | Utente guest          | Utente che non ha ancora effettuato la fase di login o la fase di registrazione|
-| Servizio mail         | Servizio per scrivere ed inviare delle mail                                    |
+| Validazione mail      | Servizio per la validazione che le mail inserite siano corrette                |
+| Invio mail            | Servizio per scrivere ed inviare delle mail                                    |
 
 # Context Diagram and interfaces
 
@@ -66,7 +67,8 @@ EZElectronics (read EaSy Electronics) is a software application designed to help
 | Amministratore        | GUI (interfaccia per visualizzare e gestire i prodotti e gli utenti)      | Console           |
 | Servizio di pagamento | APIs                                                                      | Internet          |
 | Servizio di spedizione| APIs                                                                      | Internet          |
-| Servizio mail         | APIs                                                                      | Internet          |
+| Validazione mail      | APIs                                                                      | Internet          |
+| Invio mail            | APIs                                                                      | Internet          |
 
 # Stories and personas
 
@@ -111,24 +113,25 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR2.4| Modifica informazioni utente: password di un utente loggato                           |
 | FR2.5| Eliminare il proprio profilo ******** (AGGIUNTO)                                      |
 | FR2.6| Elimina profilo utente                                                                |
-| FR2.7| Visualizza utenti (?? anche per ruolo)                                                |
 | **FR3**| **Gestione dei prodotti**                                                           |
 | FR3.1| Visualizzazione di tutti i prodotti                                                   |
-| FR3.2| Aggiunta di un nuovo prodotto                                                         |
-| FR3.3| Rimozione di un prodotto                                                              |
-| FR3.4| Registrazione dell'arrivo di un nuovo (insieme di) prodotti                           |
-| FR3.5| Filtraggio (e visualizzazione) di prodotti per categoria, modello, codice e disponibilità|
-| FR3.6| DIVIDERE FILTRAGGIO COME NELLA v1                                                     |
-| FR3.7| Aggiungi sconto ad un prodotto*************                                           |
-| FR3.8| Filtra prodotti per sconto***************                                             |
-| FR3.9| Visualizza storico prezzi di un prodotto***************      (MODIFICATO)             |
+| FR3.2| Visualizzazione delle informazioni di un prodotto                                     |
+| FR3.3| Aggiunta di un nuovo prodotto                                                         |
+| FR3.4| Rimozione di un prodotto                                                              |
+| FR3.5| Registrazione dell'arrivo di un nuovo (insieme di) prodotti                           |
+| FR3.6| Filtraggio dei prodotti per categoria                                                 |
+| FR3.7| Filtraggio dei prodotti per modello                                                   |
+| FR3.8| Filtraggio dei prodotti per disponibilità                                             |
+| FR3.9| Aggiungi sconto ad un prodotto*************                                           |
+| FR3.10| Filtraggio informazioni prodotti per sconto (maggiore o uguale a quello indicato)    |
+| FR3.11| Aggiorna la quantità disponibile di un prodotto quando viene venduto                 |
 | **FR4**| **Gestione del carrello**                                                           |
 | FR4.1| Visualizzazione del carrello attuale del cliente                                      |
 | FR4.2| Aggiunta di un prodotto al carrello attuale                                           |
 | FR4.3| Rimozione di un prodotto dal carrello attuale                                         |
 | FR4.4| Acquisto dei prodotti aggiunti al carrello attuale                                    |
 | FR4.5| Visualizzazione della cronologia dei carrelli acquistati dal cliente                  |
-| FR4.6| Cancellazione del carrello attuale                                                    |
+| FR4.6| Svuota il carrello attuale                                                            |
 | **FR5**| **Gestione spedizioni**                                                             |
 | FR5.1| Aggiunta indirizzo di spedizione*************  (MODIFICATO)                           |
 | FR5.2| Modifica indirizzo di spedizione*************                                         |
@@ -136,19 +139,18 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | **FR6**| **Gestione pagamenti**                                                              |
 | FR6.1| Aggiungi metodo di pagamento*************                                             |
 | FR6.2| Rimuovi metodo di pagamento*************                                              |
-| **FR7**| **Gestione statistiche**                                                            |
-| FR7.1| Visualizza statistiche relative allo stato degli ordini************* (ORDINI IN CORSO, SPEDITI, ECC.)                                                                                          |
-| FR7.2| Visualizza statistiche prodotti venduti in un range di date*************              |
+| **FR7**| **Analisi vendite**                                                                 |
+| FR7.1| Visualizza carrelli venduti (filtri opzionali: intervallo di date, categoria prodotto, modello prodotto)                                                                                      |
+| FR7.2| Visualizza totale dei prodotti venduti (in base ai filtri specificati in FR7.1)                                                    |
 | **FR8**| **Gestione notifiche(sul sito e per email)**                                        |
-| FR8.1| Visualizzazione delle notifiche*************                                          |
-| FR8.2| Invio di una notifica al cliente quando un prodotto all'interno della sua lista dei desideri riceve uno sconto************* (AGGIUNTO)|
-| FR8.3| Invio di una notifica al cliente quando lo stato della sua spedizione viene aggiornato************* (AGGIUNTO) |
-| FR8.4| Invio di una notifica al cliente quando un prodotto nel suo carrello viene esaurito (prima che lui lo acquisti)************* (AGGIUNTO)|
-| FR8.5| Invio di una notifica al manager quando un prodotto viene esaurito************* (AGGIUNTO)|
-|**FR9**| **Gestione lista dei desideri**                                                     |
-| FR9.1| Visualizza lista dei desideri***************                                         |
-| FR9.2| Aggiungi prodotto alla lista dei desideri***************                             |
-| FR9.3| Rimuovi prodotto dalla lista dei desideri***************                             |
+| FR8.1| Invio di una email di notifica al cliente quando un prodotto all'interno della sua lista dei desideri riceve uno sconto|
+| FR8.3| Invio di una email di notifica al cliente quando lo stato della sua spedizione viene aggiornato |
+| FR8.4| Invio di una email di notifica al cliente quando un prodotto nel suo carrello viene esaurito (prima che lui lo acquisti)|
+| FR8.5| Invio di una email di notifica al manager quando un prodotto viene esaurito           |
+|**FR9**| **Gestione lista dei desideri**                                                      |
+| FR9.1| Visualizza lista dei desideri                                                         |
+| FR9.2| Aggiungi prodotto alla lista dei desideri                                             |
+| FR9.3| Rimuovi prodotto dalla lista dei desideri                                             |
 
 ## Table of rights
 
