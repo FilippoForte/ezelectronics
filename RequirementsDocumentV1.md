@@ -101,9 +101,9 @@ EZElectronics (read EaSy Electronics) is a software application designed to help
 
 | Attore           | Interfaccia logica                                                            | Interfaccia fisica |
 | :--------------: | :--------------------------------------------------------------------------:  | :----------------: |
-| Cliente          | GUI (interfaccia per navigare il sito, visualizzare e comprare prodotti)      | Smartphone / PC    |
-| Manager          | GUI (interfaccia per navigare il sito, visualizzare e gestire i prodotti)     | Smartphone / PC    |
-| Utente guest     | GUI (interfaccia per registrarsi o loggarsi nel sito)                         | Smartphone / PC    |
+| Cliente          | GUI (interfaccia per navigare il sito, visualizzare e comprare prodotti)      | Browser Web        |
+| Manager          | GUI (interfaccia per navigare il sito, visualizzare e gestire i prodotti)     | Browser Web        |
+| Utente guest     | GUI (interfaccia per registrarsi o loggarsi nel sito)                         | Browser Web        |
 
 # Stories and personas
 
