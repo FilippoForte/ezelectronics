@@ -101,9 +101,9 @@ EZElectronics (read EaSy Electronics) is a software application designed to help
 
 | Attore           | Interfaccia logica                                                            | Interfaccia fisica |
 | :--------------: | :--------------------------------------------------------------------------:  | :----------------: |
-| Cliente          | GUI (interfaccia per navigare il sito, visualizzare e comprare prodotti)      | Smartphone / PC    |
-| Manager          | GUI (interfaccia per navigare il sito, visualizzare e gestire i prodotti)     | Smartphone / PC    |
-| Utente guest     | GUI (interfaccia per registrarsi o loggarsi nel sito)                         | Smartphone / PC    |
+| Cliente          | GUI (interfaccia per navigare il sito, visualizzare e comprare prodotti)      | Browser Web        |
+| Manager          | GUI (interfaccia per navigare il sito, visualizzare e gestire i prodotti)     | Browser Web        |
+| Utente guest     | GUI (interfaccia per registrarsi o loggarsi nel sito)                         | Browser Web        |
 
 # Stories and personas
 
@@ -191,9 +191,13 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 # Use case diagram and use cases
 
 ## Use case diagram Summary
+
 ![useCaseDiagram](./img/diagrammaCasiDusoSummaryv1.png)
-## Use case diagram 
-![useCaseDiagram](./img/diagrammaCasiDusov1.png)
+
+## Use case diagram
+
+![useCaseDiagram](./img/diagrammaCasiDusoV1.png)
+
 ### Use case 1.1, UC1.1
 
 | Actors Involved  |                                           Cliente/Manager                                        |
@@ -442,7 +446,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       3        |                                            Il manager inserisce i dati                                          |
 |       4        | Il sistema rileva un errore in quanto la data di arrivo è successiva a quella corrente e lo comunica al manager |
 
-### Use case 3.5, UC3.5 Visualizza informazioni prodotti di una certa categoria (opzionale: parametro disponibile)
+### Use case 3.5, UC3.5
 
 | Actors Involved  | Cliente/Manager                                                                    |
 | :--------------: | :------------------------------------------------------------------: |
@@ -450,9 +454,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |  Post condition  | Vengono mostrati i prodotti che rispecchiano la categoria inserita dall'utente  |
 | Nominal Scenario | L'utente chiede di visualizzare solo i prodotti che rispecchiano una determinata categoria   |
 |     Variants     |                          |
-|    Exceptions    |
+|    Exceptions    ||
 
-##### Scenario 3.5
+#### Scenario 3.5
 
 |  Scenario 3.5  | Visualizza informazioni prodotti di una certa categoria (opzionale: parametro disponibile)      |
 | :------------: | :------------------------------------------------------------------------: |
@@ -461,9 +465,10 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |     Step#      |                                Description                                 |
 |       1        |                                                        L'utente chiede di visualizzare i prodotti che rispecchiano una determinata categoria          |
 |       2        |                                                        Il sistema chiede la categoria             |
-|3| L'utente inserisce la categoria
-|4| Il sistema mostra i prodotti appartenenti alla categoria inserita dall'utente
-### Use case 3.6, UC3.6 Visualizza informazioni prodotti di un certo modello (opzionale: parametro disponibile)
+|3| L'utente inserisce la categoria|
+|4| Il sistema mostra i prodotti appartenenti alla categoria inserita dall'utente|
+
+### Use case 3.6, UC3.6
 
 | Actors Involved  | Cliente/Manager                                                                    |
 | :--------------: | :------------------------------------------------------------------: |
@@ -471,9 +476,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |  Post condition  | Vengono mostrati i prodotti che rispecchiano il modello inserito dall'utente  |
 | Nominal Scenario | L'utente chiede di visualizzare solo i prodotti che rispecchiano un determinato modello   |
 |     Variants     |                          |
-|    Exceptions    |
+|    Exceptions    ||
 
-##### Scenario 3.6
+#### Scenario 3.6
 
 |  Scenario 3.6  | Visualizza informazioni prodotti di un certo modello(opzionale: parametro disponibile)      |
 | :------------: | :------------------------------------------------------------------------: |
@@ -482,18 +487,20 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |     Step#      |                                Description                                 |
 |       1        |                                                        L'utente chiede di visualizzare i prodotti che rispecchiano un determinato modello |
 |       2        |                                                        Il sistema chiede il modello            |
-|3| L'utente inserisce il modello
-|4| Il sistema mostra i prodotti appartenenti al modello inserito dall'utente
-### Use case 3.7, UC3.7 Visualizza informazioni di un prodotto con un determinato codice
+|3| L'utente inserisce il modello|
+|4| Il sistema mostra i prodotti appartenenti al modello inserito dall'utente|
+
+### Use case 3.7, UC3.7
+
 | Actors Involved  | Cliente/Manager                                                                    |
 | :--------------: | :------------------------------------------------------------------: |
 |   Precondition   | L'utente è loggato  |
 |  Post condition  | Vengono mostrate le informazioni del prodotto con il codice inserito dall'utente  |
 | Nominal Scenario | L'utente chiede di visualizzare un prodotto inserendo il suo codice e gli viene mostrato   |
 |     Variants     |                          |
-|    Exceptions    |
+|    Exceptions    ||
 
-##### Scenario 3.7
+#### Scenario 3.7
 
 |  Scenario 3.7  | Visualizza informazioni prodotti di un certo modello(opzionale: parametro disponibile)      |
 | :------------: | :------------------------------------------------------------------------: |
@@ -502,9 +509,10 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |     Step#      |                                Description                                 |
 |       1        |                                                        L'utente chiede di visualizzare le informazioni di un prodotto di cui inserisce il codice |
 |       2        |                                                        Il sistema chiede il codice            |
-|3| L'utente inserisce il codice
-|4| Il sistema mostra il prodotto corrispondente al codice inserito
-### Use case 3.8, UC3.8 Cataloga prodotto come venduto
+|3| L'utente inserisce il codice|
+|4| Il sistema mostra il prodotto corrispondente al codice inserito|
+
+### Use case 3.8, UC3.8
 
 | Actors Involved  |Manager                                                                    |
 | :--------------: | :------------------------------------------------------------------: |

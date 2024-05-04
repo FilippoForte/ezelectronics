@@ -8,74 +8,57 @@ Version: 1.6
 
 ## Pagina Principale
 
-![Index](./img/Index.png)
-
 ![IndexPC](./img/IndexPC.png)
 
 ## Schermata di registrazione
-
-![Register](./img/Register.png)
 
 ![RegisterPC](./img/RegisterPC.png)
 
 ## Schermata di login
 
-![Login](./img/Login.png)
 
 ![LoginPC](./img/LoginPC.png)
 
 ## Schermata di visualizzazione prodotti (da utente customer)
 
-![PaginaCustomer](./img/PaginaCustomer.png)
-
 ![PaginaCustomerPC](./img/PaginaCustomerPC.png)
+
+### Schermata di visualizzazione prodotti con menu a tendina esteso (da utente customer)
+
+![PaginaCustomerMenuPC](./img/PaginaCustomerMenuPC.png)
 
 ### Carrello (da utente customer)
 
 Si accede alla pagina premendo sull'icona del carrello sulla navbar
 
-![Carrello](./img/Carrello.png)
-
 ![CarrelloPC](./img/CarrelloPC.png)
 
 ### Storia dei carrelli (da utente customer)
 
-Si accede alla pagina tramite la voce nel menu a tendina nella navbar
-
-![History](./img/History.png)
-
 ![HistoryPC](./img/HistoryPC.png)
+
 
 ## Schermata di visualizzazione prodotti (da utente manager)
 
-![PaginaManager](./img/PaginaManager.png)
-
 ![PaginaManagerPC](./img/PaginaManagerPC.png)
+
+### Schermata di visualizzazione prodotti con menu a tendina esteso (da utente manager)
+
+![PaginaManagerMenuPC](./img/PaginaManagerMenuPC.png)
 
 ### Inserisci un nuovo prodotto (da utente manager)
 
-Si accede alla pagina tramite il bottone "Aggiungi Prodotto" sulla navbar per la versione da PC mentre attraverso il bottone corrispondente situato in basso da cellulare
-
-![InserisciProdotto](./img/InserisciProdotto.png)
+Si accede alla pagina tramite il bottone "Aggiungi Prodotto" sulla navbar
 
 ![InserisciProdottoPC](./img/InserisciProdottoPC.png)
 
 ### Registrazione arrivi (da utente manager)
 
-Si accede alla pagina tramite il bottone "Registrazione Arrivi" sulla navbar per la versione da PC mentre attraverso il bottone corrispondente situato in basso da cellulare
-
-![RegistrazioneArrivi](./img/RegistrazioneArrivi.png)
+Si accede alla pagina tramite il bottone "Registrazione Arrivi" sulla navbar
 
 ![RegistrazioneArriviPC](./img/RegistrazioneArriviPC.png)
 
-### Logout (da utente customer e manager)
-
-![Logout](./img/Logout.png)
-
-![LogoutPC](./img/LogoutPC.png)
 
 ## Profilo (da utente customer e manager)
-
-![Profilo](./img/Profilo.png)
 
 ![ProfiloPC](./img/ProfiloPC.png)
