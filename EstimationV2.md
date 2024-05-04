@@ -1,7 +1,7 @@
 # Project Estimation - FUTURE
-Date:
+Date: 01/05/24
 
-Version:
+Version: V2
 
 
 # Estimation approach
@@ -24,10 +24,11 @@ Consider the EZElectronics  project in FUTURE version (as proposed by your team 
 | requirement document      | 40                                |
 | GUI prototype             | 25                                |
 | design document           | 20                                |
-| code                      | 300                               |
+| code                      | 400                               |
 | unit tests                | 50                                |
 | api tests                 | 50                                |
 | management documents      | 30                                |
+| TOTALE                    | 615                               |
 
 
 # Estimate by activity decomposition
@@ -38,35 +39,38 @@ Consider the EZElectronics  project in FUTURE version (as proposed by your team 
 | management documents                 | 20                                |
 | Documento dei requisiti              |                                   |
 | Definire requisiti                   | 15                                |
-| definire contextDiagram e interfacce | 3                                 |
-| Scrivere Stories and personas        | 2                                 |
+| definire contextDiagram e interfacce | 4                                 |
+| Scrivere Stories and personas        | 3                                 |
 | Scrivere gli use cases               | 40                                |
-| Definire glossary e system design    | 4                                 |
-| Definire deployment diagram          | 3                                 |
+| Definire glossary e system design    | 6                                 |
+| Definire deployment diagram          | 4                                 |
 | Disegnare il prototipo della GUI     |                                   |
 | Define interaction                   | 5                                 |
 | Define layout                        | 25                                |
 | Codificare l'applicativo             |                                   |
-| Definire classi                      | 30                                |
-| Definire metodi                      | 80                                |
-| Scrivere codice                      | 100                               |
+| Definire classi                      | 50                                |
+| Definire metodi                      | 150                               |
+| Scrivere codice                      | 200                               |
 | Test e debug                         |                                   |
 | Test unit                            | 50                                |
 | Test api                             | 50                                |
+| TOTALE                               | 612                               |
 
 ###
 
-![Gant](./img/GantV1.png)
+![Gant](./img/GantV2.png)
 
 # Summary
 
-Report here the results of the three estimation approaches. The  estimates may differ. Discuss here the possible reasons for the difference
+Consideriamo la stima "by size" la meno precisa visto che tiene conto solo delle linee di codice scritte e non del tempo impiegato per
+le fasi di project management, planning e la creazione dei documenti ad esso necessari.
+Le altre due stime sono piu' precise in quanto tengono conto delle altre fasi di progetto.
 
-|                                    | Estimated effort (person hour)          | Estimated duration (calendar weeks) |          
+|                                    | Effort stimata (person hour)            | Durata stimata     (calendar weeks) |
 | ---------------------------------- | --------------------------------------- | ----------------------------------- |
 | estimate by size                   | 500                                     | 3.125                               |
-| estimate by product decomposition  | 515                                     | ~3.22                               |
-| estimate by activity decomposition | 427                                     | ~2.67                               |
+| estimate by product decomposition  | 615                                     | ~3.84                               |
+| estimate by activity decomposition | 612                                     | ~3.82                               |
 
 
 
