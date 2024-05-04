@@ -228,7 +228,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       4        |        Il sistema valida i dati        |
 |       5        |        L'utente risulta loggato        |
 
-##### Scenario 1.1.2
+#### Scenario 1.1.2
 
 | Scenario 1.1.2 |                         Login errato                          |
 | :------------: | :-----------------------------------------------------------: |
@@ -303,7 +303,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       4        | L'utente seleziona il ruolo con cui registrarsi(manager o utente) |
 |       5        |  Il sistema salva i dati e viene creato il nuovo utente/manager   |
 
-##### Scenario 2.1.2
+#### Scenario 2.1.2
 
 | Scenario 2.1.2 |                                       Registrazione errata                                       |
 | :------------: | :----------------------------------------------------------------------------------------------: |
@@ -359,7 +359,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       4        |           Il sistema valida i dati e li salva           |
 |       5        |        Il prodotto viene aggiunto correttamente         |
 
-##### Scenario 3.2.2
+#### Scenario 3.2.2
 
 | Scenario 3.2.2 |                 Aggiunta errata di un nuovo prodotto (prodotto esistente)                  |
 | :------------: | :----------------------------------------------------------------------------------------: |
@@ -371,7 +371,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       3        |                        Il manager inserisce tutti i dati richiesti                         |
 |       4        | Il sistema rileva un errore in quanto il prodotto è già esistente e lo comunica al manager |
 
-##### Scenario 3.2.3
+#### Scenario 3.2.3
 
 | Scenario 3.2.3 |               Aggiunta errata di un nuovo prodotto (data di arrivo successiva alla data corrente)               |
 | :------------: | :-------------------------------------------------------------------------------------------------------------: |
@@ -406,7 +406,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       4        |         Il sistema verifica che il codice sia presente          |
 |       5        |                    Il prodotto viene rimosso                    |
 
-##### Scenario 3.3.2
+#### Scenario 3.3.2
 
 | Scenario 3.3.2 |                                        Rimozione errata                                         |
 | :------------: | :---------------------------------------------------------------------------------------------: |
@@ -441,7 +441,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       4        |                    Il sistema valida i dati e li salva                    |
 |       5        |                  L'arrivo viene registrato correttamente                  |
 
-##### Scenario 3.4.2
+#### Scenario 3.4.2
 
 | Scenario 3.4.2 |                                           Registrazione arrivi errata                                           |
 | :------------: | :-------------------------------------------------------------------------------------------------------------: |
@@ -527,9 +527,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |  Post condition  | Il prodotto viene catalogato come venduto  |
 | Nominal Scenario | Il manager chiede di catalogare un prodotto come venduto (3.8)  |
 |     Variants     |                          |
-|    Exceptions    | Il prodotto non esiste (3.8.1), la data di vendita risulta precedente alla data di arrivo o successiva a quella corrente (3.8.2) o il prodotto risulta già venduto (3.8.3)
+|    Exceptions    | Il prodotto non esiste (3.8.1), la data di vendita risulta precedente alla data di arrivo o successiva a quella corrente (3.8.2) o il prodotto risulta già venduto (3.8.3) |
 
-##### Scenario 3.8.1
+#### Scenario 3.8.1
 
 |  Scenario 3.8.1 |                                                                    Catalogazione corretta del prodotto come venduto    |
 | :------------: | :------------------------------------------------------------------------: |
@@ -538,8 +538,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |     Step#      |                                Description                                 |
 |       1        |                                                      Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita        |
 |       2        |                                           Il sistema valida le informazioni          |
-|3| Il prodotto risulta venduto
-##### Scenario 3.8.2
+|3| Il prodotto risulta venduto |
+
+#### Scenario 3.8.2
 
 |  Scenario 3.8.2  |                                                                    Catalogazione errata del prodotto come venduto    |
 | :------------: | :------------------------------------------------------------------------: |
@@ -547,8 +548,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 | Post condition | Il prodotto viene catalogato come venduto    |
 |     Step#      |                                Description                                 |
 |       1        |                                                      Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita        |
-|       2        |  Il sistema rileva un errore in quanto il prodotto non esiste e lo comunica al manager
-##### Scenario 3.8.3
+|       2        |  Il sistema rileva un errore in quanto il prodotto non esiste e lo comunica al manager |
+
+#### Scenario 3.8.3
 
 |  Scenario 3.8.3  |                                                                    Catalogazione errata del prodotto come venduto    |
 | :------------: | :------------------------------------------------------------------------: |
@@ -556,8 +558,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 | Post condition | Il prodotto viene catalogato come venduto    |
 |     Step#      |                                Description                                 |
 |       1        |                                                      Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita        |
-|       2        |Il sistema rileva un errore in quanto la data di vendita risulta precedente alla data di arrivo o successiva a quella corrente e lo comunica al manager  
-##### Scenario 3.8.4
+|       2        |Il sistema rileva un errore in quanto la data di vendita risulta precedente alla data di arrivo o successiva a quella corrente e lo comunica al manager   |
+
+#### Scenario 3.8.4
 
 |  Scenario 3.8.4  |                                                                    Catalogazione errata del prodotto come venduto    |
 | :------------: | :------------------------------------------------------------------------: |
@@ -565,7 +568,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 | Post condition | Il prodotto viene catalogato come venduto    |
 |     Step#      |                                Description                                 |
 |       1        | Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita |
-|       2        | Il sistema rileva un errore in quanto il prodotto risulta già venduto e lo comunica al manager
+|       2        | Il sistema rileva un errore in quanto il prodotto risulta già venduto e lo comunica al manager |
 
 ### Use case 4.1, UC4.1
 
@@ -608,7 +611,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       2        | Il sistema verifica che il prodotto possa essere aggiunto  |
 |       3        |          Il prodotto risulta aggiunto al carrello          |
 
-##### Scenario 4.2.2
+#### Scenario 4.2.2
 
 | Scenario 4.2.2 |                     Aggiunta errata di un prodotto al carrello attuale                     |
 | :------------: | :----------------------------------------------------------------------------------------: |
@@ -618,7 +621,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       1        |                 Il cliente seleziona il prodotto da aggiungere al carrello                 |
 |       2        | Il sistema rileva un errore in quanto il prodotto non è esistente e lo comunica al cliente |
 
-##### Scenario 4.2.3
+#### Scenario 4.2.3
 
 | Scenario 4.2.3 |     Aggiunta errata di un prodotto al carrello attuale     |
 | :------------: | :--------------------------------------------------------: |
@@ -628,7 +631,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       1        | Il cliente seleziona il prodotto da aggiungere al carrello |
 |       2        | Il sistema rileva un errore in quanto il prodotto risulta essere presente in un altro carrello e lo comunica al cliente |
 
-##### Scenario 4.2.4
+#### Scenario 4.2.4
 
 | Scenario 4.2.4 |                              Aggiunta errata di un prodotto al carrello attuale                              |
 | :------------: | :----------------------------------------------------------------------------------------------------------: |
@@ -659,7 +662,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       2        |     Il sistema verifica che il prodotto sia rimovibile      |
 |       3        |          Il prodotto risulta rimosso correttamente          |
 
-##### Scenario 4.3.2
+#### Scenario 4.3.2
 
 | Scenario 4.3.2 |                     Rimozione errata di un prodotto dal carrello attuale                      |
 | :------------: | :-------------------------------------------------------------------------------------------: |
@@ -669,7 +672,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       1        |                  Il cliente chiede di rimuovere un prodotto dal suo carrello                  |
 |       2        | Il sistema rileva un errore in quanto il prodotto non è nel carrello e lo comunica al cliente |
 
-##### Scenario 4.3.3
+#### Scenario 4.3.3
 
 | Scenario 4.3.3 |                 Rimozione errata di un prodotto dal carrello attuale                  |
 | :------------: | :-----------------------------------------------------------------------------------: |
@@ -679,7 +682,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       1        |              Il cliente chiede di rimuovere un prodotto dal suo carrello              |
 |       2        | Il sistema rileva un errore in quanto il prodotto non esiste e lo comunica al cliente |
 
-##### Scenario 4.3.4
+#### Scenario 4.3.4
 
 | Scenario 4.3.4 |                      Rimozione errata di un prodotto dal carrello attuale                      |
 | :------------: | :--------------------------------------------------------------------------------------------: |
@@ -689,7 +692,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       1        |                  Il cliente chiede di rimuovere un prodotto dal suo carrello                   |
 |       2        | Il sistema rileva un errore in quanto il prodotto è già stato venduto e lo comunica al cliente |
 
-##### Scenario 4.3.5
+#### Scenario 4.3.5
 
 | Scenario 4.3.5 |                      Rimozione errata di un prodotto dal carrello attuale                       |
 | :------------: | :---------------------------------------------------------------------------------------------: |
@@ -721,7 +724,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       3        |   Il sistema calcola il totale del carrello e imposta la data di pagamento   |
 |       4        |                        Il carrello risulta acquistato                        |
 
-##### Scenario 4.4.2
+#### Scenario 4.4.2
 
 | Scenario 4.4.2 |                           Acquisto errato del carrello attuale                           |
 | :------------: | :--------------------------------------------------------------------------------------: |
@@ -731,7 +734,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       1        |       Il cliente chiede di acquistare i prodotti presenti nel suo carrello attuale       |
 |       2        | Il sistema rileva un errore in quanto il carrello risulta vuoto e lo comunica al cliente |
 
-##### Scenario 4.4.3
+#### Scenario 4.4.3
 
 | Scenario 4.4.3 |                                    Acquisto errato del carrello attuale                                    |
 | :------------: | :--------------------------------------------------------------------------------------------------------: |
@@ -781,7 +784,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       1        | Il cliente chiede di cancellare il suo carrello attuale  |
 |       2        |         Il sistema elimina il carrello corrente          |
 
-##### Scenario 4.6.2
+#### Scenario 4.6.2
 
 | Scenario 4.6.2 |                        Cancellazione errata del carrello attuale del cliente                         |
 | :------------: | :--------------------------------------------------------------------------------------------------: |
