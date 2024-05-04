@@ -70,6 +70,14 @@ Si accede alla pagina premendo sull'icona del prodotto desiderato
 
 ![ProdottoPC](./img/ProdottoPC.png)
 
+## Profilo (da utente customer)
+
+![ProfiloPC](./img/ProfiloV2PC.png)
+
+### Modifica Profilo (da utente customer)
+
+![ProfiloModificaPC](./img/ProfiloModificaPC.png)
+
 
 ## Scrermata di visualizzazione prodotti (da utente manager)
 
@@ -99,11 +107,21 @@ Si accede alla pagina tramite il bottone "Registrazione Arrivi" sulla navbar
 
 ![ModificaProdottoPC](./img/ModificaProdottoPC.png)
 
+## Profilo (da utente manager)
 
-## Profilo (da utente customer e manager)
+![ProfiloPC](./img/ProfiloPC.png)
 
-![ProfiloPC](./img/ProfiloV2PC.png)
 
-### Modifica Profilo (da utente customer e manager)
+## Esempio Errori
 
-![ProfiloModificaPC](./img/ProfiloModificaPC.png)
+![LoginErratoPC](./img/LoginErratoPC.png)
+
+![RegisterErratoV2PC](./img/RegisterErratoV2PC.png)
+
+![AcquistaErratoPC](./img/AcquistaErratoPC.png)
+
+![CarrelloErratoV2PC](./img/CarrelloErratoV2PC.png)
+
+![ProdottoErratoPC](./img/ProdottoErratoPC.png)
+
+![InserisciProdottoErratoPC](./img/InserisciProdottoErratoPC.png)

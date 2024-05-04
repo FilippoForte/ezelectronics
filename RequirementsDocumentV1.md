@@ -203,7 +203,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 
 ## Use case diagram
 
-![useCaseDiagram](./img/diagrammaCasiDusoV1.png)
+![useCaseDiagram](./img/diagrammaCasiDusov1.png)
 
 ### Use case 1.1, UC1.1
 

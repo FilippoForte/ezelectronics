@@ -62,3 +62,19 @@ Si accede alla pagina tramite il bottone "Registrazione Arrivi" sulla navbar
 ## Profilo (da utente customer e manager)
 
 ![ProfiloPC](./img/ProfiloPC.png)
+
+
+## Esempio funzionamento filtri
+
+![PaginaCustomerFiltriPC](./img/PaginaCustomerFiltriPC.png)
+
+
+## Esempio Errori
+
+![LoginErratoPC](./img/LoginErratoPC.png)
+
+![RegisterErratoPC](./img/RegisterErratoPC.png)
+
+![CarrelloErratoPC](./img/CarrelloErratoPC.png)
+
+![InserisciProdottoErratoPC](./img/InserisciProdottoErratoPC.png)
