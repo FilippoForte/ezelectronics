@@ -52,6 +52,13 @@ Version: V1 - description of EZElectronics in CURRENT form (as received by teach
       - [Scenario 3.6.2](#scenario-362)
       - [Scenario 3.6.3](#scenario-363)
       - [Scenario 3.6.4](#scenario-364)
+    - [Use case 3.7, UC3.7](#use-case-37-uc37)
+      - [Scenario 3.7](#scenario-37)
+    - [Use case 3.8, UC3.8](#use-case-38-uc38)
+      - [Scenario 3.8.1](#scenario-381)
+      - [Scenario 3.8.2](#scenario-382)
+      - [Scenario 3.8.3](#scenario-383)
+      - [Scenario 3.8.4](#scenario-384)  
     - [Use case 4.1, UC4.1](#use-case-41-uc41)
       - [Scenario 4.1](#scenario-41)
     - [Use case 4.2, UC4.2](#use-case-42-uc42)
@@ -522,9 +529,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |     Variants     |                          |
 |    Exceptions    | Il prodotto non esiste (3.8.1), la data di vendita risulta precedente alla data di arrivo o successiva a quella corrente (3.8.2) o il prodotto risulta già venduto (3.8.3)
 
-##### Scenario 3.8
+##### Scenario 3.8.1
 
-|  Scenario 3.8 |                                                                    Catalogazione corretta del prodotto come venduto    |
+|  Scenario 3.8.1 |                                                                    Catalogazione corretta del prodotto come venduto    |
 | :------------: | :------------------------------------------------------------------------: |
 |  Precondition  | Il manager è loggato |
 | Post condition | Il prodotto viene catalogato come venduto    |
@@ -532,15 +539,6 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |       1        |                                                      Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita        |
 |       2        |                                           Il sistema valida le informazioni          |
 |3| Il prodotto risulta venduto
-##### Scenario 3.8.1
-
-|  Scenario 3.8.1  |                                                                    Catalogazione errata del prodotto come venduto    |
-| :------------: | :------------------------------------------------------------------------: |
-|  Precondition  | Il manager è loggato |
-| Post condition | Il prodotto viene catalogato come venduto    |
-|     Step#      |                                Description                                 |
-|       1        |                                                      Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita        |
-|       2        |  Il sistema rileva un errore in quanto il prodotto non esiste e lo comunica al manager
 ##### Scenario 3.8.2
 
 |  Scenario 3.8.2  |                                                                    Catalogazione errata del prodotto come venduto    |
@@ -549,10 +547,19 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 | Post condition | Il prodotto viene catalogato come venduto    |
 |     Step#      |                                Description                                 |
 |       1        |                                                      Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita        |
-|       2        |Il sistema rileva un errore in quanto la data di vendita risulta precedente alla data di arrivo o successiva a quella corrente e lo comunica al manager  
+|       2        |  Il sistema rileva un errore in quanto il prodotto non esiste e lo comunica al manager
 ##### Scenario 3.8.3
 
 |  Scenario 3.8.3  |                                                                    Catalogazione errata del prodotto come venduto    |
+| :------------: | :------------------------------------------------------------------------: |
+|  Precondition  | Il manager è loggato |
+| Post condition | Il prodotto viene catalogato come venduto    |
+|     Step#      |                                Description                                 |
+|       1        |                                                      Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita        |
+|       2        |Il sistema rileva un errore in quanto la data di vendita risulta precedente alla data di arrivo o successiva a quella corrente e lo comunica al manager  
+##### Scenario 3.8.4
+
+|  Scenario 3.8.4  |                                                                    Catalogazione errata del prodotto come venduto    |
 | :------------: | :------------------------------------------------------------------------: |
 |  Precondition  | Il manager è loggato |
 | Post condition | Il prodotto viene catalogato come venduto    |
