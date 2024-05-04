@@ -58,6 +58,10 @@ Version: V1 - description of EZElectronics in CURRENT form (as received by teach
       - [Scenario 3.8.2](#scenario-382)
       - [Scenario 3.8.3](#scenario-383)
       - [Scenario 3.8.4](#scenario-384)  
+    - [Use case 3.9, UC3.9](#use-case-39-uc39)
+    - [Use case 3.10, UC3.10](#use-case-310-uc310)
+    - [Use case 3.11, UC3.11](#use-case-311-uc311)
+    - [Use case 3.12, UC3.12](#use-case-312-uc312)
     - [Use case 4.1, UC4.1](#use-case-41-uc41)
       - [Scenario 4.1](#scenario-41)
     - [Use case 4.2, UC4.2](#use-case-42-uc42)
@@ -158,13 +162,12 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR1.2| Logout di un utente registrato                                                        |
 | FR1.3| Possibilità di ottenere le informazioni relative all'utente correntemente loggato     |
 | **FR2**| **Gestione degli utenti**                                                           |
-| FR2.1| Registrazione di un nuovo cliente                                                     |
-| FR2.2| Registrazione di un nuovo manager                                                     |
-| FR2.3| Modifica informazioni utente: username di un cliente loggato                          |
-| FR2.4| Modifica informazioni utente: email di un cliente loggato                             |
-| FR2.5| Modifica informazioni utente: password di un utente loggato                           |
-| FR2.6| Eliminazione del proprio profilo ******** (AGGIUNTO)                                   |
-| FR2.7| Eliminazione di un manager registrato                                                 |
+| FR2.1| Registrazione di un nuovo utente                                                      |
+| FR2.2| Modifica informazioni utente: username di un cliente loggato                          |
+| FR2.3| Modifica informazioni utente: email di un cliente loggato                             |
+| FR2.4| Modifica informazioni utente: password di un utente loggato                           |
+| FR2.5| Eliminare il proprio profilo ******** (AGGIUNTO)                                      |
+| FR2.6| Elimina profilo utente                                                                |
 | **FR3**| **Gestione dei prodotti**                                                           |
 | FR3.1| Visualizzazione di tutti i prodotti                                                   |
 | FR3.2| Visualizzazione delle informazioni di un prodotto                                     |
@@ -192,7 +195,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR6.1| Aggiungi metodo di pagamento*************                                             |
 | FR6.2| Rimuovi metodo di pagamento*************                                              |
 | **FR7**| **Analisi vendite**                                                                 |
-| FR7.1| Visualizza carrelli venduti (filtri opzionali: intervallo di date, categoria prodotto, modello prodotto, codice prodotto)                                                                                      |
+| FR7.1| Visualizza carrelli venduti (filtri opzionali: intervallo di date, categoria prodotto, modello prodotto)                                                                                      |
 | FR7.2| Visualizza totale dei prodotti venduti (in base ai filtri specificati in FR7.1)       |
 | **FR8**| **Gestione notifiche**                                                              |
 | FR8.1| Invio di una email di notifica al cliente quando un prodotto all'interno della sua lista dei desideri riceve uno sconto|
@@ -312,7 +315,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       4        |        Il sistema valida i dati        |
 |       5        |        L'utente risulta loggato        |
 
-#### Scenario 1.1.2
+##### Scenario 1.1.2
 
 | Scenario 1.1.2 |                         Login errato                          |
 | :------------: | :-----------------------------------------------------------: |
@@ -397,7 +400,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       4        | L'utente seleziona il ruolo con cui registrarsi(manager o utente) |
 |       5        |  Il sistema salva i dati e viene creato il nuovo utente/manager   |
 
- Scenario 2.1.2
+##### Scenario 2.1.2
 
 | Scenario 2.1.2 |                                       Registrazione errata                                       |
 | :------------: | :----------------------------------------------------------------------------------------------: |
@@ -567,7 +570,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       4        |           Il sistema valida i dati e li salva           |
 |       5        |        Il prodotto viene aggiunto correttamente         |
 
- Scenario 3.2.2
+##### Scenario 3.2.2
 
 | Scenario 3.2.2 |                 Aggiunta errata di un nuovo prodotto (prodotto esistente)                  |
 | :------------: | :----------------------------------------------------------------------------------------: |
@@ -579,7 +582,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       3        |                        Il manager inserisce tutti i dati richiesti                         |
 |       4        | Il sistema rileva un errore in quanto il prodotto è già esistente e lo comunica al manager |
 
- Scenario 3.2.3
+##### Scenario 3.2.3
 
 | Scenario 3.2.3 |               Aggiunta errata di un nuovo prodotto (data di arrivo successiva alla data corrente)               |
 | :------------: | :-------------------------------------------------------------------------------------------------------------: |
@@ -614,7 +617,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       4        |         Il sistema verifica che il codice sia presente          |
 |       5        |                    Il prodotto viene rimosso                    |
 
- Scenario 3.3.2
+##### Scenario 3.3.2
 
 | Scenario 3.3.2 |                                        Rimozione errata                                         |
 | :------------: | :---------------------------------------------------------------------------------------------: |
@@ -649,7 +652,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       4        |                    Il sistema valida i dati e li salva                    |
 |       5        |                  L'arrivo viene registrato correttamente                  |
 
- Scenario 3.4.2
+##### Scenario 3.4.2
 
 | Scenario 3.4.2 |                                           Registrazione arrivi errata                                           |
 | :------------: | :-------------------------------------------------------------------------------------------------------------: |
@@ -748,7 +751,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       2        |                                           Il sistema valida le informazioni          |
 |3| Il prodotto risulta venduto |
 
- Scenario 3.8.2
+##### Scenario 3.8.2
 
 |  Scenario 3.8.2  |                                                                    Catalogazione errata del prodotto come venduto    |
 | :------------: | :------------------------------------------------------------------------: |
@@ -758,7 +761,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        |                                                      Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita        |
 |       2        |  Il sistema rileva un errore in quanto il prodotto non esiste e lo comunica al manager |
 
- Scenario 3.8.3
+##### Scenario 3.8.3
 
 |  Scenario 3.8.3  |                                                                    Catalogazione errata del prodotto come venduto    |
 | :------------: | :------------------------------------------------------------------------: |
@@ -768,7 +771,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        |                                                      Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita        |
 |       2        |Il sistema rileva un errore in quanto la data di vendita risulta precedente alla data di arrivo o successiva a quella corrente e lo comunica al manager |
 
- Scenario 3.8.4
+##### Scenario 3.8.4
 
 |  Scenario 3.8.4  |                                                                    Catalogazione errata del prodotto come venduto    |
 | :------------: | :------------------------------------------------------------------------: |
@@ -899,7 +902,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       2        | Il sistema verifica che il prodotto possa essere aggiunto  |
 |       3        |          Il prodotto risulta aggiunto al carrello          |
 
- Scenario 4.2.2
+#### Scenario 4.2.2
 
 | Scenario 4.2.2 |                     Aggiunta errata di un prodotto al carrello attuale                     |
 | :------------: | :----------------------------------------------------------------------------------------: |
@@ -909,7 +912,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        |                 Il cliente seleziona il prodotto da aggiungere al carrello                 |
 |       2        | Il sistema rileva un errore in quanto il prodotto non è esistente e lo comunica al cliente |
 
- Scenario 4.2.3
+##### Scenario 4.2.3
 
 | Scenario 4.2.3 |     Aggiunta errata di un prodotto al carrello attuale     |
 | :------------: | :--------------------------------------------------------: |
@@ -919,7 +922,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        | Il cliente seleziona il prodotto da aggiungere al carrello |
 |       2        | Il sistema rileva un errore in quanto il prodotto risulta essere presente in un altro carrello e lo comunica al cliente |
 
- Scenario 4.2.4
+##### Scenario 4.2.4
 
 | Scenario 4.2.4 |                              Aggiunta errata di un prodotto al carrello attuale                              |
 | :------------: | :----------------------------------------------------------------------------------------------------------: |
@@ -950,7 +953,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       2        |     Il sistema verifica che il prodotto sia rimovibile      |
 |       3        |          Il prodotto risulta rimosso correttamente          |
 
- Scenario 4.3.2
+##### Scenario 4.3.2
 
 | Scenario 4.3.2 |                     Rimozione errata di un prodotto dal carrello attuale                      |
 | :------------: | :-------------------------------------------------------------------------------------------: |
@@ -960,7 +963,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        |                  Il cliente chiede di rimuovere un prodotto dal suo carrello                  |
 |       2        | Il sistema rileva un errore in quanto il prodotto non è nel carrello e lo comunica al cliente |
 
- Scenario 4.3.3
+##### Scenario 4.3.3
 
 | Scenario 4.3.3 |                 Rimozione errata di un prodotto dal carrello attuale                  |
 | :------------: | :-----------------------------------------------------------------------------------: |
@@ -970,7 +973,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        |              Il cliente chiede di rimuovere un prodotto dal suo carrello              |
 |       2        | Il sistema rileva un errore in quanto il prodotto non esiste e lo comunica al cliente |
 
- Scenario 4.3.4
+##### Scenario 4.3.4
 
 | Scenario 4.3.4 |                      Rimozione errata di un prodotto dal carrello attuale                      |
 | :------------: | :--------------------------------------------------------------------------------------------: |
@@ -980,7 +983,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        |                  Il cliente chiede di rimuovere un prodotto dal suo carrello                   |
 |       2        | Il sistema rileva un errore in quanto il prodotto è già stato venduto e lo comunica al cliente |
 
- Scenario 4.3.5
+##### Scenario 4.3.5
 
 | Scenario 4.3.5 |                      Rimozione errata di un prodotto dal carrello attuale                       |
 | :------------: | :---------------------------------------------------------------------------------------------: |
@@ -1012,7 +1015,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       3        |   Il sistema calcola il totale del carrello e imposta la data di pagamento   |
 |       4        |                        Il carrello risulta acquistato                        |
 
- Scenario 4.4.2
+##### Scenario 4.4.2
 
 | Scenario 4.4.2 |                           Acquisto errato del carrello attuale                           |
 | :------------: | :--------------------------------------------------------------------------------------: |
@@ -1022,7 +1025,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        |       Il cliente chiede di acquistare i prodotti presenti nel suo carrello attuale       |
 |       2        | Il sistema rileva un errore in quanto il carrello risulta vuoto e lo comunica al cliente |
 
- Scenario 4.4.3
+##### Scenario 4.4.3
 
 | Scenario 4.4.3 |                                    Acquisto errato del carrello attuale                                    |
 | :------------: | :--------------------------------------------------------------------------------------------------------: |
@@ -1072,7 +1075,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        | Il cliente chiede di cancellare il suo carrello attuale  |
 |       2        |         Il sistema elimina il carrello corrente          |
 
-#### Scenario 4.6.2
+##### Scenario 4.6.2
 
 | Scenario 4.6.2 |                        Cancellazione errata del carrello attuale del cliente                         |
 | :------------: | :--------------------------------------------------------------------------------------------------: |
@@ -1273,6 +1276,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 
 - Utente
   - Persona registrata al sistema
+  - Può visualizzare i prodotti
   - Può avere ruolo di cliente o di manager
   - Riceve notifiche diverse in base al suo ruolo
 - Cliente
@@ -1284,13 +1288,8 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
   - Dispone di una (e una sola) lista dei desideri a cui aggiungere prodotti a cui è interessato
 - Manager
   - Utente responsabile del negozio fisico
-  - Dispone di una email aziendale e di un codice aziendale univoco, verificati durante la registrazione per mano dell'admin
+  - Dispone di una email aziendale verificata in fase di registrazione e di un codice aziendale univoco
   - Ogni manager ha la possibilità di gestire (aggiungere, rimuovere, registrare una nuova fornitura, registrare uno sconto, ...) i prodotti sul sito web
-  - Ogni manager può visualizzare i carrelli acquistati dai clienti e ottenere informazioni sulle vendite 
--Admin
-  - Amministratore aziendale del sistema
-  - Incaricato di registrare gli account per i manager
-  - Ha a disposizione gli strumenti di testing e diagnostica messi a disposizione dal team di sviluppo
 - Prodotto
   - Prodotto in vendita sul sito web
   - Il codice di un prodotto è legato al modello/variante del prodotto e le relative unità disponibili in magazzino sono tracciate mediante l'attributo "Quantità" (a differenza di V1, per cui ogni singolo prodotto aveva un codice univoco)
