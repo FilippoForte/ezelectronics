@@ -160,17 +160,19 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR1.2 Logout di un utente registrato                                                            |           |     X     |     X     |
 | FR1.3 Possibilità di ottenere le informazioni relative all'utente correntemente loggato         |           |     X     |     X     |
 | FR2.1 Registrazione di un nuovo utente                                                          |     X     |           |           |
-| FR2.2 Modifica profilo utente loggato (se vogliamo aggiungere l'email, modificare casi d'uso ecc.)                                                                                             |           |     X     |     X     |
-| FR2.3 Eliminare il proprio profilo     (DA FARE)                                                |           |     X     |     X     |
-| FR2.4 Elimina profilo utente                    (DA FARE)                                       |           |           |           |
-| FR2.5 Visualizza utenti (????? anche per ruolo)                                                 |           |           |           |
-| FR3.1 Visualizzazione di tutti i prodotti                                                       |           |     X     |     X     |
+| FR2.2 Modifica informazioni utente: username di un cliente loggato                              |           |     X     |           |
+| FR2.3 Modifica informazioni utente: email di un cliente loggato                                 |           |     X     |           |
+| FR2.4 Modifica informazioni utente: password di un utente loggato                               |           |     X     |     X     |
+| FR2.5 Eliminare il proprio profilo ******** (AGGIUNTO)                                          |           |           |           |
+| FR2.6 Elimina profilo utente                                                                    |           |           |           |
+| FR2.7 Visualizza utenti (????? anche per ruolo)                                                 |           |           |           |
+| FR3.1 Visualizzazione di tutti i prodotti                                                       |     X     |     X     |     X     |
 | FR3.2 Aggiunta di un nuovo prodotto                                                             |           |           |     X     |
 | FR3.3 Rimozione di un prodotto                                                                  |           |           |     X     |
 | FR3.4 Registrazione dell'arrivo di un nuovo (insieme di) prodotti                               |           |           |     X     |
-| FR3.5 Visualizza informazioni prodotti di una certa categoria (opzionale: parametro disponibile)|           |     X     |     X     |
-| FR3.6 Visualizza informazioni prodotti di un certo modello (opzionale: parametro disponibile)   |           |     X     |     X     |
-| FR3.7 Visualizza informazioni di un prodotto con un determinato codice                          |           |     X     |     X     |
+| FR3.5 Visualizza informazioni prodotti di una certa categoria (opzionale: parametro disponibile)|     X     |     X     |     X     |
+| FR3.6 Visualizza informazioni prodotti di un certo modello (opzionale: parametro disponibile)   |     X     |     X     |     X     |
+| FR3.7 Visualizza informazioni di un prodotto con un determinato codice                          |     X     |     X     |     X     |
 | FR3.8 Aggiungi sconto ad un prodotto                                                            |           |           |     X     |
 | FR3.9 Filtra prodotti per sconto                                                                |           |     X     |     X     |
 | FR3.10 Visualizza storico prezzi di un prodotto                                                 |           |     X     |     X     |
