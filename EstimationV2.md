@@ -10,25 +10,25 @@ Consider the EZElectronics  project in FUTURE version (as proposed by your team 
 ### 
 |                                                                                                        | Stima                       |             
 | ------------------------------------------------------------------------------------------------------ | --------------------------- |  
-| NC =  Estimated number of classes to be developed                                                      |  25                         |             
-| A = Estimated average size per class, in LOC                                                           |  200                        | 
-| S = Estimated size of project, in LOC (= NC * A)                                                       |  5000                       |
-| E = Estimated effort, in person hours (here use productivity 10 LOC per person hour)                   |  500                        |   
-| C = Estimated cost, in euro (here use 1 person hour cost = 30 euro)                                    |  15000                      | 
-| Estimated calendar time, in calendar weeks (Assume team of 4 people, 8 hours per day, 5 days per week )|  3.125                      |               
+| NC =  Estimated number of classes to be developed                                                      |  9                         |             
+| A = Estimated average size per class, in LOC                                                           |  1500 (considerando anche il front-end)                       | 
+| S = Estimated size of project, in LOC (= NC * A)                                                       |  13500                       |
+| E = Estimated effort, in person hours (here use productivity 10 LOC per person hour)                   |  1350 person hours                       |   
+| C = Estimated cost, in euro (here use 1 person hour cost = 30 euro)                                    |  40500                     | 
+| Estimated calendar time, in calendar weeks (Assume team of 4 people, 8 hours per day, 5 days per week )|  8.50                      |               
 
 # Estimate by product decomposition
 ### 
 |         Nome componente   | Effort stimata (person hours)     |             
 | ------------------------- | --------------------------------- | 
 | requirement document      | 40                                |
-| GUI prototype             | 25                                |
-| design document           | 20                                |
-| code                      | 400                               |
-| unit tests                | 50                                |
-| api tests                 | 50                                |
-| management documents      | 30                                |
-| TOTALE                    | 615                               |
+| GUI prototype             | 35                                |
+| design document           | 30                                |
+| code                      | 1250                               |
+| unit tests                | 40                                |
+| api tests                 | 40                                |
+| management documents      | 20                                |
+| TOTALE                    | 1455                               |
 
 
 # Estimate by activity decomposition
@@ -38,23 +38,23 @@ Consider the EZElectronics  project in FUTURE version (as proposed by your team 
 | Gestione progetto                    |                                   |
 | management documents                 | 20                                |
 | Documento dei requisiti              |                                   |
-| Definire requisiti                   | 15                                |
+| Definire requisiti                   | 25                                |
 | definire contextDiagram e interfacce | 4                                 |
 | Scrivere Stories and personas        | 3                                 |
-| Scrivere gli use cases               | 40                                |
+| Scrivere gli use cases               | 35                                |
 | Definire glossary e system design    | 6                                 |
 | Definire deployment diagram          | 4                                 |
 | Disegnare il prototipo della GUI     |                                   |
 | Define interaction                   | 5                                 |
-| Define layout                        | 25                                |
+| Define layout                        | 30                                |
 | Codificare l'applicativo             |                                   |
 | Definire classi                      | 50                                |
 | Definire metodi                      | 150                               |
-| Scrivere codice                      | 200                               |
+| Scrivere codice                      | 1100                               |
 | Test e debug                         |                                   |
 | Test unit                            | 50                                |
 | Test api                             | 50                                |
-| TOTALE                               | 612                               |
+| TOTALE                               | 1532                              |
 
 ###
 
@@ -68,9 +68,9 @@ Le altre due stime sono piu' precise in quanto tengono conto delle altre fasi di
 
 |                                    | Effort stimata (person hour)            | Durata stimata     (calendar weeks) |
 | ---------------------------------- | --------------------------------------- | ----------------------------------- |
-| estimate by size                   | 500                                     | 3.125                               |
-| estimate by product decomposition  | 615                                     | ~3.84                               |
-| estimate by activity decomposition | 612                                     | ~3.82                               |
+| estimate by size                   | 1350                                     | 8.50
+| estimate by product decomposition  | 1455                                     | ~9.10 |
+| estimate by activity decomposition | 1532                                     | ~9.50  |
 
 
 

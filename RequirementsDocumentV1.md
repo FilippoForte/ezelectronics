@@ -199,7 +199,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 
 ## Use case diagram Summary
 
-![useCaseDiagram](./img/diagrammaCasiDusoSummaryv1.png)
+![useCaseDiagram](./img/diagrammaCasiDusoSummaryV1.png)
 
 ## Use case diagram
 
