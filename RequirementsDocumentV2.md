@@ -177,7 +177,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR2.2| Modifica informazioni utente: username di un cliente loggato                          |
 | FR2.3| Modifica informazioni utente: email di un cliente loggato                             |
 | FR2.4| Modifica informazioni utente: password di un utente loggato                           |
-| FR2.5| Eliminare il proprio profilo ******** (AGGIUNTO)                                      |
+| FR2.5| Eliminare il proprio profilo         |
 | FR2.6| Elimina profilo utente                                                                |
 | **FR3**| **Gestione dei prodotti**                                                           |
 | FR3.1| Visualizzazione di tutti i prodotti                                                   |
@@ -188,7 +188,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR3.6| Filtraggio dei prodotti per categoria                                                 |
 | FR3.7| Filtraggio dei prodotti per modello                                                   |
 | FR3.8| Filtraggio dei prodotti per disponibilità                                             |
-| FR3.9| Aggiungi sconto ad un prodotto*************                                           |
+| FR3.9| Aggiungi sconto ad un prodotto                                          |
 | FR3.10| Filtraggio informazioni prodotti per sconto (maggiore o uguale a quello indicato)    |
 | FR3.11| Aggiorna la quantità disponibile di un prodotto quando viene venduto                 |
 | **FR4**| **Gestione del carrello**                                                           |
@@ -199,12 +199,12 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR4.5| Visualizzazione della cronologia dei carrelli acquistati dal cliente                  |
 | FR4.6| Svuota il carrello attuale                                                            |
 | **FR5**| **Gestione spedizioni**                                                             |
-| FR5.1| Aggiunta indirizzo di spedizione*************  (MODIFICATO)                           |
-| FR5.2| Modifica indirizzo di spedizione*************                                         |
-| FR5.3| Visualizza stato della spedizione del carrello acquistato*************                |
+| FR5.1| Aggiunta indirizzo di spedizione   |
+| FR5.2| Modifica indirizzo di spedizione                                         |
+| FR5.3| Visualizza stato della spedizione del carrello acquistato                |
 | **FR6**| **Gestione pagamenti**                                                              |
-| FR6.1| Aggiungi metodo di pagamento*************                                             |
-| FR6.2| Rimuovi metodo di pagamento*************                                              |
+| FR6.1| Aggiungi metodo di pagamento                                           |
+| FR6.2| Rimuovi metodo di pagamento                                             |
 | **FR7**| **Analisi vendite**                                                                 |
 | FR7.1| Visualizza carrelli venduti (filtri opzionali: intervallo di date, categoria prodotto, modello prodotto)                                                                                      |
 | FR7.2| Visualizza totale dei prodotti venduti (in base ai filtri specificati in FR7.1)       |
@@ -295,27 +295,17 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 
 ### Use case 1.1, UC1.1
 
-| Actors Involved  |                           Utente                           |
-| :--------------: | :--------------------------------------------------------: |
-|   Precondition   |             L'utente è registrato nel sistema              |
-|  Post condition  |                  L'utente risulta loggato                  |
-| Nominal Scenario | L'utente inserisce username e password e accede al sistema |
-|     Variants     |                                                            |
-|    Exceptions    | L'utente inserisce dati errati e viene ritornato un errore |
-
-### Use case 1.1, UC1.1
-
 | Actors Involved  |                                           Cliente/Manager                                        |
 | :--------------: | :----------------------------------------------------------------------------------------------: |
-|   Precondition   |                                L'utente è registrato nel sistema                                 |
+|   Precondition   |  L'utente è registrato nel sistema                                 |
 |  Post condition  |                                     L'utente risulta loggato                                     |
 | Nominal Scenario |                 L'utente inserisce username e password e accede al sistema (1.1)                 |
 |     Variants     |                                                                                                  |
 |    Exceptions    | L'utente inserisce dati errati (non previsto dalle API, ma presente nel file userDAO.ts) (1.1.1) |
 
-#### Scenario 1.1.1
+#### Scenario 1.1
 
-|  Scenario 1.1.1  |             Login corretto             |
+|  Scenario 1.1  |             Login corretto             |
 | :------------: | :------------------------------------: |
 |  Precondition  |   L'utente è registrato nel sistema    |
 | Post condition |        L'utente risulta loggato        |
@@ -326,9 +316,9 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       4        |        Il sistema valida i dati        |
 |       5        |        L'utente risulta loggato        |
 
-#### Scenario 1.1.2
+#### Scenario 1.1.1
 
-| Scenario 1.1.2 |                         Login errato                          |
+| Scenario 1.1.1 |                         Login errato                          |
 | :------------: | :-----------------------------------------------------------: |
 |  Precondition  |               L'utente è registrato nel sistema               |
 | Post condition |                                                               |
@@ -876,66 +866,6 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        |           Il cliente seleziona il prodotto di cui vuole tracciare il prezzo            |
 |       2        | Il sistema invia una notifica ogni volta che il prezzo del prodotto selezionato cambia |
 
-### Use case 3.10, UC3.10
-
-| Actors Involved  |                                                Cliente                                                |
-| :--------------: | :---------------------------------------------------------------------------------------------------: |
-|   Precondition   |                                         Il cliente è loggato                                          |
-|  Post condition  |                         La lista dei desideri viene visualizzata corretamente                         |
-| Nominal Scenario | Il cliente chiede di visualizzare la sua lista dei desideri e questa viene visualizzata correttamente |
-|     Variants     |                                                                                                       |
-|    Exceptions    |                                                                                                       |
-
-#### Scenario 3.10
-
-| Scenario 3.10  |                Visualizza lista dei desideri                |
-| :------------: | :---------------------------------------------------------: |
-|  Precondition  |                    Il cliente è loggato                     |
-| Post condition |    La lista dei desideri viene visualizzata corretamente    |
-|     Step#      |                         Description                         |
-|       1        | Il cliente chiede di visualizzare la sua lista dei desideri |
-|       2        |   Il sistema mostra al cliente la sua lista dei desideri    |
-
-### Use case 3.11, UC3.11
-
-| Actors Involved  |                                           Cliente                                           |
-| :--------------: | :-----------------------------------------------------------------------------------------: |
-|   Precondition   |                                    Il cliente è loggato                                     |
-|  Post condition  |                            Il prodotto viene aggiunto ala lista                             |
-| Nominal Scenario | Il cliente chiede di aggiungere un prodotto alla lista dei desideri e questo viene aggiunto |
-|     Variants     |                                                                                             |
-|    Exceptions    |                                   Il prodotto non esiste                                    |
-
-#### Scenario 3.11
-
-| Scenario 3.11  |              Aggiungi prodotto alla lista dei desideri              |
-| :------------: | :-----------------------------------------------------------------: |
-|  Precondition  |                        Il cliente è loggato                         |
-| Post condition |                Il prodotto viene aggiunto alla lista                |
-|     Step#      |                             Description                             |
-|       1        | Il cliente chiede di aggiungere un prodotto alla lista dei desideri |
-|       2        |             Il sistema aggiunge il prodotto alla lista              |
-
-### Use case 3.12, UC3.12
-
-| Actors Involved  |                                          Cliente                                          |
-| :--------------: | :---------------------------------------------------------------------------------------: |
-|   Precondition   |                                   Il cliente è loggato                                    |
-|  Post condition  |                           Il prodotto viene rimosso dalla lista                           |
-| Nominal Scenario | Il cliente chiede di rimuovere un prodotto alla lista dei desideri e questo viene rimosso |
-|     Variants     |                                                                                           |
-|    Exceptions    |                                                                                           |
-
-#### Scenario 3.12
-
-| Scenario 3.12  |              Rimuovi prodotto dalla lista dei desideri              |
-| :------------: | :-----------------------------------------------------------------: |
-|  Precondition  |           Il cliente è loggato, il prodotto è nella lista           |
-| Post condition |                Il prodotto viene rimosso dalla lista                |
-|     Step#      |                             Description                             |
-|       1        | Il cliente chiede di aggiungere un prodotto alla lista dei desideri |
-|       2        |             Il sistema rimuove il prodotto dalla lista              |
-
 ### Use case 4.1, UC4.1
 
 | Actors Involved  |                                  Cliente                                   |
@@ -1348,25 +1278,64 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       2        | Il manager inserisce il range di date all'interno del quale vuole visualizzare le statistiche dei prodotti venduti |
 |       3        |     Il sistema mostra le statistiche relative alle vendite dei prodotti nel range di date inserito dal manager     |
 
-### Use case 8.1, UC8.1
+### Use case 9.1, UC9.1
 
-| Actors Involved  |                              Utente                               |
-| :--------------: | :---------------------------------------------------------------: |
-|   Precondition   |                         L'utente loggato                          |
-|  Post condition  |             L'utente visualizza le notifiche ricevute             |
-| Nominal Scenario | L'utente chiede di visualizzare le notifiche ricevute dal sistema |
-|     Variants     |                                                                   |
-|    Exceptions    |                                                                   |
+| Actors Involved  |                                                Cliente                                                |
+| :--------------: | :---------------------------------------------------------------------------------------------------: |
+|   Precondition   |                                         Il cliente è loggato                                          |
+|  Post condition  |                         La lista dei desideri viene visualizzata corretamente                         |
+| Nominal Scenario | Il cliente chiede di visualizzare la sua lista dei desideri e questa viene visualizzata correttamente |
+|     Variants     |                                                                                                       |
+|    Exceptions    |                                                                                                       |
 
-#### Scenario 8.1
+#### Scenario 9.1
 
-|  Scenario 8.1  |                                                   |
-| :------------: | :-----------------------------------------------: |
-|  Precondition  |                L'utente è loggato                 |
-| Post condition |     L'utente visualizza le notifiche ricevute     |
-|     Step#      |                    Description                    |
-|       1        | L'utente chiede di visualizzare le sue notifiche  |
-|       2        | Il sistema mostra le notifiche inviate al cliente |
+| Scenario 3.10  |                Visualizza lista dei desideri                |
+| :------------: | :---------------------------------------------------------: |
+|  Precondition  |                    Il cliente è loggato                     |
+| Post condition |    La lista dei desideri viene visualizzata corretamente    |
+|     Step#      |                         Description                         |
+|       1        | Il cliente chiede di visualizzare la sua lista dei desideri |
+|       2        |   Il sistema mostra al cliente la sua lista dei desideri    |
+
+### Use case 9.2, UC9.2
+| Actors Involved  |                                           Cliente                                           |
+| :--------------: | :-----------------------------------------------------------------------------------------: |
+|   Precondition   |                                    Il cliente è loggato                                     |
+|  Post condition  |                            Il prodotto viene aggiunto ala lista                             |
+| Nominal Scenario | Il cliente chiede di aggiungere un prodotto alla lista dei desideri e questo viene aggiunto |
+|     Variants     |                                                                                             |
+|    Exceptions    |                                   Il prodotto non esiste                                    |
+
+#### Scenario 9.2
+
+| Scenario 3.11  |              Aggiungi prodotto alla lista dei desideri              |
+| :------------: | :-----------------------------------------------------------------: |
+|  Precondition  |                        Il cliente è loggato                         |
+| Post condition |                Il prodotto viene aggiunto alla lista                |
+|     Step#      |                             Description                             |
+|       1        | Il cliente chiede di aggiungere un prodotto alla lista dei desideri |
+|       2        |             Il sistema aggiunge il prodotto alla lista              |
+
+### Use case 9.3, UC9.3
+
+| Actors Involved  |                                          Cliente                                          |
+| :--------------: | :---------------------------------------------------------------------------------------: |
+|   Precondition   |                                   Il cliente è loggato                                    |
+|  Post condition  |                           Il prodotto viene rimosso dalla lista                           |
+| Nominal Scenario | Il cliente chiede di rimuovere un prodotto alla lista dei desideri e questo viene rimosso |
+|     Variants     |                                                                                           |
+|    Exceptions    |                                                                                           |
+
+#### Scenario 9.3
+
+| Scenario 9.3 |              Rimuovi prodotto dalla lista dei desideri              |
+| :------------: | :-----------------------------------------------------------------: |
+|  Precondition  |           Il cliente è loggato, il prodotto è nella lista           |
+| Post condition |                Il prodotto viene rimosso dalla lista                |
+|     Step#      |                             Description                             |
+|       1        | Il cliente chiede di aggiungere un prodotto alla lista dei desideri |
+|       2        |             Il sistema rimuove il prodotto dalla lista              |
 
 # Glossary
 
