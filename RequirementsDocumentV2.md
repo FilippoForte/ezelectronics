@@ -107,12 +107,13 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR1.2| Logout di un utente registrato                                                        |
 | FR1.3| Possibilità di ottenere le informazioni relative all'utente correntemente loggato     |
 | **FR2**| **Gestione degli utenti**                                                           |
-| FR2.1| Registrazione di un nuovo utente                                                      |
-| FR2.2| Modifica informazioni utente: username di un cliente loggato                          |
-| FR2.3| Modifica informazioni utente: email di un cliente loggato                             |
-| FR2.4| Modifica informazioni utente: password di un utente loggato                           |
-| FR2.5| Eliminare il proprio profilo ******** (AGGIUNTO)                                      |
-| FR2.6| Elimina profilo utente                                                                |
+| FR2.1| Registrazione di un nuovo cliente                                                     |
+| FR2.2| Registrazione di un nuovo manager                                                     |
+| FR2.3| Modifica informazioni utente: username di un cliente loggato                          |
+| FR2.4| Modifica informazioni utente: email di un cliente loggato                             |
+| FR2.5| Modifica informazioni utente: password di un utente loggato                           |
+| FR2.6| Eliminazione del proprio profilo ******** (AGGIUNTO)                                   |
+| FR2.7| Eliminazione di un manager registrato                                                 |
 | **FR3**| **Gestione dei prodotti**                                                           |
 | FR3.1| Visualizzazione di tutti i prodotti                                                   |
 | FR3.2| Visualizzazione delle informazioni di un prodotto                                     |
@@ -995,7 +996,6 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 
 - Utente
   - Persona registrata al sistema
-  - Può visualizzare i prodotti
   - Può avere ruolo di cliente o di manager
   - Riceve notifiche diverse in base al suo ruolo
 - Cliente
@@ -1007,8 +1007,13 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
   - Dispone di una (e una sola) lista dei desideri a cui aggiungere prodotti a cui è interessato
 - Manager
   - Utente responsabile del negozio fisico
-  - Dispone di una email aziendale verificata in fase di registrazione e di un codice aziendale univoco
+  - Dispone di una email aziendale e di un codice aziendale univoco, verificati durante la registrazione per mano dell'admin
   - Ogni manager ha la possibilità di gestire (aggiungere, rimuovere, registrare una nuova fornitura, registrare uno sconto, ...) i prodotti sul sito web
+  - Ogni manager può visualizzare i carrelli acquistati dai clienti e ottenere informazioni sulle vendite 
+-Admin
+  - Amministratore aziendale del sistema
+  - Incaricato di registrare gli account per i manager
+  - Ha a disposizione gli strumenti di testing e diagnostica messi a disposizione dal team di sviluppo
 - Prodotto
   - Prodotto in vendita sul sito web
   - Il codice di un prodotto è legato al modello/variante del prodotto e le relative unità disponibili in magazzino sono tracciate mediante l'attributo "Quantità" (a differenza di V1, per cui ogni singolo prodotto aveva un codice univoco)
