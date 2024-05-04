@@ -218,12 +218,16 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | NFR11| Portabilità  | Il sito web deve essere accessibile dai seguenti browser (specificando la versione più vecchia supportata): Chrome (v: 79), Firefox (v: 72), Safari (v: 13.0.5), Opera (v: 65), Edge (v: 79), Samsung Internet (v: 11.2) |/|
 
 # Use case diagram and use cases
+
 ## Use Case Diagram Summary
+
 ![useCaseDiagram](./img/diagrammaCasiDusoSummaryV2.png)
+
 ## Use case diagram
+
 ![useCaseDiagram](./img/diagrammaCasiDusoV2.png)
 
-### Use case 1.1, UC1.1 Login
+### Use case 1.1, UC1.1
 
 | Actors Involved  |                           Utente                           |
 | :--------------: | :--------------------------------------------------------: |
@@ -246,7 +250,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       4        |        Il sistema valida i dati        |
 |       5        |        L'utente risulta loggato        |
 
-### Use case 1.2, UC1.2 Logout
+### Use case 1.2, UC1.2
 
 | Actors Involved  |                                          Utente                                           |
 | :--------------: | :---------------------------------------------------------------------------------------: |
@@ -266,7 +270,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        | L'utente chiede al sistema di effettuare il logout |
 |       2        |     Il sistema effettua il logout per l'utente     |
 
-### Use case 1.3, UC1.3 Possibilità di ottenere le informazioni relative all'utente correntemente loggato
+### Use case 1.3, UC1.3
 
 | Actors Involved  |                                        Utente                                        |
 | :--------------: | :----------------------------------------------------------------------------------: |
@@ -286,7 +290,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        |    L'utente chiede al sistema di mostrare le sue informazioni    |
 |       2        |           Il sistema mostra le informazioni all'utente           |
 
-### Use case 2.1 , UC2.1 Registrazione
+### Use case 2.1 , UC2.1
 
 | Actors Involved  |                      Utente guest                      |
 | :-------------:  | :----------------------------------------------------: |
@@ -309,7 +313,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       4        | L'utente seleziona il ruolo con cui registrarsi(manager o utente) |
 |       5        |  il sistema salva i dati e viene creato il nuovo utente/manager   |
 
-### Use case 2.2 , UC2.2 Modifica delle informazioni utente: username di un cliente loggato
+### Use case 2.2 , UC2.2
 
 | Actors Involved  |                                          Cliente                                           |
 | :--------------: | :---------------------------------------------------------------------------------------: |
@@ -347,7 +351,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       5        |                Il sistema verifica che lo username sia disponibile                 |
 |       6        | Lo username non è disponibile: il sistema mostra un errore e la procedura riprende dallo step #3 |
 
-### Use case 2.3 , UC2.3 Modifica delle informazioni utente: email di un cliente loggato
+### Use case 2.3 , UC2.3
 
 | Actors Involved  |                                          Cliente                                           |
 | :--------------: | :---------------------------------------------------------------------------------------: |
@@ -385,7 +389,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       5        |                Il sistema invia un'email di verifica alla casella di posta elettronica del cliente |
 |       6        | Il sistema non riceve conferma della verifica della nuova email, le informazioni del cliente risultano invariate |
 
-### Use case 2.4 , UC2.4 Modifica delle informazioni utente: password di un utente loggato
+### Use case 2.4 , UC2.4
 
 | Actors Involved  |                                          Utente                                          |
 | :--------------: | :---------------------------------------------------------------------------------------: |
@@ -423,7 +427,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       5        |                     Il sistema verifica che le password inserite combacino                     |
 |       6        | Le password non combaciano: il sistema mostra un errore e la procedura riprende dallo step #3 |
 
-### Use case 3.1, UC3.1 Visualizza tutti i prodotti
+### Use case 3.1, UC3.1
 
 | Actors Involved  |                                 Cliente/Manager                                   |
 | :--------------: | :-------------------------------------------------------------------------------: |
@@ -443,7 +447,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        | L'utente chiede al sistema di visualizzare tutti i prodotti presenti |
 |       2        |             Il sistema mostra tutti i prodotti presenti              |
 
-### Use case 3.2, UC3.2 Aggiungi nuovo prodotto
+### Use case 3.2, UC3.2
 
 | Actors Involved  |                                   Manager                                     |
 | :--------------: | :---------------------------------------------------------------------------: |
@@ -466,7 +470,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       4        |           Il sistema valida i dati e li salva           |
 |       5        |        Il prodotto viene aggiunto correttamente         |
 
-### Use case 3.3, UC3.3 Rimozione di un prodotto
+### Use case 3.3, UC3.3
 
 | Actors Involved  |                                          Manager                                           |
 | :--------------: | :----------------------------------------------------------------------------------------: |
@@ -489,7 +493,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       4        |         Il sistema verifica che il codice sia presente          |
 |       5        |                    Il prodotto viene rimosso                    |
 
-### Use case 3.4, UC3.4 Registrazione dell'arrivo di un nuovo (insieme di) prodotto/i
+### Use case 3.4, UC3.4
 
 | Actors Involved  |                                         Manager                                           |
 | :--------------: | :---------------------------------------------------------------------------------------: |
@@ -512,7 +516,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       4        |                    Il sistema valida i dati e li salva                    |
 |       5        |                  L'arrivo viene registrato correttamente                  |
 
-### Use case 3.5, UC3.5 Filtraggio di prodotti per categoria, modello, codice e disponibilità
+### Use case 3.5, UC3.5
 
 | Actors Involved  |                                     Utente/Manager                                     |
 | :--------------: | :------------------------------------------------------------------------------------: |
@@ -534,7 +538,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       3        |                           L'utente inserisce il filtro                            |
 |       4        |     Il sistema mostra i prodotti appartenenti al filtro inserito dall'utente      |
 
-### Use case 3.6, UC3.6 Cataloga prodotto come venduto
+### Use case 3.6, UC3.6
 
 | Actors Involved  |                               Manager                                |
 | :--------------: | :------------------------------------------------------------------: |
@@ -555,7 +559,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       2        |                                 Il sistema valida le informazioni                                 |
 |       3        |                                    Il prodotto risulta venduto                                    |
 
-### Use case 3.7, UC3.7 Aggiungi sconto ad un prodotto
+### Use case 3.7, UC3.7
 
 | Actors Involved  |                    Manager                    |
 | :--------------: | :-------------------------------------------: |
@@ -576,7 +580,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       2        |           Il manager inserisce la percentuale di sconto           |
 |       3        |        Lo sconto viene aggiunto correttamente al prodotto         |
 
-### Use case 3.8, UC3.8 Filtra prodotti per sconto (????)
+### Use case 3.8, UC3.8
 
 | Actors Involved  |                                      Cliente/Manager                                          |
 | :--------------: | :-------------------------------------------------------------------------------------------: |
@@ -596,7 +600,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        |                    L'utente chiede di filtrare i prodotti per sconto e inserisce lo sconto                      |
 |       2        | Il sistema mostra solo i prodotti che risultano avere lo sconto uguale o maggiore a quello inserito dall'utente |
 
-### Use case 3.9, UC3.9 Traccia prezzo di un prodotto
+### Use case 3.9, UC3.9
 
 | Actors Involved  |                      Cliente/Manager                         |
 | :--------------: | :----------------------------------------------------------: |
@@ -616,7 +620,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        |           Il cliente seleziona il prodotto di cui vuole tracciare il prezzo            |
 |       2        | Il sistema invia una notifica ogni volta che il prezzo del prodotto selezionato cambia |
 
-### Use case 3.10, UC3.10 Visualizza lista dei desideri
+### Use case 3.10, UC3.10
 
 | Actors Involved  |                                                Cliente                                                |
 | :--------------: | :---------------------------------------------------------------------------------------------------: |
@@ -636,7 +640,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        | Il cliente chiede di visualizzare la sua lista dei desideri |
 |       2        |   Il sistema mostra al cliente la sua lista dei desideri    |
 
-### Use case 3.11, UC3.11 Aggiungi prodotto alla lista dei desideri
+### Use case 3.11, UC3.11
 
 | Actors Involved  |                                           Cliente                                           |
 | :--------------: | :-----------------------------------------------------------------------------------------: |
@@ -656,7 +660,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        | Il cliente chiede di aggiungere un prodotto alla lista dei desideri |
 |       2        |             Il sistema aggiunge il prodotto alla lista              |
 
-### Use case 3.12, UC3.12 Rimuovi prodotto dalla lista dei desideri
+### Use case 3.12, UC3.12
 
 | Actors Involved  |                                          Cliente                                          |
 | :--------------: | :---------------------------------------------------------------------------------------: |
@@ -676,7 +680,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        | Il cliente chiede di aggiungere un prodotto alla lista dei desideri |
 |       2        |             Il sistema rimuove il prodotto dalla lista              |
 
-### Use case 4.1, UC4.1 Visualizzazione del carrello attuale del cliente
+### Use case 4.1, UC4.1
 
 | Actors Involved  |                                  Cliente                                   |
 | :--------------: | :------------------------------------------------------------------------: |
@@ -696,7 +700,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        | Il cliente chiede di visualizzare il suo carrello attuale |
 |       2        |          Il sistema mostra il carrello corrente           |
 
-### Use case 4.2, UC4.2 Aggiunta di un prodotto al carrello attuale
+### Use case 4.2, UC4.2
 
 | Actors Involved  |                                                 Cliente                                                 |
 | :--------------: | :-----------------------------------------------------------------------------------------------------: |
@@ -717,7 +721,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       2        | Il sistema verifica che il prodotto possa essere aggiunto  |
 |       3        |          Il prodotto risulta aggiunto al carrello          |
 
-### Use case 4.3, UC4.3 Rimozione di un prodotto dal carrello attuale
+### Use case 4.3, UC4.3
 
 | Actors Involved  |                                              Cliente                                               |
 | :--------------: | :------------------------------------------------------------------------------------------------: |
@@ -738,7 +742,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       2        |     Il sistema verifica che il prodotto sia rimovibile      |
 |       3        |          Il prodotto risulta rimosso correttamente          |
 
-### Use case 4.4, UC4.4 Acquisto dei prodotti aggiunti al carrello attuale
+### Use case 4.4, UC4.4
 
 | Actors Involved  |                                 Cliente                                 |
 | :--------------: | :---------------------------------------------------------------------: |
@@ -760,7 +764,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       3        |   Il sistema calcola il totale del carrello e imposta la data di pagamento   |
 |       4        |                        Il carrello risulta acquistato                        |
 
-### Use case 4.5 , UC4.5 Visualizzazione della cronologia dei carrelli acquistati dal cliente
+### Use case 4.5 , UC4.5
 
 | Actors Involved  |                            Cliente                            |
 | :--------------: | :-----------------------------------------------------------: |
@@ -780,7 +784,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        | Il cliente chiede di visualizzare la storia dei suoi carrelli |
 |       2        |     Il sistema mostra la storia dei carrelli del cliente      |
 
-### Use case 4.6 , UC4.6 Cancellazione del carrello
+### Use case 4.6 , UC4.6
 
 | Actors Involved  |                         Cliente                          |
 | :--------------: | :------------------------------------------------------: |
@@ -800,7 +804,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        | Il cliente chiede di cancellare il suo carrello attuale  |
 |       2        |         Il sistema elimina il carrello corrente          |
 
-### Use case 5.1 , UC5.1 Aggiunta nuovo indirizzo di spedizione
+### Use case 5.1 , UC5.1
 
 | Actors Involved  |                   Cliente, servizio spedizioni                   |
 | :--------------: | :--------------------------------------------------------------: |
@@ -821,7 +825,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       2        |        Il sistema verifica che l'indirizzo sia corretto        |
 |       3        |            L'indirizzo di spedizione viene aggiunto            |
 
-### Use case 5.2 , UC5.2 Modifica indirizzo di spedizione
+### Use case 5.2 , UC5.2
 
 | Actors Involved  |                Cliente, Servizio spedizioni                |
 | :--------------: | :--------------------------------------------------------: |
@@ -842,7 +846,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       2        |  Il sistema verifica che il nuovo indirizzo sia corretto   |
 |       3        |         L'indirizzo di spedizione viene modificato         |
 
-### Use case 5.3 , UC5.3 Eliminazione indirizzo di spedizione
+### Use case 5.3 , UC5.3
 
 | Actors Involved  |               Cliente, Servizio spedizioni                |
 | :--------------: | :-------------------------------------------------------: |
@@ -862,7 +866,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        | Il cliente chiede di eliminare un indirizzo di spedizione |
 |       2        |         L'indirizzo di spedizione viene eliminato         |
 
-### Use case 5.4 , UC5.4 Visualizza stato ordine
+### Use case 5.4 , UC5.4
 
 | Actors Involved  |              Cliente, Servizio spedizioni               |
 | :--------------: | :-----------------------------------------------------: |
@@ -884,7 +888,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 
 ## Gestione pagamenti
 
-### Use case 6.1, UC6.1 Aggiungi metodo di pagamento
+### Use case 6.1, UC6.1
 
 | Actors Involved  |             Cliente, Servizio di pagamento                   |
 | :--------------: | :----------------------------------------------------------: |
@@ -926,7 +930,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        |  Il cliente seleziona il metodo di pagamento che vuole rimuovere  |
 |       2        | Il sistema rimuove il metodo di pagamento selezionato dal cliente |
 
-### Use case 7.1, UC7.1 Visualizza statistiche ordini (???)
+### Use case 7.1, UC7.1
 
 | Actors Involved  |       Cliente        |
 | :--------------: | :------------------: |
@@ -946,7 +950,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        |                      |
 |       2        |                      |
 
-### Use case 7.2, UC7.2 Visualizza statistiche prodotti venduti
+### Use case 7.2, UC7.2
 
 | Actors Involved  |                                              Manager                                              |
 | :--------------: | :-----------------------------------------------------------------------------------------------: |
@@ -967,7 +971,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       2        | Il manager inserisce il range di date all'interno del quale vuole visualizzare le statistiche dei prodotti venduti |
 |       3        |     Il sistema mostra le statistiche relative alle vendite dei prodotti nel range di date inserito dal manager     |
 
-### Use case 8.1, UC8.1 Visualizzazione delle notifiche
+### Use case 8.1, UC8.1
 
 | Actors Involved  |                              Utente                               |
 | :--------------: | :---------------------------------------------------------------: |
