@@ -379,26 +379,25 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 
 ### Use case 2.1, UC2.1
 
-| Actors Involved  |                                    Utente guest                      |
+| Actors Involved  |  Utente guest                      |
 | :--------------: | :------------------------------------------------------------------: |
 |   Precondition   | --                                                                   |
-|  Post condition  |  L'utente risulta registrato correttamente nel sistema.              |
-| Nominal Scenario |  L'utente inserisce tutti i dati richiesti per la registrazione e sceglie il ruolo con cui registrarsi nel sistema.  (2.1)     |
+|  Post condition  | Il cliente risulta registrato correttamente nel sistema.              |
+| Nominal Scenario |  L'utente guest inserisce tutti i dati richiesti per la registrazione e viene registrato come cliente (2.1)     |
 |     Variants     |                                                                      |
-|    Exceptions    | L'utente risulta già registrato  (2.1.1)                             |
+|    Exceptions    | Il cliente risulta già registrato  (2.1.1)                             |
 
 #### Scenario 2.1.1
 
 |  Scenario 2.1.1  |                      Registrazione corretta                       |
 | :------------: | :---------------------------------------------------------------: |
 |  Precondition  |                                --                                 |
-| Post condition |   L'utente/manager risulta registrato correttamente nel sistema   |
+| Post condition |   Il cliente risulta registrato correttamente nel sistema   |
 |     Step#      |                            Description                            |
-|       1        |            L'utente chiede di registrarsi al sistema.             |
+|       1        | L'utente guest chiede di registrarsi al sistema.             |
 |       2        |      Il sistema chiede i dati necessari per la registrazione      |
-|       3        |                L'utente inserisce i dati richiesti                |
-|       4        | L'utente seleziona il ruolo con cui registrarsi(manager o utente) |
-|       5        |  Il sistema salva i dati e viene creato il nuovo utente/manager   |
+|       3        |  L'utente inserisce i dati richiesti                |
+|       4        | Il sistema salva i dati e viene creato il nuovo cliente   |
 
 ##### Scenario 2.1.2
 
@@ -407,25 +406,51 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |  Precondition  |                                                --                                                |
 | Post condition |                                                                                                  |
 |     Step#      |                                           Description                                            |
-|       1        |                            L'utente chiede di registrarsi al sistema.                            |
-|       2        |                     Il sistema chiede i dati necessari per la registrazione                      |
-|       3        |                               L'utente inserisce i dati richiesti                                |
-|       4        |                L'utente seleziona il ruolo con cui registrarsi(manager o utente)                 |
-|       5        | Il sistema rileva un errore in quanto l'username dell'utente esiste già e lo comunica all'utente |
+|       1        | L'utente guest chiede di registrarsi al sistema.                            |
+|       2        |   Il sistema chiede i dati necessari per la registrazione                      |
+|       3        |  L'utente inserisce i dati richiesti                                |
+|       4        | Il sistema rileva un errore in quanto l'username inserito esiste già e lo comunica |
+### Use case 2.2, UC2.2
 
-### Use case 2.2 , UC2.2
+| Actors Involved  |  Admin   |
+| :--------------: | :------------------------------------------------------------------: |
+|   Precondition   | --                                                                   |
+|  Post condition  |  Il manager risulta registrato correttamente nel sistema.              |
+| Nominal Scenario |  L'admin crea un nuovo utente di tipo manager e inserisce l'email e  il codice aziendale  |
+|     Variants     |                                                                      |
+|    Exceptions    | Il manager risulta già registrato  (2.1.1)                             |
+
+#### Scenario 2.2
+
+|  Scenario 2.2  |                      Registrazione corretta del manager                      |
+| :------------: | :---------------------------------------------------------------: |
+|  Precondition  |                                --                                 |
+| Post condition |   Il manager risulta registrato correttamente nel sistema   |
+|     Step#      |                            Description                            |
+|       1        | L'admin inserisce email e codice aziendale del nuovo manager                                                                              |
+|       2        |  Il sistema salva i dati e viene creato il nuovo manager   |
+#### Scenario 2.2.1
+
+|  Scenario 2.2.1  |                      Registrazione errata del manager                       |
+| :------------: | :---------------------------------------------------------------: |
+|  Precondition  |                                --                                 |
+| Post condition |      |
+|     Step#      |                            Description                            |
+|       1        | L'admin inserisce email e codice aziendale del nuovo manager                                                                              |
+|       2        |  Il manager risulta già registrato, il sistema restituisce un errore   |
+### Use case 2.3 , UC2.3
 
 | Actors Involved  |                                          Cliente                                           |
 | :--------------: | :---------------------------------------------------------------------------------------: |
 |   Precondition   |                                    Il cliente è loggato                                     |
 |  Post condition  |              Lo username del cliente risulta modificato correttamente               |
-| Nominal Scenario | Il cliente inserisce il nuovo username da sostituire al precedente |
+| Nominal Scenario | Il cliente inserisce il nuovo username da sostituire al precedente (2.3) |
 |     Variants     |                                                                                           |
-|    Exceptions    |          Lo username esiste già          |
+|    Exceptions    |          Lo username esiste già (2.3.1)         |
 
-#### Scenario 2.2.1
+#### Scenario 2.3
 
-| Scenario 2.2.1 |                       Modifica dello username (a buon fine)                        |
+| Scenario 2.3 |                       Modifica dello username (a buon fine)                        |
 | :------------: | :--------------------------------------------------------------------------------: |
 |  Precondition  |                                 Il cliente è loggato                                 |
 | Post condition |           Il nuovo username fornito dal cliente viene salvato correttamente        |
@@ -437,9 +462,9 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       5        |                Il sistema verifica che lo username sia disponibile                 |
 |       6        | Lo username è disponibile: il sistema salva il nuovo username per il cliente attuale |
 
-#### Scenario 2.2.2
+#### Scenario 2.3.1
 
-| Scenario 2.2.2 |                       Modifica dello username (il nuovo username esiste già nel sistema)|
+| Scenario 2.3.1 |                       Modifica dello username (il nuovo username esiste già nel sistema)|
 | :------------: | :--------------------------------------------------------------------------------: |
 |  Precondition  |                                 Il cliente è loggato                                 |
 | Post condition |           Lo username non è disponibile, le informazioni del cliente risultano invariate        |
@@ -451,7 +476,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       5        |                Il sistema verifica che lo username sia disponibile                 |
 |       6        | Lo username non è disponibile: il sistema mostra un errore e la procedura riprende dallo step #3 |
 
-### Use case 2.3 , UC2.3
+### Use case 2.4, UC2.4
 
 | Actors Involved  |                                          Cliente                                           |
 | :--------------: | :---------------------------------------------------------------------------------------: |
@@ -461,9 +486,9 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |     Variants     |                                                                                           |
 |    Exceptions    |          La verifica dell'email non va a buon fine         |
 
-#### Scenario 2.3.1
+#### Scenario 2.4.1
 
-| Scenario 2.3.1 |                       Modifica dell'email (a buon fine)                        |
+| Scenario 2.4.1 |                       Modifica dell'email (a buon fine)                        |
 | :------------: | :--------------------------------------------------------------------------------: |
 |  Precondition  |                                 Il cliente è loggato                                 |
 | Post condition |           La nuova email fornita dal cliente viene salvata correttamente        |
@@ -475,9 +500,9 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       5        |                Il sistema invia un'email di verifica alla casella di posta elettronica del cliente |
 |       6        | Il cliente verifica correttamente la sua nuova email, che viene sostituita alla precedente |
 
-#### Scenario 2.3.2
+#### Scenario 2.4.2
 
-| Scenario 2.3.2 |                       Modifica dell'email (verifica email non va a buon fine)      |
+| Scenario 2.4.2 |                       Modifica dell'email (verifica email non va a buon fine)      |
 | :------------: | :--------------------------------------------------------------------------------: |
 |  Precondition  |                                 Il cliente è loggato                                 |
 | Post condition |           La nuova email fornita dal cliente non viene verificata correttamente: le informazioni del cliente risultano invariate        |
@@ -489,7 +514,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       5        |                Il sistema invia un'email di verifica alla casella di posta elettronica del cliente |
 |       6        | Il sistema non riceve conferma della verifica della nuova email, le informazioni del cliente risultano invariate |
 
-### Use case 2.4 , UC2.4
+### Use case 2.5 , UC2.5
 
 | Actors Involved  |                                          Utente                                          |
 | :--------------: | :---------------------------------------------------------------------------------------: |
@@ -499,9 +524,9 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |     Variants     |                                                                                           |
 |    Exceptions    |          Le due password inserite dall'utente non combaciano         |
 
-#### Scenario 2.4.1
+#### Scenario 2.5.1
 
-| Scenario 2.4.1 |                      Modifica della password (a buon fine)                      |
+| Scenario 2.5.1 |                      Modifica della password (a buon fine)                      |
 | :------------: | :-----------------------------------------------------------------------------: |
 |  Precondition  |                               L'utente è loggato                                |
 | Post condition |         La password dell'utente risulta modificata correttamente         |
@@ -513,9 +538,9 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       5        |             Il sistema verifica che le password inserite combacino              |
 |       6        | Le password combaciano: il sistema salva la nuova password per l'utente attuale |
 
-#### Scenario 2.4.2
+#### Scenario 2.5.2
 
-| Scenario 2.4.2 |               Modifica della password (la conferma password non va a buon fine)                |
+| Scenario 2.5.2 |               Modifica della password (la conferma password non va a buon fine)                |
 | :------------: | :--------------------------------------------------------------------------------------------: |
 |  Precondition  |                                       L'utente è loggato                                       |
 | Post condition | La modifica della password non va a buon fine, le informazioni dell'utente risultano invariate |
@@ -526,6 +551,45 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       4        |                         L'utente inserisce due volte la nuova password                         |
 |       5        |                     Il sistema verifica che le password inserite combacino                     |
 |       6        | Le password non combaciano: il sistema mostra un errore e la procedura riprende dallo step #3 |
+### Use case 2.6 , UC2.6
+
+| Actors Involved  |                                          Cliente                                          |
+| :--------------: | :---------------------------------------------------------------------------------------: |
+|   Precondition   |    IL cliente è loggato                                     |
+|  Post condition  | Il profilo del cliente risulta eliminato correttamente      |
+| Nominal Scenario | Il cliente chiede di eliminare il proprio profilo e questo viene eliminato correttamente |
+|     Variants     |                                                                                           |
+|    Exceptions    |   |
+
+#### Scenario 2.6
+
+| Scenario 2.6 |                      Modifica della password (a buon fine)                      |
+| :------------: | :-----------------------------------------------------------------------------: |
+|  Precondition  |   Il cliente è loggato                                       |
+| Post condition | Il profilo del cliente risulta eliminato correttamente       |
+|     Step#      |                                   Description                                   |
+|       1        |         Il cliente chiede di eliminare il proprio profilo    |
+|       2        | Il sistema elimina il cliente e i suoi dati correttamente
+### Use case 2.7 , UC2.7
+
+| Actors Involved  |                                          Admin  |
+| :--------------: | :---------------------------------------------------------------------------------------: |
+|   Precondition   |  Il manager esiste nel sistema                             |
+|  Post condition  |  Il manager viene eliminato correttamente   |
+| Nominal Scenario | L'admin chiede di eliminare un manager dal sistema |
+|     Variants     |                                                                                           |
+|    Exceptions    |   |
+
+#### Scenario 2.7.1
+
+| Scenario 2.7.1 |    Eliminazione del profilo del manager |
+| :------------: | :-----------------------------------------------------------------------------: |
+|  Precondition  |  Il manager esiste nel sistema  |
+| Post condition |   Il manager viene eliminato correttamente  |
+|     Step#      |                                   Description                                   |
+|       1        |   L'admin chiede di eliminare un manager dal sistema         |
+|       2        |   L'admin inserisce l'email e il codice aziendale            |
+|       3        |  Il sistema elimina il manager e i suoi dati
 
 ### Use case 3.1, UC3.1
 
