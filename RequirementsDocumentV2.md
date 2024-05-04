@@ -103,8 +103,7 @@ EZElectronics (read EaSy Electronics) is a software application designed to help
 | Servizio di spedizione| Servizio per la spedizione dei prodotti                                        |
 | Amministratore        | Amministratore del sistema                                                     |
 | Utente guest          | Utente che non ha ancora effettuato la fase di login o la fase di registrazione|
-| Validazione mail      | Servizio per la validazione che le mail inserite siano corrette                |
-| Invio mail            | Servizio per scrivere ed inviare delle mail                                    |
+| Servizio mail         | Servizio per scrivere ed inviare delle mail                                    |
 
 # Context Diagram and interfaces
 
@@ -116,14 +115,13 @@ EZElectronics (read EaSy Electronics) is a software application designed to help
 
 | Attore                | Interfaccia logica                                                        | Interfaccia fisica|
 | :--------------------:| :-----------------------------------------------------------------------: | :----------------:|
-| Cliente               | GUI (interfaccia per navigare il sito, visualizzare e comprare prodotti)  | Smartphone / PC   |
-| Manager               | GUI (interfaccia per navigare il sito, visualizzare e gestire i prodotti) | Smartphone / PC   |
-| Utente guest          | GUI (interfaccia per visualizzare i prodotti e per l'autenticazione)      | Smartphone / PC   |
+| Cliente               | GUI (interfaccia per navigare il sito, visualizzare e comprare prodotti)  | Browser Web       |
+| Manager               | GUI (interfaccia per navigare il sito, visualizzare e gestire i prodotti) | Browser Web       |
+| Utente guest          | GUI (interfaccia per visualizzare i prodotti e per l'autenticazione)      | Browser Web       |
 | Amministratore        | CLI (interfaccia per registrare ed eliminare manager, testing)            | PC                |
 | Servizio di pagamento | APIs                                                                      | Internet          |
 | Servizio di spedizione| APIs                                                                      | Internet          |
-| Validazione mail      | APIs                                                                      | Internet          |
-| Invio mail            | APIs                                                                      | Internet          |
+| Servizio mail         | APIs                                                                      | Internet          |
 
 # Stories and personas
 
