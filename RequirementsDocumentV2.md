@@ -84,6 +84,15 @@ Version: V1 - description of EZElectronics in CURRENT form (as received by teach
     - [Use case 4.6, UC4.6](#use-case-46-uc46)
       - [Scenario 4.6.1](#scenario-461)
       - [Scenario 4.6.2](#scenario-462)
+    - [Use case 5.1, UC5.1](#use-case-51-uc51)
+      - [Scenario 5.1.1](#scenario-511)
+      - [Scenario 5.1.2](#scenario-512)
+    - [Use case 5.2, UC5.2](#use-case-52-uc52)
+      - [Scenario 5.2.1](#scenario-521)
+      - [Scenario 5.2.2](#scenario-522)
+    - [Use case 5.3, UC5.3](#use-case-53-uc53)
+    - [Use case 5.4, UC5.4](#use-case-54-uc54)
+
 - [Glossary](#glossary)
 - [System Design](#system-design)
 - [Deployment Diagram](#deployment-diagram)
@@ -315,7 +324,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       4        |        Il sistema valida i dati        |
 |       5        |        L'utente risulta loggato        |
 
-##### Scenario 1.1.2
+#### Scenario 1.1.2
 
 | Scenario 1.1.2 |                         Login errato                          |
 | :------------: | :-----------------------------------------------------------: |
@@ -400,7 +409,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       4        | L'utente seleziona il ruolo con cui registrarsi(manager o utente) |
 |       5        |  Il sistema salva i dati e viene creato il nuovo utente/manager   |
 
-##### Scenario 2.1.2
+#### Scenario 2.1.2
 
 | Scenario 2.1.2 |                                       Registrazione errata                                       |
 | :------------: | :----------------------------------------------------------------------------------------------: |
@@ -570,7 +579,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       4        |           Il sistema valida i dati e li salva           |
 |       5        |        Il prodotto viene aggiunto correttamente         |
 
-##### Scenario 3.2.2
+#### Scenario 3.2.2
 
 | Scenario 3.2.2 |                 Aggiunta errata di un nuovo prodotto (prodotto esistente)                  |
 | :------------: | :----------------------------------------------------------------------------------------: |
@@ -582,7 +591,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       3        |                        Il manager inserisce tutti i dati richiesti                         |
 |       4        | Il sistema rileva un errore in quanto il prodotto è già esistente e lo comunica al manager |
 
-##### Scenario 3.2.3
+#### Scenario 3.2.3
 
 | Scenario 3.2.3 |               Aggiunta errata di un nuovo prodotto (data di arrivo successiva alla data corrente)               |
 | :------------: | :-------------------------------------------------------------------------------------------------------------: |
@@ -617,7 +626,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       4        |         Il sistema verifica che il codice sia presente          |
 |       5        |                    Il prodotto viene rimosso                    |
 
-##### Scenario 3.3.2
+#### Scenario 3.3.2
 
 | Scenario 3.3.2 |                                        Rimozione errata                                         |
 | :------------: | :---------------------------------------------------------------------------------------------: |
@@ -652,7 +661,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       4        |                    Il sistema valida i dati e li salva                    |
 |       5        |                  L'arrivo viene registrato correttamente                  |
 
-##### Scenario 3.4.2
+#### Scenario 3.4.2
 
 | Scenario 3.4.2 |                                           Registrazione arrivi errata                                           |
 | :------------: | :-------------------------------------------------------------------------------------------------------------: |
@@ -751,7 +760,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       2        |                                           Il sistema valida le informazioni          |
 |3| Il prodotto risulta venduto |
 
-##### Scenario 3.8.2
+#### Scenario 3.8.2
 
 |  Scenario 3.8.2  |                                                                    Catalogazione errata del prodotto come venduto    |
 | :------------: | :------------------------------------------------------------------------: |
@@ -761,7 +770,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        |                                                      Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita        |
 |       2        |  Il sistema rileva un errore in quanto il prodotto non esiste e lo comunica al manager |
 
-##### Scenario 3.8.3
+#### Scenario 3.8.3
 
 |  Scenario 3.8.3  |                                                                    Catalogazione errata del prodotto come venduto    |
 | :------------: | :------------------------------------------------------------------------: |
@@ -771,7 +780,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        |                                                      Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita        |
 |       2        |Il sistema rileva un errore in quanto la data di vendita risulta precedente alla data di arrivo o successiva a quella corrente e lo comunica al manager |
 
-##### Scenario 3.8.4
+#### Scenario 3.8.4
 
 |  Scenario 3.8.4  |                                                                    Catalogazione errata del prodotto come venduto    |
 | :------------: | :------------------------------------------------------------------------: |
@@ -912,7 +921,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        |                 Il cliente seleziona il prodotto da aggiungere al carrello                 |
 |       2        | Il sistema rileva un errore in quanto il prodotto non è esistente e lo comunica al cliente |
 
-##### Scenario 4.2.3
+#### Scenario 4.2.3
 
 | Scenario 4.2.3 |     Aggiunta errata di un prodotto al carrello attuale     |
 | :------------: | :--------------------------------------------------------: |
@@ -922,7 +931,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        | Il cliente seleziona il prodotto da aggiungere al carrello |
 |       2        | Il sistema rileva un errore in quanto il prodotto risulta essere presente in un altro carrello e lo comunica al cliente |
 
-##### Scenario 4.2.4
+#### Scenario 4.2.4
 
 | Scenario 4.2.4 |                              Aggiunta errata di un prodotto al carrello attuale                              |
 | :------------: | :----------------------------------------------------------------------------------------------------------: |
@@ -953,7 +962,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       2        |     Il sistema verifica che il prodotto sia rimovibile      |
 |       3        |          Il prodotto risulta rimosso correttamente          |
 
-##### Scenario 4.3.2
+#### Scenario 4.3.2
 
 | Scenario 4.3.2 |                     Rimozione errata di un prodotto dal carrello attuale                      |
 | :------------: | :-------------------------------------------------------------------------------------------: |
@@ -963,7 +972,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        |                  Il cliente chiede di rimuovere un prodotto dal suo carrello                  |
 |       2        | Il sistema rileva un errore in quanto il prodotto non è nel carrello e lo comunica al cliente |
 
-##### Scenario 4.3.3
+#### Scenario 4.3.3
 
 | Scenario 4.3.3 |                 Rimozione errata di un prodotto dal carrello attuale                  |
 | :------------: | :-----------------------------------------------------------------------------------: |
@@ -973,7 +982,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        |              Il cliente chiede di rimuovere un prodotto dal suo carrello              |
 |       2        | Il sistema rileva un errore in quanto il prodotto non esiste e lo comunica al cliente |
 
-##### Scenario 4.3.4
+#### Scenario 4.3.4
 
 | Scenario 4.3.4 |                      Rimozione errata di un prodotto dal carrello attuale                      |
 | :------------: | :--------------------------------------------------------------------------------------------: |
@@ -983,7 +992,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        |                  Il cliente chiede di rimuovere un prodotto dal suo carrello                   |
 |       2        | Il sistema rileva un errore in quanto il prodotto è già stato venduto e lo comunica al cliente |
 
-##### Scenario 4.3.5
+#### Scenario 4.3.5
 
 | Scenario 4.3.5 |                      Rimozione errata di un prodotto dal carrello attuale                       |
 | :------------: | :---------------------------------------------------------------------------------------------: |
@@ -1015,7 +1024,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       3        |   Il sistema calcola il totale del carrello e imposta la data di pagamento   |
 |       4        |                        Il carrello risulta acquistato                        |
 
-##### Scenario 4.4.2
+#### Scenario 4.4.2
 
 | Scenario 4.4.2 |                           Acquisto errato del carrello attuale                           |
 | :------------: | :--------------------------------------------------------------------------------------: |
@@ -1025,7 +1034,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        |       Il cliente chiede di acquistare i prodotti presenti nel suo carrello attuale       |
 |       2        | Il sistema rileva un errore in quanto il carrello risulta vuoto e lo comunica al cliente |
 
-##### Scenario 4.4.3
+#### Scenario 4.4.3
 
 | Scenario 4.4.3 |                                    Acquisto errato del carrello attuale                                    |
 | :------------: | :--------------------------------------------------------------------------------------------------------: |
@@ -1063,7 +1072,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |  Post condition  |                    Viene cancellato il carrello attuale del cliente loggato                    |
 | Nominal Scenario | Il cliente chiede di cancellare il suo carrello attuale e viene cancellato correttamente (4.6) |
 |     Variants     |                                                                                                |
-|    Exceptions    |                            Il cliente non ha alcun carrello (4.6.1)                            |
+|    Exceptions    |                            Il cliente non ha alcun carrello (4.6.2)                            |
 
 #### Scenario 4.6.1
 
@@ -1075,7 +1084,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        | Il cliente chiede di cancellare il suo carrello attuale  |
 |       2        |         Il sistema elimina il carrello corrente          |
 
-##### Scenario 4.6.2
+#### Scenario 4.6.2
 
 | Scenario 4.6.2 |                        Cancellazione errata del carrello attuale del cliente                         |
 | :------------: | :--------------------------------------------------------------------------------------------------: |
@@ -1085,7 +1094,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        |                       Il cliente chiede di cancellare il suo carrello attuale                        |
 |       2        | Il sistema rileva un errore in quanto non esiste alcun carrello del cliente e lo comunica al cliente |
 
-### Use case 5.1 , UC5.1
+### Use case 5.1, UC5.1
 
 | Actors Involved  |                   Cliente, servizio spedizioni                   |
 | :--------------: | :--------------------------------------------------------------: |
@@ -1093,9 +1102,9 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |  Post condition  |         Viene aggiunto un nuovo indirizzo di spedizione          |
 | Nominal Scenario | Il cliente chiede di aggiungere un nuovo indirizzo di spedizione |
 |     Variants     |                                                                  |
-|    Exceptions    |               L'indirizzo inserito non è corretto                |
+|    Exceptions    |        L'indirizzo inserito non è corretto (5.1.2)               |
 
-#### Scenario 5.1
+#### Scenario 5.1.1
 
 |  Scenario 5.1  |             Aggiunta nuovo indirizzo di spedizione             |
 | :------------: | :------------------------------------------------------------: |
@@ -1106,7 +1115,17 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       2        |        Il sistema verifica che l'indirizzo sia corretto        |
 |       3        |            L'indirizzo di spedizione viene aggiunto            |
 
-### Use case 5.2 , UC5.2
+#### Scenario 5.1.2
+
+| Scenario 4.6.2 |                    Inserimento errato del indirizzo                       |
+| :------------: | :-----------------------------------------------------------------------: |
+|  Precondition  |                           Il cliente è loggato                            |
+| Post condition |                                                                           |
+|     Step#      |                            Description                                    |
+|       1        |  Il cliente chiede di aggiungere un nuovo indirizzo di spedizione attuale |
+|       2        | Il sistema rileva un errore in quanto l'indirizzo inserito non è corretto |
+
+### Use case 5.2, UC5.2
 
 | Actors Involved  |                Cliente, Servizio spedizioni                |
 | :--------------: | :--------------------------------------------------------: |
@@ -1116,7 +1135,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |     Variants     |                                                            |
 |    Exceptions    |         Il nuovo indirizzo inserito non è corretto         |
 
-#### Scenario 5.2
+#### Scenario 5.2.1
 
 |  Scenario 5.2  |              Modifica indirizzo di spedizione              |
 | :------------: | :--------------------------------------------------------: |
@@ -1126,8 +1145,19 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        | Il cliente chiede di modificare un indirizzo di spedizione |
 |       2        |  Il sistema verifica che il nuovo indirizzo sia corretto   |
 |       3        |         L'indirizzo di spedizione viene modificato         |
+|  Exceptions    |      L'indirizzo inserito non è corretto (5.2.2)         |
 
-### Use case 5.3 , UC5.3
+#### Scenario 5.2.2
+
+| Scenario 4.6.2 |                    Inserimento errato del indirizzo                       |
+| :------------: | :-----------------------------------------------------------------------: |
+|  Precondition  |                           Il cliente è loggato                            |
+| Post condition |                                                                           |
+|     Step#      |                            Description                                    |
+|       1        |  Il cliente chiede di aggiungere un nuovo indirizzo di spedizione attuale |
+|       2        | Il sistema rileva un errore in quanto l'indirizzo inserito non è corretto |
+
+### Use case 5.3, UC5.3
 
 | Actors Involved  |               Cliente, Servizio spedizioni                |
 | :--------------: | :-------------------------------------------------------: |
@@ -1147,7 +1177,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        | Il cliente chiede di eliminare un indirizzo di spedizione |
 |       2        |         L'indirizzo di spedizione viene eliminato         |
 
-### Use case 5.4 , UC5.4
+### Use case 5.4, UC5.4
 
 | Actors Involved  |              Cliente, Servizio spedizioni               |
 | :--------------: | :-----------------------------------------------------: |
