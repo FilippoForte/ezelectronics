@@ -206,9 +206,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 | :--------------: | :----------------------------------------------------------------------------------------------: |
 |   Precondition   |                                L'utente guest ha un profilo registrato nel sistema               |
 |  Post condition  |                                     L'utente risulta loggato                                     |
-| Nominal Scenario |                 L'utente guest inserisce username e password e accede al sistema (1.1)           |
+| Nominal Scenario |                 L'utente guest inserisce username e password e accede al sistema (1.1.1)           |
 |     Variants     |                                                                                                  |
-|    Exceptions    | L'utente guest inserisce dati errati (non previsto dalle API, ma presente nel file userDAO.ts) (1.1.1) |
+|    Exceptions    | L'utente guest inserisce dati errati (non previsto dalle API, ma presente nel file userDAO.ts) (1.1.2) |
 
 #### Scenario 1.1.1
 
@@ -237,7 +237,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 
 ### Use case 1.2, UC1.2
 
-| Actors Involved  |                                      Cliente/Manager                                      |
+| Actors Involved  |                                      Utente (Cliente/Manager)                             |
 | :--------------: | :---------------------------------------------------------------------------------------: |
 |   Precondition   |                                    L'utente è loggato                                     |
 |  Post condition  |                                 Viene eseguito il logout                                  |
@@ -257,7 +257,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 
 ### Use case 1.3, UC1.3
 
-| Actors Involved  |                                   Cliente/Manager                                    |
+| Actors Involved  |                                   Utente (Cliente/Manager)                           |
 | :--------------: | :----------------------------------------------------------------------------------: |
 |   Precondition   |                                  L'utente è loggato                                  |
 |  Post condition  |           Vengono mostrate le informazioni dell'utente attualmente loggato           |
@@ -281,22 +281,22 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 | :--------------: | :------------------------------------------------------------------: |
 |   Precondition   | --                                                                   |
 |  Post condition  |  L'utente risulta registrato correttamente nel sistema.              |
-| Nominal Scenario |  L'utente inserisce tutti i dati richiesti per la registrazione e sceglie il ruolo con cui registrarsi nel sistema.  (2.1)     |
+| Nominal Scenario |  L'utente guest inserisce tutti i dati richiesti per la registrazione e sceglie il ruolo con cui registrarsi nel sistema.  (2.1.1)     |
 |     Variants     |                                                                      |
-|    Exceptions    | L'utente risulta già registrato  (2.1.1)                             |
+|    Exceptions    | L'utente risulta già registrato  (2.1.2)                             |
 
 #### Scenario 2.1.1
 
 |  Scenario 2.1.1  |                      Registrazione corretta                       |
 | :------------: | :---------------------------------------------------------------: |
 |  Precondition  |                                --                                 |
-| Post condition |   L'utente/manager risulta registrato correttamente nel sistema   |
+| Post condition |   L'utente risulta registrato correttamente nel sistema           |
 |     Step#      |                            Description                            |
-|       1        |            L'utente chiede di registrarsi al sistema.             |
+|       1        |            L'utente guest chiede di registrarsi al sistema.             |
 |       2        |      Il sistema chiede i dati necessari per la registrazione      |
-|       3        |                L'utente inserisce i dati richiesti                |
-|       4        | L'utente seleziona il ruolo con cui registrarsi(manager o utente) |
-|       5        |  Il sistema salva i dati e viene creato il nuovo utente/manager   |
+|       3        |                L'utente guest inserisce i dati richiesti                |
+|       4        | L'utente guest seleziona il ruolo con cui registrarsi(manager o utente) |
+|       5        |  Il sistema salva i dati e viene creato il nuovo utente   |
 
 #### Scenario 2.1.2
 
@@ -305,15 +305,15 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |  Precondition  |                                                --                                                |
 | Post condition |                                                                                                  |
 |     Step#      |                                           Description                                            |
-|       1        |                            L'utente chiede di registrarsi al sistema.                            |
+|       1        |                            L'utente guest chiede di registrarsi al sistema.                            |
 |       2        |                     Il sistema chiede i dati necessari per la registrazione                      |
-|       3        |                               L'utente inserisce i dati richiesti                                |
-|       4        |                L'utente seleziona il ruolo con cui registrarsi(manager o utente)                 |
-|       5        | Il sistema rileva un errore in quanto l'username dell'utente esiste già e lo comunica all'utente |
+|       3        |                               L'utente guest inserisce i dati richiesti                                |
+|       4        |                L'utente guest seleziona il ruolo con cui registrarsi(manager o utente)                 |
+|       5        | Il sistema rileva un errore in quanto lo username dell'utente esiste già e lo comunica all'utente |
 
 ### Use case 3.1, UC3.1
 
-| Actors Involved  |                                  Cliente/Manager                                  |
+| Actors Involved  |                                  Utente (Cliente/Manager)                                  |
 | :--------------: | :-------------------------------------------------------------------------------: |
 |   Precondition   |                                L'utente è loggato                                 |
 |  Post condition  |                         Vengono mostrati tutti i prodotti                         |
@@ -337,9 +337,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 | :--------------: | :----------------------------------------------------------------------------------------------------------------------------------: |
 |   Precondition   |                                              L'utente è loggato ed ha il ruolo Manager                                               |
 |  Post condition  |                                               Il prodotto viene aggiunto correttamente                                               |
-| Nominal Scenario | Il manager chiede di aggiungere un nuovo prodotto, inserisce tutti i dati richiesti e il prodotto viene aggiunto correttamente (3.2) |
+| Nominal Scenario | Il manager chiede di aggiungere un nuovo prodotto, inserisce tutti i dati richiesti e il prodotto viene aggiunto correttamente (3.2.1) |
 |     Variants     |                                                                                                                                      |
-|    Exceptions    |                    Il prodotto è già presente (3.2.1) o la data di arrivo è successiva a quella corrente (3.2.2)                     |
+|    Exceptions    |                    Il prodotto è già presente (3.2.2) o la data di arrivo è successiva a quella corrente (3.2.3)                     |
 
 #### Scenario 3.2.1
 
@@ -384,9 +384,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 | :--------------: | :----------------------------------------------------------------------------------------------: |
 |   Precondition   |                            L'utente è loggato ed ha il ruolo Manager                             |
 |  Post condition  |                                    Il prodotto viene rimosso                                     |
-| Nominal Scenario | Il manager chiede al sistema di rimuovere un prodotto e questo viene rimosso correttamente (3.3) |
+| Nominal Scenario | Il manager chiede al sistema di rimuovere un prodotto e questo viene rimosso correttamente (3.3.1) |
 |     Variants     |                                                                                                  |
-|    Exceptions    |                    Il prodotto che si vuole rimuovere non è presente (3.3.1)                     |
+|    Exceptions    |                    Il prodotto che si vuole rimuovere non è presente (3.3.2)                     |
 
 #### Scenario 3.3.1
 
@@ -419,9 +419,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 | :--------------: | :-------------------------------------------------------------------------------------------------------------------------------------: |
 |   Precondition   |                                                L'utente è loggato ed ha il ruolo Manager                                                |
 |  Post condition  |                                     Vengono registrati correttamente l'arrivo di un set di prodotti                                     |
-| Nominal Scenario | Il manager chiede al sistema di registrare l'arrivo di un set di prodotti dello stesso modello e vengono registrati correttamente (3.4) |
+| Nominal Scenario | Il manager chiede al sistema di registrare l'arrivo di un set di prodotti dello stesso modello e vengono registrati correttamente (3.4.1) |
 |     Variants     |                                                                                                                                         |
-|    Exceptions    |                                        La data di arrivo è successiva a quella corrente (3.4.1)                                         |
+|    Exceptions    |                                        La data di arrivo è successiva a quella corrente (3.4.2)                                         |
 
 #### Scenario 3.4.1
 
@@ -450,11 +450,11 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 
 ### Use case 3.5, UC3.5
 
-| Actors Involved  | Cliente/Manager                                                                    |
+| Actors Involved  | Utente (Cliente/Manager)                                                                   |
 | :--------------: | :------------------------------------------------------------------: |
 |   Precondition   | L'utente è loggato  |
-|  Post condition  | Vengono mostrati i prodotti che rispecchiano la categoria inserita dall'utente  |
-| Nominal Scenario | L'utente chiede di visualizzare solo i prodotti che rispecchiano una determinata categoria   |
+|  Post condition  | Vengono mostrati i prodotti la cui categoria corrisponde a quella inserita dall'utente  |
+| Nominal Scenario | L'utente chiede di visualizzare solo i prodotti di una determinata categoria   |
 |     Variants     |                          |
 |    Exceptions    ||
 
@@ -463,38 +463,40 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |  Scenario 3.5  | Visualizza informazioni prodotti di una certa categoria (opzionale: parametro disponibile)      |
 | :------------: | :------------------------------------------------------------------------: |
 |  Precondition  | L'utente è loggato |
-| Post condition | Vengono mostrati i prodotti che rispecchiano la categoria inserita dall'utente   |
+| Post condition | Vengono mostrati i prodotti la cui categoria corrisponde a quella inserita dall'utente   |
 |     Step#      |                                Description                                 |
-|       1        |                                                        L'utente chiede di visualizzare i prodotti che rispecchiano una determinata categoria          |
+|       1        |                                                        L'utente chiede di visualizzare i prodotti di una determinata categoria          |
 |       2        |                                                        Il sistema chiede la categoria             |
 |3| L'utente inserisce la categoria|
-|4| Il sistema mostra i prodotti appartenenti alla categoria inserita dall'utente|
+|4| Il sistema mostra i prodotti la cui categoria corrisponde a quella inserita dall'utente|
 
 ### Use case 3.6, UC3.6
 
-| Actors Involved  | Cliente/Manager                                                                    |
+| Actors Involved  | Utente (Cliente/Manager)                                                                    |
 | :--------------: | :------------------------------------------------------------------: |
 |   Precondition   | L'utente è loggato  |
-|  Post condition  | Vengono mostrati i prodotti che rispecchiano il modello inserito dall'utente  |
-| Nominal Scenario | L'utente chiede di visualizzare solo i prodotti che rispecchiano un determinato modello   |
+|  Post condition  | Vengono mostrati i prodotti il cui modello corrisponde a quello inserito dall'utente  |
+| Nominal Scenario | L'utente chiede di visualizzare solo i prodotti di un determinato modello   |
 |     Variants     |                          |
 |    Exceptions    ||
 
 #### Scenario 3.6
 
-|  Scenario 3.6  | Visualizza informazioni prodotti di un certo modello(opzionale: parametro disponibile)      |
+|  Scenario 3.6  | Visualizza informazioni prodotti di un certo modello(opzionale: selezione per disponibilità)      |
 | :------------: | :------------------------------------------------------------------------: |
 |  Precondition  | L'utente è loggato |
-| Post condition | Vengono mostrati i prodotti che rispecchiano il modello inserito dall'utente   |
+| Post condition | Vengono mostrati i prodotti il cui modello corrisponde a quello inserito dall'utente   |
 |     Step#      |                                Description                                 |
-|       1        |                                                        L'utente chiede di visualizzare i prodotti che rispecchiano un determinato modello |
+|       1        |L'utente chiede di visualizzare i prodotti di un determinato modello, con una certa disponibilità (tutti i prodotti, solo quelli venduti, solo quelli non ancora venduti)|
 |       2        |                                                        Il sistema chiede il modello            |
 |3| L'utente inserisce il modello|
-|4| Il sistema mostra i prodotti appartenenti al modello inserito dall'utente|
+|4| Il sistema chiede di specificare la disponibilità dei prodotti |
+|5| L'utente specifica la disponibilità dei prodotti |
+|6| Il sistema mostra i prodotti il cui modello e la cui disponibilità corrispondono a quelli inseriti dall'utente|
 
 ### Use case 3.7, UC3.7
 
-| Actors Involved  | Cliente/Manager                                                                    |
+| Actors Involved  | Utente (Cliente/Manager)                                                                    |
 | :--------------: | :------------------------------------------------------------------: |
 |   Precondition   | L'utente è loggato  |
 |  Post condition  | Vengono mostrate le informazioni del prodotto con il codice inserito dall'utente  |
@@ -520,9 +522,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 | :--------------: | :------------------------------------------------------------------: |
 |   Precondition   | Il manager è loggato  |
 |  Post condition  | Il prodotto viene catalogato come venduto  |
-| Nominal Scenario | Il manager chiede di catalogare un prodotto come venduto (3.8)  |
+| Nominal Scenario | Il manager chiede di catalogare un prodotto come venduto (3.8.1)  |
 |     Variants     |                          |
-|    Exceptions    | Il prodotto non esiste (3.8.1), la data di vendita risulta precedente alla data di arrivo o successiva a quella corrente (3.8.2) o il prodotto risulta già venduto (3.8.3) |
+|    Exceptions    | Il prodotto non esiste (3.8.2), la data di vendita risulta precedente alla data di arrivo o successiva a quella corrente (3.8.3) o il prodotto risulta già venduto (3.8.4) |
 
 #### Scenario 3.8.1
 
@@ -591,9 +593,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 | :--------------: | :-----------------------------------------------------------------------------------------------------: |
 |   Precondition   |                                          Il cliente è loggato                                           |
 |  Post condition  |                      Il prodotto viene aggiunto correttamente al carrello attuale                       |
-| Nominal Scenario | Il cliente chiede di aggiungere un prodotto al suo carrello e questo viene aggiunto correttamente (4.2) |
+| Nominal Scenario | Il cliente chiede di aggiungere un prodotto al suo carrello e questo viene aggiunto correttamente (4.2.1) |
 |     Variants     |                                                                                                         |
-|    Exceptions    | Il prodotto non esiste (4.2.1), il prodotto è già presente in un altro carrello (4.2.2) o il prodotto non è disponibile (4.2.3) |
+|    Exceptions    | Il prodotto non esiste (4.2.2), il prodotto è già presente in un altro carrello (4.2.3) o il prodotto non è disponibile (4.2.4) |
 
 #### Scenario 4.2.1
 
@@ -642,9 +644,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 | :--------------: | :------------------------------------------------------------------------------------------------: |
 |   Precondition   |                                        Il cliente è loggato                                        |
 |  Post condition  |                               Il prodotto viene rimosso dal carrello                               |
-| Nominal Scenario | Il cliente chiede di rimuovere un prodotto dal carrello e questo viene rimosso correttamente (4.3) |
+| Nominal Scenario | Il cliente chiede di rimuovere un prodotto dal carrello e questo viene rimosso correttamente (4.3.1) |
 |     Variants     |                                                                                                    |
-|    Exceptions    | Il prodotto non è nel carrello (4.3.1), non esiste (4.3.2), è già stato venduto (4.3.3) o il cliente non ha alcun carrello (4.3.4) |
+|    Exceptions    | Il prodotto non è nel carrello (4.3.2), non esiste (4.3.3), è già stato venduto (4.3.4) o il cliente non ha alcun carrello (4.3.5) |
 
 #### Scenario 4.3.1
 
@@ -703,9 +705,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 | :--------------: | :---------------------------------------------------------------------------------------------: |
 |   Precondition   |                                      Il cliente è loggato                                       |
 |  Post condition  |                     L'acquisto del carrello viene effettuato correttamente                      |
-| Nominal Scenario | Il cliente chiede di acquistare il carrello attuale e questo viene eseguito correttamente (4.4) |
+| Nominal Scenario | Il cliente chiede di acquistare il carrello attuale e questo viene eseguito correttamente (4.4.1) |
 |     Variants     |                                                                                                 |
-|    Exceptions    |     Il carrello è vuoto (4.4.1), o non esiste alcun carrello per il cliente loggato (4.4.2)     |
+|    Exceptions    |     Il carrello è vuoto (4.4.2), o non esiste alcun carrello per il cliente loggato (4.4.3)     |
 
 #### Scenario 4.4.1
 
@@ -765,9 +767,9 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 | :--------------: | :--------------------------------------------------------------------------------------------: |
 |   Precondition   |                                      Il cliente è loggato                                      |
 |  Post condition  |                    Viene cancellato il carrello attuale del cliente loggato                    |
-| Nominal Scenario | Il cliente chiede di cancellare il suo carrello attuale e viene cancellato correttamente (4.6) |
+| Nominal Scenario | Il cliente chiede di cancellare il suo carrello attuale e viene cancellato correttamente (4.6.1) |
 |     Variants     |                                                                                                |
-|    Exceptions    |                            Il cliente non ha alcun carrello (4.6.1)                            |
+|    Exceptions    |                            Il cliente non ha alcun carrello (4.6.2)                            |
 
 #### Scenario 4.6.1
 

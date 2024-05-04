@@ -51,6 +51,7 @@ Version: V1 - description of EZElectronics in CURRENT form (as received by teach
     - [Use case 3.5, UC3.5](#use-case-35-uc35)
       - [Scenario 3.5](#scenario-35)
     - [Use case 3.6, UC3.6](#use-case-36-uc36)
+      - [Scenario 3.6](#scenario-36)
     - [Use case 3.7, UC3.7](#use-case-37-uc37)
       - [Scenario 3.7](#scenario-37)
     - [Use case 3.8, UC3.8](#use-case-38-uc38)
