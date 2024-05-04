@@ -799,10 +799,10 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
   - Può avere ruolo di cliente o di manager
 - Cliente
   - Utente che dispone di un carrello in cui inserire i prodotti che vuole acquistare
-  - Può visualizzare lo storico dei carrelli per cui ha pagato, quindi possiede almeno un carrello (quello corrente) ed eventualmente tutti quelli acquistati precedentemente
+  - Può visualizzare lo storico dei carrelli per cui ha pagato
 - Manager
   - Utente responsabile del negozio fisico
-  - Ogni manager ha la possibilità di gestire (aggiungere, rimuovere, registrare una nuova fornitura, ...) i prodotti sul sito web
+  - Ogni manager ha la possibilità di gestire i prodotti sul sito web (vedi [Functional Requirements](#functional-requirements) e [Table of Rights](#table-of-rights))
 - Prodotto
   - Prodotto in vendita sul sito web
   - Ogni singolo prodotto ha un codice univoco
@@ -810,7 +810,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 - Carrello
   - Ogni carrello è proprietà di un singolo cliente
   - Contiene i prodotti in esso inseriti dal cliente proprietario
-  - Quando il cliente paga per il carrello, l'evento viene registrato insieme alla data in cui è avvenuto
+  - Quando il cliente paga per il carrello, l'evento viene registrato (nel carrello, campo <i>Pagato</i>) insieme alla data in cui è avvenuto
 
 ![glossary](./img/glossaryV1.png)
 
