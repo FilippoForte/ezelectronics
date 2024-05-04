@@ -218,10 +218,10 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | NFR11| Portabilità  | Il sito web deve essere accessibile dai seguenti browser (specificando la versione più vecchia supportata): Chrome (v: 79), Firefox (v: 72), Safari (v: 13.0.5), Opera (v: 65), Edge (v: 79), Samsung Internet (v: 11.2) |/|
 
 # Use case diagram and use cases
-
+## Use Case Diagram Summary
+![useCaseDiagram](./img/diagrammaCasiDusoSummaryV2.png)
 ## Use case diagram
-
-![useCaseDiagram](/img/diagrammaDeiCasiD'uso.png)
+![useCaseDiagram](./img/diagrammaCasiDusoV2.png)
 
 ### Use case 1.1, UC1.1 Login
 

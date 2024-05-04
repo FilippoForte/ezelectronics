@@ -193,7 +193,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 ## Use case diagram Summary
 ![useCaseDiagram](./img/diagrammaCasiDusoSummaryv1.png)
 ## Use case diagram 
-![useCaseDiagram](./img/diagrammaCasiDusov1.png)
+![useCaseDiagram](./img/diagrammaCasiDusoV1.png)
 ### Use case 1.1, UC1.1
 
 | Actors Involved  |                                           Cliente/Manager                                        |
