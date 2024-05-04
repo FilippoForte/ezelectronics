@@ -140,7 +140,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR6.1| Aggiungi metodo di pagamento*************                                             |
 | FR6.2| Rimuovi metodo di pagamento*************                                              |
 | **FR7**| **Analisi vendite**                                                                 |
-| FR7.1| Visualizza carrelli venduti (filtri opzionali: intervallo di date, categoria prodotto, modello prodotto)                                                                                      |
+| FR7.1| Visualizza carrelli venduti (filtri opzionali: intervallo di date, categoria prodotto, modello prodotto, codice prodotto)                                                                                      |
 | FR7.2| Visualizza totale dei prodotti venduti (in base ai filtri specificati in FR7.1)       |
 | **FR8**| **Gestione notifiche**                                                              |
 | FR8.1| Invio di una email di notifica al cliente quando un prodotto all'interno della sua lista dei desideri riceve uno sconto|
