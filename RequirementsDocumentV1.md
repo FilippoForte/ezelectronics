@@ -20,8 +20,10 @@ Version: V1 - description of EZElectronics in CURRENT form (as received by teach
 - [Stories and personas](#stories-and-personas)
 - [Functional and non functional requirements](#functional-and-non-functional-requirements)
   - [Functional Requirements](#functional-requirements)
+  - [Table of Rights](#table-of-rights)
   - [Non Functional Requirements](#non-functional-requirements)
 - [Use case diagram and use cases](#use-case-diagram-and-use-cases)
+  - [Use case diagram summary](#use-case-diagram-summary)
   - [Use case diagram](#use-case-diagram)
     - [Use case 1.1, UC1.1](#use-case-11-uc11)
       - [Scenario 1.1.1](#scenario-111)
@@ -111,13 +113,10 @@ EZElectronics (read EaSy Electronics) is a software application designed to help
 # Stories and personas
 
 **Persona 1**: uomo, professionista ad alto reddito, sposato, con figli, 50 anni  
-Storia: vuole acquistare una nuova smart-TV <u>all'avanguardia</u> per il suo salotto: deve trovare il <u>prezzo migliore</u> tra le TV top di gamma presenti nel negozio.
+Storia: vuole acquistare una nuova smart-TV <u>all'avanguardia</u> per il suo salotto: deve trovare il prezzo migliore tra le TV top di gamma presenti nel negozio.
 
 **Persona 2**: donna, studentessa universitaria, 20 anni  
 Storia: vuole acquistare uno smartphone <u>economico</u> per sostituire quello vecchio e lento: deve trovare la <u>migliore soluzione costo-prestazioni</u>.  
-  
-**Persona 3**: donna, sposata, con figli, 60 anni  
-Storia: vuole acquistare una radio per la madre di 85 anni che vive da sola, per tenerle compagnia.
   
 **Persona 4**: uomo, lavora da pochi anni, 28 anni  
 Storia: vuole acquistare un PC da gioco all'avanguardia: vuole controllare i prezzi dei PC a cui è interessato.  
@@ -137,7 +136,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 | **FR1** | **Gestione degli accessi**                                                         |
 | FR1.1   | Login di un utente registrato                                                      |
 | FR1.2   | Logout di un utente registrato                                                     |
-| FR1.3   | Possibilità di ottenere le informazioni relative all'utente correntemente loggato |
+| FR1.3   | Possibilità di ottenere le informazioni relative all'utente correntemente loggato  |
 | **FR2** | **Gestione degli utenti**                                                          |
 | FR2.1   | Registrazione di un nuovo utente                                                   |
 | **FR3** | **Gestione dei prodotti**                                                          |
@@ -178,7 +177,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 | FR4.1 Visualizzazione del carrello attuale del cliente                                           |              |    X    |         |
 | FR4.2 Aggiunta di un prodotto al carrello attuale                                                |              |    X    |         |
 | FR4.3 Rimozione di un prodotto dal carrello attuale                                              |              |    X    |         |
-| FR4.4 Acquisto del carrello (----) attuale                                                       |              |    X    |         |
+| FR4.4 Acquisto del carrello attuale                                                              |              |    X    |         |
 | FR4.5 Visualizzazione dello storico dei carrelli acquistati dal cliente                          |              |    X    |         |
 | FR4.6 Cancellazione del carrello                                                                 |              |    X    |         |
 
@@ -203,24 +202,24 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 
 ### Use case 1.1, UC1.1
 
-| Actors Involved  |                                           Cliente/Manager                                        |
+| Actors Involved  |                                           Utente guest                                           |
 | :--------------: | :----------------------------------------------------------------------------------------------: |
-|   Precondition   |                                L'utente è registrato nel sistema                                 |
+|   Precondition   |                                L'utente guest ha un profilo registrato nel sistema               |
 |  Post condition  |                                     L'utente risulta loggato                                     |
-| Nominal Scenario |                 L'utente inserisce username e password e accede al sistema (1.1)                 |
+| Nominal Scenario |                 L'utente guest inserisce username e password e accede al sistema (1.1)           |
 |     Variants     |                                                                                                  |
-|    Exceptions    | L'utente inserisce dati errati (non previsto dalle API, ma presente nel file userDAO.ts) (1.1.1) |
+|    Exceptions    | L'utente guest inserisce dati errati (non previsto dalle API, ma presente nel file userDAO.ts) (1.1.1) |
 
 #### Scenario 1.1.1
 
 |  Scenario 1.1.1  |             Login corretto             |
 | :------------: | :------------------------------------: |
-|  Precondition  |   L'utente è registrato nel sistema    |
+|  Precondition  |   L'utente guest ha un profilo registrato nel sistema    |
 | Post condition |        L'utente risulta loggato        |
 |     Step#      |              Description               |
-|       1        | L'utente chiede di accedere al sistema |
+|       1        | L'utente guest chiede di accedere al sistema |
 |       2        | Il sistema chiede username e password  |
-|       3        | L'utente inserisce username a password |
+|       3        | L'utente guest inserisce username a password |
 |       4        |        Il sistema valida i dati        |
 |       5        |        L'utente risulta loggato        |
 
@@ -228,12 +227,12 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 
 | Scenario 1.1.2 |                         Login errato                          |
 | :------------: | :-----------------------------------------------------------: |
-|  Precondition  |               L'utente è registrato nel sistema               |
+|  Precondition  |               L'utente guest ha un profilo registrato nel sistema               |
 | Post condition |                                                               |
 |     Step#      |                          Description                          |
-|       1        |            L'utente chiede di accedere al sistema             |
+|       1        |            L'utente guest chiede di accedere al sistema             |
 |       2        |             Il sistema chiede username e password             |
-|       3        |            L'utente inserisce username a password             |
+|       3        |            L'utente guest inserisce username a password             |
 |       4        | Il sistema rileva un errore nei dati e lo comunica all'utente |
 
 ### Use case 1.2, UC1.2
