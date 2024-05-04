@@ -92,6 +92,10 @@ Version: V1 - description of EZElectronics in CURRENT form (as received by teach
       - [Scenario 5.2.2](#scenario-522)
     - [Use case 5.3, UC5.3](#use-case-53-uc53)
     - [Use case 5.4, UC5.4](#use-case-54-uc54)
+    - [Use case 6.1, UC6.1](#use-case-61-uc61)
+    - [Use case 6.2, UC6.2](#use-case-62-uc62)
+    - [Use case 7.1, UC7.1](#use-case-71-uc71)
+    - [Use case 7.2, UC7.2](#use-case-72-uc72)
 
 - [Glossary](#glossary)
 - [System Design](#system-design)
@@ -1219,7 +1223,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       3        | Il cliente aggiunge i dettagli relativi al metodo di pagamento selezionato (dati carta, dati buono,..) |
 |       4        |                    Il metodo di pagamento selezionato viene aggiunto correttamente                     |
 
-### Use case 6.2, UC6.2 Rimuovi metodo di pagamento
+### Use case 6.2, UC6.2
 
 | Actors Involved  |             Cliente, Servizio di pagamento            |
 | :--------------: | :---------------------------------------------------: |
