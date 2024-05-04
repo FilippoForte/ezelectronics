@@ -64,7 +64,7 @@ EZElectronics (read EaSy Electronics) is a software application designed to help
 | Cliente               | GUI (interfaccia per navigare il sito, visualizzare e comprare prodotti)  | Smartphone / PC   |
 | Manager               | GUI (interfaccia per navigare il sito, visualizzare e gestire i prodotti) | Smartphone / PC   |
 | Utente guest          | GUI (interfaccia per visualizzare i prodotti e per l'autenticazione)      | Smartphone / PC   |
-| Amministratore        | GUI (interfaccia per visualizzare e gestire i prodotti e gli utenti)      | Console           |
+| Amministratore        | CLI (interfaccia per registrare ed eliminare manager, testing)            | PC                |
 | Servizio di pagamento | APIs                                                                      | Internet          |
 | Servizio di spedizione| APIs                                                                      | Internet          |
 | Validazione mail      | APIs                                                                      | Internet          |
@@ -141,8 +141,8 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR6.2| Rimuovi metodo di pagamento*************                                              |
 | **FR7**| **Analisi vendite**                                                                 |
 | FR7.1| Visualizza carrelli venduti (filtri opzionali: intervallo di date, categoria prodotto, modello prodotto)                                                                                      |
-| FR7.2| Visualizza totale dei prodotti venduti (in base ai filtri specificati in FR7.1)                                                    |
-| **FR8**| **Gestione notifiche(sul sito e per email)**                                        |
+| FR7.2| Visualizza totale dei prodotti venduti (in base ai filtri specificati in FR7.1)       |
+| **FR8**| **Gestione notifiche**                                                              |
 | FR8.1| Invio di una email di notifica al cliente quando un prodotto all'interno della sua lista dei desideri riceve uno sconto|
 | FR8.3| Invio di una email di notifica al cliente quando lo stato della sua spedizione viene aggiornato |
 | FR8.4| Invio di una email di notifica al cliente quando un prodotto nel suo carrello viene esaurito (prima che lui lo acquisti)|
