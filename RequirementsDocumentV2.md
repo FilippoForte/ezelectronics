@@ -205,17 +205,17 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR5.2| Modifica indirizzo di spedizione                                                      |
 | FR5.3| Visualizza stato della spedizione del carrello acquistato                             |
 | **FR6**| **Gestione pagamenti**                                                              |
-| FR6.1| Aggiungi metodo di pagamento                                                          |
+| FR6.1| Aggiungi metodo di pagamento  |
 | FR6.2| Rimuovi metodo di pagamento                                                           |
 | **FR7**| **Analisi vendite**                                                                 |
-| FR7.1| Visualizza statistiche relative allo stato degli ordini                               |
-| FR7.2| Visualizza statistiche prodotti venduti in un range di date                           |
+| FR7.1| Visualizza carrelli venduti  (opzionale: filtro per intervalli di date, categoria e/o modello)      |
+| FR7.2| Visualizza totale dei prodotti venduti (opzionale: filtro per intervalli di date, categoria e/o modello)            |
 | **FR8**| **Gestione notifiche**                                                              |
 | FR8.1| Invio di una notifica al cliente quando un prodotto all'interno della sua lista dei desideri riceve uno sconto |
 | FR8.2| Invio di una notifica al cliente quando lo stato della sua spedizione viene aggiornato |
 | FR8.3| Invio di una notifica al cliente quando un prodotto nel suo carrello viene esaurito (prima che lui lo acquisti)|
 | FR8.4| Invio di una notifica al manager quando un prodotto viene esaurito                    |
-|**FR9**| **Gestione lista dei desideri**                                                      |
+|**FR9**| **Gestione lista dei desideri**  |
 | FR9.1| Visualizza lista dei desideri                                                         |
 | FR9.2| Aggiungi prodotto alla lista dei desideri                                             |
 | FR9.3| Rimuovi prodotto dalla lista dei desideri                                             |
@@ -1090,73 +1090,40 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |     Step#      |                            Description                            |
 |       1        |  Il cliente seleziona il metodo di pagamento che vuole rimuovere  |
 |       2        | Il sistema rimuove il metodo di pagamento selezionato dal cliente |
-
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-FR7.1	Visualizza statistiche relative allo stato degli ordini
-FR7.2	Visualizza statistiche prodotti venduti in un range di date
-
-
-
-
-
 ### Use case 7.1, UC7.1
-| Actors Involved  |       Cliente        |
+| Actors Involved  |       Manager        |
 | :--------------: | :------------------: |
-|   Precondition   | Il cliente è loggato |
-|  Post condition  |                      |
-| Nominal Scenario |                      |
+|   Precondition   | Il manager è loggato |
+|  Post condition  | Vengono visualizzati correttamente i carrelli venduti   |
+| Nominal Scenario |Il manager chiede di visualizzare i carrelli venduti e vengono mostrati correttamente                      |
 |     Variants     |                      |
 |    Exceptions    |                      |
 #### Scenario 7.1
-|  Scenario 7.1  |                      |
+|  Scenario 7.1  | Visualizzazione carrelli venduti                     |
 | :------------: | :------------------: |
-|  Precondition  | Il cliente è loggato |
-| Post condition |                      |
+|  Precondition  | Il manager è loggato |
+| Post condition |Vengono visualizzati correttamente i carrelli venduti                       |
 |     Step#      |     Description      |
-|       1        |                      |
-|       2        |                      |
-
+|       1        | Il manager chiede di visualizzare i carrelli venduti                     |
+|       2        |(opzionale) Il manager inserisce i filtri (intervallo di date, categoria, modello)                      |
+|       3        | Il sistema mostra i carrelli venduti
 ### Use case 7.2, UC7.2
 | Actors Involved  |                                              Manager                                              |
 | :--------------: | :-----------------------------------------------------------------------------------------------: |
-|   Precondition   |                                       Il manager è loggato                                        |
-|  Post condition  | Vengono visualizzate le statistiche relative ai prodotti venduti in un periodo scelto dal manager |
-| Nominal Scenario |     Il manager chiede di visualizzare le statistiche dei prodotti venduti in un range di date     |
+|   Precondition   |   Il manager è loggato                                        |
+|  Post condition  | Viene visualizzato il totale dei prodotti venduti |
+| Nominal Scenario | Il manager chiede di visualizzare il totale dei prodotti venduti   |
 |     Variants     |                                                                                                   |
-|    Exceptions    |                       La data di inizio è successiva a quella di fine range                       |
+|    Exceptions    |                            |
 #### Scenario 7.2
-|  Scenario 7.2  |                                      Visualizza statistiche prodotti venduti                                       |
+|  Scenario 7.2  |                                      Visualizza totale prodotti venduti                                       |
 | :------------: | :----------------------------------------------------------------------------------------------------------------: |
 |  Precondition  |                                                Il manager è loggato                                                |
-| Post condition |         Vengono visualizzate le statistiche relative ai prodotti venduti in un periodo scelto dal manager          |
+| Post condition |  Viene visualizzato il totale dei prodotti venduti |
 |     Step#      |                                                    Description                                                     |
-|       1        |                   Il manager chiede di visualizzare le statistiche relative ai prodotti venduti                    |
-|       2        | Il manager inserisce il range di date all'interno del quale vuole visualizzare le statistiche dei prodotti venduti |
-|       3        |     Il sistema mostra le statistiche relative alle vendite dei prodotti nel range di date inserito dal manager     |
-
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-### Use case 8.1, UC8.1
-
-FR8.1	Invio di una notifica al cliente quando un prodotto all'interno della sua lista dei desideri riceve uno sconto
-FR8.2	Invio di una notifica al cliente quando lo stato della sua spedizione viene aggiornato
-FR8.3	Invio di una notifica al cliente quando un prodotto nel suo carrello viene esaurito (prima che lui lo acquisti)
-
-
-
-
-
-
-
-
-
-
-
-
-
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+|       1        |                   Il manager chiede di visualizzare il totale dei prodotti venduti                    |
+|       2        | (opzionale) Il manager inserisce i filtri (intervallo di date, categoria, modello)   |
+|       3        | Il sistema mostra il totale dei prodotti venduti
 ### Use case 9.1, UC9.1
 | Actors Involved  |                                                Cliente                                                |
 | :--------------: | :---------------------------------------------------------------------------------------------------: |
