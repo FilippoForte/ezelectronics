@@ -10,19 +10,19 @@ Version: 2.5
 
 ![IndexPC](./img/IndexV2PC.png)
 
-## Scrermata di registrazione Customer
+## Schermata di registrazione Customer
 
 ![RegisterPC](./img/RegisterV2PC.png)
 
-## Scrermata di login
+## Schermata di login
 
 ![LoginPC](./img/LoginPC.png)
 
-## Scrermata di visualizzazione prodotti (da utente customer)
+## Schermata di visualizzazione prodotti (da utente customer)
 
 ![PaginaCustomerPC](./img/PaginaCustomerV2PC.png)
 
-### Scrermata di visualizzazione prodotti con  menu a tendina esteso (da utente customer)
+### Schermata di visualizzazione prodotti con  menu a tendina esteso (da utente customer)
 
 ![PaginaCustomerMenuPC](./img/PaginaCustomerMenuV2PC.png)
 
@@ -42,11 +42,11 @@ Si accede alla pagina premendo sull'icona del carrello sulla navbar
 
 ### Modifica metodo di pagamento (da utente customer)
 
-![ModificaPagamentoPC](./img/ModificaPagamentoPC.png)
+![ModificaPagamentoPC](./img/ProfiloModificaMetodoPC.png)
 
 ### Modifica indirizzo di spedizione (da utente customer)
 
-![ModificaIndirizzoPC](./img/ModificaIndirizzoPC.png)
+![ModificaIndirizzoPC](./img/ProfiloModificaIndirizzoPC.png)
 
 ### Storia dei carrelli (da utente customer)
 
@@ -79,11 +79,11 @@ Si accede alla pagina premendo sull'icona del prodotto desiderato
 ![ProfiloModificaPC](./img/ProfiloModificaPC.png)
 
 
-## Scrermata di visualizzazione prodotti (da utente manager)
+## Schermata di visualizzazione prodotti (da utente manager)
 
 ![PaginaManagerPC](./img/PaginaManagerV2PC.png)
 
-### Scrermata di visualizzazione prodotti con  menu a tendina esteso (da utente manager)
+### Schermata di visualizzazione prodotti con  menu a tendina esteso (da utente manager)
 
 ![PaginaManagerPC](./img/PaginaManagerMenuV2PC.png)
 
@@ -109,7 +109,7 @@ Si accede alla pagina tramite il bottone "Registrazione Arrivi" sulla navbar
 
 ## Profilo (da utente manager)
 
-![ProfiloPC](./img/ProfiloPC.png)
+![ProfiloPC](./img/ProfiloV2PC.png)
 
 
 ## Esempio Errori
