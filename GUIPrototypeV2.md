@@ -48,6 +48,18 @@ Si accede alla pagina premendo sull'icona del carrello sulla navbar
 
 ![ModificaIndirizzoPC](./img/ProfiloModificaIndirizzoPC.png)
 
+### Modifica password(da utente customer)
+
+![ModificaPassword](./img/ProfiloModificaPasswordPC.png)
+
+### Aggiunta metodo di pagamento (da utente customer)
+
+![AggiuntaMetodo](./img/AggiuntaMetodo.png)
+
+### Aggiunta indirizzo di spedizione (da utente customer)
+
+![AggiuntaIndirizzo](./img/AggiuntaIndirizzo.png)
+
 ### Storia dei carrelli (da utente customer)
 
 Si accede alla pagina tramite la voce nel menu a tendina nella navbar o tramite i pulsanti appositi
@@ -87,6 +99,15 @@ Si accede alla pagina premendo sull'icona del prodotto desiderato
 
 ![PaginaManagerPC](./img/PaginaManagerMenuV2PC.png)
 
+### Analisi Vendite (da utente manager)
+
+![PaginaManagerAnalisi](./img/PaginaManagerAnalisiV2PC.png)
+
+### Analisi Vendite- visualizza totale(da utente manager)
+
+![PaginaManagerAnalisiTotale](./img/PaginaManagerAnalisiV2TotalePC.png)
+
+
 ### Sconta prodotto (da utente manager)
 
 ![ScontoPC](./img/ScontoPC.png)
@@ -107,11 +128,17 @@ Si accede alla pagina tramite il bottone "Registrazione Arrivi" sulla navbar
 
 ![ModificaProdottoPC](./img/ModificaProdottoPC.png)
 
+### Notifiche (da utente manager)
+
+![Notifiche](./img/Notifiche.png)
+
 ## Profilo (da utente manager)
 
 ![ProfiloPC](./img/ProfiloV2PC.png)
 
+## Modifica password (da utente manager)
 
+![ModificaPassword](./img/Modificapassword.png)
 ## Esempio Errori
 
 ![LoginErratoPC](./img/LoginErratoPC.png)
