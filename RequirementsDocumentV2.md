@@ -557,9 +557,9 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Use case 3.1, UC3.1
-| Actors Involved  |                                  Cliente/Manager                                  |
+| Actors Involved  |   Cliente/Manager            |
 | :--------------: | :-------------------------------------------------------------------------------: |
-|   Precondition   |                                L'utente è loggato                                 |
+|   Precondition   |  L'utente è loggato                                 |
 |  Post condition  |                         Vengono mostrati tutti i prodotti                         |
 | Nominal Scenario | L'utente chiede al sistema di visualizzare tutti i prodotti e li vengono mostrati |
 |     Variants     |                                                                                   |
@@ -595,9 +595,9 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 | :--------------: | :----------------------------------------------------------------------------------------------------------------------------------: |
 |   Precondition   |                                              L'utente è loggato ed ha il ruolo Manager                                               |
 |  Post condition  |                                               Il prodotto viene aggiunto correttamente                                               |
-| Nominal Scenario | Il manager chiede di aggiungere un nuovo prodotto, inserisce tutti i dati richiesti e il prodotto viene aggiunto correttamente (3.2) |
+| Nominal Scenario | Il manager chiede di aggiungere un nuovo prodotto, inserisce tutti i dati richiesti e il prodotto viene aggiunto correttamente (3.3.1) |
 |     Variants     |                                                                                                                                      |
-|    Exceptions    |                    Il prodotto è già presente (3.2.1) o la data di arrivo è successiva a quella corrente (3.2.2)                     |
+|    Exceptions    |                    Il prodotto è già presente (3.3.2) o la data di arrivo è successiva a quella corrente (3.3.3)                     |
 #### Scenario 3.3.1
 |  Scenario 3.3.1  |         Aggiunta corretta di un nuovo prodotto          |
 | :------------: | :-----------------------------------------------------: |
@@ -610,7 +610,7 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 |       4        |           Il sistema valida i dati e li salva           |
 |       5        |        Il prodotto viene aggiunto correttamente         |
 #### Scenario 3.3.2
-| Scenario 3.2.2 |                 Aggiunta errata di un nuovo prodotto (prodotto esistente)                  |
+| Scenario 3.3.2 |                 Aggiunta errata di un nuovo prodotto (prodotto esistente)                  |
 | :------------: | :----------------------------------------------------------------------------------------: |
 |  Precondition  |                         L'utente è loggato ed ha il ruolo Manager                          |
 | Post condition |                                                                                            |
@@ -620,7 +620,7 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 |       3        |                        Il manager inserisce tutti i dati richiesti                         |
 |       4        | Il sistema rileva un errore in quanto il prodotto è già esistente e lo comunica al manager |
 #### Scenario 3.3.3
-| Scenario 3.2.3 |               Aggiunta errata di un nuovo prodotto (data di arrivo successiva alla data corrente)               |
+| Scenario 3.3.3 |               Aggiunta errata di un nuovo prodotto (data di arrivo successiva alla data corrente)               |
 | :------------: | :-------------------------------------------------------------------------------------------------------------: |
 |  Precondition  |                                    L'utente è loggato ed ha il ruolo Manager                                    |
 | Post condition |                                    Il prodotto viene aggiunto correttamente                                     |
@@ -635,9 +635,9 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 | :--------------: | :----------------------------------------------------------------------------------------------: |
 |   Precondition   |                            L'utente è loggato ed ha il ruolo Manager                             |
 |  Post condition  |                                    Il prodotto viene rimosso                                     |
-| Nominal Scenario | Il manager chiede al sistema di rimuovere un prodotto e questo viene rimosso correttamente (3.3) |
+| Nominal Scenario | Il manager chiede al sistema di rimuovere un prodotto e questo viene rimosso correttamente (3.4.1) |
 |     Variants     |                                                                                                  |
-|    Exceptions    |                    Il prodotto che si vuole rimuovere non è presente (3.3.1)                     |
+|    Exceptions    |                    Il prodotto che si vuole rimuovere non è presente (3.4.2)                     |
 #### Scenario 3.4.1
 |  Scenario 3.4.1  |                       Rimozione corretta                        |
 | :------------: | :-------------------------------------------------------------: |
@@ -665,11 +665,11 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 | :--------------: | :-------------------------------------------------------------------------------------------------------------------------------------: |
 |   Precondition   |                                                L'utente è loggato ed ha il ruolo Manager                                                |
 |  Post condition  |                                     Vengono registrati correttamente l'arrivo di un set di prodotti                                     |
-| Nominal Scenario | Il manager chiede al sistema di registrare l'arrivo di un set di prodotti dello stesso modello e vengono registrati correttamente (3.5) |
+| Nominal Scenario | Il manager chiede al sistema di registrare l'arrivo di un set di prodotti dello stesso modello e vengono registrati correttamente (3.5.1) |
 |     Variants     |                                                                                                                                         |
-|    Exceptions    |                                        La data di arrivo è successiva a quella corrente (3.5.1)                                         |
-#### Scenario 3.5
-|  Scenario 3.5  |                       Registrazione arrivi corretta                       |
+|    Exceptions    |                                        La data di arrivo è successiva a quella corrente (3.5.2)                                         |
+#### Scenario 3.5.1
+|  Scenario 3.5.1  |                       Registrazione arrivi corretta                       |
 | :------------: | :-----------------------------------------------------------------------: |
 |  Precondition  |                 L'utente è loggato ed ha il ruolo Manager                 |
 | Post condition |      Vengono registrati correttamente l'arrivo di un set di prodotti      |
@@ -679,8 +679,8 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 |       3        |                         Il manager inserisce i dati                         |
 |       4        |                    Il sistema valida i dati e li salva                    |
 |       5        |                  L'arrivo viene registrato correttamente                  |
-#### Scenario 3.5.1
-| Scenario 3.5.1 |                                           Registrazione arrivi errata                                           |
+#### Scenario 3.5.2
+| Scenario 3.5.2 |                                           Registrazione arrivi errata                                           |
 | :------------: | :-------------------------------------------------------------------------------------------------------------: |
 |  Precondition  |                                    L'utente è loggato ed ha il ruolo Manager                                    |
 | Post condition |                                                                                                                 |
@@ -691,17 +691,17 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 |       4        | Il sistema rileva un errore in quanto la data di arrivo è successiva a quella corrente e lo comunica al manager |
 
 ### Use case 3.6, UC3.6
-| Actors Involved  | Cliente/Manager                                                                    |
+| Actors Involved  | Utente Guest/Cliente/Manager                                                                    |
 | :--------------: | :------------------------------------------------------------------: |
-|   Precondition   | L'utente è loggato  |
+|   Precondition   | --  |
 |  Post condition  | Vengono mostrati i prodotti che rispecchiano la categoria inserita dall'utente  |
 | Nominal Scenario | L'utente chiede di visualizzare solo i prodotti che rispecchiano una determinata categoria   |
 |     Variants     |                          |
 |    Exceptions    ||
 #### Scenario 3.6
-|  Scenario 3.6  | Visualizza informazioni prodotti di una certa categoria (opzionale: parametro disponibile)      |
+|  Scenario 3.6  | Visualizza informazioni prodotti di una certa categoria       |
 | :------------: | :------------------------------------------------------------------------: |
-|  Precondition  | L'utente è loggato |
+|  Precondition  | -- |
 | Post condition | Vengono mostrati i prodotti che rispecchiano la categoria inserita dall'utente   |
 |     Step#      |                                Description                                 |
 |       1        |                                                        L'utente chiede di visualizzare i prodotti che rispecchiano una determinata categoria          |
@@ -710,17 +710,17 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 |4| Il sistema mostra i prodotti appartenenti alla categoria inserita dall'utente|
 
 ### Use case 3.7, UC3.7
-| Actors Involved  | Cliente/Manager                                                                    |
+| Actors Involved  | Utente Guest/Cliente/Manager                                                                    |
 | :--------------: | :------------------------------------------------------------------: |
-|   Precondition   | L'utente è loggato  |
+|   Precondition   | -- |
 |  Post condition  | Vengono mostrati i prodotti che rispecchiano il modello inserito dall'utente  |
 | Nominal Scenario | L'utente chiede di visualizzare solo i prodotti che rispecchiano un determinato modello   |
 |     Variants     |                          |
 |    Exceptions    ||
 #### Scenario 3.7
-|  Scenario 3.7  | Visualizza informazioni prodotti di un certo modello(opzionale: parametro disponibile)      |
+|  Scenario 3.7  | Visualizza informazioni prodotti di un certo modello     |
 | :------------: | :------------------------------------------------------------------------: |
-|  Precondition  | L'utente è loggato |
+|  Precondition  | -- |
 | Post condition | Vengono mostrati i prodotti che rispecchiano il modello inserito dall'utente   |
 |     Step#      |                                Description                                 |
 |       1        |                                                        L'utente chiede di visualizzare i prodotti che rispecchiano un determinato modello |
@@ -729,17 +729,17 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 |4| Il sistema mostra i prodotti appartenenti al modello inserito dall'utente|
 
 ### Use case 3.8, UC3.8
-| Actors Involved  | Cliente/Manager                                                                    |
+| Actors Involved  | Utente Guest/Cliente/Manager                                                                    |
 | :--------------: | :------------------------------------------------------------------: |
-|   Precondition   | L'utente è loggato  |
+|   Precondition   | -- |
 |  Post condition  | Vengono mostrate le informazioni del prodotto con il codice inserito dall'utente  |
 | Nominal Scenario | L'utente chiede di visualizzare un prodotto inserendo il suo codice e gli viene mostrato   |
 |     Variants     |                          |
 |    Exceptions    ||
 #### Scenario 3.8
-|  Scenario 3.8  | Visualizza informazioni prodotti di un certo modello(opzionale: parametro disponibile)      |
+|  Scenario 3.8  | Visualizza informazioni prodotti di un certo modello     |
 | :------------: | :------------------------------------------------------------------------: |
-|  Precondition  | L'utente è loggato |
+|  Precondition  | -- |
 | Post condition | Vengono mostrate le informazioni del prodotto con il codice inserito dall'utente   |
 |     Step#      |                                Description                                 |
 |       1        |                                                        L'utente chiede di visualizzare le informazioni di un prodotto di cui inserisce il codice |
@@ -756,7 +756,7 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 |     Variants     |                                                              |
 |    Exceptions    |                      Il prodotto non esiste                  |
 #### Scenario 3.10
-|  Scenario 3.9  |                             Aggiungi sconto ad un prodotto                             |
+|  Scenario 3.10  |                             Aggiungi sconto ad un prodotto                             |
 | :------------: | :------------------------------------------------------------------------------------: |
 |  Precondition  |                                  Il manager è loggato                                  |
 | Post condition |                           Sconto aggiunto ad un prodotto                               |
@@ -766,17 +766,17 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 |       3        |     Il sistema invia una notifica a tutte le persone interessate a quel prodotto       |
 
 ### Use case 3.11, UC3.11
-| Actors Involved  |                          Cliente/Manager                             |
+| Actors Involved  |       Utente Guest/ Cliente/Manager                             |
 | :--------------: | :----------------------------------------------------------: |
-|   Precondition   |                    L'utente è loggato                        |
+|   Precondition   |      |
 |  Post condition  | Vengono mostrate le informazioni del prodotto per sconto maggiore o uguale a quello indicato|
 | Nominal Scenario | L'utente chiede di visualizzare solo i prodotti con un determinato sconto minimo|
 |     Variants     |                                                              |
 |    Exceptions    |                                                             |
 #### Scenario 3.11
-|  Scenario 3.10  |                             Filtraggio per sconto                                      |
+|  Scenario 3.11  |                             Filtraggio per sconto                                      |
 | :------------: | :------------------------------------------------------------------------------------: |
-|  Precondition  |                                  L'utente è loggato                                    |
+|  Precondition  |           |
 | Post condition |   Vengono mostrati i prodotti che rispecchiano lo sconto minimo inserito dall'utente   |
 |     Step#      |                                      Description                                       |
 |       1        |    L'utente chiede di visualizzare i prodotti che rispecchiano un determinato sconto   |
@@ -893,7 +893,7 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 |       2        | Il sistema rileva un errore in quanto il cliente non ha alcun carrello e lo comunica al cliente |
 
 ### Use case 4.4, UC4.4
-| Actors Involved  |                                             Cliente                                             |
+| Actors Involved  |                                             Cliente,Servizio di pagamento, Servizio di spedizione                                            |
 | :--------------: | :---------------------------------------------------------------------------------------------: |
 |   Precondition   |                                      Il cliente è loggato                                       |
 |  Post condition  |                     L'acquisto del carrello viene effettuato correttamente                      |
@@ -972,7 +972,7 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Use case 5.1, UC5.1
-| Actors Involved  |                   Cliente, servizio spedizioni                   |
+| Actors Involved  |                   Cliente|
 | :--------------: | :--------------------------------------------------------------: |
 |   Precondition   |                       Il cliente è loggato                       |
 |  Post condition  |         Viene aggiunto un nuovo indirizzo di spedizione          |
@@ -989,7 +989,7 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 |       2        |        Il sistema verifica che l'indirizzo sia corretto        |
 |       3        |            L'indirizzo di spedizione viene aggiunto            |
 #### Scenario 5.1.2
-| Scenario 4.6.2 |                    Inserimento errato del indirizzo                       |
+| Scenario 5.1.2 |                    Inserimento errato del indirizzo                       |
 | :------------: | :-----------------------------------------------------------------------: |
 |  Precondition  |                           Il cliente è loggato                            |
 | Post condition |                                                                           |
@@ -998,7 +998,7 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 |       2        | Il sistema rileva un errore in quanto l'indirizzo inserito non è corretto |
 
 ### Use case 5.2, UC5.2
-| Actors Involved  |                Cliente, Servizio spedizioni                |
+| Actors Involved  |                Cliente     |
 | :--------------: | :--------------------------------------------------------: |
 |   Precondition   |                    Il cliente è loggato                    |
 |  Post condition  |     Viene modificato l'indirizzo di spedizione scelto      |
@@ -1016,7 +1016,7 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 |       3        |         L'indirizzo di spedizione viene modificato         |
 |  Exceptions    |      L'indirizzo inserito non è corretto (5.2.2)         |
 #### Scenario 5.2.2
-| Scenario 4.6.2 |                    Inserimento errato del indirizzo                       |
+| Scenario 5.2.2 |                    Inserimento errato del indirizzo                       |
 | :------------: | :-----------------------------------------------------------------------: |
 |  Precondition  |                           Il cliente è loggato                            |
 | Post condition |                                                                           |
@@ -1040,11 +1040,26 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 |     Step#      |                        Description                         |
 |       1        | Il cliente chiede di di visualizzare lo stato di un ordine |
 |       2        |       Il sistema mostra l'attuale stato dell'ordine        |
-
+### Use case 5.4, UC5.4
+| Actors Involved  |              Cliente      |
+| :--------------: | :-----------------------------------------------------: |
+|   Precondition   |     Il cliente è loggato  |
+|  Post condition  |     Viene eliminato l'indirizzo di spedizione    |
+| Nominal Scenario | Il cliente chiede di eliminare un indirizzo di spedizione |
+|     Variants     |                                                         |
+|    Exceptions    |                                                         |
+#### Scenario 5.4
+|  Scenario 5.4  |   Rimozione corretta dell'indirizzo               |
+| :------------: | :--------------------------------------------------------: |
+|  Precondition  |       Il cliente è loggato     |
+| Post condition |   Viene eliminato l'indirizzo di spedizione   |
+|     Step#      |                        Description                         |
+|       1        | Il cliente chiede di eliminare un indirizzo di spedizione |
+|       2        |  Il sistema rimuove l'indirizzo selezionato dal cliente   |
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Use case 6.1, UC6.1
-| Actors Involved  |             Cliente, Servizio di pagamento                   |
+| Actors Involved  |             Cliente    |
 | :--------------: | :----------------------------------------------------------: |
 |   Precondition   |                     Il cliente è loggato                     |
 |  Post condition  |       Il metodo di pagamento è aggiunto correttamente        |
@@ -1063,7 +1078,7 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 |       4        |                    Il metodo di pagamento selezionato viene aggiunto correttamente                     |
 
 ### Use case 6.2, UC6.2
-| Actors Involved  |             Cliente, Servizio di pagamento            |
+| Actors Involved  |             Cliente |
 | :--------------: | :---------------------------------------------------: |
 |   Precondition   |                 Il cliente è loggato                  |
 |  Post condition  |         Il metodo di pagamento viene rimosso          |
@@ -1121,7 +1136,7 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 |     Variants     |                                                                                                       |
 |    Exceptions    |                                                                                                       |
 #### Scenario 9.1
-| Scenario 3.10  |                Visualizza lista dei desideri                |
+| Scenario 9.1  |                Visualizza lista dei desideri                |
 | :------------: | :---------------------------------------------------------: |
 |  Precondition  |                    Il cliente è loggato                     |
 | Post condition |    La lista dei desideri viene visualizzata corretamente    |
@@ -1138,7 +1153,7 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 |     Variants     |                                                                                             |
 |    Exceptions    |                                   Il prodotto non esiste                                    |
 #### Scenario 9.2
-| Scenario 3.11  |              Aggiungi prodotto alla lista dei desideri              |
+| Scenario 9.2 |              Aggiungi prodotto alla lista dei desideri              |
 | :------------: | :-----------------------------------------------------------------: |
 |  Precondition  |                        Il cliente è loggato                         |
 | Post condition |                Il prodotto viene aggiunto alla lista                |
