@@ -317,7 +317,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 | :--------------: | :-------------------------------------------------------------------------------: |
 |   Precondition   |                                L'utente è loggato                                 |
 |  Post condition  |                         Vengono mostrati tutti i prodotti                         |
-| Nominal Scenario | L'utente chiede al sistema di visualizzare tutti i prodotti e li vengono mostrati |
+| Nominal Scenario | L'utente si trova sulla pagina principale del sito web e il sistema gli mostra tutti i prodotti presenti |
 |     Variants     |                                                                                   |
 |    Exceptions    |                                                                                   |
 
@@ -328,7 +328,7 @@ Storia: deve <u>registrare l'arrivo</u> di una serie di prodotti e la loro quant
 |  Precondition  |                          L'utente è loggato                          |
 | Post condition |                  Vengono mostrati tutti i prodotti                   |
 |     Step#      |                             Description                              |
-|       1        | L'utente chiede al sistema di visualizzare tutti i prodotti presenti |
+|       1        | L'utente si trova (o torna) sulla pagina principale del sito web     |
 |       2        |             Il sistema mostra tutti i prodotti presenti              |
 
 ### Use case 3.2, UC3.2
