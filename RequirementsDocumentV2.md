@@ -250,14 +250,14 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR4.3 Rimozione di un prodotto dal carrello attuale                                             |              |     X   |         |         |
 | FR4.4 Acquisto dei prodotti aggiunti al carrello attuale                                        |              |     X   |         |         |
 | FR4.5 Visualizzazione della cronologia dei carrelli acquistati dal cliente                      |              |     X   |         |         |
-| FR4.6 Cancellazione del carrello attuale                                                        |              |     X   |         |         |
+| FR4.6 Svuota il carrello attuale                                                        |              |     X   |         |         |
 | FR5.1 Aggiunta indirizzo di spedizione                                                          |              |     X   |         |         |
 | FR5.2 Modifica indirizzo di spedizione                                                          |              |     X   |         |         |
 | FR5.3 Visualizza stato della spedizione del carrello acquistato                                 |              |     X   |         |         |
 | FR6.1 Aggiungi metodo di pagamento                                                              |              |     X   |         |         |
 | FR6.2 Rimuovi metodo di pagamento                                                               |              |     X   |         |         |
-| FR7.1 Visualizza statistiche relative allo stato degli ordini                                   |              |         |     X   |         |
-| FR7.2 Visualizza statistiche prodotti venduti in un range di date                               |              |         |     X   |         |
+| FR7.1 Visualizza carrelli venduti  (opzionale: filtro per intervalli di date, categoria e/o modello)                                   |              |         |     X   |         |
+| FR7.2 Visualizza totale dei prodotti venduti (opzionale: filtro per intervalli di date, categoria e/o modello)                              |              |         |     X   |         |
 | FR8.1 Invio di una notifica al cliente quando un prodotto all'interno della sua lista dei desideri riceve uno sconto                                                                                            |              |         |         |         |
 | FR8.2 Invio di una notifica al cliente quando lo stato della sua spedizione viene aggiornato    |              |         |         |         |
 | FR8.3 Invio di una notifica al cliente quando un prodotto nel suo carrello viene esaurito (prima che lui lo acquisti)                                                                                         |              |         |         |         |
@@ -657,11 +657,11 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | :--------------: | :-------------------------------------------------------------------------------------------------------------------------------------: |
 |   Precondition   |                                                L'utente è loggato ed ha il ruolo Manager                                                |
 |  Post condition  |                                     Vengono registrati correttamente l'arrivo di un set di prodotti                                     |
-| Nominal Scenario | Il manager chiede al sistema di registrare l'arrivo di un set di prodotti dello stesso modello e vengono registrati correttamente (3.4) |
+| Nominal Scenario | Il manager chiede al sistema di registrare l'arrivo di un set di prodotti dello stesso modello e vengono registrati correttamente (3.5) |
 |     Variants     |                                                                                                                                         |
-|    Exceptions    |                                        La data di arrivo è successiva a quella corrente (3.4.1)                                         |
-#### Scenario 3.5.1
-|  Scenario 3.5.1  |                       Registrazione arrivi corretta                       |
+|    Exceptions    |                                        La data di arrivo è successiva a quella corrente (3.5.1)                                         |
+#### Scenario 3.5
+|  Scenario 3.5  |                       Registrazione arrivi corretta                       |
 | :------------: | :-----------------------------------------------------------------------: |
 |  Precondition  |                 L'utente è loggato ed ha il ruolo Manager                 |
 | Post condition |      Vengono registrati correttamente l'arrivo di un set di prodotti      |
@@ -671,8 +671,8 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       3        |                         Il manager inserisce i dati                         |
 |       4        |                    Il sistema valida i dati e li salva                    |
 |       5        |                  L'arrivo viene registrato correttamente                  |
-#### Scenario 3.5.2
-| Scenario 3.5.2 |                                           Registrazione arrivi errata                                           |
+#### Scenario 3.5.1
+| Scenario 3.5.1 |                                           Registrazione arrivi errata                                           |
 | :------------: | :-------------------------------------------------------------------------------------------------------------: |
 |  Precondition  |                                    L'utente è loggato ed ha il ruolo Manager                                    |
 | Post condition |                                                                                                                 |
@@ -766,7 +766,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |     Variants     |                                                              |
 |    Exceptions    |                                                             |
 #### Scenario 3.10
-|  Scenario 3.9  |                             Filtraggio per sconto                                      |
+|  Scenario 3.10  |                             Filtraggio per sconto                                      |
 | :------------: | :------------------------------------------------------------------------------------: |
 |  Precondition  |                                  L'utente è loggato                                    |
 | Post condition |   Vengono mostrati i prodotti che rispecchiano lo sconto minimo inserito dall'utente   |
@@ -775,26 +775,6 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       2        |                       Il sistema chiede lo sconto minimo                               |
 |       3        |                           L'utente inserisce lo sconto                                 |
 |       4        |       Il sistema mostra i prodotti con sconto maggiore o uguale a quello inserito      |
-
-### Use case 3.11, UC3.11
-| Actors Involved  |                      Sistema                                 |
-| :--------------: | :----------------------------------------------------------: |
-|   Precondition   |                    Un utente effettua un acquisto            |
-|  Post condition  | La quantita dei prodotti viene aggiornata in base all'acquisto effettuato               |
-| Nominal Scenario |                                                              |
-|     Variants     |                                                              |
-|    Exceptions    |                      Il prodotto è esaurito                  |
-#### Scenario 3.1
-|  Scenario 3.11 |                    Aggiorna la quantità disponibile di un prodotto                     |
-| :------------: | :------------------------------------------------------------------------------------: |
-|  Precondition  |                               Un utente effettua un acquisto                           |
-| Post condition |       La quantita dei prodotti viene aggiornata in base all'acquisto effettuato        |
-|     Step#      |                                      Description                                       |
-|       1        |           Il cliente effettua un acquisto di un determinato numero di prodotti         |
-|       2        |      Il sistema diminuisce le quantita di prodotti in base a quelli acquistati         |
-
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 ### Use case 4.1, UC4.1
 | Actors Involved  |                                  Cliente                                   |
 | :--------------: | :------------------------------------------------------------------------: |
