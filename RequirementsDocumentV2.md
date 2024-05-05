@@ -189,7 +189,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR3.5| Registrazione dell'arrivo di un nuovo (insieme di) prodotti                           |
 | FR3.6| Filtraggio dei prodotti per categoria                                                 |
 | FR3.7| Filtraggio dei prodotti per modello                                                   |
-| FR3.8| Filtraggio dei prodotti per disponibilità                                             |
+| FR3.8| Filtraggio dei prodotti per codice                                                    |
 | FR3.9| Aggiungi sconto ad un prodotto                                                        |
 | FR3.10| Filtraggio informazioni prodotti per sconto (maggiore o uguale a quello indicato)    |
 | FR3.11| Aggiorna la quantità disponibile di un prodotto quando viene venduto                 |
@@ -241,7 +241,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR3.5 Registrazione dell'arrivo di un nuovo (insieme di) prodotti                               |              |         |     X   |         |
 | FR3.6 Filtraggio dei prodotti per categoria                                                     |     X        |     X   |     X   |         |
 | FR3.7 Filtraggio dei prodotti per modello                                                       |     X        |     X   |     X   |         |
-| FR3.8 Filtraggio dei prodotti per disponibilità                                                 |     X        |     X   |     X   |         |
+| FR3.8 Filtraggio dei prodotti per codice                                                        |     X        |     X   |     X   |         |
 | FR3.9 Aggiungi sconto ad un prodotto                                                            |              |         |     X   |         |
 | FR3.10 Filtraggio informazioni prodotti per sconto (maggiore o uguale a quello indicato)        |              |     X   |     X   |         |
 | FR3.11 Aggiorna la quantità disponibile di un prodotto quando viene venduto                     |              |     X   |     X   |         |
@@ -293,7 +293,6 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 ![useCaseDiagram](./img/diagrammaCasiDusoV2.png)
 
 ### Use case 1.1, UC1.1
-
 | Actors Involved  |                                           Cliente/Manager                                        |
 | :--------------: | :----------------------------------------------------------------------------------------------: |
 |   Precondition   |  L'utente è registrato nel sistema                                 |
@@ -301,9 +300,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Nominal Scenario |                 L'utente inserisce username e password e accede al sistema (1.1)                 |
 |     Variants     |                                                                                                  |
 |    Exceptions    | L'utente inserisce dati errati (non previsto dalle API, ma presente nel file userDAO.ts) (1.1.1) |
-
 #### Scenario 1.1
-
 |  Scenario 1.1  |             Login corretto             |
 | :------------: | :------------------------------------: |
 |  Precondition  |   L'utente è registrato nel sistema    |
@@ -314,9 +311,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       3        | L'utente inserisce username a password |
 |       4        |        Il sistema valida i dati        |
 |       5        |        L'utente risulta loggato        |
-
 #### Scenario 1.1.1
-
 | Scenario 1.1.1 |                         Login errato                          |
 | :------------: | :-----------------------------------------------------------: |
 |  Precondition  |               L'utente è registrato nel sistema               |
@@ -328,7 +323,6 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       4        | Il sistema rileva un errore nei dati e lo comunica all'utente |
 
 ### Use case 1.2, UC1.2
-
 | Actors Involved  |                                          Utente                                           |
 | :--------------: | :---------------------------------------------------------------------------------------: |
 |   Precondition   |                                    L'utente è loggato                                     |
@@ -336,9 +330,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Nominal Scenario | L'utente chiede al sistema di effettuare il logout e questo viene effettuato con successo |
 |     Variants     |                                                                                           |
 |    Exceptions    |                                                                                           |
-
 #### Scenario 1.2
-
 |  Scenario 1.2  |                                                    |
 | :------------: | :------------------------------------------------: |
 |  Precondition  |                 L'utente è loggato                 |
@@ -348,7 +340,6 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       2        |     Il sistema effettua il logout per l'utente     |
 
 ### Use case 1.3, UC1.3
-
 | Actors Involved  |                                        Utente                                        |
 | :--------------: | :----------------------------------------------------------------------------------: |
 |   Precondition   |                                  L'utente è loggato                                  |
@@ -356,9 +347,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Nominal Scenario | L'utente chiede al sistema di visualizzare le sue informazioni e li vengono mostrate |
 |     Variants     |                                                                                      |
 |    Exceptions    |                                                                                      |
-
 #### Scenario 1.3
-
 |  Scenario 1.3  |                                                                  |
 | :------------: | :--------------------------------------------------------------: |
 |  Precondition  |                        L'utente è loggato                        |
@@ -367,18 +356,9 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        |    L'utente chiede al sistema di mostrare le sue informazioni    |
 |       2        |           Il sistema mostra le informazioni all'utente           |
 
-### Use case 2.1 , UC2.1
-
-| Actors Involved  |                      Utente guest                      |
-| :-------------:  | :----------------------------------------------------: |
-|  Precondition    |                           --                           |
-| Post condition   | L'utente risulta registrato correttamente nel sistema. |
-| Nominal Scenario |           L'utente inserisce tutti i dati richiesti per la registrazione e sceglie il ruolo con cui registrarsi nel sistema.    |
-|     Variants     |                                                        |
-|    Exceptions    | I dati inseriti non sono corretti o l'utente risulta già registrato, il sistema ritorna un errore e la registrazione non va a buon fine |
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Use case 2.1, UC2.1
-
 | Actors Involved  |  Utente guest                      |
 | :--------------: | :------------------------------------------------------------------: |
 |   Precondition   | --                                                                   |
@@ -386,9 +366,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Nominal Scenario |  L'utente guest inserisce tutti i dati richiesti per la registrazione e viene registrato come cliente (2.1)     |
 |     Variants     |                                                                      |
 |    Exceptions    | Il cliente risulta già registrato  (2.1.1)                             |
-
 #### Scenario 2.1.1
-
 |  Scenario 2.1.1  |                      Registrazione corretta                       |
 | :------------: | :---------------------------------------------------------------: |
 |  Precondition  |                                --                                 |
@@ -398,9 +376,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       2        |      Il sistema chiede i dati necessari per la registrazione      |
 |       3        |  L'utente inserisce i dati richiesti                |
 |       4        | Il sistema salva i dati e viene creato il nuovo cliente   |
-
 #### Scenario 2.1.2
-
 | Scenario 2.1.2 |                                       Registrazione errata                                       |
 | :------------: | :----------------------------------------------------------------------------------------------: |
 |  Precondition  |                                                --                                                |
@@ -410,8 +386,8 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       2        |   Il sistema chiede i dati necessari per la registrazione                      |
 |       3        |  L'utente inserisce i dati richiesti                                |
 |       4        | Il sistema rileva un errore in quanto l'username inserito esiste già e lo comunica |
-### Use case 2.2, UC2.2
 
+### Use case 2.2, UC2.2
 | Actors Involved  |  Admin   |
 | :--------------: | :------------------------------------------------------------------: |
 |   Precondition   | --                                                                   |
@@ -419,27 +395,24 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Nominal Scenario |  L'admin crea un nuovo utente di tipo manager e inserisce l'email e  il codice aziendale  |
 |     Variants     |                                                                      |
 |    Exceptions    | Il manager risulta già registrato  (2.1.1)                             |
-
 #### Scenario 2.2
-
 |  Scenario 2.2  |                      Registrazione corretta del manager                      |
 | :------------: | :---------------------------------------------------------------: |
 |  Precondition  |                                --                                 |
 | Post condition |   Il manager risulta registrato correttamente nel sistema   |
 |     Step#      |                            Description                            |
-|       1        | L'admin inserisce email e codice aziendale del nuovo manager                                                                              |
+|       1        | L'admin inserisce email e codice aziendale del nuovo manager             |
 |       2        |  Il sistema salva i dati e viene creato il nuovo manager   |
 #### Scenario 2.2.1
-
-|  Scenario 2.2.1  |                      Registrazione errata del manager                       |
+|  Scenario 2.2.1  |                      Registrazione errata del manager           |
 | :------------: | :---------------------------------------------------------------: |
 |  Precondition  |                                --                                 |
 | Post condition |      |
 |     Step#      |                            Description                            |
-|       1        | L'admin inserisce email e codice aziendale del nuovo manager                                                                              |
+|       1        | L'admin inserisce email e codice aziendale del nuovo manager           |
 |       2        |  Il manager risulta già registrato, il sistema restituisce un errore   |
-### Use case 2.3 , UC2.3
 
+### Use case 2.3 , UC2.3
 | Actors Involved  |                                          Cliente                                           |
 | :--------------: | :---------------------------------------------------------------------------------------: |
 |   Precondition   |                                    Il cliente è loggato                                     |
@@ -447,9 +420,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Nominal Scenario | Il cliente inserisce il nuovo username da sostituire al precedente (2.3) |
 |     Variants     |                                                                                           |
 |    Exceptions    |          Lo username esiste già (2.3.1)         |
-
 #### Scenario 2.3
-
 | Scenario 2.3 |                       Modifica dello username (a buon fine)                        |
 | :------------: | :--------------------------------------------------------------------------------: |
 |  Precondition  |                                 Il cliente è loggato                                 |
@@ -461,9 +432,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       4        |                        Il cliente inserisce il nuovo username                        |
 |       5        |                Il sistema verifica che lo username sia disponibile                 |
 |       6        | Lo username è disponibile: il sistema salva il nuovo username per il cliente attuale |
-
 #### Scenario 2.3.1
-
 | Scenario 2.3.1 |                       Modifica dello username (il nuovo username esiste già nel sistema)|
 | :------------: | :--------------------------------------------------------------------------------: |
 |  Precondition  |                                 Il cliente è loggato                                 |
@@ -477,7 +446,6 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       6        | Lo username non è disponibile: il sistema mostra un errore e la procedura riprende dallo step #3 |
 
 ### Use case 2.4, UC2.4
-
 | Actors Involved  |                                          Cliente                                           |
 | :--------------: | :---------------------------------------------------------------------------------------: |
 |   Precondition   |                                    Il cliente è loggato                                     |
@@ -485,9 +453,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Nominal Scenario | Il cliente inserisce la nuova email da sostituire alla precedente |
 |     Variants     |                                                                                           |
 |    Exceptions    |          La verifica dell'email non va a buon fine         |
-
 #### Scenario 2.4.1
-
 | Scenario 2.4.1 |                       Modifica dell'email (a buon fine)                        |
 | :------------: | :--------------------------------------------------------------------------------: |
 |  Precondition  |                                 Il cliente è loggato                                 |
@@ -499,9 +465,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       4        |                        Il cliente inserisce la sua nuova email                       |
 |       5        |                Il sistema invia un'email di verifica alla casella di posta elettronica del cliente |
 |       6        | Il cliente verifica correttamente la sua nuova email, che viene sostituita alla precedente |
-
 #### Scenario 2.4.2
-
 | Scenario 2.4.2 |                       Modifica dell'email (verifica email non va a buon fine)      |
 | :------------: | :--------------------------------------------------------------------------------: |
 |  Precondition  |                                 Il cliente è loggato                                 |
@@ -515,7 +479,6 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       6        | Il sistema non riceve conferma della verifica della nuova email, le informazioni del cliente risultano invariate |
 
 ### Use case 2.5 , UC2.5
-
 | Actors Involved  |                                          Utente                                          |
 | :--------------: | :---------------------------------------------------------------------------------------: |
 |   Precondition   |                                    L'utente è loggato                                     |
@@ -523,9 +486,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Nominal Scenario | L'utente inserisce e conferma la nuova password da sostituire alla precedente |
 |     Variants     |                                                                                           |
 |    Exceptions    |          Le due password inserite dall'utente non combaciano         |
-
 #### Scenario 2.5.1
-
 | Scenario 2.5.1 |                      Modifica della password (a buon fine)                      |
 | :------------: | :-----------------------------------------------------------------------------: |
 |  Precondition  |                               L'utente è loggato                                |
@@ -537,9 +498,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       4        |                 L'utente inserisce due volte la nuova password                  |
 |       5        |             Il sistema verifica che le password inserite combacino              |
 |       6        | Le password combaciano: il sistema salva la nuova password per l'utente attuale |
-
 #### Scenario 2.5.2
-
 | Scenario 2.5.2 |               Modifica della password (la conferma password non va a buon fine)                |
 | :------------: | :--------------------------------------------------------------------------------------------: |
 |  Precondition  |                                       L'utente è loggato                                       |
@@ -551,8 +510,8 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       4        |                         L'utente inserisce due volte la nuova password                         |
 |       5        |                     Il sistema verifica che le password inserite combacino                     |
 |       6        | Le password non combaciano: il sistema mostra un errore e la procedura riprende dallo step #3 |
-### Use case 2.6 , UC2.6
 
+### Use case 2.6 , UC2.6
 | Actors Involved  |                                          Cliente                                          |
 | :--------------: | :---------------------------------------------------------------------------------------: |
 |   Precondition   |    IL cliente è loggato                                     |
@@ -560,18 +519,16 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Nominal Scenario | Il cliente chiede di eliminare il proprio profilo e questo viene eliminato correttamente |
 |     Variants     |                                                                                           |
 |    Exceptions    |   |
-
 #### Scenario 2.6
-
 | Scenario 2.6 |                      Modifica della password (a buon fine)                      |
 | :------------: | :-----------------------------------------------------------------------------: |
 |  Precondition  |   Il cliente è loggato                                       |
 | Post condition | Il profilo del cliente risulta eliminato correttamente       |
 |     Step#      |                                   Description                                   |
 |       1        |         Il cliente chiede di eliminare il proprio profilo    |
-|       2        | Il sistema elimina il cliente e i suoi dati correttamente
-### Use case 2.7 , UC2.7
+|       2        | Il sistema elimina il cliente e i suoi dati correttamente    |
 
+### Use case 2.7 , UC2.7
 | Actors Involved  |                                          Admin  |
 | :--------------: | :---------------------------------------------------------------------------------------: |
 |   Precondition   |  Il manager esiste nel sistema                             |
@@ -579,9 +536,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Nominal Scenario | L'admin chiede di eliminare un manager dal sistema |
 |     Variants     |                                                                                           |
 |    Exceptions    |   |
-
 #### Scenario 2.7.1
-
 | Scenario 2.7.1 |    Eliminazione del profilo del manager |
 | :------------: | :-----------------------------------------------------------------------------: |
 |  Precondition  |  Il manager esiste nel sistema  |
@@ -591,8 +546,9 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       2        |   L'admin inserisce l'email e il codice aziendale            |
 |       3        |  Il sistema elimina il manager e i suoi dati
 
-### Use case 3.1, UC3.1
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+### Use case 3.1, UC3.1
 | Actors Involved  |                                  Cliente/Manager                                  |
 | :--------------: | :-------------------------------------------------------------------------------: |
 |   Precondition   |                                L'utente è loggato                                 |
@@ -600,9 +556,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Nominal Scenario | L'utente chiede al sistema di visualizzare tutti i prodotti e li vengono mostrati |
 |     Variants     |                                                                                   |
 |    Exceptions    |                                                                                   |
-
 #### Scenario 3.1
-
 |  Scenario 3.1  |                                                                      |
 | :------------: | :------------------------------------------------------------------: |
 |  Precondition  |                          L'utente è loggato                          |
@@ -612,7 +566,23 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       2        |             Il sistema mostra tutti i prodotti presenti              |
 
 ### Use case 3.2, UC3.2
+| Actors Involved  |                      Cliente/Manager                                                 |
+| :--------------: | :----------------------------------------------------------------------------------: |
+|   Precondition   |                                  L'utente è loggato                                  |
+|  Post condition  |                      Vengono mostrate le informazioni del prodotto                   |
+| Nominal Scenario |      Il cliente vuole visualizzare le informazioni di un prodotto specifico          |
+|     Variants     |                                                                                      | 
+|    Exceptions    |                                Il prodotto non esiste                                |
+#### Scenario 3.2
+|  Scenario 3.2  |                             Visualizzazione di un prodotto                             |
+| :------------: | :------------------------------------------------------------------------------------: |
+|  Precondition  |                                  Il cliente è loggato                                  |
+| Post condition |                      Vengono mostrate le informazioni del prodotto                     |
+|     Step#      |                                      Description                                       |
+|       1        |                Il cliente seleziona il prodotto che vuole Visualizzare                 |
+|       2        | Il sistema mostra all'utente una schermata contenente le informazionisul prodotto      |
 
+### Use case 3.3, UC3.3
 | Actors Involved  |                                                               Manager                                                                |
 | :--------------: | :----------------------------------------------------------------------------------------------------------------------------------: |
 |   Precondition   |                                              L'utente è loggato ed ha il ruolo Manager                                               |
@@ -620,10 +590,8 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Nominal Scenario | Il manager chiede di aggiungere un nuovo prodotto, inserisce tutti i dati richiesti e il prodotto viene aggiunto correttamente (3.2) |
 |     Variants     |                                                                                                                                      |
 |    Exceptions    |                    Il prodotto è già presente (3.2.1) o la data di arrivo è successiva a quella corrente (3.2.2)                     |
-
-#### Scenario 3.2.1
-
-|  Scenario 3.2.1  |         Aggiunta corretta di un nuovo prodotto          |
+#### Scenario 3.3.1
+|  Scenario 3.3.1  |         Aggiunta corretta di un nuovo prodotto          |
 | :------------: | :-----------------------------------------------------: |
 |  Precondition  |        L'utente è loggato ed ha il ruolo Manager        |
 | Post condition |        Il prodotto viene aggiunto correttamente         |
@@ -633,9 +601,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       3        |       Il manager inserisce tutti i dati richiesti       |
 |       4        |           Il sistema valida i dati e li salva           |
 |       5        |        Il prodotto viene aggiunto correttamente         |
-
-#### Scenario 3.2.2
-
+#### Scenario 3.3.2
 | Scenario 3.2.2 |                 Aggiunta errata di un nuovo prodotto (prodotto esistente)                  |
 | :------------: | :----------------------------------------------------------------------------------------: |
 |  Precondition  |                         L'utente è loggato ed ha il ruolo Manager                          |
@@ -645,9 +611,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       2        |                  Il sistema chiede tutti i dati necessari per l'aggiunta                   |
 |       3        |                        Il manager inserisce tutti i dati richiesti                         |
 |       4        | Il sistema rileva un errore in quanto il prodotto è già esistente e lo comunica al manager |
-
-#### Scenario 3.2.3
-
+#### Scenario 3.3.3
 | Scenario 3.2.3 |               Aggiunta errata di un nuovo prodotto (data di arrivo successiva alla data corrente)               |
 | :------------: | :-------------------------------------------------------------------------------------------------------------: |
 |  Precondition  |                                    L'utente è loggato ed ha il ruolo Manager                                    |
@@ -658,8 +622,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       3        |                                   Il manager inserisce tutti i dati richiesti                                   |
 |       4        | Il sistema rileva un errore in quanto la data di arrivo è successiva a quella corrente e lo comunica al manager |
 
-### Use case 3.3, UC3.3
-
+### Use case 3.4, UC3.4
 | Actors Involved  |                                             Manager                                              |
 | :--------------: | :----------------------------------------------------------------------------------------------: |
 |   Precondition   |                            L'utente è loggato ed ha il ruolo Manager                             |
@@ -667,10 +630,8 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Nominal Scenario | Il manager chiede al sistema di rimuovere un prodotto e questo viene rimosso correttamente (3.3) |
 |     Variants     |                                                                                                  |
 |    Exceptions    |                    Il prodotto che si vuole rimuovere non è presente (3.3.1)                     |
-
-#### Scenario 3.3.1
-
-|  Scenario 3.3.1  |                       Rimozione corretta                        |
+#### Scenario 3.4.1
+|  Scenario 3.4.1  |                       Rimozione corretta                        |
 | :------------: | :-------------------------------------------------------------: |
 |  Precondition  |            L'utente è loggato ed ha il ruolo Manager            |
 | Post condition |                    Il prodotto viene rimosso                    |
@@ -680,10 +641,8 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       3        |                  Il manager inserisce il codice                   |
 |       4        |         Il sistema verifica che il codice sia presente          |
 |       5        |                    Il prodotto viene rimosso                    |
-
-#### Scenario 3.3.2
-
-| Scenario 3.3.2 |                                        Rimozione errata                                         |
+#### Scenario 3.4.2
+| Scenario 3.4.2 |                                        Rimozione errata                                         |
 | :------------: | :---------------------------------------------------------------------------------------------: |
 |  Precondition  |                            L'utente è loggato ed ha il ruolo Manager                            |
 | Post condition |                                                                                                 |
@@ -693,8 +652,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       3        |                                  Il manager inserisce il codice                                 |
 |       4        | Il sistema rileva un errore in quanto il prodotto non risulta presente e lo comunica al manager |
 
-### Use case 3.4, UC3.4
-
+### Use case 3.5, UC3.5
 | Actors Involved  |                                                                 Manager                                                                 |
 | :--------------: | :-------------------------------------------------------------------------------------------------------------------------------------: |
 |   Precondition   |                                                L'utente è loggato ed ha il ruolo Manager                                                |
@@ -702,10 +660,8 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Nominal Scenario | Il manager chiede al sistema di registrare l'arrivo di un set di prodotti dello stesso modello e vengono registrati correttamente (3.4) |
 |     Variants     |                                                                                                                                         |
 |    Exceptions    |                                        La data di arrivo è successiva a quella corrente (3.4.1)                                         |
-
-#### Scenario 3.4.1
-
-|  Scenario 3.4.1  |                       Registrazione arrivi corretta                       |
+#### Scenario 3.5.1
+|  Scenario 3.5.1  |                       Registrazione arrivi corretta                       |
 | :------------: | :-----------------------------------------------------------------------: |
 |  Precondition  |                 L'utente è loggato ed ha il ruolo Manager                 |
 | Post condition |      Vengono registrati correttamente l'arrivo di un set di prodotti      |
@@ -715,10 +671,8 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       3        |                         Il manager inserisce i dati                         |
 |       4        |                    Il sistema valida i dati e li salva                    |
 |       5        |                  L'arrivo viene registrato correttamente                  |
-
-#### Scenario 3.4.2
-
-| Scenario 3.4.2 |                                           Registrazione arrivi errata                                           |
+#### Scenario 3.5.2
+| Scenario 3.5.2 |                                           Registrazione arrivi errata                                           |
 | :------------: | :-------------------------------------------------------------------------------------------------------------: |
 |  Precondition  |                                    L'utente è loggato ed ha il ruolo Manager                                    |
 | Post condition |                                                                                                                 |
@@ -728,8 +682,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       3        |                                            Il manager inserisce i dati                                          |
 |       4        | Il sistema rileva un errore in quanto la data di arrivo è successiva a quella corrente e lo comunica al manager |
 
-### Use case 3.5, UC3.5
-
+### Use case 3.6, UC3.6
 | Actors Involved  | Cliente/Manager                                                                    |
 | :--------------: | :------------------------------------------------------------------: |
 |   Precondition   | L'utente è loggato  |
@@ -737,10 +690,8 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Nominal Scenario | L'utente chiede di visualizzare solo i prodotti che rispecchiano una determinata categoria   |
 |     Variants     |                          |
 |    Exceptions    ||
-
-#### Scenario 3.5
-
-|  Scenario 3.5  | Visualizza informazioni prodotti di una certa categoria (opzionale: parametro disponibile)      |
+#### Scenario 3.6
+|  Scenario 3.6  | Visualizza informazioni prodotti di una certa categoria (opzionale: parametro disponibile)      |
 | :------------: | :------------------------------------------------------------------------: |
 |  Precondition  | L'utente è loggato |
 | Post condition | Vengono mostrati i prodotti che rispecchiano la categoria inserita dall'utente   |
@@ -750,8 +701,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |3| L'utente inserisce la categoria|
 |4| Il sistema mostra i prodotti appartenenti alla categoria inserita dall'utente|
 
-### Use case 3.6, UC3.6
-
+### Use case 3.7, UC3.7
 | Actors Involved  | Cliente/Manager                                                                    |
 | :--------------: | :------------------------------------------------------------------: |
 |   Precondition   | L'utente è loggato  |
@@ -759,10 +709,8 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Nominal Scenario | L'utente chiede di visualizzare solo i prodotti che rispecchiano un determinato modello   |
 |     Variants     |                          |
 |    Exceptions    ||
-
-#### Scenario 3.6
-
-|  Scenario 3.6  | Visualizza informazioni prodotti di un certo modello(opzionale: parametro disponibile)      |
+#### Scenario 3.7
+|  Scenario 3.7  | Visualizza informazioni prodotti di un certo modello(opzionale: parametro disponibile)      |
 | :------------: | :------------------------------------------------------------------------: |
 |  Precondition  | L'utente è loggato |
 | Post condition | Vengono mostrati i prodotti che rispecchiano il modello inserito dall'utente   |
@@ -772,8 +720,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |3| L'utente inserisce il modello|
 |4| Il sistema mostra i prodotti appartenenti al modello inserito dall'utente|
 
-### Use case 3.7, UC3.7
-
+### Use case 3.8, UC3.8
 | Actors Involved  | Cliente/Manager                                                                    |
 | :--------------: | :------------------------------------------------------------------: |
 |   Precondition   | L'utente è loggato  |
@@ -781,92 +728,74 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Nominal Scenario | L'utente chiede di visualizzare un prodotto inserendo il suo codice e gli viene mostrato   |
 |     Variants     |                          |
 |    Exceptions    ||
-
-#### Scenario 3.7
-
-|  Scenario 3.7  | Visualizza informazioni prodotti di un certo modello(opzionale: parametro disponibile)      |
+#### Scenario 3.8
+|  Scenario 3.8  | Visualizza informazioni prodotti di un certo modello(opzionale: parametro disponibile)      |
 | :------------: | :------------------------------------------------------------------------: |
 |  Precondition  | L'utente è loggato |
 | Post condition | Vengono mostrate le informazioni del prodotto con il codice inserito dall'utente   |
 |     Step#      |                                Description                                 |
 |       1        |                                                        L'utente chiede di visualizzare le informazioni di un prodotto di cui inserisce il codice |
 |       2        |                                                        Il sistema chiede il codice            |
-|3| L'utente inserisce il codice|
-|4| Il sistema mostra il prodotto corrispondente al codice inserito|
-
-### Use case 3.8, UC3.8
-
-| Actors Involved  |Manager                                                                    |
-| :--------------: | :------------------------------------------------------------------: |
-|   Precondition   | Il manager è loggato  |
-|  Post condition  | Il prodotto viene catalogato come venduto  |
-| Nominal Scenario | Il manager chiede di catalogare un prodotto come venduto (3.8)  |
-|     Variants     |                          |
-|    Exceptions    | Il prodotto non esiste (3.8.1), la data di vendita risulta precedente alla data di arrivo o successiva a quella corrente (3.8.2) o il prodotto risulta già venduto (3.8.3)|
-
-#### Scenario 3.8.1
-
-|  Scenario 3.8.1 |                                                                    Catalogazione corretta del prodotto come venduto    |
-| :------------: | :------------------------------------------------------------------------: |
-|  Precondition  | Il manager è loggato |
-| Post condition | Il prodotto viene catalogato come venduto    |
-|     Step#      |                                Description                                 |
-|       1        |                                                      Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita        |
-|       2        |                                           Il sistema valida le informazioni          |
-|3| Il prodotto risulta venduto |
-
-#### Scenario 3.8.2
-
-|  Scenario 3.8.2  |                                                                    Catalogazione errata del prodotto come venduto    |
-| :------------: | :------------------------------------------------------------------------: |
-|  Precondition  | Il manager è loggato |
-| Post condition | Il prodotto viene catalogato come venduto    |
-|     Step#      |                                Description                                 |
-|       1        |                                                      Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita        |
-|       2        |  Il sistema rileva un errore in quanto il prodotto non esiste e lo comunica al manager |
-
-#### Scenario 3.8.3
-
-|  Scenario 3.8.3  |                                                                    Catalogazione errata del prodotto come venduto    |
-| :------------: | :------------------------------------------------------------------------: |
-|  Precondition  | Il manager è loggato |
-| Post condition | Il prodotto viene catalogato come venduto    |
-|     Step#      |                                Description                                 |
-|       1        |                                                      Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita        |
-|       2        |Il sistema rileva un errore in quanto la data di vendita risulta precedente alla data di arrivo o successiva a quella corrente e lo comunica al manager |
-
-#### Scenario 3.8.4
-
-|  Scenario 3.8.4  |                                                                    Catalogazione errata del prodotto come venduto    |
-| :------------: | :------------------------------------------------------------------------: |
-|  Precondition  | Il manager è loggato |
-| Post condition | Il prodotto viene catalogato come venduto    |
-|     Step#      |                                Description                                 |
-|       1        | Il manager seleziona il prodotto che vuole catalogare come venduto e inserisce la data di vendita |
-|       2        | Il sistema rileva un errore in quanto il prodotto risulta già venduto e lo comunica al manager
+|3               | L'utente inserisce il codice|
+|4               | Il sistema mostra il prodotto corrispondente al codice inserito|
 
 ### Use case 3.9, UC3.9
-
-| Actors Involved  |                      Cliente/Manager                         |
+| Actors Involved  |                          Manager                             |
 | :--------------: | :----------------------------------------------------------: |
-|   Precondition   |                    L'utente è loggato                       |
-|  Post condition  |                             ???                              |
-| Nominal Scenario | Il cliente vuole tracciare il prezzo di un prodotto e ogni volta che questo cambia gli viene inviata una notifica |
+|   Precondition   |                    Il manager è loggato                       |
+|  Post condition  |                 Sconto aggiunto ad un prodotto                              |
+| Nominal Scenario | Il manager vuole modificare o aggiungere ad un prodotto uno sconto |
 |     Variants     |                                                              |
 |    Exceptions    |                      Il prodotto non esiste                  |
-
 #### Scenario 3.9
-
-|  Scenario 3.9  |                             Traccia prezzo di un prodotto                              |
+|  Scenario 3.9  |                             Aggiungi sconto ad un prodotto                             |
 | :------------: | :------------------------------------------------------------------------------------: |
-|  Precondition  |                                  Il cliente è loggato                                  |
-| Post condition |                                          ???                                           |
+|  Precondition  |                                  Il manager è loggato                                  |
+| Post condition |                           Sconto aggiunto ad un prodotto                               |
 |     Step#      |                                      Description                                       |
-|       1        |           Il cliente seleziona il prodotto di cui vuole tracciare il prezzo            |
-|       2        | Il sistema invia una notifica ogni volta che il prezzo del prodotto selezionato cambia |
+|       1        |           Il cliente seleziona il prodotto a cui vuole applicare uno sconto            |
+|       2        |                 Il sistema applica lo sconto al prodotto selezionato                   |
+|       3        |     Il sistema invia una notifica a tutte le persone interessate a quel prodotto       |
+
+### Use case 3.10, UC3.10
+| Actors Involved  |                          Cliente/Manager                             |
+| :--------------: | :----------------------------------------------------------: |
+|   Precondition   |                    L'utente è loggato                        |
+|  Post condition  | Vengono mostrate le informazioni del prodotto per sconto maggiore o uguale a quello indicato|
+| Nominal Scenario | L'utente chiede di visualizzare solo i prodotti con un determinato sconto minimo|
+|     Variants     |                                                              |
+|    Exceptions    |                                                             |
+#### Scenario 3.10
+|  Scenario 3.9  |                             Filtraggio per sconto                                      |
+| :------------: | :------------------------------------------------------------------------------------: |
+|  Precondition  |                                  L'utente è loggato                                    |
+| Post condition |   Vengono mostrati i prodotti che rispecchiano lo sconto minimo inserito dall'utente   |
+|     Step#      |                                      Description                                       |
+|       1        |    L'utente chiede di visualizzare i prodotti che rispecchiano un determinato sconto   |
+|       2        |                       Il sistema chiede lo sconto minimo                               |
+|       3        |                           L'utente inserisce lo sconto                                 |
+|       4        |       Il sistema mostra i prodotti con sconto maggiore o uguale a quello inserito      |
+
+### Use case 3.11, UC3.11
+| Actors Involved  |                      Sistema                                 |
+| :--------------: | :----------------------------------------------------------: |
+|   Precondition   |                    Un utente effettua un acquisto            |
+|  Post condition  | La quantita dei prodotti viene aggiornata in base all'acquisto effettuato               |
+| Nominal Scenario |                                                              |
+|     Variants     |                                                              |
+|    Exceptions    |                      Il prodotto è esaurito                  |
+#### Scenario 3.1
+|  Scenario 3.11 |                    Aggiorna la quantità disponibile di un prodotto                     |
+| :------------: | :------------------------------------------------------------------------------------: |
+|  Precondition  |                               Un utente effettua un acquisto                           |
+| Post condition |       La quantita dei prodotti viene aggiornata in base all'acquisto effettuato        |
+|     Step#      |                                      Description                                       |
+|       1        |           Il cliente effettua un acquisto di un determinato numero di prodotti         |
+|       2        |      Il sistema diminuisce le quantita di prodotti in base a quelli acquistati         |
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Use case 4.1, UC4.1
-
 | Actors Involved  |                                  Cliente                                   |
 | :--------------: | :------------------------------------------------------------------------: |
 |   Precondition   |                            Il cliente è loggato                            |
@@ -874,9 +803,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Nominal Scenario | Il cliente chiede di visualizzare il suo carrello attuale e viene mostrato |
 |     Variants     |                                                                            |
 |    Exceptions    |                                                                            |
-
 #### Scenario 4.1
-
 |  Scenario 4.1  |     Visualizzazione del carrello attuale del cliente      |
 | :------------: | :-------------------------------------------------------: |
 |  Precondition  |                   Il cliente è loggato                    |
@@ -886,7 +813,6 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       2        |          Il sistema mostra il carrello corrente           |
 
 ### Use case 4.2, UC4.2
-
 | Actors Involved  |                                                 Cliente                                                 |
 | :--------------: | :-----------------------------------------------------------------------------------------------------: |
 |   Precondition   |                                          Il cliente è loggato                                           |
@@ -894,9 +820,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Nominal Scenario | Il cliente chiede di aggiungere un prodotto al suo carrello e questo viene aggiunto correttamente (4.2) |
 |     Variants     |                                                                                                         |
 |    Exceptions    | Il prodotto non esiste (4.2.1), il prodotto è già presente in un altro carrello (4.2.2) o il prodotto non è disponibile (4.2.3) |
-
 #### Scenario 4.2.1
-
 |  Scenario 4.2.1  |    Aggiunta corretta di un prodotto al carrello attuale    |
 | :------------: | :--------------------------------------------------------: |
 |  Precondition  |                    Il cliente è loggato                    |
@@ -905,9 +829,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        | Il cliente seleziona il prodotto da aggiungere al carrello |
 |       2        | Il sistema verifica che il prodotto possa essere aggiunto  |
 |       3        |          Il prodotto risulta aggiunto al carrello          |
-
 #### Scenario 4.2.2
-
 | Scenario 4.2.2 |                     Aggiunta errata di un prodotto al carrello attuale                     |
 | :------------: | :----------------------------------------------------------------------------------------: |
 |  Precondition  |                                    Il cliente è loggato                                    |
@@ -915,9 +837,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |     Step#      |                                        Description                                         |
 |       1        |                 Il cliente seleziona il prodotto da aggiungere al carrello                 |
 |       2        | Il sistema rileva un errore in quanto il prodotto non è esistente e lo comunica al cliente |
-
 #### Scenario 4.2.3
-
 | Scenario 4.2.3 |     Aggiunta errata di un prodotto al carrello attuale     |
 | :------------: | :--------------------------------------------------------: |
 |  Precondition  |                    Il cliente è loggato                    |
@@ -925,9 +845,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |     Step#      |                        Description                         |
 |       1        | Il cliente seleziona il prodotto da aggiungere al carrello |
 |       2        | Il sistema rileva un errore in quanto il prodotto risulta essere presente in un altro carrello e lo comunica al cliente |
-
 #### Scenario 4.2.4
-
 | Scenario 4.2.4 |                              Aggiunta errata di un prodotto al carrello attuale                              |
 | :------------: | :----------------------------------------------------------------------------------------------------------: |
 |  Precondition  |                                             Il cliente è loggato                                             |
@@ -937,7 +855,6 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       2        | Il sistema rileva un errore in quanto il prodotto risulta venduto (non disponibile) e lo comunica al cliente |
 
 ### Use case 4.3, UC4.3
-
 | Actors Involved  |                                              Cliente                                               |
 | :--------------: | :------------------------------------------------------------------------------------------------: |
 |   Precondition   |                                        Il cliente è loggato                                        |
@@ -945,9 +862,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Nominal Scenario | Il cliente chiede di rimuovere un prodotto dal carrello e questo viene rimosso correttamente (4.3) |
 |     Variants     |                                                                                                    |
 |    Exceptions    | Il prodotto non è nel carrello (4.3.1), non esiste (4.3.2), è già stato venduto (4.3.3) o il cliente non ha alcun carrello (4.3.4) |
-
 #### Scenario 4.3.1
-
 |  Scenario 4.3.1  |   Rimozione corretta di un prodotto dal carrello attuale    |
 | :------------: | :---------------------------------------------------------: |
 |  Precondition  |                    Il cliente è loggato                     |
@@ -956,9 +871,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        | Il cliente chiede di rimuovere un prodotto dal suo carrello |
 |       2        |     Il sistema verifica che il prodotto sia rimovibile      |
 |       3        |          Il prodotto risulta rimosso correttamente          |
-
 #### Scenario 4.3.2
-
 | Scenario 4.3.2 |                     Rimozione errata di un prodotto dal carrello attuale                      |
 | :------------: | :-------------------------------------------------------------------------------------------: |
 |  Precondition  |                                     Il cliente è loggato                                      |
@@ -966,9 +879,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |     Step#      |                                          Description                                          |
 |       1        |                  Il cliente chiede di rimuovere un prodotto dal suo carrello                  |
 |       2        | Il sistema rileva un errore in quanto il prodotto non è nel carrello e lo comunica al cliente |
-
 #### Scenario 4.3.3
-
 | Scenario 4.3.3 |                 Rimozione errata di un prodotto dal carrello attuale                  |
 | :------------: | :-----------------------------------------------------------------------------------: |
 |  Precondition  |                                 Il cliente è loggato                                  |
@@ -976,9 +887,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |     Step#      |                                      Description                                      |
 |       1        |              Il cliente chiede di rimuovere un prodotto dal suo carrello              |
 |       2        | Il sistema rileva un errore in quanto il prodotto non esiste e lo comunica al cliente |
-
 #### Scenario 4.3.4
-
 | Scenario 4.3.4 |                      Rimozione errata di un prodotto dal carrello attuale                      |
 | :------------: | :--------------------------------------------------------------------------------------------: |
 |  Precondition  |                                      Il cliente è loggato                                      |
@@ -986,9 +895,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |     Step#      |                                          Description                                           |
 |       1        |                  Il cliente chiede di rimuovere un prodotto dal suo carrello                   |
 |       2        | Il sistema rileva un errore in quanto il prodotto è già stato venduto e lo comunica al cliente |
-
 #### Scenario 4.3.5
-
 | Scenario 4.3.5 |                      Rimozione errata di un prodotto dal carrello attuale                       |
 | :------------: | :---------------------------------------------------------------------------------------------: |
 |  Precondition  |                                      Il cliente è loggato                                       |
@@ -998,7 +905,6 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       2        | Il sistema rileva un errore in quanto il cliente non ha alcun carrello e lo comunica al cliente |
 
 ### Use case 4.4, UC4.4
-
 | Actors Involved  |                                             Cliente                                             |
 | :--------------: | :---------------------------------------------------------------------------------------------: |
 |   Precondition   |                                      Il cliente è loggato                                       |
@@ -1006,9 +912,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Nominal Scenario | Il cliente chiede di acquistare il carrello attuale e questo viene eseguito correttamente (4.4) |
 |     Variants     |                                                                                                 |
 |    Exceptions    |     Il carrello è vuoto (4.4.1), o non esiste alcun carrello per il cliente loggato (4.4.2)     |
-
 #### Scenario 4.4.1
-
 |  Scenario 4.4.1  |                        Acquisto corretto del carrello                        |
 | :------------: | :--------------------------------------------------------------------------: |
 |  Precondition  |                             Il cliente è loggato                             |
@@ -1018,9 +922,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       2        |               Il sistema verifica che la richiesta sia valida                |
 |       3        |   Il sistema calcola il totale del carrello e imposta la data di pagamento   |
 |       4        |                        Il carrello risulta acquistato                        |
-
 #### Scenario 4.4.2
-
 | Scenario 4.4.2 |                           Acquisto errato del carrello attuale                           |
 | :------------: | :--------------------------------------------------------------------------------------: |
 |  Precondition  |                                   Il cliente è loggato                                   |
@@ -1028,9 +930,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |     Step#      |                                       Description                                        |
 |       1        |       Il cliente chiede di acquistare i prodotti presenti nel suo carrello attuale       |
 |       2        | Il sistema rileva un errore in quanto il carrello risulta vuoto e lo comunica al cliente |
-
 #### Scenario 4.4.3
-
 | Scenario 4.4.3 |                                    Acquisto errato del carrello attuale                                    |
 | :------------: | :--------------------------------------------------------------------------------------------------------: |
 |  Precondition  |                                            Il cliente è loggato                                            |
@@ -1040,7 +940,6 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       2        | Il sistema rileva un errore in quanto il cliente non risulta avere alcun carrello e lo comunica al cliente |
 
 ### Use case 4.5, UC4.5
-
 | Actors Involved  |                            Cliente                            |
 | :--------------: | :-----------------------------------------------------------: |
 |   Precondition   |                     Il cliente è loggato                      |
@@ -1048,9 +947,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Nominal Scenario | Il cliente chiede di visualizzare la storia dei suoi carrelli |
 |     Variants     |                                                               |
 |    Exceptions    |                                                               |
-
 #### Scenario 4.5
-
 |  Scenario 4.5  |         Visualizzazione della cronologia dei carrelli         |
 | :------------: | :-----------------------------------------------------------: |
 |  Precondition  |                     Il cliente è loggato                      |
@@ -1060,7 +957,6 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       2        |     Il sistema mostra la storia dei carrelli del cliente      |
 
 ### Use case 4.6, UC4.6
-
 | Actors Involved  |                                            Cliente                                             |
 | :--------------: | :--------------------------------------------------------------------------------------------: |
 |   Precondition   |                                      Il cliente è loggato                                      |
@@ -1068,9 +964,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Nominal Scenario | Il cliente chiede di cancellare il suo carrello attuale e viene cancellato correttamente (4.6) |
 |     Variants     |                                                                                                |
 |    Exceptions    |                            Il cliente non ha alcun carrello (4.6.2)                            |
-
 #### Scenario 4.6.1
-
 |  Scenario 4.6.1  | Cancellazione corretta del carrello attuale del cliente  |
 | :------------: | :------------------------------------------------------: |
 |  Precondition  |                   Il cliente è loggato                   |
@@ -1078,9 +972,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |     Step#      |                       Description                        |
 |       1        | Il cliente chiede di cancellare il suo carrello attuale  |
 |       2        |         Il sistema elimina il carrello corrente          |
-
 #### Scenario 4.6.2
-
 | Scenario 4.6.2 |                        Cancellazione errata del carrello attuale del cliente                         |
 | :------------: | :--------------------------------------------------------------------------------------------------: |
 |  Precondition  |                                         Il cliente è loggato                                         |
@@ -1089,8 +981,9 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        |                       Il cliente chiede di cancellare il suo carrello attuale                        |
 |       2        | Il sistema rileva un errore in quanto non esiste alcun carrello del cliente e lo comunica al cliente |
 
-### Use case 5.1, UC5.1
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+### Use case 5.1, UC5.1
 | Actors Involved  |                   Cliente, servizio spedizioni                   |
 | :--------------: | :--------------------------------------------------------------: |
 |   Precondition   |                       Il cliente è loggato                       |
@@ -1098,9 +991,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Nominal Scenario | Il cliente chiede di aggiungere un nuovo indirizzo di spedizione |
 |     Variants     |                                                                  |
 |    Exceptions    |        L'indirizzo inserito non è corretto (5.1.2)               |
-
 #### Scenario 5.1.1
-
 |  Scenario 5.1  |             Aggiunta nuovo indirizzo di spedizione             |
 | :------------: | :------------------------------------------------------------: |
 |  Precondition  |                      Il cliente è loggato                      |
@@ -1109,9 +1000,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        | Il cliente chiede di inserire un nuovo indirizzo di spedizione |
 |       2        |        Il sistema verifica che l'indirizzo sia corretto        |
 |       3        |            L'indirizzo di spedizione viene aggiunto            |
-
 #### Scenario 5.1.2
-
 | Scenario 4.6.2 |                    Inserimento errato del indirizzo                       |
 | :------------: | :-----------------------------------------------------------------------: |
 |  Precondition  |                           Il cliente è loggato                            |
@@ -1121,7 +1010,6 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       2        | Il sistema rileva un errore in quanto l'indirizzo inserito non è corretto |
 
 ### Use case 5.2, UC5.2
-
 | Actors Involved  |                Cliente, Servizio spedizioni                |
 | :--------------: | :--------------------------------------------------------: |
 |   Precondition   |                    Il cliente è loggato                    |
@@ -1129,9 +1017,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Nominal Scenario | Il cliente chiede di modificare un indirizzo di spedizione |
 |     Variants     |                                                            |
 |    Exceptions    |         Il nuovo indirizzo inserito non è corretto         |
-
 #### Scenario 5.2.1
-
 |  Scenario 5.2  |              Modifica indirizzo di spedizione              |
 | :------------: | :--------------------------------------------------------: |
 |  Precondition  |                    Il cliente è loggato                    |
@@ -1141,9 +1027,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       2        |  Il sistema verifica che il nuovo indirizzo sia corretto   |
 |       3        |         L'indirizzo di spedizione viene modificato         |
 |  Exceptions    |      L'indirizzo inserito non è corretto (5.2.2)         |
-
 #### Scenario 5.2.2
-
 | Scenario 4.6.2 |                    Inserimento errato del indirizzo                       |
 | :------------: | :-----------------------------------------------------------------------: |
 |  Precondition  |                           Il cliente è loggato                            |
@@ -1153,27 +1037,6 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       2        | Il sistema rileva un errore in quanto l'indirizzo inserito non è corretto |
 
 ### Use case 5.3, UC5.3
-
-| Actors Involved  |               Cliente, Servizio spedizioni                |
-| :--------------: | :-------------------------------------------------------: |
-|   Precondition   |                   Il cliente è loggato                    |
-|  Post condition  |     Viene eliminato l'indirizzo di spedizione scelto      |
-| Nominal Scenario | Il cliente chiede di eliminare un indirizzo di spedizione |
-|     Variants     |                                                           |
-|    Exceptions    |                                                           |
-
-#### Scenario 5.3
-
-|  Scenario 5.3  |           Eliminazione indirizzo di spedizione            |
-| :------------: | :-------------------------------------------------------: |
-|  Precondition  |                   Il cliente è loggato                    |
-| Post condition |     Viene eliminato l'indirizzo di spedizione scelto      |
-|     Step#      |                        Description                        |
-|       1        | Il cliente chiede di eliminare un indirizzo di spedizione |
-|       2        |         L'indirizzo di spedizione viene eliminato         |
-
-### Use case 5.4, UC5.4
-
 | Actors Involved  |              Cliente, Servizio spedizioni               |
 | :--------------: | :-----------------------------------------------------: |
 |   Precondition   |     Il cliente è loggato e ha effettuato un ordine      |
@@ -1181,10 +1044,8 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Nominal Scenario | Il cliente chiede di visualizzare lo stato di un ordine |
 |     Variants     |                                                         |
 |    Exceptions    |                                                         |
-
-#### Scenario 5.4
-
-|  Scenario 5.4  |                  Visualizza stato ordine                   |
+#### Scenario 5.3
+|  Scenario 5.3  |                  Visualizza stato ordine                   |
 | :------------: | :--------------------------------------------------------: |
 |  Precondition  |       Il cliente è loggato e ha effettuato un ordine       |
 | Post condition |      Viene visualizzato lo stato attuale dell'ordine       |
@@ -1192,10 +1053,9 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        | Il cliente chiede di di visualizzare lo stato di un ordine |
 |       2        |       Il sistema mostra l'attuale stato dell'ordine        |
 
-## Gestione pagamenti
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Use case 6.1, UC6.1
-
 | Actors Involved  |             Cliente, Servizio di pagamento                   |
 | :--------------: | :----------------------------------------------------------: |
 |   Precondition   |                     Il cliente è loggato                     |
@@ -1203,9 +1063,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Nominal Scenario | Il cliente chiede di aggiungere un nuovo metodo di pagamento |
 |     Variants     |                                                              |
 |    Exceptions    |                                                              |
-
 #### Scenario 6.1
-
 |  Scenario 6.1  |                                      Aggiungi metodo di pagamento                                      |
 | :------------: | :----------------------------------------------------------------------------------------------------: |
 |  Precondition  |                                          Il cliente è loggato                                          |
@@ -1217,7 +1075,6 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       4        |                    Il metodo di pagamento selezionato viene aggiunto correttamente                     |
 
 ### Use case 6.2, UC6.2
-
 | Actors Involved  |             Cliente, Servizio di pagamento            |
 | :--------------: | :---------------------------------------------------: |
 |   Precondition   |                 Il cliente è loggato                  |
@@ -1225,9 +1082,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Nominal Scenario | Il cliente chiede di rimuovere un metodo di pagamento |
 |     Variants     |                                                       |
 |    Exceptions    |                                                       |
-
 #### Scenario 6.2
-
 |  Scenario 6.2  |                    Rimuovi metodo di pagamento                    |
 | :------------: | :---------------------------------------------------------------: |
 |  Precondition  |                       Il cliente è loggato                        |
@@ -1236,8 +1091,16 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       1        |  Il cliente seleziona il metodo di pagamento che vuole rimuovere  |
 |       2        | Il sistema rimuove il metodo di pagamento selezionato dal cliente |
 
-### Use case 7.1, UC7.1
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+FR7.1	Visualizza statistiche relative allo stato degli ordini
+FR7.2	Visualizza statistiche prodotti venduti in un range di date
+
+
+
+
+
+### Use case 7.1, UC7.1
 | Actors Involved  |       Cliente        |
 | :--------------: | :------------------: |
 |   Precondition   | Il cliente è loggato |
@@ -1245,9 +1108,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Nominal Scenario |                      |
 |     Variants     |                      |
 |    Exceptions    |                      |
-
 #### Scenario 7.1
-
 |  Scenario 7.1  |                      |
 | :------------: | :------------------: |
 |  Precondition  | Il cliente è loggato |
@@ -1257,7 +1118,6 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       2        |                      |
 
 ### Use case 7.2, UC7.2
-
 | Actors Involved  |                                              Manager                                              |
 | :--------------: | :-----------------------------------------------------------------------------------------------: |
 |   Precondition   |                                       Il manager è loggato                                        |
@@ -1265,9 +1125,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Nominal Scenario |     Il manager chiede di visualizzare le statistiche dei prodotti venduti in un range di date     |
 |     Variants     |                                                                                                   |
 |    Exceptions    |                       La data di inizio è successiva a quella di fine range                       |
-
 #### Scenario 7.2
-
 |  Scenario 7.2  |                                      Visualizza statistiche prodotti venduti                                       |
 | :------------: | :----------------------------------------------------------------------------------------------------------------: |
 |  Precondition  |                                                Il manager è loggato                                                |
@@ -1277,8 +1135,29 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       2        | Il manager inserisce il range di date all'interno del quale vuole visualizzare le statistiche dei prodotti venduti |
 |       3        |     Il sistema mostra le statistiche relative alle vendite dei prodotti nel range di date inserito dal manager     |
 
-### Use case 9.1, UC9.1
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+### Use case 8.1, UC8.1
+
+FR8.1	Invio di una notifica al cliente quando un prodotto all'interno della sua lista dei desideri riceve uno sconto
+FR8.2	Invio di una notifica al cliente quando lo stato della sua spedizione viene aggiornato
+FR8.3	Invio di una notifica al cliente quando un prodotto nel suo carrello viene esaurito (prima che lui lo acquisti)
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### Use case 9.1, UC9.1
 | Actors Involved  |                                                Cliente                                                |
 | :--------------: | :---------------------------------------------------------------------------------------------------: |
 |   Precondition   |                                         Il cliente è loggato                                          |
@@ -1286,9 +1165,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Nominal Scenario | Il cliente chiede di visualizzare la sua lista dei desideri e questa viene visualizzata correttamente |
 |     Variants     |                                                                                                       |
 |    Exceptions    |                                                                                                       |
-
 #### Scenario 9.1
-
 | Scenario 3.10  |                Visualizza lista dei desideri                |
 | :------------: | :---------------------------------------------------------: |
 |  Precondition  |                    Il cliente è loggato                     |
@@ -1305,9 +1182,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Nominal Scenario | Il cliente chiede di aggiungere un prodotto alla lista dei desideri e questo viene aggiunto |
 |     Variants     |                                                                                             |
 |    Exceptions    |                                   Il prodotto non esiste                                    |
-
 #### Scenario 9.2
-
 | Scenario 3.11  |              Aggiungi prodotto alla lista dei desideri              |
 | :------------: | :-----------------------------------------------------------------: |
 |  Precondition  |                        Il cliente è loggato                         |
@@ -1317,7 +1192,6 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       2        |             Il sistema aggiunge il prodotto alla lista              |
 
 ### Use case 9.3, UC9.3
-
 | Actors Involved  |                                          Cliente                                          |
 | :--------------: | :---------------------------------------------------------------------------------------: |
 |   Precondition   |                                   Il cliente è loggato                                    |
@@ -1325,9 +1199,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Nominal Scenario | Il cliente chiede di rimuovere un prodotto alla lista dei desideri e questo viene rimosso |
 |     Variants     |                                                                                           |
 |    Exceptions    |                                                                                           |
-
 #### Scenario 9.3
-
 | Scenario 9.3 |              Rimuovi prodotto dalla lista dei desideri              |
 | :------------: | :-----------------------------------------------------------------: |
 |  Precondition  |           Il cliente è loggato, il prodotto è nella lista           |
@@ -1335,6 +1207,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |     Step#      |                             Description                             |
 |       1        | Il cliente chiede di aggiungere un prodotto alla lista dei desideri |
 |       2        |             Il sistema rimuove il prodotto dalla lista              |
+
 
 # Glossary
 
@@ -1350,10 +1223,10 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
   - Dispone di almeno un metodo di pagamento, con cui acquistare il suo carrello
   - Dispone di una (e una sola) lista dei desideri a cui aggiungere prodotti a cui è interessato
 - Manager
-  - Utente responsabile del negozio fisico
+  - Utente responsabile dei prodotti
   - Dispone di una email aziendale e di un codice aziendale univoco, verificati durante la registrazione per mano dell'admin
   - Ogni manager ha la possibilità di gestire (aggiungere, rimuovere, registrare una nuova fornitura, registrare uno sconto, ...) i prodotti sul sito web
-  - Ogni manager può visualizzare i carrelli acquistati dai clienti e ottenere informazioni sulle vendite 
+  - Ogni manager può ottenere informazioni sulle vendite 
 -Admin
   - Amministratore aziendale del sistema
   - Incaricato di registrare gli account per i manager
@@ -1378,6 +1251,8 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
   - Nel contesto del sistema, un indirizzo di spedizione esiste solo se aggiunto da un cliente (ovvero non esistono a priori tutti gli indirizzi del pianeta)
 - Metodo di pagamento
   - Definisce il metodo di pagamento e i relativi dati (IBAN / Numero di Carta / ...) aggiunto da un cliente
+- Notifiche
+  - Le notifiche vengono inviate nell'apposita area sul sito e per email (attraverso il Servizio mail)
 
 ![glossary](./img/glossaryV2.png)
 
