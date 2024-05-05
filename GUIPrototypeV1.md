@@ -8,73 +8,79 @@ Version: 1.6
 
 ## Pagina Principale
 
-![IndexPC](./img/IndexPC.png)
-
-## Schermata di registrazione
-
-![RegisterPC](./img/RegisterPC.png)
+![Index](./img/IndexPCV1.png)
 
 ## Schermata di login
 
+![Login](./img/LoginPC.png)
 
-![LoginPC](./img/LoginPC.png)
+## Schermata di registrazione (da Cliente)
 
-## Schermata di visualizzazione prodotti (da utente customer)
+![RegistraCliente](./img/RegisterPCV1.png)
 
-![PaginaCustomerPC](./img/PaginaCustomerPC.png)
+## Schermata di visualizzazione prodotti (da Cliente)
 
-### Schermata di visualizzazione prodotti con menu a tendina esteso (da utente customer)
+![PaginaCustomerSelezionaTutti](./img/PaginaCustomerTuttiPCV1.png)
+![PaginaCustomerSelezionaCategoria](./img/PaginaCustomerCategoriaPCV1.png)
+![PaginaCustomerSelezionaModello](./img/PaginaCustomerModelloPCV1.png)
+![PaginaCustomerSelezionaCodice](./img/PaginaCustomerCodicePCV1.png)
 
-![PaginaCustomerMenuPC](./img/PaginaCustomerMenuPC.png)
+### Schermata di visualizzazione prodotti con menu a tendina estesa (da Cliente)
 
-### Carrello (da utente customer)
+Si estende il menu a tendina cliccando sull'icona dell'omino sulla navbar
 
-Si accede alla pagina premendo sull'icona del carrello sulla navbar
+![PaginaCustomerSelezionaTuttiMenu](./img/PaginaCustomerTuttiMenuPCV1.png)
+![PaginaCustomerSelezionaCategoriaMenu](./img/PaginaCustomerCategoriaMenuPCV1.png)
+![PaginaCustomerSelezionaModelloMenu](./img/PaginaCustomerModelloMenuPCV1.png)
+![PaginaCustomerSelezionaCodiceMenu](./img/PaginaCustomerCodiceMenuPCV1.png)
 
-![CarrelloPC](./img/CarrelloPC.png)
+### Carrello (da Cliente)
 
-### Storia dei carrelli (da utente customer)
+Si accede alla pagina cliccando sull'icona del carrello sulla navbar
 
-![HistoryPC](./img/HistoryPC.png)
+![Carrello](./img/CarrelloPCV1.png)
+
+### Storia dei carrelli (da Cliente)
+
+![History](./img/HistoryPCV1.png)
+
+## Schermata di registrazione (da Manager)
+
+![RegistraManager](./img/RegisterManagerPCV1.png)
+
+## Schermata di visualizzazione prodotti (da Manager)
+
+![PaginaManagerSelezionaTutti](./img/PaginaManagerTuttiPCV1.png)
+![PaginaManagerSelezionaCategoria](./img/PaginaManagerCategoriaPCV1.png)
+![PaginaManagerSelezionaModello](./img/PaginaManagerModelloPCV1.png)
+![PaginaManagerSelezionaCodice](./img/PaginaManagerCodicePCV1.png)
+
+### Schermata di visualizzazione prodotti con menu a tendina estesa (da Manager)
+
+Si estende il menu a tendina cliccando sull'icona dell'omino sulla navbar
+
+![PaginaManagerSelezionaTuttiMenu](./img/PaginaManagerTuttiMenuPCV1.png)
+![PaginaManagerSelezionaCategoriaMenu](./img/PaginaManagerCategoriaMenuPCV1.png)
+![PaginaManagerSelezionaModelloMenu](./img/PaginaManagerModelloMenuPCV1.png)
+![PaginaManagerSelezionaCodiceMenu](./img/PaginaManagerCodiceMenuPCV1.png)
+
+### Inserisci un nuovo prodotto (da Manager)
+
+![InserisciProdotto](./img/InserisciProdottoPCV1.png)
+
+### Registrazione arrivi (da Manager)
+
+![RegistrazioneArrivi](./img/RegistrazioneArriviPCV1.png)
 
 
-## Schermata di visualizzazione prodotti (da utente manager)
+## Profilo (da Cliente e Manager)
 
-![PaginaManagerPC](./img/PaginaManagerPC.png)
-
-### Schermata di visualizzazione prodotti con menu a tendina esteso (da utente manager)
-
-![PaginaManagerMenuPC](./img/PaginaManagerMenuPC.png)
-
-### Inserisci un nuovo prodotto (da utente manager)
-
-Si accede alla pagina tramite il bottone "Aggiungi Prodotto" sulla navbar
-
-![InserisciProdottoPC](./img/InserisciProdottoPC.png)
-
-### Registrazione arrivi (da utente manager)
-
-Si accede alla pagina tramite il bottone "Registrazione Arrivi" sulla navbar
-
-![RegistrazioneArriviPC](./img/RegistrazioneArriviPC.png)
-
-
-## Profilo (da utente customer e manager)
-
-![ProfiloPC](./img/ProfiloPC.png)
-
-
-## Esempio funzionamento filtri
-
-![PaginaCustomerFiltriPC](./img/PaginaCustomerFiltriPC.png)
-
+![Profilo](./img/ProfiloPCV1.png)
 
 ## Esempio Errori
 
-![LoginErratoPC](./img/LoginErratoPC.png)
+![LoginErrato](./img/LoginErratoPC.png)
 
-![RegisterErratoPC](./img/RegisterErratoPC.png)
+![RegisterErrato](./img/RegisterErratoPC.png)
 
-![CarrelloErratoPC](./img/CarrelloErratoPC.png)
-
-![InserisciProdottoErratoPC](./img/InserisciProdottoErratoPC.png)
+![CarrelloErrato](./img/CarrelloErratoPC.png)

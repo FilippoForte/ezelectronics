@@ -8,45 +8,45 @@ Version: 2.5
 
 ## Pagina Principale
 
-![IndexPC](./img/IndexV2PC.png)
+![Index](./img/IndexV2PC.png)
 
 ## Schermata di registrazione Customer
 
-![RegisterPC](./img/RegisterV2PC.png)
+![Register](./img/RegisterV2PC.png)
 
 ## Schermata di login
 
-![LoginPC](./img/LoginPC.png)
+![Login](./img/LoginPC.png)
 
 ## Schermata di visualizzazione prodotti (da utente customer)
 
-![PaginaCustomerPC](./img/PaginaCustomerV2PC.png)
+![PaginaCustomer](./img/PaginaCustomerV2PC.png)
 
 ### Schermata di visualizzazione prodotti con  menu a tendina esteso (da utente customer)
 
-![PaginaCustomerMenuPC](./img/PaginaCustomerMenuV2PC.png)
+![PaginaCustomerMenu](./img/PaginaCustomerMenuV2PC.png)
 
 ### Centro notifiche (da utente customer)
 
-![NotifichePC](./img/NotifichePC.png)
+![Notifiche](./img/NotifichePC.png)
 
 ### Carrello (da utente customer)
 
 Si accede alla pagina premendo sull'icona del carrello sulla navbar
 
-![CarrelloPC](./img/CarrelloV2PC.png)
+![Carrello](./img/CarrelloV2PC.png)
 
 ### Acquista (da utente customer)
 
-![AcquistaPC](./img/AcquistaPC.png)
+![Acquista](./img/AcquistaPC.png)
 
 ### Modifica metodo di pagamento (da utente customer)
 
-![ModificaPagamentoPC](./img/ProfiloModificaMetodoPC.png)
+![ModificaPagamento](./img/ProfiloModificaMetodoPC.png)
 
 ### Modifica indirizzo di spedizione (da utente customer)
 
-![ModificaIndirizzoPC](./img/ProfiloModificaIndirizzoPC.png)
+![ModificaIndirizzo](./img/ProfiloModificaIndirizzoPC.png)
 
 ### Modifica password(da utente customer)
 
@@ -64,40 +64,40 @@ Si accede alla pagina premendo sull'icona del carrello sulla navbar
 
 Si accede alla pagina tramite la voce nel menu a tendina nella navbar o tramite i pulsanti appositi
 
-![HistoryPC](./img/HistoryV2PC.png)
+![History](./img/HistoryV2PC.png)
 
 ### Stato della spedizione (da utente customer)
 
-![StatoPC](./img/StatoPC.png)
+![Stato](./img/StatoPC.png)
 
 ### Lista dei desideri (da utente customer)
 
 Si accede alla pagina tramite la voce nel menu a tendina nella navbar
 
-![ListaDesideriPC](./img/ListaDesideriPC.png)
+![ListaDesideri](./img/ListaDesideriPC.png)
 
 ### Prodotto (da utente customer)
 
 Si accede alla pagina premendo sull'icona del prodotto desiderato
 
-![ProdottoPC](./img/ProdottoPC.png)
+![Prodotto](./img/ProdottoPC.png)
 
 ## Profilo (da utente customer)
 
-![ProfiloPC](./img/ProfiloV2PC.png)
+![Profilo](./img/ProfiloV2PC.png)
 
 ### Modifica Profilo (da utente customer)
 
-![ProfiloModificaPC](./img/ProfiloModificaPC.png)
+![ProfiloModifica](./img/ProfiloModificaPC.png)
 
 
 ## Schermata di visualizzazione prodotti (da utente manager)
 
-![PaginaManagerPC](./img/PaginaManagerV2PC.png)
+![PaginaManager](./img/PaginaManagerV2PC.png)
 
 ### Schermata di visualizzazione prodotti con  menu a tendina esteso (da utente manager)
 
-![PaginaManagerPC](./img/PaginaManagerMenuV2PC.png)
+![PaginaManager](./img/PaginaManagerMenuV2PC.png)
 
 ### Analisi Vendite (da utente manager)
 
@@ -110,23 +110,23 @@ Si accede alla pagina premendo sull'icona del prodotto desiderato
 
 ### Sconta prodotto (da utente manager)
 
-![ScontoPC](./img/ScontoPC.png)
+![Sconto](./img/ScontoPC.png)
 
 ### Inserisci un nuovo prodotto (da utente manager)
 
 Si accede alla pagina tramite il bottone "Aggiungi Prodotto" sulla navbar
 
-![InserisciProdottoPC](./img/InserisciProdottoPC.png)
+![InserisciProdotto](./img/InserisciProdottoPC.png)
 
 ### Registrazione arrivi (da utente manager)
 
 Si accede alla pagina tramite il bottone "Registrazione Arrivi" sulla navbar
 
-![RegistrazioneArriviPC](./img/RegistrazioneArriviPC.png)
+![RegistrazioneArrivi](./img/RegistrazioneArriviPC.png)
 
 ### Modifica prodotto (da utente manager)
 
-![ModificaProdottoPC](./img/ModificaProdottoPC.png)
+![ModificaProdotto](./img/ModificaProdottoPC.png)
 
 ### Notifiche (da utente manager)
 
@@ -134,7 +134,7 @@ Si accede alla pagina tramite il bottone "Registrazione Arrivi" sulla navbar
 
 ## Profilo (da utente manager)
 
-![ProfiloPC](./img/ProfiloV2PC.png)
+![Profilo](./img/ProfiloV2PC.png)
 
 ## Modifica password (da utente manager)
 
@@ -143,8 +143,8 @@ Si accede alla pagina tramite il bottone "Registrazione Arrivi" sulla navbar
 
 ![LoginErratoPC](./img/LoginErratoPC.png)
 
-![RegisterErratoV2PC](./img/RegisterErratoV2PC.png)
+![RegisterErratoV2](./img/RegisterErratoV2PC.png)
 
-![CarrelloErratoV2PC](./img/CarrelloErratoV2PC.png)
+![CarrelloErratoV2](./img/CarrelloErratoV2PC.png)
 
 

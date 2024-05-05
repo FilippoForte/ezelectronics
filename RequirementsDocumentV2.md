@@ -99,6 +99,7 @@ Version: V2 - description of EZElectronics in FUTURE form (as proposed by the te
     - [Use case 6.2, UC6.2](#use-case-62-uc62)
     - [Use case 7.1, UC7.1](#use-case-71-uc71)
     - [Use case 7.2, UC7.2](#use-case-72-uc72)
+    - [Use case 8.5, UC9.1](#use-case-85-uc85)
     - [Use case 9.1, UC9.1](#use-case-91-uc91)
     - [Use case 9.2, UC9.2](#use-case-92-uc92)
     - [Use case 9.3, UC9.3](#use-case-93-uc93)
@@ -211,6 +212,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR5.2   | Modifica indirizzo di spedizione                                                                                |
 | FR5.3   | Visualizza stato della spedizione del carrello acquistato                                                       |
 | FR5.4   | Eliminazione di un indirizzo di spedizione                                                                      |
+| FR5.5   | Aggiornamento automatico dello stato di un carrello, mediante il servizio di spedizioni                         |
 | **FR6** | **Gestione pagamenti**                                                                                          |
 | FR6.1   | Aggiungi metodo di pagamento                                                                                    |
 | FR6.2   | Rimuovi metodo di pagamento                                                                                     |
@@ -222,10 +224,13 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR8.2   | Invio di una notifica al cliente quando lo stato della sua spedizione viene aggiornato                          |
 | FR8.3   | Invio di una notifica al cliente quando un prodotto nel suo carrello viene esaurito (prima che lui lo acquisti) |
 | FR8.4   | Invio di una notifica al manager quando un prodotto viene esaurito                                              |
+| FR8.5   | Visualizzazione delle notifiche ricevute  |
 | **FR9** | **Gestione lista dei desideri**                                                                                 |
 | FR9.1   | Visualizza lista dei desideri                                                                                   |
 | FR9.2   | Aggiungi prodotto alla lista dei desideri                                                                       |
 | FR9.3   | Rimuovi prodotto dalla lista dei desideri                                                                       |
+
+*FR8 richiede l'intervento del Servizio mail per l'invio delle email alla casella di posta elettronica degli utenti, ma non per la visualizzazione delle notifiche sul sito web
 
 ## Table of rights
 
@@ -245,7 +250,7 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 | FR2.6 Eliminazione del proprio profilo                                                                                |              |    X    |         |       |
 | FR2.7 Eliminazione di un manager registrato                                                                           |              |         |    O    |   X   |
 | FR3.1 Visualizzazione di tutti i prodotti                                                                             |      X       |    X    |    X    |       |
-| FR3.2 Visualizzazione delle informazioni di un prodotto                                                               |              |    X    |    X    |       |
+| FR3.2 Visualizzazione delle informazioni di un prodotto                                                               |      X       |    X    |    X    |       |
 | FR3.3 Aggiunta di un nuovo prodotto                                                                                   |      O       |    O    |    X    |       |
 | FR3.4 Rimozione di un prodotto                                                                                        |      O       |    O    |    X    |       |
 | FR3.5 Registrazione dell'arrivo di un nuovo (insieme di) prodotti                                                     |      O       |    O    |    X    |       |
@@ -266,14 +271,16 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 | FR5.2 Modifica indirizzo di spedizione                                                                                |              |    X    |         |       |
 | FR5.3 Visualizza stato della spedizione del carrello acquistato                                                       |              |    X    |         |       |
 | FR5.4 Eliminazione di un indirizzo di spedizione                                                                      |              |    X    |         |       |
+| FR5.5 Aggiornamento automatico dello stato di un carrello, mediante il servizio di spedizioni                         |              |    O    |         |       |
 | FR6.1 Aggiungi metodo di pagamento                                                                                    |              |    X    |         |       |
 | FR6.2 Rimuovi metodo di pagamento                                                                                     |              |    X    |         |       |
-| FR7.1 Visualizza carrelli venduti (opzionale: filtro per intervalli di date, categoria, codice e/o modello)                   |              |         |    X    |       |
-| FR7.2 Visualizza totale dei prodotti venduti (opzionale: filtro per intervalli di date, categoria, codice e/o modello)        |              |         |    X    |       |
+| FR7.1 Visualizza carrelli venduti (opzionale: filtro per intervalli di date, categoria, codice e/o modello)           |              |         |    X    |       |
+| FR7.2 Visualizza totale dei prodotti venduti (opzionale: filtro per intervalli di date, categoria, codice e/o modello)|              |         |    X    |       |
 | FR8.1 Invio di una notifica al cliente quando un prodotto all'interno della sua lista dei desideri riceve uno sconto  |              |    O    |         |       |
 | FR8.2 Invio di una notifica al cliente quando lo stato della sua spedizione viene aggiornato                          |              |    O    |         |       |
 | FR8.3 Invio di una notifica al cliente quando un prodotto nel suo carrello viene esaurito (prima che lui lo acquisti) |              |    O    |         |       |
 | FR8.4 Invio di una notifica al manager quando un prodotto viene esaurito                                              |              |         |    O    |       |
+| FR8.5 Visualizzazione delle notifiche ricevute                                                                        |              |    X    |    X    |       |
 | FR9.1 Visualizza lista dei desideri                                                                                   |              |    X    |         |       |
 | FR9.2 Aggiungi prodotto alla lista dei desideri                                                                       |              |    X    |         |       |
 | FR9.3 Rimuovi prodotto dalla lista dei desideri                                                                       |              |    X    |         |       |
@@ -306,13 +313,13 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 
 ### Use case 1.1, UC1.1
 
-| Actors Involved  |                                         Cliente/Manager                                          |
+| Actors Involved  |                                         Utente guest                                 |
 | :--------------: | :----------------------------------------------------------------------------------------------: |
 |   Precondition   |                                L'utente è registrato nel sistema                                 |
 |  Post condition  |                                     L'utente risulta loggato                                     |
-| Nominal Scenario |                 L'utente inserisce username e password e accede al sistema (1.1.1)                 |
+| Nominal Scenario |                 L'utente guest inserisce username e password e accede al sistema (1.1.1)                 |
 |     Variants     |                                                                                                  |
-|    Exceptions    | L'utente inserisce dati errati (non previsto dalle API, ma presente nel file userDAO.ts) (1.1.2) |
+|    Exceptions    | L'utente guest inserisce dati errati (non previsto dalle API, ma presente nel file userDAO.ts) (1.1.2) |
 
 #### Scenario 1.1.1
 
@@ -341,7 +348,7 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 
 ### Use case 1.2, UC1.2
 
-| Actors Involved  |                                          Utente                                           |
+| Actors Involved  |                                          Utente (Cliente/Manager)                                           |
 | :--------------: | :---------------------------------------------------------------------------------------: |
 |   Precondition   |                                    L'utente è loggato                                     |
 |  Post condition  |                                 Viene eseguito il logout                                  |
@@ -361,7 +368,7 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 
 ### Use case 1.3, UC1.3
 
-| Actors Involved  |                                        Utente                                        |
+| Actors Involved  |                                       Utente (Cliente/Manager)                                        |
 | :--------------: | :----------------------------------------------------------------------------------: |
 |   Precondition   |                                  L'utente è loggato                                  |
 |  Post condition  |           Vengono mostrate le informazioni dell'utente attualmente loggato           |
@@ -604,9 +611,9 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 
 ### Use case 3.1, UC3.1
 
-| Actors Involved  |                                  Cliente/Manager                                  |
+| Actors Involved  |                                  Utente (Cliente/Manager) / Utente guest          |
 | :--------------: | :-------------------------------------------------------------------------------: |
-|   Precondition   |                                L'utente è loggato                                 |
+|   Precondition   |                                --                                                 |
 |  Post condition  |                         Vengono mostrati tutti i prodotti                         |
 | Nominal Scenario | L'utente chiede al sistema di visualizzare tutti i prodotti e li vengono mostrati |
 |     Variants     |                                                                                   |
@@ -616,7 +623,7 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 
 |  Scenario 3.1  |                                                                      |
 | :------------: | :------------------------------------------------------------------: |
-|  Precondition  |                          L'utente è loggato                          |
+|  Precondition  |                          --                         |
 | Post condition |                  Vengono mostrati tutti i prodotti                   |
 |     Step#      |                             Description                              |
 |       1        | L'utente chiede al sistema di visualizzare tutti i prodotti presenti |
@@ -624,9 +631,9 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 
 ### Use case 3.2, UC3.2
 
-| Actors Involved  |                            Cliente/Manager                             |
+| Actors Involved  |                            Utente (Cliente/Manager) / Utente guest     |
 | :--------------: | :--------------------------------------------------------------------: |
-|   Precondition   |                           L'utente è loggato                           |
+|   Precondition   |                           --                           |
 |  Post condition  |             Vengono mostrate le informazioni del prodotto              |
 | Nominal Scenario | Il cliente vuole visualizzare le informazioni di un prodotto specifico |
 |     Variants     |                                                                        |
@@ -636,7 +643,7 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 
 |  Scenario 3.2  |                          Visualizzazione di un prodotto                           |
 | :------------: | :-------------------------------------------------------------------------------: |
-|  Precondition  |                               Il cliente è loggato                                |
+|  Precondition  |                               --                                |
 | Post condition |                   Vengono mostrate le informazioni del prodotto                   |
 |     Step#      |                                    Description                                    |
 |       1        |              Il cliente seleziona il prodotto che vuole Visualizzare              |
@@ -761,7 +768,7 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 
 ### Use case 3.6, UC3.6
 
-| Actors Involved  |                                Utente Guest/Cliente/Manager                                |
+| Actors Involved  |                                Utente (Cliente/Manager) / Utente guest                                |
 | :--------------: | :----------------------------------------------------------------------------------------: |
 |   Precondition   |                                             --                                             |
 |  Post condition  |       Vengono mostrati i prodotti che rispecchiano la categoria inserita dall'utente       |
@@ -783,7 +790,7 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 
 ### Use case 3.7, UC3.7
 
-| Actors Involved  |                              Utente Guest/Cliente/Manager                               |
+| Actors Involved  |                              Utente (Cliente/Manager) / Utente guest                               |
 | :--------------: | :-------------------------------------------------------------------------------------: |
 |   Precondition   |                                           --                                            |
 |  Post condition  |      Vengono mostrati i prodotti che rispecchiano il modello inserito dall'utente       |
@@ -805,7 +812,7 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 
 ### Use case 3.8, UC3.8
 
-| Actors Involved  |                               Utente Guest/Cliente/Manager                               |
+| Actors Involved  |                               Utente (Cliente/Manager) / Utente guest                               |
 | :--------------: | :--------------------------------------------------------------------------------------: |
 |   Precondition   |                                            --                                            |
 |  Post condition  |     Vengono mostrate le informazioni del prodotto con il codice inserito dall'utente     |
@@ -827,7 +834,7 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 
 ### Use case 3.9, UC3.9
 
-| Actors Involved  |                               Utente Guest/Cliente/Manager                               |
+| Actors Involved  |                               Utente (Cliente/Manager) / Utente guest                               |
 | :--------------: | :--------------------------------------------------------------------------------------: |
 |   Precondition   |                                            --                                            |
 |  Post condition  |     Vengono mostrate le informazioni dei prodotti secondo la disponibiltà specificata    |
@@ -870,7 +877,7 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 
 ### Use case 3.11, UC3.11
 
-| Actors Involved  |                                Utente Guest/ Cliente/Manager                                 |
+| Actors Involved  |                                Utente (Cliente/Manager) / Utente guest                                 |
 | :--------------: | :------------------------------------------------------------------------------------------: |
 |   Precondition   |                                                                                              |
 |  Post condition  | Vengono mostrate le informazioni del prodotto per sconto maggiore o uguale a quello indicato |
@@ -1028,9 +1035,9 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 | :--------------: | :---------------------------------------------------------------------------------------------: |
 |   Precondition   |                                      Il cliente è loggato                                       |
 |  Post condition  |                     L'acquisto del carrello viene effettuato correttamente                      |
-| Nominal Scenario | Il cliente chiede di acquistare il carrello attuale e questo viene eseguito correttamente (4.4) |
+| Nominal Scenario | Il cliente chiede di acquistare il carrello attuale e questo viene eseguito correttamente (4.4.1) |
 |     Variants     |                                                                                                 |
-|    Exceptions    |     Il carrello è vuoto (4.4.1), o non esiste alcun carrello per il cliente loggato (4.4.2)     |
+|    Exceptions    |     Il carrello è vuoto (4.4.2) o si verifica un errore durante la procedura di pagamento (4.4.3)    |
 
 #### Scenario 4.4.1
 
@@ -1041,8 +1048,10 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 |     Step#      |                                 Description                                  |
 |       1        | Il cliente chiede di acquistare i prodotti presenti nel suo carrello attuale |
 |       2        |               Il sistema verifica che la richiesta sia valida                |
-|       3        |   Il sistema calcola il totale del carrello e imposta la data di pagamento   |
-|       4        |                        Il carrello risulta acquistato                        |
+|       3        |Il servizio di pagamento viene lanciato per gestire la procedura di pagamento |
+|       4        |   Il sistema registra il totale del carrello e imposta la data di pagamento  |
+|       5        |                        Il carrello risulta acquistato                        |
+|       6        |   Il servizio di spedizione prende in carico la spedizione dei prodotti      |
 
 #### Scenario 4.4.2
 
@@ -1052,17 +1061,19 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 | Post condition |                                                                                          |
 |     Step#      |                                       Description                                        |
 |       1        |       Il cliente chiede di acquistare i prodotti presenti nel suo carrello attuale       |
-|       2        | Il sistema rileva un errore in quanto il carrello risulta vuoto e lo comunica al cliente |
+|       2        | Il sistema rileva un errore in quanto il carrello risulta vuoto e lo comunica al cliente: il carrello non risulta acquistato |
 
 #### Scenario 4.4.3
 
-| Scenario 4.4.3 |                                    Acquisto errato del carrello attuale                                    |
-| :------------: | :--------------------------------------------------------------------------------------------------------: |
-|  Precondition  |                                            Il cliente è loggato                                            |
-| Post condition |                                                                                                            |
-|     Step#      |                                                Description                                                 |
-|       1        |                Il cliente chiede di acquistare i prodotti presenti nel suo carrello attuale                |
-|       2        | Il sistema rileva un errore in quanto il cliente non risulta avere alcun carrello e lo comunica al cliente |
+| Scenario 4.4.2 |                           Acquisto errato del carrello attuale                           |
+| :------------: | :--------------------------------------------------------------------------------------: |
+|  Precondition  |                                   Il cliente è loggato                                   |
+| Post condition |                                                                                          |
+|     Step#      |                                       Description                                        |
+|       1        |       Il cliente chiede di acquistare i prodotti presenti nel suo carrello attuale       |
+|       2        |               Il sistema verifica che la richiesta sia valida                            |
+|       3        |      Il servizio di pagamento viene lanciato per gestire la procedura di pagamento       |
+|       4        |      Si verifica un errore durante la procedura di pagamento, il carrello non risulta acquistato       |
 
 ### Use case 4.5, UC4.5
 
@@ -1181,22 +1192,22 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 
 ### Use case 5.3, UC5.3
 
-| Actors Involved  |              Cliente, Servizio spedizioni               |
+| Actors Involved  |              Cliente               |
 | :--------------: | :-----------------------------------------------------: |
-|   Precondition   |     Il cliente è loggato e ha effettuato un ordine      |
-|  Post condition  |     Viene visualizzato lo stato attuale dell'ordine     |
-| Nominal Scenario | Il cliente chiede di visualizzare lo stato di un ordine |
+|   Precondition   |     Il cliente è loggato e ha comprato almeno un carrello      |
+|  Post condition  |     Viene visualizzato lo stato attuale del carrello     |
+| Nominal Scenario | Il cliente chiede di visualizzare lo stato di un carrello |
 |     Variants     |                                                         |
 |    Exceptions    |                                                         |
 
 #### Scenario 5.3
 
-|  Scenario 5.3  |                  Visualizza stato ordine                   |
+|  Scenario 5.3  |                  Visualizza stato carrello                  |
 | :------------: | :--------------------------------------------------------: |
-|  Precondition  |       Il cliente è loggato e ha effettuato un ordine       |
-| Post condition |      Viene visualizzato lo stato attuale dell'ordine       |
+|  Precondition  |       Il cliente è loggato e ha comprato almeno un carrello       |
+| Post condition |      Viene visualizzato lo stato attuale del carrello       |
 |     Step#      |                        Description                         |
-|       1        | Il cliente chiede di di visualizzare lo stato di un ordine |
+|       1        | Il cliente chiede di di visualizzare lo stato di un carrello |
 |       2        |       Il sistema mostra l'attuale stato dell'ordine        |
 
 ### Use case 5.4, UC5.4
@@ -1304,6 +1315,26 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 |       1        |          Il manager chiede di visualizzare il totale dei prodotti venduti          |
 |       2        | (opzionale) Il manager inserisce i filtri (intervallo di date, categoria, codice, modello) |
 |       3        |                  Il sistema mostra il totale dei prodotti venduti                  |
+
+### Use case 8.5, UC8.5
+
+| Actors Involved  |                             Utente (Cliente / Manager)                              |
+| :--------------: | :--------------------------------------------------------------: |
+|   Precondition   |                       L'utente è loggato                       |
+|  Post condition  |        Vengono visualizzate le notifiche ricevute dall'utente         |
+| Nominal Scenario | L'utente chiede di visualizzare le notifiche ricevute |
+|     Variants     |                                                                  |
+|    Exceptions    |                                                                  |
+
+#### Scenario 8.5
+
+|  Scenario 7.2  |                         Visualizza totale prodotti venduti                         |
+| :------------: | :--------------------------------------------------------------------------------: |
+|  Precondition  |                                L'utente è loggato                                |
+| Post condition |                 Vengono visualizzate le notifiche ricevute dall'utente                 |
+|     Step#      |                                    Description                                     |
+|       1        |          L'utente chiede di visualizzare le notifiche ricevute         |
+|       2        | Il sistema mostra le notifiche ricevute dall'utente |
 
 ### Use case 9.1, UC9.1
 
