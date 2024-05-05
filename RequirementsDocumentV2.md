@@ -190,9 +190,10 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR3.6| Filtraggio dei prodotti per categoria                                                 |
 | FR3.7| Filtraggio dei prodotti per modello                                                   |
 | FR3.8| Filtraggio dei prodotti per codice                                                    |
-| FR3.9| Aggiungi sconto ad un prodotto                                                        |
-| FR3.10| Filtraggio informazioni prodotti per sconto (maggiore o uguale a quello indicato)    |
-| FR3.11| Aggiorna la quantità disponibile di un prodotto quando viene venduto                 |
+| FR3.9| Filtraggio dei prodotti per disponibilità                                             |
+| FR3.10| Aggiungi sconto ad un prodotto                                                       |
+| FR3.11| Filtraggio informazioni prodotti per sconto (maggiore o uguale a quello indicato)    |
+| FR3.12| Aggiorna automaticamente la quantità disponibile di un prodotto quando viene venduto |
 | **FR4**| **Gestione del carrello**                                                           |
 | FR4.1| Visualizzazione del carrello attuale del cliente                                      |
 | FR4.2| Aggiunta di un prodotto al carrello attuale                                           |
@@ -204,6 +205,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR5.1| Aggiunta indirizzo di spedizione                                                      |
 | FR5.2| Modifica indirizzo di spedizione                                                      |
 | FR5.3| Visualizza stato della spedizione del carrello acquistato                             |
+| FR5.4| Eliminazione di un indirizzo di spedizione                                            |
 | **FR6**| **Gestione pagamenti**                                                              |
 | FR6.1| Aggiungi metodo di pagamento  |
 | FR6.2| Rimuovi metodo di pagamento                                                           |
@@ -739,7 +741,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |3               | L'utente inserisce il codice|
 |4               | Il sistema mostra il prodotto corrispondente al codice inserito|
 
-### Use case 3.9, UC3.9
+### Use case 3.10, UC3.10
 | Actors Involved  |                          Manager                             |
 | :--------------: | :----------------------------------------------------------: |
 |   Precondition   |                    Il manager è loggato                       |
@@ -747,7 +749,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Nominal Scenario | Il manager vuole modificare o aggiungere ad un prodotto uno sconto |
 |     Variants     |                                                              |
 |    Exceptions    |                      Il prodotto non esiste                  |
-#### Scenario 3.9
+#### Scenario 3.10
 |  Scenario 3.9  |                             Aggiungi sconto ad un prodotto                             |
 | :------------: | :------------------------------------------------------------------------------------: |
 |  Precondition  |                                  Il manager è loggato                                  |
@@ -757,7 +759,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       2        |                 Il sistema applica lo sconto al prodotto selezionato                   |
 |       3        |     Il sistema invia una notifica a tutte le persone interessate a quel prodotto       |
 
-### Use case 3.10, UC3.10
+### Use case 3.11, UC3.11
 | Actors Involved  |                          Cliente/Manager                             |
 | :--------------: | :----------------------------------------------------------: |
 |   Precondition   |                    L'utente è loggato                        |
@@ -765,7 +767,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | Nominal Scenario | L'utente chiede di visualizzare solo i prodotti con un determinato sconto minimo|
 |     Variants     |                                                              |
 |    Exceptions    |                                                             |
-#### Scenario 3.10
+#### Scenario 3.11
 |  Scenario 3.10  |                             Filtraggio per sconto                                      |
 | :------------: | :------------------------------------------------------------------------------------: |
 |  Precondition  |                                  L'utente è loggato                                    |
