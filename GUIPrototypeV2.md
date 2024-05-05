@@ -118,10 +118,6 @@ Si accede alla pagina tramite il bottone "Registrazione Arrivi" sulla navbar
 
 ![RegisterErratoV2PC](./img/RegisterErratoV2PC.png)
 
-![AcquistaErratoPC](./img/AcquistaErratoPC.png)
-
 ![CarrelloErratoV2PC](./img/CarrelloErratoV2PC.png)
 
-![ProdottoErratoPC](./img/ProdottoErratoPC.png)
 
-![InserisciProdottoErratoPC](./img/InserisciProdottoErratoPC.png)
