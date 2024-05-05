@@ -2,7 +2,7 @@
 
 Date:
 
-Version: V1 - description of EZElectronics in CURRENT form (as received by teachers)
+Version: V2 - description of EZElectronics in FUTURE form (as proposed by the team)
 
 | Version number | Change |
 | :------------: | :----: |
@@ -28,6 +28,7 @@ Version: V1 - description of EZElectronics in CURRENT form (as received by teach
 [Use case diagram](#use-case-diagram)
     - [Use case 1.1, UC1.1](#use-case-11-uc11)
       - [Scenario 1.1.1](#scenario-111)
+      - [Scenario 1.1.2](#scenario-112)
     - [Use case 1.2, UC1.2](#use-case-12-uc12)
       - [Scenario 1.2](#scenario-12)
     - [Use case 1.3, UC1.3](#use-case-13-uc13)
@@ -35,8 +36,21 @@ Version: V1 - description of EZElectronics in CURRENT form (as received by teach
     - [Use case 2.1, UC2.1](#use-case-21-uc21)
       - [Scenario 2.1.1](#scenario-211)
       - [Scenario 2.1.2](#scenario-212)
+    - [Use case 2.2, UC2.2](#use-case-22-uc22)
+      - [Scenario 2.2.1](#scenario-221)
+      - [Scenario 2.2.2](#scenario-222)
+    - [Use case 2.3, UC2.3](#use-case-23-uc23)
+      - [Scenario 2.3.1](#scenario-231)
+      - [Scenario 2.3.2](#scenario-232)
+    - [Use case 2.4, UC2.3](#use-case-24-uc24)
+      - [Scenario 2.4.1](#scenario-241)
+      - [Scenario 2.4.2](#scenario-242)
+    - [Use case 2.5, UC2.5](#use-case-25-uc25)
+      - [Scenario 2.5.1](#scenario-251)
+      - [Scenario 2.5.2](#scenario-252)
+    - [Use case 2.6, UC2.6](#use-case-26-uc26)
+    - [Use case 2.7, UC2.7](#use-case-27-uc27)
     - [Use case 3.1, UC3.1](#use-case-31-uc31)
-      - [Scenario 3.1](#scenario-31)
     - [Use case 3.2, UC3.2](#use-case-32-uc32)
     - [Use case 3.3, UC3.3](#use-case-33-uc33)
       - [Scenario 3.3.1](#scenario-331)
@@ -45,19 +59,17 @@ Version: V1 - description of EZElectronics in CURRENT form (as received by teach
     - [Use case 3.4, UC3.4](#use-case-34-uc34)
       - [Scenario 3.4.1](#scenario-341)
       - [Scenario 3.4.2](#scenario-342)
+      - [Scenario 3.4.2](#scenario-342)
     - [Use case 3.5, UC3.5](#use-case-35-uc35)
       - [Scenario 3.5.1](#scenario-351)
       - [Scenario 3.5.2](#scenario-352)
     - [Use case 3.6, UC3.6](#use-case-36-uc36)
-      - [Scenario 3.6](#scenario-36)
     - [Use case 3.7, UC3.7](#use-case-37-uc37)
-      - [Scenario 3.7](#scenario-37)
     - [Use case 3.8, UC3.8](#use-case-38-uc38)
     - [Use case 3.9, UC3.9](#use-case-39-uc39)
     - [Use case 3.10, UC3.10](#use-case-310-uc310)
     - [Use case 3.11, UC3.11](#use-case-311-uc311)
     - [Use case 4.1, UC4.1](#use-case-41-uc41)
-      - [Scenario 4.1](#scenario-41)
     - [Use case 4.2, UC4.2](#use-case-42-uc42)
       - [Scenario 4.2.1](#scenario-421)
       - [Scenario 4.2.2](#scenario-422)
@@ -74,7 +86,6 @@ Version: V1 - description of EZElectronics in CURRENT form (as received by teach
       - [Scenario 4.4.2](#scenario-442)
       - [Scenario 4.4.3](#scenario-443)
     - [Use case 4.5, UC4.5](#use-case-45-uc45)
-      - [Scenario 4.5](#scenario-45)
     - [Use case 4.6, UC4.6](#use-case-46-uc46)
       - [Scenario 4.6.1](#scenario-461)
       - [Scenario 4.6.2](#scenario-462)
@@ -301,11 +312,11 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 | :--------------: | :----------------------------------------------------------------------------------------------: |
 |   Precondition   |                                L'utente è registrato nel sistema                                 |
 |  Post condition  |                                     L'utente risulta loggato                                     |
-| Nominal Scenario |                 L'utente inserisce username e password e accede al sistema (1.1)                 |
+| Nominal Scenario |                 L'utente inserisce username e password e accede al sistema (1.1.1)                 |
 |     Variants     |                                                                                                  |
-|    Exceptions    | L'utente inserisce dati errati (non previsto dalle API, ma presente nel file userDAO.ts) (1.1.1) |
+|    Exceptions    | L'utente inserisce dati errati (non previsto dalle API, ma presente nel file userDAO.ts) (1.1.2) |
 
-#### Scenario 1.1
+#### Scenario 1.1.1
 
 |  Scenario 1.1  |             Login corretto             |
 | :------------: | :------------------------------------: |
@@ -318,9 +329,9 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 |       4        |        Il sistema valida i dati        |
 |       5        |        L'utente risulta loggato        |
 
-#### Scenario 1.1.1
+#### Scenario 1.1.2
 
-| Scenario 1.1.1 |                         Login errato                          |
+| Scenario 1.1.2 |                         Login errato                          |
 | :------------: | :-----------------------------------------------------------: |
 |  Precondition  |               L'utente è registrato nel sistema               |
 | Post condition |                                                               |
@@ -380,7 +391,7 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 |  Post condition  |                          Il cliente risulta registrato correttamente nel sistema.                          |
 | Nominal Scenario | L'utente guest inserisce tutti i dati richiesti per la registrazione e viene registrato come cliente (2.1) |
 |     Variants     |                                                                                                            |
-|    Exceptions    |                                 Il cliente risulta già registrato (2.1.1)                                  |
+|    Exceptions    |                                 Il cliente risulta già registrato (2.1.2)                                  |
 
 #### Scenario 2.1.1
 
@@ -414,11 +425,11 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 |  Post condition  |                Il manager risulta registrato correttamente nel sistema.                |
 | Nominal Scenario | L'admin crea un nuovo utente di tipo manager e inserisce l'email e il codice aziendale |
 |     Variants     |                                                                                        |
-|    Exceptions    |                       Il manager risulta già registrato (2.1.1)                        |
+|    Exceptions    |                       Il manager risulta già registrato (2.2.2)                        |
 
-#### Scenario 2.2
+#### Scenario 2.2.1
 
-|  Scenario 2.2  |              Registrazione corretta del manager              |
+|  Scenario 2.2.1  |              Registrazione corretta del manager              |
 | :------------: | :----------------------------------------------------------: |
 |  Precondition  |                              --                              |
 | Post condition |   Il manager risulta registrato correttamente nel sistema    |
@@ -426,9 +437,9 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 |       1        | L'admin inserisce email e codice aziendale del nuovo manager |
 |       2        |   Il sistema salva i dati e viene creato il nuovo manager    |
 
-#### Scenario 2.2.1
+#### Scenario 2.2.2
 
-| Scenario 2.2.1 |                  Registrazione errata del manager                   |
+| Scenario 2.2.2 |                  Registrazione errata del manager                   |
 | :------------: | :-----------------------------------------------------------------: |
 |  Precondition  |                                 --                                  |
 | Post condition |                                                                     |
@@ -436,19 +447,19 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 |       1        |    L'admin inserisce email e codice aziendale del nuovo manager     |
 |       2        | Il manager risulta già registrato, il sistema restituisce un errore |
 
-### Use case 2.3 , UC2.3
+### Use case 2.3, UC2.3
 
 | Actors Involved  |                                 Cliente                                  |
 | :--------------: | :----------------------------------------------------------------------: |
 |   Precondition   |                           Il cliente è loggato                           |
 |  Post condition  |         Lo username del cliente risulta modificato correttamente         |
-| Nominal Scenario | Il cliente inserisce il nuovo username da sostituire al precedente (2.3) |
+| Nominal Scenario | Il cliente inserisce il nuovo username da sostituire al precedente (2.3.1) |
 |     Variants     |                                                                          |
-|    Exceptions    |                      Lo username esiste già (2.3.1)                      |
+|    Exceptions    |                      Lo username esiste già (2.3.2)                      |
 
-#### Scenario 2.3
+#### Scenario 2.3.1
 
-|  Scenario 2.3  |                        Modifica dello username (a buon fine)                         |
+|  Scenario 2.3.1  |                        Modifica dello username (a buon fine)                         |
 | :------------: | :----------------------------------------------------------------------------------: |
 |  Precondition  |                                 Il cliente è loggato                                 |
 | Post condition |          Il nuovo username fornito dal cliente viene salvato correttamente           |
@@ -460,9 +471,9 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 |       5        |                 Il sistema verifica che lo username sia disponibile                  |
 |       6        | Lo username è disponibile: il sistema salva il nuovo username per il cliente attuale |
 
-#### Scenario 2.3.1
+#### Scenario 2.3.2
 
-| Scenario 2.3.1 |                Modifica dello username (il nuovo username esiste già nel sistema)                |
+| Scenario 2.3.2 |                Modifica dello username (il nuovo username esiste già nel sistema)                |
 | :------------: | :----------------------------------------------------------------------------------------------: |
 |  Precondition  |                                       Il cliente è loggato                                       |
 | Post condition |          Lo username non è disponibile, le informazioni del cliente risultano invariate          |
@@ -512,7 +523,7 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 |       5        |                  Il sistema invia un'email di verifica alla casella di posta elettronica del cliente                   |
 |       6        |    Il sistema non riceve conferma della verifica della nuova email, le informazioni del cliente risultano invariate    |
 
-### Use case 2.5 , UC2.5
+### Use case 2.5, UC2.5
 
 | Actors Involved  |                                    Utente                                     |
 | :--------------: | :---------------------------------------------------------------------------: |
@@ -550,7 +561,7 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 |       5        |                     Il sistema verifica che le password inserite combacino                     |
 |       6        | Le password non combaciano: il sistema mostra un errore e la procedura riprende dallo step #3  |
 
-### Use case 2.6 , UC2.6
+### Use case 2.6, UC2.6
 
 | Actors Involved  |                                         Cliente                                          |
 | :--------------: | :--------------------------------------------------------------------------------------: |
@@ -570,7 +581,7 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 |       1        |     Il cliente chiede di eliminare il proprio profilo     |
 |       2        | Il sistema elimina il cliente e i suoi dati correttamente |
 
-### Use case 2.7 , UC2.7
+### Use case 2.7, UC2.7
 
 | Actors Involved  |                       Admin                        |
 | :--------------: | :------------------------------------------------: |
@@ -580,7 +591,7 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 |     Variants     |                                                    |
 |    Exceptions    |                                                    |
 
-#### Scenario 2.7.1
+#### Scenario 2.7
 
 | Scenario 2.7.1 |        Eliminazione del profilo del manager        |
 | :------------: | :------------------------------------------------: |
