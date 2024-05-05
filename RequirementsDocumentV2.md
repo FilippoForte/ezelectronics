@@ -179,7 +179,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR2.3| Modifica informazioni utente: username di un cliente loggato                          |
 | FR2.4| Modifica informazioni utente: email di un cliente loggato                             |
 | FR2.5| Modifica informazioni utente: password di un utente loggato                           |
-| FR2.6| Eliminazione del proprio profilo ******** (AGGIUNTO)                                  |
+| FR2.6| Eliminazione del proprio profilo                                                      |
 | FR2.7| Eliminazione di un manager registrato                                                 |
 | **FR3**| **Gestione dei prodotti**                                                           |
 | FR3.1| Visualizzazione di tutti i prodotti                                                   |
@@ -190,7 +190,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR3.6| Filtraggio dei prodotti per categoria                                                 |
 | FR3.7| Filtraggio dei prodotti per modello                                                   |
 | FR3.8| Filtraggio dei prodotti per disponibilità                                             |
-| FR3.9| Aggiungi sconto ad un prodotto                                          |
+| FR3.9| Aggiungi sconto ad un prodotto                                                        |
 | FR3.10| Filtraggio informazioni prodotti per sconto (maggiore o uguale a quello indicato)    |
 | FR3.11| Aggiorna la quantità disponibile di un prodotto quando viene venduto                 |
 | **FR4**| **Gestione del carrello**                                                           |
@@ -201,20 +201,20 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR4.5| Visualizzazione della cronologia dei carrelli acquistati dal cliente                  |
 | FR4.6| Svuota il carrello attuale                                                            |
 | **FR5**| **Gestione spedizioni**                                                             |
-| FR5.1| Aggiunta indirizzo di spedizione   |
-| FR5.2| Modifica indirizzo di spedizione                                         |
-| FR5.3| Visualizza stato della spedizione del carrello acquistato                |
+| FR5.1| Aggiunta indirizzo di spedizione                                                      |
+| FR5.2| Modifica indirizzo di spedizione                                                      |
+| FR5.3| Visualizza stato della spedizione del carrello acquistato                             |
 | **FR6**| **Gestione pagamenti**                                                              |
-| FR6.1| Aggiungi metodo di pagamento                                           |
-| FR6.2| Rimuovi metodo di pagamento                                             |
+| FR6.1| Aggiungi metodo di pagamento                                                          |
+| FR6.2| Rimuovi metodo di pagamento                                                           |
 | **FR7**| **Analisi vendite**                                                                 |
-| FR7.1| Visualizza carrelli venduti (filtri opzionali: intervallo di date, categoria prodotto, modello prodotto)                                                                                      |
-| FR7.2| Visualizza totale dei prodotti venduti (in base ai filtri specificati in FR7.1)       |
+| FR7.1| Visualizza statistiche relative allo stato degli ordini                               |
+| FR7.2| Visualizza statistiche prodotti venduti in un range di date                           |
 | **FR8**| **Gestione notifiche**                                                              |
-| FR8.1| Invio di una email di notifica al cliente quando un prodotto all'interno della sua lista dei desideri riceve uno sconto|
-| FR8.3| Invio di una email di notifica al cliente quando lo stato della sua spedizione viene aggiornato |
-| FR8.4| Invio di una email di notifica al cliente quando un prodotto nel suo carrello viene esaurito (prima che lui lo acquisti)|
-| FR8.5| Invio di una email di notifica al manager quando un prodotto viene esaurito           |
+| FR8.1| Invio di una notifica al cliente quando un prodotto all'interno della sua lista dei desideri riceve uno sconto |
+| FR8.2| Invio di una notifica al cliente quando lo stato della sua spedizione viene aggiornato |
+| FR8.3| Invio di una notifica al cliente quando un prodotto nel suo carrello viene esaurito (prima che lui lo acquisti)|
+| FR8.4| Invio di una notifica al manager quando un prodotto viene esaurito                    |
 |**FR9**| **Gestione lista dei desideri**                                                      |
 | FR9.1| Visualizza lista dei desideri                                                         |
 | FR9.2| Aggiungi prodotto alla lista dei desideri                                             |
@@ -222,52 +222,49 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 
 ## Table of rights
 
-| Codice - Descrizione                                                                            |Utente Guest | Cliente | Manager |
-| ----------------------------------------------------------------------------------------------- |:----------: | :-----: | :-----: |
-| FR1.1 Login di un utente registrato                                                             |     X     |           |           |
-| FR1.2 Logout di un utente registrato                                                            |           |     X     |     X     |
-| FR1.3 Possibilità di ottenere le informazioni relative all'utente correntemente loggato         |           |     X     |     X     |
-| FR2.1 Registrazione di un nuovo utente                                                          |     X     |           |           |
-| FR2.2 Modifica informazioni utente: username di un cliente loggato                              |           |     X     |           |
-| FR2.3 Modifica informazioni utente: email di un cliente loggato                                 |           |     X     |           |
-| FR2.4 Modifica informazioni utente: password di un utente loggato                               |           |     X     |     X     |
-| FR2.5 Eliminare il proprio profilo ******** (AGGIUNTO)                                          |           |           |           |
-| FR2.6 Elimina profilo utente                                                                    |           |           |           |
-| FR2.7 Visualizza utenti (????? anche per ruolo)                                                 |           |           |           |
-| FR3.1 Visualizzazione di tutti i prodotti                                                       |     X     |     X     |     X     |
-| FR3.2 Aggiunta di un nuovo prodotto                                                             |           |           |     X     |
-| FR3.3 Rimozione di un prodotto                                                                  |           |           |     X     |
-| FR3.4 Registrazione dell'arrivo di un nuovo (insieme di) prodotti                               |           |           |     X     |
-| FR3.5 Visualizza informazioni prodotti di una certa categoria (opzionale: parametro disponibile)|     X     |     X     |     X     |
-| FR3.6 Visualizza informazioni prodotti di un certo modello (opzionale: parametro disponibile)   |     X     |     X     |     X     |
-| FR3.7 Visualizza informazioni di un prodotto con un determinato codice                          |     X     |     X     |     X     |
-| FR3.8 Aggiungi sconto ad un prodotto                                                            |           |           |     X     |
-| FR3.9 Filtra prodotti per sconto                                                                |           |     X     |     X     |
-| FR3.10 Visualizza storico prezzi di un prodotto                                                 |           |     X     |     X     |
-| FR3.11 Aggiungi prodotto alla lista dei desideri                                                |           |     X     |           |
-| FR3.12 Rimuovi prodotto dalla lista dei desideri                                                |           |     X     |           |
-| FR4.1 Visualizzazione del carrello attuale del cliente                                          |           |     X     |           |
-| FR4.2 Aggiunta di un prodotto al carrello attuale                                               |           |     X     |           |
-| FR4.3 Rimozione di un prodotto dal carrello attuale                                             |           |     X     |           |
-| FR4.4 Acquisto dei prodotti aggiunti al carrello attuale                                        |           |     X     |           |
-| FR4.5 Visualizzazione della cronologia dei carrelli acquistati dal cliente                      |           |     X     |           |
-| FR4.6 Cancellazione del carrello attuale                                                        |           |     X     |           |
-| FR5.1 Aggiunta indirizzo di spedizione                                                          |           |     X     |           |
-| FR5.2 Modifica indirizzo di spedizione                                                          |           |     X     |           |
-| FR5.3 Visualizza stato della spedizione del carrello acquistato                                 |           |     X     |           |
-| FR5.4 Visualizza stato ordine (non corrisponde a req funzionale??)                              |           |     X     |           |
-| FR6.1 Aggiungi metodo di pagamento                                                              |           |     X     |           |
-| FR6.2 Rimuovi metodo di pagamento                                                               |           |     X     |           |
-| FR7.1 Visualizza statistiche relative allo stato degli ordini     (DA FARE)                     |           |           |     X     |
-| FR7.2 Visualizza statistiche prodotti venduti in un range di date                               |           |           |     X     |
-| FR8.1 Visualizzazione delle notifiche                                                           |           |           |           |
-| FR8.2 Invio di una notifica al cliente quando un prodotto all'interno della sua lista dei desideri riceve uno sconto                                                                                            |           |           |           |
-| FR8.3 Invio di una notifica al cliente quando lo stato della sua spedizione viene aggiornato    |           |           |           |
-| FR8.4 Invio di una notifica al cliente quando un prodotto nel suo carrello viene esaurito       |           |           |           |
-| FR8.5 Invio di una notifica al manager quando un prodotto viene esaurito                        |           |           |           |
-| FR9.1 Visualizza lista dei desideri                                                             |           |     X     |           |
-| FR9.2 Aggiungi prodotto alla lista dei desideri                                                 |           |     X     |           |
-| FR9.3 Rimuovi prodotto dalla lista dei desideri                                                 |           |     X     |           |
+| Codice - Descrizione                                                                            | Utente Guest | Cliente | Manager | Admin   |
+| ----------------------------------------------------------------------------------------------- |:-----------: | :-----: | :-----: | :-----: |
+| FR1.1 Login di un utente registrato                                                             |     X        |         |         |         |
+| FR1.2 Logout di un utente registrato                                                            |              |     X   |     X   |    X    |
+| FR1.3 Possibilità di ottenere le informazioni relative all'utente correntemente loggato         |              |     X   |     X   |         |
+| FR2.1 Registrazione di un nuovo cliente                                                         |     X        |         |         |         |
+| FR2.2 Registrazione di un nuovo manager                                                         |              |         |         |    X    |
+| FR2.3 Modifica informazioni utente: username di un cliente loggato                              |              |     X   |         |         |
+| FR2.4 Modifica informazioni utente: email di un cliente loggato                                 |              |     X   |         |         |
+| FR2.5 Modifica informazioni utente: password di un utente loggato                               |              |     X   |         |         |
+| FR2.6 Eliminare il proprio profilo                                                              |              |     X   |         |         |
+| FR2.7 Eliminazione di un manager registrato                                                     |              |     X   |         |    X    |
+| FR3.1 Visualizzazione di tutti i prodotti                                                       |     X        |     X   |     X   |         |
+| FR3.2 Visualizzazione delle informazioni di un prodotto                                         |              |     X   |     X   |         |
+| FR3.3 Aggiunta di un nuovo prodotto                                                             |              |         |     X   |         |
+| FR3.4 Rimozione di un prodotto                                                                  |              |         |     X   |         |
+| FR3.5 Registrazione dell'arrivo di un nuovo (insieme di) prodotti                               |              |         |     X   |         |
+| FR3.6 Filtraggio dei prodotti per categoria                                                     |     X        |     X   |     X   |         |
+| FR3.7 Filtraggio dei prodotti per modello                                                       |     X        |     X   |     X   |         |
+| FR3.8 Filtraggio dei prodotti per disponibilità                                                 |     X        |     X   |     X   |         |
+| FR3.9 Aggiungi sconto ad un prodotto                                                            |              |         |     X   |         |
+| FR3.10 Filtraggio informazioni prodotti per sconto (maggiore o uguale a quello indicato)        |              |     X   |     X   |         |
+| FR3.11 Aggiorna la quantità disponibile di un prodotto quando viene venduto                     |              |     X   |     X   |         |
+| FR4.1 Visualizzazione del carrello attuale del cliente                                          |              |     X   |         |         |
+| FR4.2 Aggiunta di un prodotto al carrello attuale                                               |              |     X   |         |         |
+| FR4.3 Rimozione di un prodotto dal carrello attuale                                             |              |     X   |         |         |
+| FR4.4 Acquisto dei prodotti aggiunti al carrello attuale                                        |              |     X   |         |         |
+| FR4.5 Visualizzazione della cronologia dei carrelli acquistati dal cliente                      |              |     X   |         |         |
+| FR4.6 Cancellazione del carrello attuale                                                        |              |     X   |         |         |
+| FR5.1 Aggiunta indirizzo di spedizione                                                          |              |     X   |         |         |
+| FR5.2 Modifica indirizzo di spedizione                                                          |              |     X   |         |         |
+| FR5.3 Visualizza stato della spedizione del carrello acquistato                                 |              |     X   |         |         |
+| FR6.1 Aggiungi metodo di pagamento                                                              |              |     X   |         |         |
+| FR6.2 Rimuovi metodo di pagamento                                                               |              |     X   |         |         |
+| FR7.1 Visualizza statistiche relative allo stato degli ordini                                   |              |         |     X   |         |
+| FR7.2 Visualizza statistiche prodotti venduti in un range di date                               |              |         |     X   |         |
+| FR8.1 Invio di una notifica al cliente quando un prodotto all'interno della sua lista dei desideri riceve uno sconto                                                                                            |              |         |         |         |
+| FR8.2 Invio di una notifica al cliente quando lo stato della sua spedizione viene aggiornato    |              |         |         |         |
+| FR8.3 Invio di una notifica al cliente quando un prodotto nel suo carrello viene esaurito (prima che lui lo acquisti)                                                                                         |              |         |         |         |
+| FR8.4 Invio di una notifica al manager quando un prodotto viene esaurito                        |              |         |         |         |
+| FR9.1 Visualizza lista dei desideri                                                             |              |     X   |         |         |
+| FR9.2 Aggiungi prodotto alla lista dei desideri                                                 |              |     X   |         |         |
+| FR9.3 Rimuovi prodotto dalla lista dei desideri                                                 |              |     X   |         |         |
 
 ## Non Functional Requirements
 
