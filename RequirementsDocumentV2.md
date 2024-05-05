@@ -30,9 +30,7 @@ Version: V2 - description of EZElectronics in FUTURE form (as proposed by the te
       - [Scenario 1.1.1](#scenario-111)
       - [Scenario 1.1.2](#scenario-112)
     - [Use case 1.2, UC1.2](#use-case-12-uc12)
-      - [Scenario 1.2](#scenario-12)
     - [Use case 1.3, UC1.3](#use-case-13-uc13)
-      - [Scenario 1.3](#scenario-13)
     - [Use case 2.1, UC2.1](#use-case-21-uc21)
       - [Scenario 2.1.1](#scenario-211)
       - [Scenario 2.1.2](#scenario-212)
@@ -217,8 +215,8 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 | FR6.1   | Aggiungi metodo di pagamento                                                                                    |
 | FR6.2   | Rimuovi metodo di pagamento                                                                                     |
 | **FR7** | **Analisi vendite**                                                                                             |
-| FR7.1   | Visualizza carrelli venduti (opzionale: filtro per intervalli di date, categoria e/o modello)                   |
-| FR7.2   | Visualizza totale dei prodotti venduti (opzionale: filtro per intervalli di date, categoria e/o modello)        |
+| FR7.1   | Visualizza carrelli venduti (opzionale: filtro per intervalli di date, categoria, codice e/o modello)                   |
+| FR7.2   | Visualizza totale dei prodotti venduti (opzionale: filtro per intervalli di date, categoria, codice e/o modello)        |
 | **FR8** | **Gestione notifiche**                                                                                          |
 | FR8.1   | Invio di una notifica al cliente quando un prodotto all'interno della sua lista dei desideri riceve uno sconto  |
 | FR8.2   | Invio di una notifica al cliente quando lo stato della sua spedizione viene aggiornato                          |
@@ -270,8 +268,8 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 | FR5.4 Eliminazione di un indirizzo di spedizione                                                                      |              |    X    |         |       |
 | FR6.1 Aggiungi metodo di pagamento                                                                                    |              |    X    |         |       |
 | FR6.2 Rimuovi metodo di pagamento                                                                                     |              |    X    |         |       |
-| FR7.1 Visualizza carrelli venduti (opzionale: filtro per intervalli di date, categoria e/o modello)                   |              |         |    X    |       |
-| FR7.2 Visualizza totale dei prodotti venduti (opzionale: filtro per intervalli di date, categoria e/o modello)        |              |         |    X    |       |
+| FR7.1 Visualizza carrelli venduti (opzionale: filtro per intervalli di date, categoria, codice e/o modello)                   |              |         |    X    |       |
+| FR7.2 Visualizza totale dei prodotti venduti (opzionale: filtro per intervalli di date, categoria, codice e/o modello)        |              |         |    X    |       |
 | FR8.1 Invio di una notifica al cliente quando un prodotto all'interno della sua lista dei desideri riceve uno sconto  |              |    O    |         |       |
 | FR8.2 Invio di una notifica al cliente quando lo stato della sua spedizione viene aggiornato                          |              |    O    |         |       |
 | FR8.3 Invio di una notifica al cliente quando un prodotto nel suo carrello viene esaurito (prima che lui lo acquisti) |              |    O    |         |       |
@@ -1283,7 +1281,7 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 | Post condition |               Vengono visualizzati correttamente i carrelli venduti                |
 |     Step#      |                                    Description                                     |
 |       1        |                Il manager chiede di visualizzare i carrelli venduti                |
-|       2        | (opzionale) Il manager inserisce i filtri (intervallo di date, categoria, modello) |
+|       2        | (opzionale) Il manager inserisce i filtri (intervallo di date, categoria, codice, modello) |
 |       3        |                        Il sistema mostra i carrelli venduti                        |
 
 ### Use case 7.2, UC7.2
@@ -1304,7 +1302,7 @@ O: L'attore vede/subisce le conseguenze della funzionalità
 | Post condition |                 Viene visualizzato il totale dei prodotti venduti                  |
 |     Step#      |                                    Description                                     |
 |       1        |          Il manager chiede di visualizzare il totale dei prodotti venduti          |
-|       2        | (opzionale) Il manager inserisce i filtri (intervallo di date, categoria, modello) |
+|       2        | (opzionale) Il manager inserisce i filtri (intervallo di date, categoria, codice, modello) |
 |       3        |                  Il sistema mostra il totale dei prodotti venduti                  |
 
 ### Use case 9.1, UC9.1
@@ -1377,8 +1375,8 @@ O: L'attore vede/subisce le conseguenze della funzionalità
   - Utente che dispone di un carrello in cui inserire i prodotti che vuole acquistare
   - Può visualizzare lo stato (della spedizione) del carrello corrente (quello dei carrelli passati è "Consegnato")
   - Può visualizzare lo storico dei carrelli che ha acquistato, quindi possiede almeno un carrello (quello corrente) ed eventualmente tutti quelli acquistati precedentemente
-  - Dispone di almeno un indirizzo di spedizione, dove farsi spedire i prodotti contenuti nel carrello che acquista
-  - Dispone di almeno un metodo di pagamento, con cui acquistare il suo carrello
+  - Può disporre di uno o più indirizzi di spedizione, dove farsi spedire i prodotti contenuti nel carrello che acquista
+  - Può disporre di uno o più metodi di pagamento, con cui acquistare il suo carrello
   - Dispone di una (e una sola) lista dei desideri a cui aggiungere prodotti a cui è interessato
 - Manager
   - Utente responsabile dei prodotti
@@ -1406,7 +1404,6 @@ O: L'attore vede/subisce le conseguenze della funzionalità
   - Notifica il cliente della registrazione di uno sconto per un prodotto in essa contenuto
 - Indirizzo di spedizione
   - Contiene i dati relativi alla posizione geografica a cui spedire i prodotti acquistati da un cliente
-  - Nel contesto del sistema, un indirizzo di spedizione esiste solo se aggiunto da un cliente (ovvero non esistono a priori tutti gli indirizzi del pianeta)
 - Metodo di pagamento
   - Definisce il metodo di pagamento e i relativi dati (IBAN / Numero di Carta / ...) aggiunto da un cliente
 - Notifiche
