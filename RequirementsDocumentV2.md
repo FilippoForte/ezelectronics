@@ -981,7 +981,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       2        |        Il sistema verifica che l'indirizzo sia corretto        |
 |       3        |            L'indirizzo di spedizione viene aggiunto            |
 #### Scenario 5.1.2
-| Scenario 4.6.2 |                    Inserimento errato del indirizzo                       |
+| Scenario 5.1.2 |                    Inserimento errato del indirizzo                       |
 | :------------: | :-----------------------------------------------------------------------: |
 |  Precondition  |                           Il cliente è loggato                            |
 | Post condition |                                                                           |
@@ -1008,7 +1008,7 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |       3        |         L'indirizzo di spedizione viene modificato         |
 |  Exceptions    |      L'indirizzo inserito non è corretto (5.2.2)         |
 #### Scenario 5.2.2
-| Scenario 4.6.2 |                    Inserimento errato del indirizzo                       |
+| Scenario 5.2.2 |                    Inserimento errato del indirizzo                       |
 | :------------: | :-----------------------------------------------------------------------: |
 |  Precondition  |                           Il cliente è loggato                            |
 | Post condition |                                                                           |
@@ -1032,7 +1032,22 @@ Storia: vuole regalare a suo figlio una console da gioco, <u>spedendola ad un in
 |     Step#      |                        Description                         |
 |       1        | Il cliente chiede di di visualizzare lo stato di un ordine |
 |       2        |       Il sistema mostra l'attuale stato dell'ordine        |
-
+### Use case 5.4, UC5.4
+| Actors Involved  |              Cliente      |
+| :--------------: | :-----------------------------------------------------: |
+|   Precondition   |     Il cliente è loggato  |
+|  Post condition  |     Viene eliminato l'indirizzo di spedizione    |
+| Nominal Scenario | Il cliente chiede di eliminare un indirizzo di spedizione |
+|     Variants     |                                                         |
+|    Exceptions    |                                                         |
+#### Scenario 5.4
+|  Scenario 5.4  |   Rimozione corretta dell'indirizzo               |
+| :------------: | :--------------------------------------------------------: |
+|  Precondition  |       Il cliente è loggato     |
+| Post condition |   Viene eliminato l'indirizzo di spedizione   |
+|     Step#      |                        Description                         |
+|       1        | Il cliente chiede di eliminare un indirizzo di spedizione |
+|       2        |  Il sistema rimuove l'indirizzo selezionato dal cliente   |
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Use case 6.1, UC6.1
