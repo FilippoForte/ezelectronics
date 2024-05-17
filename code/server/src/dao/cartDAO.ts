@@ -5,8 +5,6 @@
  */
 class CartDAO {
 
-
-    
 }
 
 export default CartDAO
