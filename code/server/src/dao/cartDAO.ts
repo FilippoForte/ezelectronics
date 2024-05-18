@@ -115,6 +115,7 @@ class CartDAO {
                     id = row.id;
                 });
                 const sql1 = "SELECT modelProduct, quantityInCart, quantity, sellingPrice FROM ProductInCart PC, products P WHERE PC.modelProduct==P.model and idCart == ?";
+                const sql2 = "UPDATE products WHERE model == ? SET quantity = quantity - ?";
                 db.all(sql1, [id], (err: Error | null, rows: any) => {
                     if (err) {
                         reject(err);
@@ -128,11 +129,21 @@ class CartDAO {
                         {
                             resolve(false);
                         }
+                        db.run(sql2, [row.modelProduct, row.quantityInCart], (err: Error | null) => {
+                            if (err) {
+                                reject(err)
+                            }
+                        });
                     }
                 });
-                //per adesso contolla solo
-
-
+                const sql3 = "UPDATE carts WHERE id == ? SET paid = true, paymentDate = ?";
+                const data = new Date();
+                let oggi = data.getDate() + "/" + data.getMonth() + 1 + "/" + data.getFullYear();
+                db.run(sql2, [id, oggi], (err: Error | null) => {
+                    if (err) {
+                        reject(err)
+                    }
+                });
                 resolve(true);
             } catch (error) {
                 reject(error)
