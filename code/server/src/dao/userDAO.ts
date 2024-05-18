@@ -100,5 +100,28 @@ class UserDAO {
 
         })
     }
+
+    async getUsersByRole(role: string) /**:Promise<User[]> */ { 
+        return new Promise<User[]>((resolve, reject) => {
+            try {
+                let users: User[] = [];
+                const sql = "SELECT * FROM users WHERE role == ?";
+                db.all(sql, [role], (err: Error | null, rows: any) => {
+                    if (err) {
+                        reject(err);
+                    }
+                    for (let row of rows)
+                    {
+                        users.push(new User(row.username, row.name, row.surname, row.role, row.address, row.birthdate));
+                    }
+                });
+                resolve(users);
+            } catch (error) {
+                reject(error)
+            }
+        });
+    }
+
+
 }
 export default UserDAO
