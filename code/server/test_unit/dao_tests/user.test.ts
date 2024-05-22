@@ -30,8 +30,6 @@ test("It should resolve true", async () => {
     mockRandomBytes.mockRestore()
     mockDBRun.mockRestore()
     mockScrypt.mockRestore()
-
-
 })
 
 
