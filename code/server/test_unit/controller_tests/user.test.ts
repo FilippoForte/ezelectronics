@@ -1,7 +1,7 @@
 import { test, expect, jest } from "@jest/globals"
 import UserController from "../../src/controllers/userController"
 import UserDAO from "../../src/dao/userDAO"
-import * as UserError from "../../src/errors/userError"
+import {UserAlreadyExistsError} from "../../src/errors/userError";
 
 jest.mock("../../src/dao/userDAO")
 
@@ -21,7 +21,7 @@ describe("UserController: createUser method tests", () => {
         jest.restoreAllMocks();
     });
 
-    test("It should return true", async () => {
+    test("Insertion of a valid user (it should resolve true)", async () => {
         const testUser = { //Define a test user object
             username: "test",
             name: "test",
@@ -44,7 +44,7 @@ describe("UserController: createUser method tests", () => {
         expect(response).toBe(true); //Check if the response is true
     });
 
-    test("It should return UserNotFoundError", async () => {
+    test("Insertion of an already existing user (it should reject with UserAlreadyExistsError)", async () => {
         const testUser = { //Define a test user object
             username: "test",
             name: "test",
@@ -52,10 +52,12 @@ describe("UserController: createUser method tests", () => {
             password: "test",
             role: "Manager"
         }
-        createUserSpy.mockRejectedValueOnce(new UserError.UserNotFoundError()); //Mock the createUser method of the DAO
+        createUserSpy.mockRejectedValueOnce(new UserAlreadyExistsError()); //Mock the createUser method of the DAO
         const controller = new UserController(); //Create a new instance of the controller
 
-        await expect(controller.createUser(testUser.username, testUser.name, testUser.surname, testUser.password, testUser.role)).rejects.toThrow(UserError.UserNotFoundError);
+        await expect(controller.createUser(testUser.username, testUser.name, testUser.surname, testUser.password, testUser.role))
+            .rejects
+            .toThrow(UserAlreadyExistsError);
 
         //Check if the createUser method of the DAO has been called once with the correct parameters
         expect(UserDAO.prototype.createUser).toHaveBeenCalledTimes(1);
