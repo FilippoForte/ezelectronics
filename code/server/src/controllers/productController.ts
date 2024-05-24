@@ -1,4 +1,5 @@
 import ProductDAO from "../dao/productDAO";
+import { Product } from "../components/product";
 
 /**
  * Represents a controller for managing products.
@@ -21,7 +22,9 @@ class ProductController {
      * @param arrivalDate The optional date in which the product arrived.
      * @returns A Promise that resolves to nothing.
      */
-    async registerProducts(model: string, category: string, quantity: number, details: string | null, sellingPrice: number, arrivalDate: string | null) /**:Promise<void> */ { }
+    async registerProducts(model: string, category: string, quantity: number, details: string | null, sellingPrice: number, arrivalDate: string | null) :Promise<void> { 
+        return this.dao.registerProducts(model, category, quantity, details, sellingPrice, arrivalDate);
+    }
 
     /**
      * Increases the available quantity of a product through the addition of new units.
@@ -30,7 +33,9 @@ class ProductController {
      * @param changeDate The optional date in which the change occurred.
      * @returns A Promise that resolves to the new available quantity of the product.
      */
-    async changeProductQuantity(model: string, newQuantity: number, changeDate: string | null) /**:Promise<number> */ { }
+    async changeProductQuantity(model: string, newQuantity: number, changeDate: string | null) :Promise<number>  {
+        return this.dao.changeProductQuantity(model, newQuantity, changeDate)
+     }
 
     /**
      * Decreases the available quantity of a product through the sale of units.
@@ -48,7 +53,9 @@ class ProductController {
      * @param model An optional parameter. It can only be present if grouping is equal to "model" (in which case it must be present and not empty).
      * @returns A Promise that resolves to an array of Product objects.
      */
-    async getProducts(grouping: string | null, category: string | null, model: string | null) /**Promise<Product[]> */ { }
+    async getProducts(grouping: string | null, category: string | null, model: string | null) : Promise<Product[]>  { 
+        return this.dao.getProducts(grouping, category, model);
+    }
 
     /**
      * Returns all available products (with a quantity above 0) in the database, with the option to filter them by category or model.

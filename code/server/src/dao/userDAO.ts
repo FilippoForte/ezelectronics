@@ -20,7 +20,7 @@ class UserDAO {
         return new Promise<boolean>((resolve, reject) => {
             try {
                 /**
-                 * Example of how to retrieve user information from a table that stores username, encrypted password and salt (encrypted set of 16 random bytes that ensures additional protection against dictionary attacks).
+                 * Example of how to retrieve user information from a table that stores username, encrypted password and salt (encrypted set of 16 random bytes that ensures additional prot-ection against dictionary attacks).
                  * Using the salt is not mandatory (while it is a good practice for security), however passwords MUST be hashed using a secure algorithm (e.g. scrypt, bcrypt, argon2).
                  */
                 const sql = "SELECT username, password, salt FROM users WHERE username = ?"
