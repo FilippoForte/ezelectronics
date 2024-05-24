@@ -1,43 +1,10 @@
 import { test, expect, jest } from "@jest/globals"
 
-import UserController from "../../src/controllers/userController"
 import UserDAO from "../../src/dao/userDAO"
 import crypto from "crypto"
 import db from "../../src/db/db"
 import { Database } from "sqlite3"
-import * as fs from "node:fs";
 import {UserAlreadyExistsError} from "../../src/errors/userError";
-import * as sqlite3 from "sqlite3";
-
-jest.mock("crypto")
-jest.mock("sqlite3")
-
-const dbInitPath = "./src/db/queryCreazioneDB.sql"
-function runSqlScript(filePath: string): Promise<void> {
-    return new Promise((resolve, reject) => {
-        fs.readFile(filePath, 'utf-8', (err, data) => {
-            if (err) {
-                reject(err);
-                return;
-            }
-            db.exec(data, (err) => {
-                if (err) {
-                    reject(err);
-                    return;
-                }
-                resolve();
-            });
-        });
-    });
-}
-
-async function setupDatabase() {
-    try {
-        await runSqlScript(dbInitPath);
-    } catch (err) {
-        console.error('Error setting up the database:', err);
-    }
-}
 
 //Example of unit test for the createUser method
 //It mocks the database run method to simulate a successful insertion and the crypto randomBytes and scrypt methods to simulate the hashing of the password
@@ -45,60 +12,79 @@ async function setupDatabase() {
 describe("UserDAO: createUser method tests", () => {
     let mockRandomBytes: any;
     let mockScrypt: any;
-    let mockDbRun;
+    let mockDBRun: any;
+    let testUser: any;
 
     beforeAll(async () => {
-        jest.setTimeout(20000);
+        mockRandomBytes = jest.spyOn(crypto, "randomBytes").mockImplementation(() => {
+            return (Buffer.from("salt"));
+        })
 
-        await setupDatabase();
+        mockScrypt = jest.spyOn(crypto, "scryptSync").mockImplementation(() => {
+            return Buffer.from("hashedPassword");
+        })
 
-        mockRandomBytes = jest.spyOn(crypto, "randomBytes").mockImplementation((size) => {
-            return (Buffer.from("salt"))
-        })
-        mockScrypt = jest.spyOn(crypto, "scryptSync").mockImplementation((password, salt, keylen) => {
-            return Buffer.from("hashedPassword")
-        })
-        mockDbRun = jest.spyOn(sqlite3, "run").mockImplementation((sql, params, callback) => {
-            callback();
-        })
+        mockDBRun = jest.spyOn(db, "run");
+
+        testUser = {
+            username: "test",
+            name: "test",
+            surname: "test",
+            password: "test",
+            role: "Manager"
+        }
     });
 
     afterEach(() => {
-        jest.clearAllMocks(); // Restore the calls counter for all mocks
-        jest.restoreAllMocks();
-        db.serialize(() => {
-            db.run("DELETE FROM users") // Delete every record from the table "users"
-        });
+        jest.clearAllMocks();
     })
 
     test("Insertion of a valid user (it should resolve true)", async () => {
-        const userDAO = new UserDAO()
+        mockDBRun.mockImplementationOnce((sql: any, params: any, callback: any) => {
+            callback(null);
+            return {} as Database;
+        });
 
-        const result = await userDAO.createUser("username", "name", "surname", "password", "Manager");
+        const userDAO = new UserDAO();
+
+        const result = await userDAO.createUser(testUser.username, testUser.name, testUser.surname, testUser.password, testUser.role);
 
         expect(result).toBe(true);
         expect(mockRandomBytes).toHaveBeenCalledTimes(1);
         expect(mockScrypt).toHaveBeenCalledTimes(1);
-
-        const user = await userDAO.getUserByUsername("username");
-
-        expect(user.username).toBe("username");
-        expect(user.name).toBe("name");
-        expect(user.surname).toBe("surname");
-        expect(user.role).toBe("Manager");
-        expect(user.address).toBe(null);
-        expect(user.birthdate).toBe(null);
+        expect(mockDBRun).toHaveBeenCalledTimes(1);
+        expect(mockDBRun).toHaveBeenCalledWith(
+            expect.any(String),
+            [testUser.username, testUser.name, testUser.surname, testUser.role, Buffer.from("hashedPassword"), Buffer.from("salt")],
+            expect.any(Function)
+        );
     });
 
     test("Insertion of an already existing user (it should reject with UserAlreadyExistsError)", async () => {
-        const userDAO = new UserDAO()
+        let err = new UserAlreadyExistsError();
+        const userDAO = new UserDAO();
 
-        await userDAO.createUser("username", "name", "surname", "password", "Manager");
+        mockDBRun.mockImplementationOnce((sql: any, params: any, callback: any) => {
+            callback(null);
+            return {} as Database;
+        }).mockImplementationOnce((sql: any, params: any, callback: any) => {
+            callback(err);
+            return {} as Database;
+        });
 
-        await expect(userDAO.createUser("username", "name", "surname", "password", "Manager"))
+        await userDAO.createUser(testUser.username, testUser.name, testUser.surname, testUser.password, testUser.role);
+
+        await expect(userDAO.createUser(testUser.username, testUser.name, testUser.surname, testUser.password, testUser.role))
             .rejects
             .toThrow(UserAlreadyExistsError);
+
         expect(mockRandomBytes).toHaveBeenCalledTimes(2);
         expect(mockScrypt).toHaveBeenCalledTimes(2);
+        expect(mockDBRun).toHaveBeenCalledTimes(2);
+        expect(mockDBRun).toHaveBeenCalledWith(
+            expect.any(String),
+            [testUser.username, testUser.name, testUser.surname, testUser.role, Buffer.from("hashedPassword"), Buffer.from("salt")],
+            expect.any(Function)
+        );
     });
 });
