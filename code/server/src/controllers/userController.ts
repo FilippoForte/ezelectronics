@@ -62,7 +62,9 @@ class UserController {
      * @param username - The username of the user to delete. The user must exist.
      * @returns A Promise that resolves to true if the user has been deleted.
      */
-    async deleteUser(user: User, username: string) /**:Promise<Boolean> */ { }
+    async deleteUser(user: User, username: string) /**:Promise<Boolean> */ { 
+        
+    }
 
     /**
      * Deletes all non-Admin users

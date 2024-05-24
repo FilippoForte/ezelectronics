@@ -21,7 +21,7 @@ class ReviewDAO {
         return new Promise<void>((resolve,reject)=> {
             try {
                 const sql = "INSERT INTO review(model, user, score,date, comment) VALUES(?, ?, ?,?, ?)"
-                db.run(sql, [model, user, score, new dayjs(),comment], (err: Error | null) => {
+                db.run(sql, [model, user, score, dayjs().format("YYYY-MM-DD"),comment], (err: Error | null) => {
                     if (err) {
                         if (err.message.includes("UNIQUE constraint failed: ")) reject(new ExistingReviewError)
                         reject(err)

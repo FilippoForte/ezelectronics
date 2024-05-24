@@ -19,7 +19,7 @@ CREATE TABLE "users" (
 CREATE TABLE "products" (
     "category" TEXT NOT NULL,
     "model" TEXT NOT NULL,
-    "sellingPrice" INTEGER NOT NULL,
+    "sellingPrice" DOUBLE NOT NULL,
     "arrivalDate" TEXT,
     "details" TEXT,
     "quantity" INTEGER NOT NULL,
