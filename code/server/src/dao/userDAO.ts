@@ -2,6 +2,7 @@ import db from "../db/db"
 import { User } from "../components/user"
 import crypto from "crypto"
 import { UserAlreadyExistsError, UserNotFoundError } from "../errors/userError";
+import { Utility } from "../utilities";
 
 /**
  * A class that implements the interaction with the database for all user-related operations.
@@ -72,7 +73,32 @@ class UserDAO {
 
         })
     }
+    /**
+     * Returns a list of user object from the database.
+     * @returns A Promise that resolves the list of all users
+     */
+    getAllUsers(): Promise<User[]> {
+        return new Promise<User[]>((resolve, reject) => {
+            try {
+                let users: User[]=[];
+                const sql = "SELECT * FROM users"
+                db.all(sql, (err: Error | null, rows:any) => {
+                    if (err) {
+                        reject(err)
+                        return
+                    }
+                 
+                    else {
+                        users = rows.map((user:any) => new User(user.username, user.name, user.surname, user.role, user.address, user.birthdate))
+                        resolve(users)
+                    }
+                })
+            } catch (error) {
+                reject(error)
+            }
 
+        })
+    }
     /**
      * Returns a user object from the database based on the username.
      * @param username The username of the user to retrieve
@@ -100,8 +126,33 @@ class UserDAO {
 
         })
     }
+    /**
+     * Deletes all non-Admin users
+     * @returns A Promise that resolves to true if all non-Admin users have been deleted.
+     */
+    deleteAll(): Promise<Boolean> {
+        return new Promise<Boolean> ((resolve,reject)=> {
+            try{
+            const sql= "DELETE from users WHERE user.role <> 'ADMIN'"
+                if(Utility.isAdmin){
+                    db.run(sql,(err:Error | null)=> {
+                        if(err) {
+                            reject(err)
+                            return
+                        }
+                        else {
+                            resolve(true);
+                        }
+                    })
+                }
+            }catch(error){
+                reject(error)
+            }
 
-    async getUsersByRole(role: string) /**:Promise<User[]> */ { 
+        });
+    }
+
+    async getUsersByRole(role: string) :Promise<User[]> { 
         return new Promise<User[]>((resolve, reject) => {
             try {
                 let users: User[] = [];
@@ -122,6 +173,37 @@ class UserDAO {
         });
     }
 
+    /**
+     * Updates the personal information of one user. The user can only update their own information.
+     * @param user The user who wants to update their information
+     * @param name The new name of the user
+     * @param surname The new surname of the user
+     * @param address The new address of the user
+     * @param birthdate The new birthdate of the user
+     * @param username The username of the user to update. It must be equal to the username of the user parameter.
+     * @returns A Promise that resolves to the updated user
+     */
+    updateUserInfo(user: User, name: string, surname: string, address: string, birthdate: string, username: string) :Promise<User> { 
+       return new Promise<User> ((resolve,reject) => {
+        try{
+            if((Utility.isManager(user) || Utility.isCustomer(user)) && user.username==username || (Utility.isAdmin(user))){
+            const sql= "UPDATE users SET name= ? surname= ? address=? birthdate=? WHERE username==?";
+            db.run(sql,[name,surname,address,birthdate,username],(err:Error)=> {
+                if(err){
+                    reject(err)
+                }               
+                const newUser: User = new User(username, name, surname, user.role, address, birthdate);
+                resolve(newUser)
+            });
+            }
+            }catch (error){
+                reject(error)
 
+        }
+       });
+    }
 }
+
+
+
 export default UserDAO
