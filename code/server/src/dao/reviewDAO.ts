@@ -121,7 +121,7 @@ class ReviewDAO {
         return new Promise<void> ((resolve,reject)=> {
             try{
             const sql= "DELETE * from review "
-            db.run(sql, (err:Error | null)=> {
+            db.run(sql, [], (err:Error | null)=> {
                 if(err) {
                     reject(err)
                     return
