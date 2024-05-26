@@ -104,7 +104,7 @@ class UserDAO {
      * @param username The username of the user to retrieve
      * @returns A Promise that resolves the information of the requested user
      */
-    getUserByUsername(username: string): Promise<User> {
+    async getUserByUsername(username: string): Promise<User> {
         return new Promise<User>((resolve, reject) => {
             try {
                 const sql = "SELECT * FROM users WHERE username = ?"
@@ -202,6 +202,38 @@ class UserDAO {
         }
        });
     }
+
+
+    async deleteUser(user: User, username: string): Promise<boolean> {
+        const userToDelete = await this.getUserByUsername(username);
+
+        return new Promise<boolean>((resolve, reject) => {
+             try {
+                // Verifica se l'utente può eseguire l'operazione di cancellazione
+                if ((Utility.isAdmin(user) && !Utility.isAdmin(userToDelete)) ||
+                    (!Utility.isAdmin(user) && user.username === username)) {
+    
+                    const sql = "DELETE FROM users WHERE username = ?";
+                    
+                    db.run(sql, [username], (err: Error) => {
+                        if (err) {
+                            return reject(err);
+                        } else {
+                            return resolve(true);
+                        }
+                    });
+    
+                } else {
+                    // L'utente non ha i permessi per eseguire la cancellazione richiesta
+                    return reject(new Error("Unauthorized operation"));
+                }
+            } catch (error) {
+                return reject(error);
+            }
+        });
+    }
+    
+
 }
 
 
