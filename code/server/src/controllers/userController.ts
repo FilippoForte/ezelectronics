@@ -21,7 +21,7 @@ class UserController {
      * @param role - The role of the new user. It must not be null and it can only be one of the three allowed types ("Manager", "Customer", "Admin")
      * @returns A Promise that resolves to true if the user has been created.
      */
-    async createUser(username: string, name: string, surname: string, password: string, role: string) /**:Promise<Boolean> */ {
+    async createUser(username: string, name: string, surname: string, password: string, role: string) :Promise<Boolean>  {
         return this.dao.createUser(username, name, surname, password, role);
     }
 
@@ -38,7 +38,7 @@ class UserController {
      * @param role - The role of the users to retrieve. It can only be one of the three allowed types ("Manager", "Customer", "Admin")
      * @returns A Promise that resolves to an array of users with the specified role.
      */
-    async getUsersByRole(role: string) /**:Promise<User[]> */ { 
+    async getUsersByRole(role: string) :Promise<User[]> { 
         return this.dao.getUsersByRole(role);
     }
 
@@ -50,7 +50,7 @@ class UserController {
      * @param username - The username of the user to retrieve. The user must exist.
      * @returns A Promise that resolves to the user with the specified username.
      */
-    async getUserByUsername(user: User, username: string) /**:Promise<User> */ { 
+    async getUserByUsername(user: User, username: string) :Promise<User>  { 
         return this.dao.getUserByUsername(username);
     }
 
@@ -62,8 +62,8 @@ class UserController {
      * @param username - The username of the user to delete. The user must exist.
      * @returns A Promise that resolves to true if the user has been deleted.
      */
-    async deleteUser(user: User, username: string) /**:Promise<Boolean> */ { 
-        
+    async deleteUser(user: User, username: string) :Promise<Boolean>  { 
+        return this.dao.deleteUser(user, username);
     }
 
     /**
@@ -85,7 +85,7 @@ class UserController {
      * @param username The username of the user to update. It must be equal to the username of the user parameter.
      * @returns A Promise that resolves to the updated user
      */
-    async updateUserInfo(user: User, name: string, surname: string, address: string, birthdate: string, username: string) /**:Promise<User> */ { 
+    async updateUserInfo(user: User, name: string, surname: string, address: string, birthdate: string, username: string) :Promise<User> { 
         return this.dao.updateUserInfo(user,name,surname,address,birthdate,username);
     }
 }
