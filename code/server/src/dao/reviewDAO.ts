@@ -17,17 +17,25 @@ class ReviewDAO {
      * @param comment The comment made by the user
      * @returns A Promise that resolves to nothing
      */
-    addReview(model: string, user: User, score: number, comment: string) :Promise<void> {
+    async addReview(model: string, user: User, score: number, comment: string) :Promise<void> {
         return new Promise<void>((resolve,reject)=> {
             try {
-                const sql = "INSERT INTO review(model, user, score,date, comment) VALUES(?, ?, ?,?, ?)"
-                db.run(sql, [model, user, score, new dayjs(),comment], (err: Error | null) => {
-                    if (err) {
-                        if (err.message.includes("UNIQUE constraint failed: ")) reject(new ExistingReviewError)
-                        reject(err)
+                console.log(model,user.username);
+                const sql = "INSERT INTO reviews (model, user, score, date, comment) VALUES (?, ?, ?, ?, ?)";
+                const sql1 = "SELECT id FROM reviews WHERE reviews.user== ? AND reviews.model== ?";
+                db.get(sql1,[user.username,model], (err: Error | null, row:any)=>{
+                    if(row){
+                        reject(new ExistingReviewError);
+                    }else{
+                        db.run(sql, [model, user.username, score, dayjs().format("YYYY/MM/DD"),comment], (err: Error | null) => {
+                            if (err) {
+                                reject(err)
+                            }
+                            resolve()
+                        })
                     }
-                    resolve()
                 })
+                
             } catch (error) {
                 reject(error)
             }
@@ -44,7 +52,7 @@ class ReviewDAO {
         return new Promise<ProductReview[]> ((resolve,reject)=> {
             try {
                 let reviews: ProductReview[]=[];
-                const sql= "SELECT * FROM review where model==?";
+                const sql= "SELECT * FROM reviews where model==?";
                 db.all(sql,[model], (err: Error | null, rows:any) => {
                     if (err) {
                         reject(err)
@@ -71,8 +79,8 @@ class ReviewDAO {
     deleteReview(model: string, user: User) :Promise<void> { 
         return new Promise<void> ((resolve,reject)=> {
             try{
-            const sql= "DELETE from review WHERE model==? AND user==?"
-            db.run(sql, [model,user],(err:Error | null)=> {
+            const sql= "DELETE from reviews WHERE model==? AND user==?"
+            db.run(sql, [model,user.username],(err:Error | null)=> {
                 if(err) {
                     reject(err)
                     return
@@ -96,7 +104,7 @@ class ReviewDAO {
     deleteReviewsOfProduct(model: string) :Promise<void>  {
         return new Promise<void> ((resolve,reject)=> {
             try{
-            const sql= "DELETE from review WHERE model==?"
+            const sql= "DELETE from reviews WHERE model==?"
             db.run(sql, [model],(err:Error | null)=> {
                 if(err) {
                     reject(err)
@@ -120,7 +128,7 @@ class ReviewDAO {
     deleteAllReviews() :Promise<void>  {
         return new Promise<void> ((resolve,reject)=> {
             try{
-            const sql= "DELETE * from review "
+            const sql= "DELETE * from reviews "
             db.run(sql, (err:Error | null)=> {
                 if(err) {
                     reject(err)
