@@ -29,7 +29,7 @@ class UserController {
      * Returns all users.
      * @returns A Promise that resolves to an array of users.
      */
-    async getUsers() /**:Promise<User[]> */ { 
+    async getUsers() :Promise<User[]>  { 
         return this.dao.getAllUsers();
     }
 

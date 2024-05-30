@@ -1,8 +1,9 @@
-import { ExistingReviewError } from "../errors/reviewError";
+import { ExistingReviewError, NoReviewProductError } from "../errors/reviewError";
 import { User } from "../components/user";
 import db from "../db/db"
 import { ProductReview } from "../components/review";
 import dayjs from "dayjs";
+import { ProductNotFoundError } from "../errors/productError";
 /**
  * A class that implements the interaction with the database for all review-related operations.
  * You are free to implement any method you need here, as long as the requirements are satisfied.
@@ -23,15 +24,24 @@ class ReviewDAO {
                 console.log(model,user.username);
                 const sql = "INSERT INTO reviews (model, user, score, date, comment) VALUES (?, ?, ?, ?, ?)";
                 const sql1 = "SELECT id FROM reviews WHERE reviews.user== ? AND reviews.model== ?";
-                db.get(sql1,[user.username,model], (err: Error | null, row:any)=>{
-                    if(row){
-                        reject(new ExistingReviewError);
+                const sql2= "SELECT model FROM products WHERE model == ?";
+                db.get(sql2, [model], (err: Error | null, row:any)=>{
+                    if (!row) {
+                        reject(new ProductNotFoundError);
                     }else{
-                        db.run(sql, [model, user.username, score, dayjs().format("YYYY/MM/DD"),comment], (err: Error | null) => {
-                            if (err) {
-                                reject(err)
-                            }
+                    db.get(sql1,[user.username,model], (err: Error | null, row:any)=>
+                        {
+                        if(row){
+                            reject(new ExistingReviewError);
+                        }else
+                        {
+                            db.run(sql, [model, user.username, score, dayjs().format("YYYY/MM/DD"),comment], (err: Error | null) => {
+                                if (err) {
+                                    reject(err)
+                                }
                             resolve()
+                            })
+                        }
                         })
                     }
                 })
@@ -80,18 +90,35 @@ class ReviewDAO {
         return new Promise<void> ((resolve,reject)=> {
             try{
             const sql= "DELETE from reviews WHERE model==? AND user==?"
-            db.run(sql, [model,user.username],(err:Error | null)=> {
-                if(err) {
-                    reject(err)
-                    return
+            const sql1 = "SELECT id FROM reviews WHERE reviews.user== ? AND reviews.model== ?";
+            const sql2= "SELECT model FROM products WHERE model == ?";
+            
+            db.get(sql2, [model], (err: Error | null, row:any)=>
+                {
+                if (!row) {
+                    reject(new ProductNotFoundError);
+                }else{
+                db.get(sql1,[user.username,model], (err: Error | null, row:any)=>
+                    {
+                    if(row){
+                        reject(new NoReviewProductError);
+                    }else
+                    {
+                        db.run(sql, [model,user.username],(err:Error | null)=> {
+                        if(err) {
+                            reject(err)
+                            return
+                        }else {
+                            resolve();
+                        }
+                        })
+                    }
+                    })
                 }
-                else {
-                    resolve();
-                }
-            })
-        }catch(error){
+                })
+            }catch(error){
             reject(error)
-    }
+            }
 
         })
     }
@@ -105,18 +132,24 @@ class ReviewDAO {
         return new Promise<void> ((resolve,reject)=> {
             try{
             const sql= "DELETE from reviews WHERE model==?"
-            db.run(sql, [model],(err:Error | null)=> {
-                if(err) {
-                    reject(err)
-                    return
-                }
-                else {
-                    resolve();
-                }
+            const sql1= "SELECT model FROM products WHERE model == ?";
+            db.get(sql1, [model], (err:Error, row:any)=>{
+                if (!row){
+                    reject(new ProductNotFoundError);
+            }else{
+                db.run(sql, [model],(err:Error | null)=> {
+                    if(err) {
+                        reject(err)
+                        return
+                    }else {
+                        resolve();
+                    }
+                })
+            }
             })
-        }catch(error){
-            reject(error)
-    }
+            }catch(error){
+                reject(error)
+            }
 
         })
      }
