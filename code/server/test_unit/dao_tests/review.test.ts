@@ -9,46 +9,63 @@ jest.mock("../../src/db/db.ts");
 jest.mock("../../src/components/review.ts");
 
 
-describe("ReviewDAO: addReview method tests", () => {
-    test("It should return nothing", async () => {
+describe("ReviewDAO_1: addReview method tests", () => {
+    test("ReviewDAO_1.1: It should return nothing", async () => {
         const model = "iPhoneX";
         const user = new User("test", "test", "test", Role.CUSTOMER, "test", "test");
         const score = 2;
         const comment = "commento di test";
         const reviewDAO = new ReviewDAO();
-        const mockDBRun = jest.spyOn(db, "run").mockImplementation((sql, params, callback) => {
+        const mockDBGet = jest.spyOn(db, "get").mockImplementationOnce((_sql, _params, callback: (err: Error | null, row: any) => void) => {
+            callback(null, {model: model});
+            return {} as Database
+        }).mockImplementationOnce((_sql, _params, callback: (err: Error | null, row: any) => void) => {
+            callback(null, null);
+            return {} as Database
+        });
+        const mockDBRun = jest.spyOn(db, "run").mockImplementationOnce((sql, params, callback) => {
             callback(null)
             return {} as Database
         });
         const result = await reviewDAO.addReview(model, user, score, comment);
         expect(result).toBe(undefined);
-        mockDBRun.mockRestore();
+        jest.clearAllMocks();
+        jest.restoreAllMocks();
     });
 });
 
-describe("ReviewDAO: getProductReviews method tests", () => {
-    /*
-    test("It should return ProductReview[]", async () => {
+describe("ReviewDAO_2: getProductReviews method tests", () => {
+    test("ReviewDAO_2.1: It should return ProductReview[]", async () => {
         const reviews: ProductReview[] = [];
         const model = "iPhoneX";
+        reviews.push(new ProductReview(model,"us1", 2, "test", "test"));
         const reviewDAO = new ReviewDAO();
-        const mockDBRun = jest.spyOn(db, "all").mockImplementation((sql, params, callback) => {
-            callback(null)
+        const mockDBAll = jest.spyOn(db, "all").mockImplementationOnce((_sql: any, _params: any, callback: (err: Error | null, rows: any) => void) => {
+            callback(null, reviews);
             return {} as Database
         });
         const result = await reviewDAO.getProductReviews(model);
-        expect(result).toBe(reviews);
-        mockDBRun.mockRestore();
+        expect(mockDBAll).toHaveBeenCalledTimes(1);
+        expect(result).toHaveLength(1);
+        expect(result[0]).toBeInstanceOf(ProductReview);
+        jest.clearAllMocks();
+        jest.restoreAllMocks();
     });
-    */
 });
 
-describe("ReviewDAO: deleteReview method tests", () => {
-    test("It should return nothing", async () => {
+describe("ReviewDAO_3: deleteReview method tests", () => {
+    test("ReviewDAO_3.1: It should return nothing", async () => {
         const model = "iPhoneX";
         const user = new User("test", "test", "test", Role.CUSTOMER, "test", "test");
         const reviewDAO = new ReviewDAO();
-        const mockDBRun = jest.spyOn(db, "run").mockImplementation((sql, params, callback) => {
+        const mockDBGet = jest.spyOn(db, "get").mockImplementationOnce((_sql, _params, callback: (err: Error | null, row: any) => void) => {
+            callback(null, {model: model});
+            return {} as Database
+        }).mockImplementationOnce((_sql, _params, callback: (err: Error | null, row: any) => void) => {
+            callback(null, null);
+            return {} as Database
+        });
+        const mockDBRun = jest.spyOn(db, "run").mockImplementationOnce((sql, params, callback) => {
             callback(null)
             return {} as Database
         });
@@ -58,10 +75,14 @@ describe("ReviewDAO: deleteReview method tests", () => {
     });
 });
 
-describe("ReviewDAO: deleteReviewsOfProduct method tests", () => {
-    test("It should return nothing", async () => {
+describe("ReviewDAO_4: deleteReviewsOfProduct method tests", () => {
+    test("ReviewDAO_4.1: It should return nothing", async () => {
         const model = "iPhoneX";
         const reviewDAO = new ReviewDAO();
+        const mockDBGet = jest.spyOn(db, "get").mockImplementationOnce((_sql, _params, callback: (err: Error | null, row: any) => void) => {
+            callback(null, {model: model});
+            return {} as Database
+        });
         const mockDBRun = jest.spyOn(db, "run").mockImplementation((sql, params, callback) => {
             callback(null)
             return {} as Database
@@ -72,10 +93,10 @@ describe("ReviewDAO: deleteReviewsOfProduct method tests", () => {
     });
 });
 
-describe("ReviewDAO: deleteAllReviews method tests", () => {
-    test("It should return nothing", async () => {
+describe("ReviewDAO_5: deleteAllReviews method tests", () => {
+    test("ReviewDAO_5.1: It should return nothing", async () => {
         const reviewDAO = new ReviewDAO();
-        const mockDBRun = jest.spyOn(db, "run").mockImplementation((sql, params, callback) => {
+        const mockDBRun = jest.spyOn(db, "run").mockImplementation((sql, callback) => {
             callback(null)
             return {} as Database
         });

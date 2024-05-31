@@ -58,24 +58,26 @@ class ReviewDAO {
      * @param model The model of the product to get reviews from
      * @returns A Promise that resolves to an array of ProductReview objects
      */
-    getProductReviews(model: string) :Promise<ProductReview[]>  { 
-        return new Promise<ProductReview[]> ((resolve,reject)=> {
+    getProductReviews(model: string): Promise<ProductReview[]> { 
+        return new Promise<ProductReview[]>((resolve,reject) => {
             try {
                 let reviews: ProductReview[]=[];
                 const sql= "SELECT * FROM reviews where model==?";
                 db.all(sql,[model], (err: Error | null, rows:any) => {
                     if (err) {
-                        reject(err)
-                        return
+                        return reject(err);
                     }
-                 
-                    else {
-                        reviews = rows.map((review:any) => new ProductReview(review.model,review.user,review.score,review.date,review.comment))
-                        resolve(reviews)
+                    if (!rows) {
+                        return reject(new NoReviewProductError);
                     }
-                })
+                    for (let r of rows)
+                    {
+                        reviews.push(new ProductReview(r.model, r.user, r.score, r.date, r.comment));
+                    }
+                    return resolve(reviews);
+                });
             }catch(error){
-                reject(error)
+                return reject(error);
             }
         });
     }

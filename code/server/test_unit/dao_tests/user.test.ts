@@ -257,7 +257,7 @@ describe("UserDAO: getAllUsers method tests", () => {
         const userDAO = new UserDAO();
         const err = new Error();
 
-        mockDBAll.mockImplementationOnce((_sql: any, callback: (err: Error | null, rows: unknown[]) => void) => {
+        mockDBAll.mockImplementationOnce((_sql: any, callback: (err: Error | null, rows: any) => void) => {
             callback(err, null);
         });
 
@@ -342,7 +342,7 @@ describe("UserDAO: getUsersByRole method tests", () => {
         const userDAO = new UserDAO();
         const err = new Error();
 
-        mockDBAll.mockImplementationOnce((_sql: any, callback: (err: Error | null, rows: unknown[]) => void) => {
+        mockDBAll.mockImplementationOnce((_sql: any, callback: (err: Error | null, rows: any) => void) => {
             callback(err, null);
         });
 
