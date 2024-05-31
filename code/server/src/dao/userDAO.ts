@@ -107,6 +107,7 @@ class UserDAO {
     async getUserByUsername(username: string): Promise<User> {
         return new Promise<User>((resolve, reject) => {
             try {
+             
                 const sql = "SELECT * FROM users WHERE username = ?"
                 db.get(sql, [username], (err: Error | null, row: any) => {
                     if (err) {
@@ -120,6 +121,7 @@ class UserDAO {
                     const user: User = new User(row.username, row.name, row.surname, row.role, row.address, row.birthdate)
                     resolve(user)
                 })
+          
             } catch (error) {
                 reject(error)
             }
@@ -134,7 +136,7 @@ class UserDAO {
         return new Promise<Boolean> ((resolve,reject)=> {
             try{
             const sql= "DELETE from users WHERE user.role <> 'ADMIN'"
-                
+              
                     db.run(sql,(err:Error | null)=> {
                         if(err) {
                             reject(err)
@@ -159,7 +161,7 @@ class UserDAO {
         return new Promise<User[]>((resolve, reject) => {
             try {
                 let users: User[] = [];
-                const sql = "SELECT * FROM users WHERE role == ?";
+                const sql = "SELECT * FROM users WHERE role = ?";
                 db.all(sql, [role], (err: Error | null, rows: any) => {
                     if (err) {
                         return reject(err);
@@ -190,7 +192,7 @@ class UserDAO {
        return new Promise<User> ((resolve,reject) => {
         try{
             
-            const sql= "UPDATE users SET name = ? surname= ? address=? birthdate=? WHERE username==?";
+            const sql= "UPDATE users SET name = ?, surname = ?, address = ?, birthdate = ? WHERE username = ?";
             const sql1= "SELECT * FROM users WHERE username = ?";
             db.get(sql1,[username], (err:Error, row:any)=>{
                 if(!row){
@@ -203,7 +205,7 @@ class UserDAO {
                         if(err){
                             reject(err)
                         }               
-                        const newUser: User = new User(username, name, surname, user.role, address, birthdate);
+                        const newUser: User = new User(username, name, surname, row.role, address, birthdate);
                         resolve(newUser)
                     });
                 }
@@ -219,7 +221,7 @@ class UserDAO {
 
 
     async deleteUser(user: User, username: string): Promise<boolean> {
-        const userToDelete = await this.getUserByUsername(username);
+        //const userToDelete = await this.getUserByUsername(username);
 
         return new Promise<boolean>((resolve, reject) => {
              try {

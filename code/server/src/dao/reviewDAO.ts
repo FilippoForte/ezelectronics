@@ -23,7 +23,7 @@ class ReviewDAO {
             try {
                 console.log(model,user.username);
                 const sql = "INSERT INTO reviews (model, user, score, date, comment) VALUES (?, ?, ?, ?, ?)";
-                const sql1 = "SELECT id FROM reviews WHERE reviews.user== ? AND reviews.model== ?";
+                const sql1 = "SELECT id FROM reviews WHERE reviews.user == ? AND reviews.model == ?";
                 const sql2= "SELECT model FROM products WHERE model == ?";
                 db.get(sql2, [model], (err: Error | null, row:any)=>{
                     if (!row) {
@@ -89,8 +89,8 @@ class ReviewDAO {
     deleteReview(model: string, user: User) :Promise<void> { 
         return new Promise<void> ((resolve,reject)=> {
             try{
-            const sql= "DELETE from reviews WHERE model==? AND user==?"
-            const sql1 = "SELECT id FROM reviews WHERE reviews.user== ? AND reviews.model== ?";
+            const sql= "DELETE from reviews WHERE model == ? AND user ==? "
+            const sql1 = "SELECT id FROM reviews WHERE reviews.user == ? AND reviews.model == ?";
             const sql2= "SELECT model FROM products WHERE model == ?";
             
             db.get(sql2, [model], (err: Error | null, row:any)=>
@@ -100,7 +100,7 @@ class ReviewDAO {
                 }else{
                 db.get(sql1,[user.username,model], (err: Error | null, row:any)=>
                     {
-                    if(row){
+                    if(!row){
                         reject(new NoReviewProductError);
                     }else
                     {
@@ -161,17 +161,19 @@ class ReviewDAO {
     deleteAllReviews() :Promise<void>  {
         return new Promise<void> ((resolve,reject)=> {
             try{
-            const sql= "DELETE * from reviews "
-            db.run(sql, (err:Error | null)=> {
-                if(err) {
-                    reject(err)
-                    return
-                }
-                else {
-                    resolve();
-                }
-            })
-        }catch(error){
+            
+            const sql= "DELETE FROM reviews ";
+            
+                db.run(sql, (err:Error | null)=> {
+                    if(err) {
+                        reject(err)
+                        
+                    }
+                    else {
+                        resolve()
+                    }
+                    })
+            }catch(error){
             reject(error)
     }
 
