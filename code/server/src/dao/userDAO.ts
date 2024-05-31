@@ -190,13 +190,12 @@ class UserDAO {
        return new Promise<User> ((resolve,reject) => {
         try{
             
-            const sql= "UPDATE users SET name = ? surname= ? address=? birthdate=? WHERE username==?";
+            const sql= "UPDATE users SET name = ?, surname= ?, address=?, birthdate=? WHERE username==?";
             const sql1= "SELECT * FROM users WHERE username = ?";
             db.get(sql1,[username], (err:Error, row:any)=>{
                 if(!row){
                     reject(new UserNotFoundError);
                 }else if( username != user.username && user.role != "Admin" && row.role =="Admin") {
-                    
                     reject(new UnauthorizedUserError);
                 }else{
                     db.run(sql,[name,surname,address,birthdate,username],(err:Error)=> {
