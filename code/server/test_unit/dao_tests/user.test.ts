@@ -4,9 +4,8 @@ import UserDAO from "../../src/dao/userDAO"
 import crypto from "crypto"
 import db from "../../src/db/db"
 import { Database } from "sqlite3"
-import {UserAlreadyExistsError, UserNotAdminError, UserNotFoundError} from "../../src/errors/userError";
+import {UserAlreadyExistsError, UserNotFoundError} from "../../src/errors/userError";
 import {Role, User} from "../../src/components/user";
-import {Utility} from "../../src/utilities";
 
 /*
 TODO:
@@ -269,7 +268,6 @@ describe("UserDAO: getAllUsers method tests", () => {
 
 describe("UserDAO: deleteAll method tests", () => {
     let mockDBRun: any;
-    let mockIsAdmin: any;
 
     beforeEach(async () => {
         mockDBRun = jest.spyOn(db, "run");
