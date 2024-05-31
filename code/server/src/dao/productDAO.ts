@@ -2,6 +2,12 @@ import { Utility } from "../utilities";
 import db from "../db/db";
 import dayjs from "dayjs";
 import { Product } from "../components/product";
+import {
+  LowProductStockError,
+  ProductNotFoundError,
+} from "../errors/productError";
+import { ProductAlreadyExistsError } from "../errors/productError";
+import { ERROR } from "sqlite3";
 
 /**
  * A class that implements the interaction with the database for all product-related operations.
@@ -18,6 +24,30 @@ class ProductDAO {
   ) {
     return new Promise<void>((resolve, reject) => {
       try {
+        //validation
+
+        if ((model = "")) return reject(Error("Model cannot be empty"));
+
+        if (quantity <= 0)
+          return reject(Error("Quantity should be greater then 0"));
+
+        if (sellingPrice <= 0)
+          return reject(Error("Selling price should be greater then 0"));
+
+        if (
+          category != "Smartphone" &&
+          category != "Laptop" &&
+          category != "Appliance"
+        )
+          return reject(Error("Not a valid category"));
+
+        if (arrivalDate == null) arrivalDate = dayjs().format("YYYY-MM-DD");
+
+        if (dayjs(arrivalDate).isAfter(dayjs()))
+          return reject(new Error("Arrival date cannot be in the future"));
+
+        //manca controllo che data inserita è nel giusto formato
+
         const insertQuery =
           "INSERT INTO products (model, category, quantity, details, arrivalDate, sellingPrice) VALUES (?,?,?,?,?,?)";
         const updateQuery =
@@ -25,41 +55,31 @@ class ProductDAO {
 
         const getProductModel = "SELECT * FROM products WHERE model == ?";
 
-        if (arrivalDate == null) arrivalDate = dayjs().format("YYYY-MM-DD");
+        db.get(getProductModel, [model], (err: Error | null, row: any) => {
+          if (err) {
+            return reject(err);
+          }
 
-        if (dayjs(arrivalDate).isAfter(dayjs())) {
-          return reject(new Error("Arrival date cannot be in the future"));
-        }
-
-        if (Utility.isManager || Utility.isAdmin) {
-          db.get(getProductModel, [model], (err: Error | null, row: any) => {
-            if (err) {
-              return reject(err);
-            }
-
-            if (!row) {
-              db.run(
-                insertQuery,
-                [model, category, quantity, details, arrivalDate, sellingPrice],
-                (err: Error | null) => {
-                  if (err) {
-                    return reject(err);
-                  }
-                  return resolve();
-                }
-              );
-            } else {
-              db.run(updateQuery, [quantity, model], (err: Error | null) => {
+          if (!row) {
+            db.run(
+              insertQuery,
+              [model, category, quantity, details, arrivalDate, sellingPrice],
+              (err: Error | null) => {
                 if (err) {
-                  return reject(err);
+                  return reject(new ProductAlreadyExistsError());
                 }
                 return resolve();
-              });
-            }
-          });
-        } else {
-          return reject(new Error("Unauthorized access")); // Gestione dell'accesso non autorizzato
-        }
+              }
+            );
+          } else {
+            db.run(updateQuery, [quantity, model], (err: Error | null) => {
+              if (err) {
+                return reject(new ProductNotFoundError());
+              }
+              return resolve();
+            });
+          }
+        });
       } catch (error) {
         return reject(error);
       }
@@ -72,29 +92,36 @@ class ProductDAO {
     arrivalDate: string | null
   ) {
     return new Promise<number>((resolve, reject) => {
+      //validation
+
+      if ((model = "")) return reject(Error("Model cannot be empty"));
+
+      if (newQuantity <= 0)
+        return reject(Error("Quantity should be greater then 0"));
+
+      if (arrivalDate == null) arrivalDate = dayjs().format("YYYY-MM-DD");
+
+      if (dayjs(arrivalDate).isAfter(dayjs()))
+        return reject(new Error("Arrival date cannot be in the future"));
+
+      //manca controllo che data inserita è nel giusto formato
+
       const updateQuery =
         "UPDATE products SET quantity = quantity + ? WHERE model = ?";
       const getProductModel = "SELECT * FROM products WHERE model = ?";
 
-      //manca controllo data
-
-      if (Utility.isManager || Utility.isAdmin) {
-        db.get(getProductModel, [model], (err: Error | null, row: any) => {
-          if (err) return reject(err);
-          if (!row) {
-            return reject();
-          } else {
-            const oldQuantity = row.quantity;
-            db.run(updateQuery, [newQuantity, model], (err: Error | null) => {
-              if (err) return reject(err);
-
-              return resolve(oldQuantity + newQuantity);
-            });
-          }
-        });
-      } else {
-        return reject();
-      }
+      db.get(getProductModel, [model], (err: Error | null, row: any) => {
+        if (err) return reject(err);
+        if (!row) {
+          return reject();
+        } else {
+          const oldQuantity = row.quantity;
+          db.run(updateQuery, [newQuantity, model], (err: Error | null) => {
+            if (err) return reject(err);
+            return resolve(oldQuantity + newQuantity);
+          });
+        }
+      });
     });
   }
 
@@ -105,17 +132,18 @@ class ProductDAO {
   ) {
     return new Promise<Product[]>((resolve, reject) => {
       try {
+        //validation
+
         let selectQuery = "SELECT * FROM products";
 
-        if (grouping == "model") {
+        if (grouping == "model")
           selectQuery = "SELECT * FROM products WHERE model='" + model + "'";
-        } else if (grouping == "category") {
-          selectQuery =
-            "SELECT * FROM products WHERE category='" + category + "'";
-        } else {
-          //manca gestione caso grouping == null
+        else if (grouping == "category")
+          selectQuery = "SELECT * FROM products WHERE category='" + category + "'";
+        else if (grouping == null) 
           selectQuery = "SELECT * FROM products";
-        }
+        else 
+          return reject(Error("Not a valid grouping"));
 
         db.all(selectQuery, [], (err: Error | null, rows: any[]) => {
           if (err) {
@@ -142,6 +170,40 @@ class ProductDAO {
     });
   }
 
+  async getAvailableProducts(
+    grouping: string | null,
+    category: string | null,
+    model: string | null
+  ): Promise<Product[]> {
+    return new Promise<Product[]>((resolve, reject) => {
+      try {
+
+
+        //validation
+
+        let selectQuery = "SELECT * FROM products WHERE quantity > 0";
+
+        if (grouping == "model")
+          selectQuery = "SELECT * FROM products WHERE model='" + model + "AND quantity > 0'";
+        else if (grouping == "category")
+          selectQuery = "SELECT * FROM products WHERE category='" + category + "AND quantity > 0'";
+        else if (grouping == null) 
+          selectQuery = "SELECT * FROM products WHERE quantity > 0";
+        else 
+          return reject(Error("Not a valid grouping"));
+
+        db.all(selectQuery, [], (err: Error | null, rows: any[]) => {
+          if (err) {
+            return reject(err);
+          }
+          return resolve(rows);
+        });
+      } catch (error) {
+        return reject(error);
+      }
+    });
+  }
+
   async sellProduct(
     model: string,
     quantity: number,
@@ -149,6 +211,20 @@ class ProductDAO {
   ): Promise<number> {
     return new Promise<number>((resolve, reject) => {
       try {
+        //validation
+
+        if ((model = "")) return reject(Error("Model cannot be empty"));
+
+        if (quantity <= 0)
+          return reject(Error("Quantity should be greater then 0"));
+
+        if (sellingDate == null) sellingDate = dayjs().format("YYYY-MM-DD");
+
+        if (sellingDate && dayjs(sellingDate).isAfter(dayjs()))
+          return reject(new Error("Arrival date cannot be in the future"));
+
+        //manca controllo che data inserita è nel giusto formato
+
         const getProductQuery = "SELECT * FROM products WHERE model == ?";
         const updateQuantityQuery =
           "UPDATE products SET quantity = quantity - ? WHERE model == ?";
@@ -157,22 +233,17 @@ class ProductDAO {
         console.log("quantity: " + quantity);
         console.log("sellingDate: " + sellingDate);
 
-        // Verifica che il sellingDate sia valido e non sia nel futuro
-        if (sellingDate && dayjs(sellingDate).isAfter(dayjs())) {
-          return reject(new Error("Selling date cannot be in the future"));
-        }
-
         db.get(getProductQuery, [model], (err: Error | null, row: any) => {
           if (err) {
             return reject(err);
           }
 
           if (!row) {
-            return reject(new Error("Product not found"));
+            return reject(new ProductNotFoundError());
           }
 
           if (row.quantity < quantity) {
-            return reject(new Error("Not enough quantity available"));
+            return reject(new LowProductStockError());
           }
 
           db.run(
@@ -197,16 +268,12 @@ class ProductDAO {
       try {
         const deleteQuery = "DELETE FROM products";
 
-        if (Utility.isManager || Utility.isAdmin) {
-          db.run(deleteQuery, (err: Error | null) => {
-            if (err) {
-              return reject(err);
-            }
-            return resolve(true);
-          });
-        } else {
-          return reject(new Error("Unauthorized access"));
-        }
+        db.run(deleteQuery, (err: Error | null) => {
+          if (err) {
+            return reject(err);
+          }
+          return resolve(true);
+        });
       } catch (error) {
         return reject(error);
       }
@@ -216,64 +283,37 @@ class ProductDAO {
   async deleteProduct(model: string): Promise<boolean> {
     return new Promise<boolean>((resolve, reject) => {
       try {
+
+        //validation
+
+        if ((model = "")) return reject(Error("Model cannot be empty"));
+
         const deleteQuery = "DELETE FROM products WHERE model == ?";
         const getProductQuery = "SELECT * FROM products WHERE model == ?";
 
-        if (Utility.isManager || Utility.isAdmin) {
-          db.get(getProductQuery, [model], (err: Error | null, row: any) => {
-            if (err) {
-              return reject(err);
-            }
-
-            if (!row) {
-              return reject(new Error("Product not found"));
-            }
-
-            db.run(deleteQuery, [model], (err: Error | null) => {
-              if (err) {
-                return reject(err);
-              }
-              return resolve(true);
-            });
-          });
-        } else {
-          return reject(new Error("Unauthorized access"));
-        }
-      } catch (error) {
-        return reject(error);
-      }
-    });
-  }
-
-  async getAvailableProducts(
-    grouping: string | null,
-    category: string | null,
-    model: string | null
-  ): Promise<Product[]> {
-    return new Promise<Product[]>((resolve, reject) => {
-      try {
-        let query = "SELECT * FROM products WHERE quantity > 0";
-        const params: any[] = [];
-
-        if (grouping === "category" && category) {
-          query += " AND category = ?";
-          params.push(category);
-        } else if (grouping === "model" && model) {
-          query += " AND model = ?";
-          params.push(model);
-        }
-
-        db.all(query, params, (err: Error | null, rows: any[]) => {
+        db.get(getProductQuery, [model], (err: Error | null, row: any) => {
           if (err) {
             return reject(err);
           }
-          return resolve(rows);
+
+          if (!row) {
+            return reject(new ProductNotFoundError);
+          }
+
+          db.run(deleteQuery, [model], (err: Error | null) => {
+            if (err) {
+              return reject(err);
+            }
+            return resolve(true);
+          });
         });
       } catch (error) {
         return reject(error);
       }
     });
   }
+
+
 }
 
 export default ProductDAO;
