@@ -1,8 +1,8 @@
 import db from "../db/db"
 import { User } from "../components/user"
 import crypto from "crypto"
-import { UserAlreadyExistsError, UserNotFoundError } from "../errors/userError";
-import { Utility } from "../utilities";
+import { UnauthorizedUserError, UserAlreadyExistsError, UserNotFoundError } from "../errors/userError";
+
 
 /**
  * A class that implements the interaction with the database for all user-related operations.
@@ -134,7 +134,7 @@ class UserDAO {
         return new Promise<Boolean> ((resolve,reject)=> {
             try{
             const sql= "DELETE from users WHERE user.role <> 'ADMIN'"
-                if(Utility.isAdmin){
+                
                     db.run(sql,(err:Error | null)=> {
                         if(err) {
                             reject(err)
@@ -144,14 +144,17 @@ class UserDAO {
                             resolve(true);
                         }
                     })
-                }
             }catch(error){
                 reject(error)
             }
 
         });
     }
-
+    /**
+     * Returns all users with a specific role.
+     * @param role - The role of the users to retrieve. It can only be one of the three allowed types ("Manager", "Customer", "Admin")
+     * @returns A Promise that resolves to an array of users with the specified role.
+     */
     async getUsersByRole(role: string): Promise<User[]> { 
         return new Promise<User[]>((resolve, reject) => {
             try {
@@ -186,16 +189,27 @@ class UserDAO {
     updateUserInfo(user: User, name: string, surname: string, address: string, birthdate: string, username: string) :Promise<User> { 
        return new Promise<User> ((resolve,reject) => {
         try{
-            if((Utility.isManager(user) || Utility.isCustomer(user)) && user.username==username || (Utility.isAdmin(user))){
-            const sql= "UPDATE users SET name= ? surname= ? address=? birthdate=? WHERE username==?";
-            db.run(sql,[name,surname,address,birthdate,username],(err:Error)=> {
-                if(err){
-                    reject(err)
-                }               
-                const newUser: User = new User(username, name, surname, user.role, address, birthdate);
-                resolve(newUser)
-            });
-            }
+            
+            const sql= "UPDATE users SET name = ? surname= ? address=? birthdate=? WHERE username==?";
+            const sql1= "SELECT * FROM users WHERE username = ?";
+            db.get(sql1,[username], (err:Error, row:any)=>{
+                if(!row){
+                    reject(new UserNotFoundError);
+                }else if( username != user.username && user.role != "Admin" && row.role =="Admin") {
+                    
+                    reject(new UnauthorizedUserError);
+                }else{
+                    db.run(sql,[name,surname,address,birthdate,username],(err:Error)=> {
+                        if(err){
+                            reject(err)
+                        }               
+                        const newUser: User = new User(username, name, surname, user.role, address, birthdate);
+                        resolve(newUser)
+                    });
+                }
+            })
+            
+            
             }catch (error){
                 reject(error)
 
@@ -210,8 +224,7 @@ class UserDAO {
         return new Promise<boolean>((resolve, reject) => {
              try {
                 // Verifica se l'utente può eseguire l'operazione di cancellazione
-                if ((Utility.isAdmin(user) && !Utility.isAdmin(userToDelete)) ||
-                    (!Utility.isAdmin(user) && user.username === username)) {
+              
     
                     const sql = "DELETE FROM users WHERE username = ?";
                     
@@ -223,10 +236,7 @@ class UserDAO {
                         }
                     });
     
-                } else {
-                    // L'utente non ha i permessi per eseguire la cancellazione richiesta
-                    return reject(new Error("Unauthorized operation"));
-                }
+                
             } catch (error) {
                 return reject(error);
             }

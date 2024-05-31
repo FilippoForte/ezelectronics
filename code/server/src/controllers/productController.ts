@@ -1,5 +1,6 @@
 import ProductDAO from "../dao/productDAO";
 import { Product } from "../components/product";
+import { rejects } from "assert";
 
 /**
  * Represents a controller for managing products.
