@@ -3,6 +3,7 @@ import db from "../db/db";
 import dayjs from "dayjs";
 import { Product } from "../components/product";
 import {
+  FutureDateError,
   LowProductStockError,
   ProductNotFoundError,
 } from "../errors/productError";
@@ -43,8 +44,8 @@ class ProductDAO {
 
         if (arrivalDate == null) arrivalDate = dayjs().format("YYYY-MM-DD");
 
-        if (dayjs(arrivalDate).isAfter(dayjs()))
-          return reject(new Error("Arrival date cannot be in the future"));
+        if (arrivalDate && dayjs(arrivalDate).isAfter(dayjs()))
+          return reject(new FutureDateError);
 
         //manca controllo che data inserita è nel giusto formato
 
@@ -101,10 +102,13 @@ class ProductDAO {
 
       if (arrivalDate == null) arrivalDate = dayjs().format("YYYY-MM-DD");
 
-      if (dayjs(arrivalDate).isAfter(dayjs()))
-        return reject(new Error("Arrival date cannot be in the future"));
+      if (arrivalDate && dayjs(arrivalDate).isAfter(dayjs()))
+        return reject(new FutureDateError());
 
       //manca controllo che data inserita è nel giusto formato
+
+
+      //manca controllo che arrivalDate is before oldDate
 
       const updateQuery =
         "UPDATE products SET quantity = quantity + ? WHERE model = ?";
@@ -113,7 +117,7 @@ class ProductDAO {
       db.get(getProductModel, [model], (err: Error | null, row: any) => {
         if (err) return reject(err);
         if (!row) {
-          return reject();
+          return reject(new ProductNotFoundError());
         } else {
           const oldQuantity = row.quantity;
           db.run(updateQuery, [newQuantity, model], (err: Error | null) => {
@@ -148,6 +152,10 @@ class ProductDAO {
         db.all(selectQuery, [], (err: Error | null, rows: any[]) => {
           if (err) {
             return reject(err);
+          }
+
+          if(rows.length==0 && grouping=="model"){
+            return reject(new ProductNotFoundError())
           }
 
           const products: Product[] = rows.map(
@@ -192,12 +200,29 @@ class ProductDAO {
         else 
           return reject(Error("Not a valid grouping"));
 
-        db.all(selectQuery, [], (err: Error | null, rows: any[]) => {
-          if (err) {
-            return reject(err);
-          }
-          return resolve(rows);
-        });
+          db.all(selectQuery, [], (err: Error | null, rows: any[]) => {
+            if (err) {
+              return reject(err);
+            }
+  
+            if(rows.length==0 && grouping=="model"){
+              return reject(new ProductNotFoundError())
+            }
+  
+            const products: Product[] = rows.map(
+              (row) =>
+                new Product(
+                  row.sellingPrice,
+                  row.model,
+                  row.category,
+                  row.arrivalDate,
+                  row.details,
+                  row.quantity
+                )
+            );
+  
+            return resolve(products);
+          });
       } catch (error) {
         return reject(error);
       }
@@ -221,17 +246,12 @@ class ProductDAO {
         if (sellingDate == null) sellingDate = dayjs().format("YYYY-MM-DD");
 
         if (sellingDate && dayjs(sellingDate).isAfter(dayjs()))
-          return reject(new Error("Arrival date cannot be in the future"));
+          return reject(new FutureDateError());
 
         //manca controllo che data inserita è nel giusto formato
 
         const getProductQuery = "SELECT * FROM products WHERE model == ?";
-        const updateQuantityQuery =
-          "UPDATE products SET quantity = quantity - ? WHERE model == ?";
-
-        console.log("model: " + model);
-        console.log("quantity: " + quantity);
-        console.log("sellingDate: " + sellingDate);
+        const updateQuantityQuery = "UPDATE products SET quantity = quantity - ? WHERE model == ?";
 
         db.get(getProductQuery, [model], (err: Error | null, row: any) => {
           if (err) {
@@ -240,6 +260,14 @@ class ProductDAO {
 
           if (!row) {
             return reject(new ProductNotFoundError());
+          }
+
+          if(row.arrivalDate && dayjs(row.arrivalDate).isAfter(dayjs(sellingDate))){
+            return reject(new FutureDateError())
+          }
+
+          if(row.quantity==0){
+            return reject(new LowProductStockError());
           }
 
           if (row.quantity < quantity) {
@@ -297,7 +325,7 @@ class ProductDAO {
           }
 
           if (!row) {
-            return reject(new ProductNotFoundError);
+            return reject(new ProductNotFoundError());
           }
 
           db.run(deleteQuery, [model], (err: Error | null) => {
