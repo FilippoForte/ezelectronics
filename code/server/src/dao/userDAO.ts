@@ -200,7 +200,7 @@ class UserDAO {
                 }
                 if(!row){
                     reject(new UserNotFoundError);
-                }else if( (username != user.username && user.role != "Admin") || (user.role == "Admin" && row.role =="Admin")) {
+                }else if( (username != user.username && user.role != "Admin") || (user.role == "Admin" && row.role =="Admin" && username != user.username )) {
                     reject(new UnauthorizedUserError);
                 }else{
                     db.run(sql,[name,surname,address,birthdate,username],(err:Error)=> {
