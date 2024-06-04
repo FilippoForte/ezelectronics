@@ -195,9 +195,12 @@ class UserDAO {
             const sql= "UPDATE users SET name = ?, surname = ?, address = ?, birthdate = ? WHERE username = ?";
             const sql1= "SELECT * FROM users WHERE username = ?";
             db.get(sql1,[username], (err:Error, row:any)=>{
+                if(err){
+                    reject(err)
+                }
                 if(!row){
                     reject(new UserNotFoundError);
-                }else if( username != user.username && user.role != "Admin" && row.role =="Admin") {
+                }else if( (username != user.username && user.role != "Admin") || (user.role == "Admin" && row.role =="Admin" && username != user.username )) {
                     reject(new UnauthorizedUserError);
                 }else{
                     db.run(sql,[name,surname,address,birthdate,username],(err:Error)=> {
