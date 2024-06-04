@@ -79,8 +79,9 @@ class ProductRoutes {
             "/:model",
             this.authenticator.isLoggedIn,
             this.authenticator.isManager,
+            
             (req: any, res: any, next: any) => this.controller.changeProductQuantity(req.params.model, req.body.quantity, req.body.changeDate)
-                .then((quantity: number) => res.status(200).json({ quantity: quantity }))
+                .then((quantity: any /**number */) => res.status(200).json({ quantity: quantity }))
                 .catch((err) => next(err))
         )
 
@@ -97,8 +98,9 @@ class ProductRoutes {
             "/:model/sell",
             this.authenticator.isLoggedIn,
             this.authenticator.isManager,
+            this.errorHandler.validateRequest,
             (req: any, res: any, next: any) => this.controller.sellProduct(req.params.model, req.body.quantity, req.body.sellingDate)
-                .then((quantity: number ) => res.status(200).json({ quantity: quantity }))
+                .then((quantity: any /**number */) => res.status(200).json({ quantity: quantity }))
                 .catch((err) => {
                     console.log(err)
                     next(err)
@@ -140,12 +142,10 @@ class ProductRoutes {
             this.authenticator.isLoggedIn,
             this.authenticator.isCustomer,
             (req: any, res: any, next: any) => this.controller.getAvailableProducts(req.query.grouping, req.query.category, req.query.model)
-                .then((products: Product[]) => res.status(200).json(products))
+                .then((products: any/*Product[]*/) => res.status(200).json(products))
                 .catch((err) => next(err))
         )
 
-
-        //COMPLETED
         /**
          * Route for deleting all products.
          * It requires the user to be logged in and to be either an admin or a manager.
@@ -160,8 +160,6 @@ class ProductRoutes {
                 .catch((err: any) => next(err))
         )
 
-
-        //COMPLETED
         /**
          * Route for deleting a product.
          * It requires the user to be logged in and to be either an admin or a manager.
