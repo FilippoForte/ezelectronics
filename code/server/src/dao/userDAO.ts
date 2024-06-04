@@ -85,7 +85,6 @@ class UserDAO {
                 db.all(sql, (err: Error | null, rows:any) => {
                     if (err) {
                         reject(err)
-                        return
                     }
                  
                     else {
@@ -164,16 +163,17 @@ class UserDAO {
                 const sql = "SELECT * FROM users WHERE role = ?";
                 db.all(sql, [role], (err: Error | null, rows: any) => {
                     if (err) {
-                        return reject(err);
+                        reject(err);
                     }
-                    for (let row of rows)
-                    {
-                        users.push(new User(row.username, row.name, row.surname, row.role, row.address, row.birthdate));
+                    else {
+                        for (let row of rows) {
+                            users.push(new User(row.username, row.name, row.surname, row.role, row.address, row.birthdate));
+                        }
+                        resolve(users);
                     }
-                    return resolve(users);
                 });
             } catch (error) {
-                return reject(error);
+                reject(error);
             }
         });
     }
