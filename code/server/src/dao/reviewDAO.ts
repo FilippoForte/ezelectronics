@@ -67,9 +67,6 @@ class ReviewDAO {
                     if (err) {
                         return reject(err);
                     }
-                    if (!rows) {
-                        return reject(new NoReviewProductError);
-                    }
                     for (let r of rows)
                     {
                         reviews.push(new ProductReview(r.model, r.user, r.score, r.date, r.comment));
@@ -102,7 +99,7 @@ class ReviewDAO {
                 }else{
                 db.get(sql1,[user.username,model], (err: Error | null, row:any)=>
                     {
-                    if(row){
+                    if(!row){
                         reject(new NoReviewProductError);
                     }else
                     {
