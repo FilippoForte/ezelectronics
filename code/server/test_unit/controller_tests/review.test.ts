@@ -7,8 +7,8 @@ import { ProductReview } from "../../src/components/review";
 jest.mock("../../src/dao/reviewDAO");
 
 
-describe("ReviewController: addReview method tests", () => {
-    test("It should return nothing", async () => {
+describe("ReviewController_1: addReview method tests", () => {
+    test("ReviewController_1.1: It should return nothing", async () => {
         const model = "iPhoneX";
         const user = new User("test", "test", "test", Role.CUSTOMER, "test", "test");
         const score = 2;
@@ -22,8 +22,8 @@ describe("ReviewController: addReview method tests", () => {
     });
 });
 
-describe("ReviewController: getProductReviews method tests", () => {
-    test("It should return ProductReview[]", async () => {
+describe("ReviewController_2: getProductReviews method tests", () => {
+    test("ReviewController_2.1: It should return ProductReview[]", async () => {
         const reviews: ProductReview[] = [];
         const model = "iPhoneX";
         jest.spyOn(ReviewDAO.prototype, "getProductReviews").mockResolvedValueOnce(reviews);
@@ -35,8 +35,8 @@ describe("ReviewController: getProductReviews method tests", () => {
     });
 });
 
-describe("ReviewController: deleteReview method tests", () => {
-    test("It should return nothing", async () => {
+describe("ReviewController_3: deleteReview method tests", () => {
+    test("ReviewController_3.1: It should return nothing", async () => {
         const model = "iPhoneX";
         const user = new User("test", "test", "test", Role.CUSTOMER, "test", "test");
         jest.spyOn(ReviewDAO.prototype, "deleteReview").mockResolvedValueOnce(undefined);
@@ -48,8 +48,8 @@ describe("ReviewController: deleteReview method tests", () => {
     });
 });
 
-describe("ReviewController: deleteReviewsOfProduct method tests", () => {
-    test("It should return nothing", async () => {
+describe("ReviewController_4: deleteReviewsOfProduct method tests", () => {
+    test("ReviewController_4.1: It should return nothing", async () => {
         const model = "iPhoneX";
         jest.spyOn(ReviewDAO.prototype, "deleteReviewsOfProduct").mockResolvedValueOnce(undefined);
         const controller = new ReviewController();
@@ -60,8 +60,8 @@ describe("ReviewController: deleteReviewsOfProduct method tests", () => {
     });
 });
 
-describe("ReviewController: deleteAllReviews method tests", () => {
-    test("It should return nothing", async () => {
+describe("ReviewController_5: deleteAllReviews method tests", () => {
+    test("ReviewController_5.1: It should return nothing", async () => {
         jest.spyOn(ReviewDAO.prototype, "deleteAllReviews").mockResolvedValueOnce(undefined);
         const controller = new ReviewController();
         const response = await controller.deleteAllReviews();
