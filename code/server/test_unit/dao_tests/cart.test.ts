@@ -5,6 +5,7 @@ import db from "../../src/db/db"
 import {Role, User} from "../../src/components/user";
 import {Cart, ProductInCart} from "../../src/components/cart";
 import {Category} from "../../src/components/product";
+import {EmptyProductStockError, ProductNotFoundError} from "../../src/errors/productError";
 
 
 interface databaseUserRow {
@@ -29,6 +30,15 @@ interface databaseProductInCart {
     modelProduct: String,
     idCart: Number,
     quantityInCart: Number
+}
+
+interface databaseProduct {
+    category: String,
+    model: String,
+    sellingPrice: Number,
+    arrivalDate: String,
+    details: String,
+    quantity: Number
 }
 
 const dbUser: databaseUserRow = {
@@ -84,19 +94,28 @@ describe("CartDAO_1: addToCart method tests", () => {
         jest.restoreAllMocks();
     });
 
-    // TODO: Error409 se il modello rappresenta un prodotto la cui quantità disponibile è 0?
-
     test("CartDAO_1.1: No information about the current unpaid cart of the user in the DB (it should resolve true)", async () => {
         const cartDAO = new CartDAO();
+        const dbProd1: databaseProduct = {
+            category: Category.SMARTPHONE,
+            model: "model1",
+            sellingPrice: 500,
+            arrivalDate: "2023-08-25",
+            details: "details1",
+            quantity: 50
+        }
 
         mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
-            callback(null, null);
+            callback(null, undefined);
         })
         .mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
             callback(null, dbCartEmpty);
         })
         .mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
-            callback(null, null);
+            callback(null, dbProd1);
+        })
+        .mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+            callback(null, undefined);
         });
 
         mockDBRun.mockImplementation((_sql: any, _params: any, callback: (err: (Error | null)) => void) => {
@@ -109,6 +128,7 @@ describe("CartDAO_1: addToCart method tests", () => {
         expect(mockDBGet).toHaveBeenCalled();
         expect(mockDBGet).toHaveBeenCalledWith(expect.any(String), [user.username], expect.any(Function))
         expect(mockDBGet).toHaveBeenCalledWith(expect.any(String), [prod1.model, dbCartEmpty.id], expect.any(Function))
+        expect(mockDBGet).toHaveBeenCalledWith(expect.any(String), [prod1.model], expect.any(Function))
         expect(mockDBRun).toHaveBeenCalled();
         expect(mockDBRun).toHaveBeenCalledWith(expect.any(String), [user.username, false, null], expect.any(Function))
         expect(mockDBRun).toHaveBeenCalledWith(expect.any(String), [prod1.model, dbCartEmpty.id], expect.any(Function))
@@ -116,6 +136,14 @@ describe("CartDAO_1: addToCart method tests", () => {
 
     test("CartDAO_1.2: Unpaid cart found, no instance of the product in the cart (it should resolve true)", async () => {
         const cartDAO = new CartDAO();
+        const dbProd1: databaseProduct = {
+            category: Category.SMARTPHONE,
+            model: "model1",
+            sellingPrice: 500,
+            arrivalDate: "2023-08-25",
+            details: "details1",
+            quantity: 50
+        }
 
         mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
             callback(null, dbCartUnpaid);
@@ -124,7 +152,10 @@ describe("CartDAO_1: addToCart method tests", () => {
             callback(null, dbCartUnpaid);
         })
         .mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
-            callback(null, null);
+            callback(null, dbProd1);
+        })
+        .mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+            callback(null, undefined);
         });
 
         mockDBRun.mockImplementation((_sql: any, _params: any, callback: (err: (Error | null)) => void) => {
@@ -137,6 +168,7 @@ describe("CartDAO_1: addToCart method tests", () => {
         expect(mockDBGet).toHaveBeenCalled();
         expect(mockDBGet).toHaveBeenCalledWith(expect.any(String), [user.username], expect.any(Function))
         expect(mockDBGet).toHaveBeenCalledWith(expect.any(String), [prod1.model, dbCartUnpaid.id], expect.any(Function))
+        expect(mockDBGet).toHaveBeenCalledWith(expect.any(String), [prod1.model], expect.any(Function))
         expect(mockDBRun).toHaveBeenCalled();
         expect(mockDBRun).toHaveBeenCalledWith(expect.any(String), [prod1.model, dbCartUnpaid.id], expect.any(Function))
     });
@@ -148,16 +180,27 @@ describe("CartDAO_1: addToCart method tests", () => {
             idCart: dbCartUnpaid.id,
             quantityInCart: prod1.quantity
         };
+        const dbProd1: databaseProduct = {
+            category: Category.SMARTPHONE,
+            model: "model1",
+            sellingPrice: 500,
+            arrivalDate: "2023-08-25",
+            details: "details1",
+            quantity: 50
+        }
 
         mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
             callback(null, dbCartUnpaid);
         })
-            .mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
-                callback(null, dbCartUnpaid);
-            })
-            .mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
-                callback(null, dbProdInCart1);
-            });
+        .mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+            callback(null, dbCartUnpaid);
+        })
+        .mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+            callback(null, dbProd1);
+        })
+        .mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+            callback(null, dbProdInCart1);
+        });
 
         mockDBRun.mockImplementation((_sql: any, _params: any, callback: (err: (Error | null)) => void) => {
             callback(null);
@@ -169,6 +212,7 @@ describe("CartDAO_1: addToCart method tests", () => {
         expect(mockDBGet).toHaveBeenCalled();
         expect(mockDBGet).toHaveBeenCalledWith(expect.any(String), [user.username], expect.any(Function))
         expect(mockDBGet).toHaveBeenCalledWith(expect.any(String), [prod1.model, dbCartUnpaid.id], expect.any(Function))
+        expect(mockDBGet).toHaveBeenCalledWith(expect.any(String), [prod1.model], expect.any(Function))
         expect(mockDBRun).toHaveBeenCalled();
         expect(mockDBRun).toHaveBeenCalledWith(expect.any(String), [prod1.model, dbCartUnpaid.id], expect.any(Function))
     });
@@ -177,7 +221,7 @@ describe("CartDAO_1: addToCart method tests", () => {
         const cartDAO = new CartDAO();
 
         mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
-            callback(new Error(), null);
+            callback(new Error(), undefined);
         })
 
         mockDBRun.mockImplementation((_sql: any, _params: any, callback: (err: (Error | null)) => void) => {
@@ -198,7 +242,7 @@ describe("CartDAO_1: addToCart method tests", () => {
             callback(null, dbCartEmpty);
         })
         .mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
-            callback(new Error(), null);
+            callback(new Error(), undefined);
         })
 
         mockDBRun.mockImplementation((_sql: any, _params: any, callback: (err: (Error | null)) => void) => {
@@ -222,7 +266,43 @@ describe("CartDAO_1: addToCart method tests", () => {
             callback(null, dbCartUnpaid);
         })
         .mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
-            callback(new Error(), null);
+            callback(new Error(), undefined);
+        })
+
+        mockDBRun.mockImplementation((_sql: any, _params: any, callback: (err: (Error | null)) => void) => {
+            callback(null);
+        });
+
+        await expect(cartDAO.addToCart(user, prod1.model)).rejects.toThrow(Error);
+
+        expect(mockDBGet).toHaveBeenCalled();
+        expect(mockDBGet).toHaveBeenCalledWith(expect.any(String), [user.username], expect.any(Function))
+        expect(mockDBGet).toHaveBeenCalledWith(expect.any(String), [prod1.model], expect.any(Function))
+        expect(mockDBRun).not.toHaveBeenCalled();
+    });
+
+    test("CartDAO_1.7: An SQL error occurs in the SQLite get method and it's passed to the callback (it should reject the error)", async () => {
+        const cartDAO = new CartDAO();
+        const dbProd1: databaseProduct = {
+            category: Category.SMARTPHONE,
+            model: "model1",
+            sellingPrice: 500,
+            arrivalDate: "2023-08-25",
+            details: "details1",
+            quantity: 50
+        }
+
+        mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+            callback(null, dbCartUnpaid);
+        })
+        .mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+            callback(null, dbCartUnpaid);
+        })
+        .mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+            callback(null, dbProd1);
+        })
+        .mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+            callback(new Error(), undefined);
         })
 
         mockDBRun.mockImplementation((_sql: any, _params: any, callback: (err: (Error | null)) => void) => {
@@ -234,14 +314,74 @@ describe("CartDAO_1: addToCart method tests", () => {
         expect(mockDBGet).toHaveBeenCalled();
         expect(mockDBGet).toHaveBeenCalledWith(expect.any(String), [user.username], expect.any(Function))
         expect(mockDBGet).toHaveBeenCalledWith(expect.any(String), [prod1.model, dbCartUnpaid.id], expect.any(Function))
+        expect(mockDBGet).toHaveBeenCalledWith(expect.any(String), [prod1.model], expect.any(Function))
         expect(mockDBRun).not.toHaveBeenCalled();
     });
 
-    test("CartDAO_1.7: An SQL error occurs in the SQLite run method and it's passed to the callback (it should reject the error)", async () => {
+    test("CartDAO_1.8: The model passed does not exist in the DB (it should reject a ProductNotFoundError)", async () => {
         const cartDAO = new CartDAO();
 
         mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
-            callback(null, null);
+            callback(null, dbCartUnpaid);
+        })
+        .mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+            callback(null, dbCartUnpaid);
+        })
+        .mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+            callback(null, undefined);
+        })
+
+        mockDBRun.mockImplementation((_sql: any, _params: any, callback: (err: (Error | null)) => void) => {
+            callback(null);
+        });
+
+        await expect(cartDAO.addToCart(user, prod1.model)).rejects.toThrow(ProductNotFoundError);
+
+        expect(mockDBGet).toHaveBeenCalled();
+        expect(mockDBGet).toHaveBeenCalledWith(expect.any(String), [user.username], expect.any(Function))
+        expect(mockDBGet).toHaveBeenCalledWith(expect.any(String), [prod1.model], expect.any(Function))
+        expect(mockDBRun).not.toHaveBeenCalled();
+    });
+
+    test("CartDAO_1.9: The model passed is not available (quantity == 0) (it should reject a EmptyProductStockError)", async () => {
+        const cartDAO = new CartDAO();
+        const dbProd1: databaseProduct = {
+            category: Category.SMARTPHONE,
+            model: "model1",
+            sellingPrice: 500,
+            arrivalDate: "2023-08-25",
+            details: "details1",
+            quantity: 0
+        }
+
+        mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+            callback(null, dbCartUnpaid);
+        })
+            .mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+                callback(null, dbCartUnpaid);
+            })
+            .mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+                callback(null, dbProd1);
+            })
+
+        mockDBRun.mockImplementation((_sql: any, _params: any, callback: (err: (Error | null)) => void) => {
+            callback(null);
+        });
+
+        await expect(cartDAO.addToCart(user, prod1.model)).rejects.toThrow(EmptyProductStockError);
+
+        expect(mockDBGet).toHaveBeenCalled();
+        expect(mockDBGet).toHaveBeenCalledWith(expect.any(String), [user.username], expect.any(Function))
+        expect(mockDBGet).toHaveBeenCalledWith(expect.any(String), [prod1.model], expect.any(Function))
+        expect(mockDBRun).not.toHaveBeenCalled();
+    });
+
+    test("CartDAO_1.10: An SQL error occurs in the SQLite run method and it's passed to the callback (it should reject the error)", async () => {
+        const cartDAO = new CartDAO();
+
+
+        mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+            callback(null, undefined);
         })
 
         mockDBRun.mockImplementation((_sql: any, _params: any, callback: (err: (Error | null)) => void) => {
@@ -256,8 +396,16 @@ describe("CartDAO_1: addToCart method tests", () => {
         expect(mockDBRun).toHaveBeenCalledWith(expect.any(String), [user.username, false, null], expect.any(Function))
     });
 
-    test("CartDAO_1.8: An SQL error occurs in the SQLite run method and it's passed to the callback (it should reject the error)", async () => {
+    test("CartDAO_1.11: An SQL error occurs in the SQLite run method and it's passed to the callback (it should reject the error)", async () => {
         const cartDAO = new CartDAO();
+        const dbProd1: databaseProduct = {
+            category: Category.SMARTPHONE,
+            model: "model1",
+            sellingPrice: 500,
+            arrivalDate: "2023-08-25",
+            details: "details1",
+            quantity: 50
+        }
 
         mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
             callback(null, dbCartUnpaid);
@@ -266,7 +414,10 @@ describe("CartDAO_1: addToCart method tests", () => {
             callback(null, dbCartUnpaid);
         })
         .mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
-            callback(null, null);
+            callback(null, dbProd1);
+        })
+        .mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+            callback(null, undefined);
         });
 
         mockDBRun.mockImplementation((_sql: any, _params: any, callback: (err: (Error | null)) => void) => {
@@ -278,11 +429,12 @@ describe("CartDAO_1: addToCart method tests", () => {
         expect(mockDBGet).toHaveBeenCalled();
         expect(mockDBGet).toHaveBeenCalledWith(expect.any(String), [user.username], expect.any(Function))
         expect(mockDBGet).toHaveBeenCalledWith(expect.any(String), [prod1.model, dbCartUnpaid.id], expect.any(Function))
+        expect(mockDBGet).toHaveBeenCalledWith(expect.any(String), [prod1.model, dbCartUnpaid.id], expect.any(Function))
         expect(mockDBRun).toHaveBeenCalled();
         expect(mockDBRun).toHaveBeenCalledWith(expect.any(String), [prod1.model, dbCartUnpaid.id], expect.any(Function))
     });
 
-    test("CartDAO_1.9: SQLite get method throws an Error (it should reject the error)", async () => {
+    test("CartDAO_1.12: SQLite get method throws an Error (it should reject the error)", async () => {
         const cartDAO = new CartDAO();
 
         mockDBGet.mockImplementationOnce((_sql: any, _params: any, _callback: (err: (Error | null), row: any) => void) => {
@@ -300,11 +452,11 @@ describe("CartDAO_1: addToCart method tests", () => {
         expect(mockDBRun).not.toHaveBeenCalled();
     });
 
-    test("CartDAO_1.10: SQLite run method throws an Error (it should reject the error)", async () => {
+    test("CartDAO_1.13: SQLite run method throws an Error (it should reject the error)", async () => {
         const cartDAO = new CartDAO();
 
         mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
-            callback(null, null);
+            callback(null, undefined);
         })
 
         mockDBRun.mockImplementation((_sql: any, _params: any, _callback: (err: (Error | null)) => void) => {
