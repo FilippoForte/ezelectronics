@@ -59,7 +59,8 @@ class ProductRoutes {
         this.router.post(
             "/",
             this.authenticator.isLoggedIn,
-            this.authenticator.isManager,
+            this.authenticator.isAdminOrManager,
+            
             (req: any, res: any, next: any) => this.controller.registerProducts(req.body.model, req.body.category, req.body.quantity, req.body.details, req.body.sellingPrice, req.body.arrivalDate)
                 .then(() => res.status(200).end())
                 .catch((err) => next(err))
