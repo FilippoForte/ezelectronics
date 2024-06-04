@@ -273,7 +273,7 @@ describe("UserDAO_3: getUserByUsername method tests", () => {
         const userDAO = new UserDAO();
 
         mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
-            callback(null, null);
+            callback(null, undefined);
         });
 
         await expect(userDAO.getUserByUsername(testUser.username))
@@ -286,7 +286,7 @@ describe("UserDAO_3: getUserByUsername method tests", () => {
         const userDAO = new UserDAO();
 
         mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
-            callback(new Error(), null);
+            callback(new Error(), undefined);
         });
 
         try {
@@ -359,7 +359,7 @@ describe("UserDAO_4: getAllUsers method tests", () => {
         const userDAO = new UserDAO();
 
         mockDBAll.mockImplementationOnce((_sql: any, callback: (err: Error | null, rows: any) => void) => {
-            callback(new Error(), null);
+            callback(new Error(), undefined);
         });
 
         await expect(userDAO.getAllUsers()).rejects.toThrow(Error);
@@ -464,7 +464,7 @@ describe("UserDAO_6: getUsersByRole method tests", () => {
         const userDAO = new UserDAO();
 
         mockDBAll.mockImplementationOnce((_sql: any, _params: any, callback: (err: Error | null, rows: any) => void) => {
-            callback(new Error(), null);
+            callback(new Error(), undefined);
         });
 
         await expect(userDAO.getUsersByRole("Manager")).rejects.toThrow(Error);
@@ -604,7 +604,7 @@ describe("UserDAO_7: updateUserInfo method tests", () => {
         const newUser = new User(dbRow.username, "newName", "newSurname", targetUser.role, "newAddress", "newBirthdate");
 
         mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: Error | null, row: any) => void) => {
-            callback(null, null);
+            callback(null, undefined);
         });
 
         mockDBRun.mockImplementationOnce((_sql: any, _params: any, callback: (err: Error | null) => void) => {
@@ -625,7 +625,7 @@ describe("UserDAO_7: updateUserInfo method tests", () => {
         const newUser = new User(loggedIn.username, "newName", "newSurname", loggedIn.role, "newAddress", "newBirthdate");
 
         mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: Error | null, row: any) => void) => {
-            callback(new Error(), null);
+            callback(new Error(), undefined);
         });
         mockDBRun.mockImplementationOnce((_sql: any, _params: any, callback: (err: Error | null) => void) => {
             callback(null);
@@ -841,7 +841,7 @@ describe("UserDAO_8: deleteUser method tests", () => {
         const admin = new User("admin", "admin", "admin", Role.ADMIN, "adminAddr", "adminBirth");
 
         mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: Error | null, row: any) => void) => {
-            callback(null, null);
+            callback(null, undefined);
         });
 
         mockDBRun.mockImplementationOnce((_sql: any, _params: any, callback: (err: Error | null) => void) => {
@@ -858,7 +858,7 @@ describe("UserDAO_8: deleteUser method tests", () => {
         const admin = new User("admin", "admin", "admin", Role.ADMIN, "adminAddr", "adminBirth");
 
         mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: Error | null, row: any) => void) => {
-            callback(new Error(), null);
+            callback(new Error(), undefined);
         });
         mockDBRun.mockImplementationOnce((_sql: any, _params: any, callback: (err: Error | null) => void) => {
             callback(null);
