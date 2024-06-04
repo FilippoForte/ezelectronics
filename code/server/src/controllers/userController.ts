@@ -1,5 +1,8 @@
+import dayjs from "dayjs";
 import { User } from "../components/user"
 import UserDAO from "../dao/userDAO"
+import { DateError } from "../utilities";
+import { UnauthorizedUserError } from "../errors/userError";
 
 /**
  * Represents a controller for managing users.
@@ -39,7 +42,11 @@ class UserController {
      * @returns A Promise that resolves to an array of users with the specified role.
      */
     async getUsersByRole(role: string) :Promise<User[]> { 
+        if(role in ["Admin, Customers, Manager"]){
         return this.dao.getUsersByRole(role);
+        }else{
+            throw new Error("Invalid role");
+        }
     }
 
     /**
@@ -51,7 +58,11 @@ class UserController {
      * @returns A Promise that resolves to the user with the specified username.
      */
     async getUserByUsername(user: User, username: string) :Promise<User>  { 
-        return this.dao.getUserByUsername(username);
+        if(user.username != username && user.role != "Admin"){
+            throw new UnauthorizedUserError()
+        }else{
+            return this.dao.getUserByUsername(username);
+        }
     }
 
     /**
@@ -86,7 +97,11 @@ class UserController {
      * @returns A Promise that resolves to the updated user
      */
     async updateUserInfo(user: User, name: string, surname: string, address: string, birthdate: string, username: string) :Promise<User> { 
-        return this.dao.updateUserInfo(user,name,surname,address,birthdate,username);
+        if(dayjs(birthdate).isAfter(dayjs()) || !(dayjs(birthdate).format("YYYY-MM-DD"))){
+            throw new DateError();
+        }else{
+            return this.dao.updateUserInfo(user,name,surname,address,birthdate,username);
+        }
     }
 }
 
