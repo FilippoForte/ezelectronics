@@ -134,14 +134,17 @@ class CartDAO {
                         }
                         for (let r of rows)
                         {
-                            if (r.quantity == 0)
+                            if (r.quantity === 0)
                             {
                                 return reject(new EmptyProductStockError);
                             }
-                            if (r.quantity < r.quantityInCart)
+                            else if (r.quantityInCart > r.quantity)
                             {
                                 return reject(new LowProductStockError);
                             }
+                        }
+                        for (let r of rows)
+                        {
                             db.run(sql2, [r.quantityInCart, r.modelProduct], (err2: Error | null) => {
                                 if (err2) {
                                     return reject(err2)
