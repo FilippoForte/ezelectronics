@@ -29,8 +29,7 @@ class ReviewDAO {
                     if (!row) {
                         reject(new ProductNotFoundError);
                     }else{
-                    db.get(sql1,[user.username,model], (err: Error | null, row:any)=>
-                        {
+                    db.get(sql1,[user.username,model], (err: Error | null, row:any)=>{
                         if(row){
                             reject(new ExistingReviewError);
                         }else
@@ -45,7 +44,6 @@ class ReviewDAO {
                         })
                     }
                 })
-                
             } catch (error) {
                 reject(error)
             }
@@ -92,13 +90,11 @@ class ReviewDAO {
             const sql1 = "SELECT id FROM reviews WHERE reviews.user== ? AND reviews.model== ?";
             const sql2= "SELECT model FROM products WHERE model == ?";
             
-            db.get(sql2, [model], (err: Error | null, row:any)=>
-                {
+            db.get(sql2, [model], (err: Error | null, row:any)=>{
                 if (!row) {
                     reject(new ProductNotFoundError);
                 }else{
-                db.get(sql1,[user.username,model], (err: Error | null, row:any)=>
-                    {
+                db.get(sql1,[user.username,model], (err: Error | null, row:any)=>{
                     if(!row){
                         reject(new NoReviewProductError);
                     }else
@@ -114,11 +110,10 @@ class ReviewDAO {
                     }
                     })
                 }
-                })
+            })
             }catch(error){
             reject(error)
             }
-
         })
     }
 
@@ -135,23 +130,22 @@ class ReviewDAO {
             db.get(sql1, [model], (err:Error, row:any)=>{
                 if (!row){
                     reject(new ProductNotFoundError);
-            }else{
-                db.run(sql, [model],(err:Error | null)=> {
-                    if(err) {
-                        reject(err)
-                        return
-                    }else {
-                        resolve();
-                    }
-                })
-            }
+                }else{
+                    db.run(sql, [model],(err:Error | null)=> {
+                        if(err) {
+                            reject(err)
+                            return
+                        }else {
+                            resolve();
+                        }
+                    })
+                }
             })
             }catch(error){
                 reject(error)
             }
-
         })
-     }
+    }
 
     /**
      * Deletes all reviews of all products
@@ -160,23 +154,20 @@ class ReviewDAO {
     deleteAllReviews() :Promise<void>  {
         return new Promise<void> ((resolve,reject)=> {
             try{
-            const sql= "DELETE * from reviews "
-            db.run(sql, (err:Error | null)=> {
-                if(err) {
-                    reject(err)
-                    return
-                }
-                else {
-                    resolve();
-                }
-            })
-        }catch(error){
-            reject(error)
-    }
-
+                const sql= "DELETE * from reviews "
+                db.run(sql, (err:Error | null)=> {
+                    if(err) {
+                        reject(err)
+                    }
+                    else {
+                        resolve();
+                    }
+                })
+            }catch(error){
+                reject(error)
+            }
         })
-     }
-
+    }
 
 
 }
