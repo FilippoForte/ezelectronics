@@ -1,7 +1,8 @@
 import db from "../db/db";
 import { User } from "../components/user"
 import { Cart, ProductInCart } from "../components/cart"
-import { CartNotFoundError, ProductInCartError, ProductNotInCartError, WrongUserCartError, EmptyCartError } from "../errors/cartError";
+import { CartNotFoundError, ProductNotInCartError, EmptyCartError } from "../errors/cartError";
+import { ProductNotFoundError, EmptyProductStockError, LowProductStockError } from "../errors/productError";
 import dayjs from "dayjs";
 
 /**
@@ -15,8 +16,9 @@ class CartDAO {
             try {
                 const sql = "SELECT id FROM carts WHERE customer == ? and paid == 0";
                 const sql1 = "INSERT INTO carts(customer, paid, paymentDate) VALUES(?, ?, ?)";
-                const sql2 = "SELECT * FROM productInCart WHERE modelProduct == ? and idCart == ?";
-                let sql3 = "";
+                const sql2 = "SELECT * FROM products WHERE model == ?";
+                const sql3 = "SELECT * FROM productInCart WHERE modelProduct == ? and idCart == ?";
+                let sql4 = "";
                 db.get(sql, [user.username], (err: Error | null, row: any) => {
                     if (err) {
                         return reject(err);
@@ -33,23 +35,36 @@ class CartDAO {
                             return reject(err1);
                         }
                         if (row1) {
-                            //ho trovato id carrello
-                            db.get(sql2, [product, row1.id], (err2: Error | null, row2: any) => {
+                            //controllo se esiste il modello
+                            db.get(sql2, [product], (err2: Error | null, row2: any) => {
                                 if (err2) {
                                     return reject(err2);
                                 }
-                                if (!row2) {
-                                    sql3 = "INSERT INTO productInCart(modelProduct, idCart, quantityInCart) VALUES(?, ?, 1)";
+                                if (row2 === undefined) {
+                                    return reject(new ProductNotFoundError);
                                 }
-                                else
+                                else if (row2.quantity == 0)
                                 {
-                                    sql3 = "UPDATE productInCart SET quantityInCart = quantityInCart + 1 WHERE modelProduct == ? and idCart == ?";
+                                    return reject(new EmptyProductStockError);
                                 }
-                                db.run(sql3, [product, row1.id], (err3: Error | null) => {
+                                //ho trovato id carrello
+                                db.get(sql3, [product, row1.id], (err3: Error | null, row3: any) => {
                                     if (err3) {
                                         return reject(err3);
                                     }
-                                    return resolve(true);
+                                    if (!row3) {
+                                        sql4 = "INSERT INTO productInCart(modelProduct, idCart, quantityInCart) VALUES(?, ?, 1)";
+                                    }
+                                    else
+                                    {
+                                        sql4 = "UPDATE productInCart SET quantityInCart = quantityInCart + 1 WHERE modelProduct == ? and idCart == ?";
+                                    }
+                                    db.run(sql4, [product, row1.id], (err4: Error | null) => {
+                                        if (err4) {
+                                            return reject(err4);
+                                        }
+                                        return resolve(true);
+                                    });
                                 });
                             });
                         }
@@ -119,9 +134,13 @@ class CartDAO {
                         }
                         for (let r of rows)
                         {
+                            if (r.quantity == 0)
+                            {
+                                return reject(new EmptyProductStockError);
+                            }
                             if (r.quantity < r.quantityInCart)
                             {
-                                return resolve(false);
+                                return reject(new LowProductStockError);
                             }
                             db.run(sql2, [r.quantityInCart, r.modelProduct], (err2: Error | null) => {
                                 if (err2) {
@@ -169,8 +188,9 @@ class CartDAO {
         return new Promise<boolean>((resolve, reject) => {
             try {
                 const sql = "SELECT * FROM carts WHERE customer == ? and paid == 0";
-                const sql1 = "SELECT quantityInCart FROM productInCart WHERE modelProduct == ? and idCart == ?";
-                let sql2 = "";
+                const sql1 = "SELECT * FROM products WHERE model == ?";
+                const sql2 = "SELECT quantityInCart FROM productInCart WHERE modelProduct == ? and idCart == ?";
+                let sql3 = "";
                 db.get(sql, [user.username], (err: Error | null, row: any) => {
                     if (err) {
                         return reject(err);
@@ -178,26 +198,34 @@ class CartDAO {
                     if (!row) {
                         return reject(new CartNotFoundError);
                     }
-                    db.get(sql1, [product, row.id], (err1: Error | null, row1: any) => {
+                    db.get(sql1, [product], (err1: Error | null, row1: any) => {
                         if (err1) {
                             return reject(err1);
                         }
-                        if (!row1) {
-                            return reject(new ProductNotInCartError);
+                        if (row1 === undefined) {
+                            return reject(new ProductNotFoundError);
                         }
-                        if (row1.quantityInCart > 1)
-                        {
-                            sql2 = "UPDATE productInCart SET quantityInCart = quantityInCart - 1 WHERE modelProduct == ? and idCart == ?";
-                        }
-                        else
-                        {
-                            sql2 = "DELETE FROM productInCart WHERE modelProduct == ? and idCart == ?";
-                        }
-                        db.run(sql2, [product, row.id], (err2: Error | null) => {
+                        db.get(sql2, [product, row.id], (err2: Error | null, row2: any) => {
                             if (err2) {
                                 return reject(err2);
                             }
-                            return resolve(true);
+                            if (!row2) {
+                                return reject(new ProductNotInCartError);
+                            }
+                            if (row2.quantityInCart > 1)
+                            {
+                                sql3 = "UPDATE productInCart SET quantityInCart = quantityInCart - 1 WHERE modelProduct == ? and idCart == ?";
+                            }
+                            else
+                            {
+                                sql3 = "DELETE FROM productInCart WHERE modelProduct == ? and idCart == ?";
+                            }
+                            db.run(sql3, [product, row.id], (err3: Error | null) => {
+                                if (err3) {
+                                    return reject(err3);
+                                }
+                                return resolve(true);
+                            });
                         });
                     });
                 });
@@ -216,7 +244,7 @@ class CartDAO {
                     if (err) {
                         return reject(err);
                     }
-                    if (row == 0) {
+                    if (row === undefined) {
                         return reject(new CartNotFoundError);
                     }
                     db.run(sql1, [row.id], (err1: Error | null) => {
