@@ -123,8 +123,8 @@ class UserRoutes {
          */
         this.router.delete(
             "/:username", 
-            this.authService.isLoggedIn,
             this.errorHandler.validateRequest,
+            this.authService.isLoggedIn,
             (req: any, res: any, next: any) => this.controller.deleteUser(req.user, req.params.username)
                 .then(() => res.status(200).end())
                 .catch((err: any) => next(err))

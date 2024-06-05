@@ -26,6 +26,7 @@ const dbRow = {
     salt: Buffer.from("salt")
 };
 
+
 describe("UserDAO_1: getIsUserAuthenticated method tests", () => {
     let mockDBGet: any;
     let mockRandomBytes: any;
@@ -273,7 +274,7 @@ describe("UserDAO_3: getUserByUsername method tests", () => {
         const userDAO = new UserDAO();
 
         mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
-            callback(null, null);
+            callback(null, undefined);
         });
 
         await expect(userDAO.getUserByUsername(testUser.username))
@@ -286,7 +287,7 @@ describe("UserDAO_3: getUserByUsername method tests", () => {
         const userDAO = new UserDAO();
 
         mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
-            callback(new Error(), null);
+            callback(new Error(), undefined);
         });
 
         try {
@@ -321,7 +322,7 @@ describe("UserDAO_3: getUserByUsername method tests", () => {
 
 describe("UserDAO_4: getAllUsers method tests", () => {
     let mockDBAll: any;
-    let rowList: unknown[];
+    let rowList: any[];
     let row1: any;
     let row2: any;
 
@@ -343,7 +344,7 @@ describe("UserDAO_4: getAllUsers method tests", () => {
     test("UserDAO_4.1: Get all users (it should resolve an array of User)", async () => {
         const userDAO = new UserDAO();
 
-        mockDBAll.mockImplementationOnce((_sql: any, callback: (err: Error | null, rows: unknown[]) => void) => {
+        mockDBAll.mockImplementationOnce((_sql: any, callback: (err: Error | null, rows: any[]) => void) => {
             callback(null, rowList);
         });
 
@@ -359,7 +360,7 @@ describe("UserDAO_4: getAllUsers method tests", () => {
         const userDAO = new UserDAO();
 
         mockDBAll.mockImplementationOnce((_sql: any, callback: (err: Error | null, rows: any) => void) => {
-            callback(new Error(), null);
+            callback(new Error(), undefined);
         });
 
         await expect(userDAO.getAllUsers()).rejects.toThrow(Error);
@@ -428,7 +429,7 @@ describe("UserDAO_5: deleteAll method tests", () => {
 
 describe("UserDAO_6: getUsersByRole method tests", () => {
     let mockDBAll: any;
-    let rowList: unknown[];
+    let rowList: any[];
     let row1, row2: any;
 
     beforeEach(async () => {
@@ -447,7 +448,7 @@ describe("UserDAO_6: getUsersByRole method tests", () => {
     test("UserDAO_6.1: Get Users by role (it should resolve an array of User)", async () => {
         const userDAO = new UserDAO();
 
-        mockDBAll.mockImplementationOnce((_sql: any, _params: any, callback: (err: Error | null, rows: unknown[]) => void) => {
+        mockDBAll.mockImplementationOnce((_sql: any, _params: any, callback: (err: Error | null, rows: any[]) => void) => {
             callback(null, rowList);
         });
 
@@ -464,7 +465,7 @@ describe("UserDAO_6: getUsersByRole method tests", () => {
         const userDAO = new UserDAO();
 
         mockDBAll.mockImplementationOnce((_sql: any, _params: any, callback: (err: Error | null, rows: any) => void) => {
-            callback(new Error(), null);
+            callback(new Error(), undefined);
         });
 
         await expect(userDAO.getUsersByRole("Manager")).rejects.toThrow(Error);
@@ -604,7 +605,7 @@ describe("UserDAO_7: updateUserInfo method tests", () => {
         const newUser = new User(dbRow.username, "newName", "newSurname", targetUser.role, "newAddress", "newBirthdate");
 
         mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: Error | null, row: any) => void) => {
-            callback(null, null);
+            callback(null, undefined);
         });
 
         mockDBRun.mockImplementationOnce((_sql: any, _params: any, callback: (err: Error | null) => void) => {
@@ -625,7 +626,7 @@ describe("UserDAO_7: updateUserInfo method tests", () => {
         const newUser = new User(loggedIn.username, "newName", "newSurname", loggedIn.role, "newAddress", "newBirthdate");
 
         mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: Error | null, row: any) => void) => {
-            callback(new Error(), null);
+            callback(new Error(), undefined);
         });
         mockDBRun.mockImplementationOnce((_sql: any, _params: any, callback: (err: Error | null) => void) => {
             callback(null);
@@ -799,7 +800,7 @@ describe("UserDAO_8: deleteUser method tests", () => {
         const userDAO = new UserDAO();
         const user = new User(dbRow.username, dbRow.name, dbRow.surname, Role.MANAGER, dbRow.address, dbRow.birthdate);
         let row = {...dbRow};
-        dbRow.username = "anotherUser";
+        row.username = "anotherUser";
 
         mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: Error | null, row: any) => void) => {
             callback(null, row);
@@ -809,9 +810,9 @@ describe("UserDAO_8: deleteUser method tests", () => {
             callback(null);
         });
 
-        await expect(userDAO.deleteUser(user, "anotherUser")).rejects.toThrow(UnauthorizedUserError);
+        await expect(userDAO.deleteUser(user, row.username)).rejects.toThrow(UnauthorizedUserError);
         expect(mockDBGet).toHaveBeenCalledTimes(1);
-        expect(mockDBGet).toHaveBeenCalledWith(expect.any(String), [user.username], expect.any(Function));
+        expect(mockDBGet).toHaveBeenCalledWith(expect.any(String), [row.username], expect.any(Function));
         expect(mockDBRun).toHaveBeenCalledTimes(0);
     });
 
@@ -841,14 +842,14 @@ describe("UserDAO_8: deleteUser method tests", () => {
         const admin = new User("admin", "admin", "admin", Role.ADMIN, "adminAddr", "adminBirth");
 
         mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: Error | null, row: any) => void) => {
-            callback(null, null);
+            callback(null, undefined);
         });
 
         mockDBRun.mockImplementationOnce((_sql: any, _params: any, callback: (err: Error | null) => void) => {
             callback(null);
         });
 
-        await expect(await userDAO.deleteUser(admin, "username")).rejects.toThrow(UserNotFoundError);
+        await expect(userDAO.deleteUser(admin, "username")).rejects.toThrow(UserNotFoundError);
         expect(mockDBGet).toHaveBeenCalledWith(expect.any(String), ["username"], expect.any(Function));
         expect(mockDBRun).toHaveBeenCalledTimes(0);
     });
@@ -858,7 +859,7 @@ describe("UserDAO_8: deleteUser method tests", () => {
         const admin = new User("admin", "admin", "admin", Role.ADMIN, "adminAddr", "adminBirth");
 
         mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: Error | null, row: any) => void) => {
-            callback(new Error(), null);
+            callback(new Error(), undefined);
         });
         mockDBRun.mockImplementationOnce((_sql: any, _params: any, callback: (err: Error | null) => void) => {
             callback(null);
