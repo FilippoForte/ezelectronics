@@ -25,6 +25,7 @@ describe("ReviewDAO_1: addReview method tests", () => {
     });
 
     afterEach( () => {
+        jest.clearAllMocks();
         jest.restoreAllMocks();
     });
     
@@ -54,8 +55,8 @@ describe("ReviewDAO_1: addReview method tests", () => {
             return {} as Database
         });
         await expect(reviewDAO.addReview(model, user, score, comment)).rejects.toThrow(ProductNotFoundError);
-        expect(mockDBGet).toHaveBeenCalledTimes(3);
-        expect(mockDBRun).toHaveBeenCalledTimes(1);
+        expect(mockDBGet).toHaveBeenCalledTimes(1);
+        expect(mockDBRun).toHaveBeenCalledTimes(0);
     });
 
     test("ReviewDAO_1.3: It should return ExistingReviewError", async () => {
@@ -68,8 +69,8 @@ describe("ReviewDAO_1: addReview method tests", () => {
             return {} as Database
         });
         await expect(reviewDAO.addReview(model, user, score, comment)).rejects.toThrow(ExistingReviewError);
-        expect(mockDBGet).toHaveBeenCalledTimes(5);
-        expect(mockDBRun).toHaveBeenCalledTimes(1);
+        expect(mockDBGet).toHaveBeenCalledTimes(2);
+        expect(mockDBRun).toHaveBeenCalledTimes(0);
     });
 });
 
@@ -84,6 +85,7 @@ describe("ReviewDAO_2: getProductReviews method tests", () => {
     });
 
     afterEach( () => {
+        jest.clearAllMocks();
         jest.restoreAllMocks();
     });
 
@@ -106,7 +108,7 @@ describe("ReviewDAO_2: getProductReviews method tests", () => {
             return {} as Database
         });
         const result = await reviewDAO.getProductReviews(model);
-        expect(mockDBAll).toHaveBeenCalledTimes(2);
+        expect(mockDBAll).toHaveBeenCalledTimes(1);
         expect(result).toHaveLength(0);
     });
 });
@@ -123,6 +125,7 @@ describe("ReviewDAO_3: deleteReview method tests", () => {
     });
 
     afterEach( () => {
+        jest.clearAllMocks();
         jest.restoreAllMocks();
     });
 
@@ -141,8 +144,8 @@ describe("ReviewDAO_3: deleteReview method tests", () => {
         });
         const result = await reviewDAO.deleteReview(model, user);
         expect(result).toBe(undefined);
-        //expect(mockDBGet).toHaveBeenCalledTimes(2);
-        //expect(mockDBRun).toHaveBeenCalledTimes(1);
+        expect(mockDBGet).toHaveBeenCalledTimes(2);
+        expect(mockDBRun).toHaveBeenCalledTimes(1);
     });
 
     test("ReviewDAO_3.2: It should return ProductNotFoundError", async () => {
@@ -152,8 +155,8 @@ describe("ReviewDAO_3: deleteReview method tests", () => {
             return {} as Database
         });
         await expect(reviewDAO.deleteReview(model, user)).rejects.toThrow(ProductNotFoundError);
-        //expect(mockDBGet).toHaveBeenCalledTimes(3);
-        //expect(mockDBRun).toHaveBeenCalledTimes(1);
+        expect(mockDBGet).toHaveBeenCalledTimes(1);
+        expect(mockDBRun).toHaveBeenCalledTimes(0);
     });
 
     test("ReviewDAO_3.3: It should return NoReviewProductError", async () => {
@@ -166,8 +169,8 @@ describe("ReviewDAO_3: deleteReview method tests", () => {
             return {} as Database
         });
         await expect(reviewDAO.deleteReview(model, user)).rejects.toThrow(NoReviewProductError);
-        //expect(mockDBGet).toHaveBeenCalledTimes(5);
-        //expect(mockDBRun).toHaveBeenCalledTimes(1);
+        expect(mockDBGet).toHaveBeenCalledTimes(2);
+        expect(mockDBRun).toHaveBeenCalledTimes(0);
     });
 });
 
@@ -182,6 +185,7 @@ describe("ReviewDAO_4: deleteReviewsOfProduct method tests", () => {
     });
 
     afterEach( () => {
+        jest.clearAllMocks();
         jest.restoreAllMocks();
     });
 
@@ -197,8 +201,8 @@ describe("ReviewDAO_4: deleteReviewsOfProduct method tests", () => {
         });
         const result = await reviewDAO.deleteReviewsOfProduct(model);
         expect(result).toBe(undefined);
-        //expect(mockDBGet).toHaveBeenCalledTimes(1);
-        //expect(mockDBRun).toHaveBeenCalledTimes(1);
+        expect(mockDBGet).toHaveBeenCalledTimes(1);
+        expect(mockDBRun).toHaveBeenCalledTimes(1);
     });
 
     test("ReviewDAO_4.2: It should return nothing", async () => {
@@ -208,8 +212,8 @@ describe("ReviewDAO_4: deleteReviewsOfProduct method tests", () => {
             return {} as Database
         });
         await expect(reviewDAO.deleteReviewsOfProduct(model)).rejects.toThrow(ProductNotFoundError);
-        //expect(mockDBGet).toHaveBeenCalledTimes(1);
-        //expect(mockDBRun).toHaveBeenCalledTimes(1);
+        expect(mockDBGet).toHaveBeenCalledTimes(1);
+        expect(mockDBRun).toHaveBeenCalledTimes(0);
     });
 });
 
@@ -221,6 +225,7 @@ describe("ReviewDAO_5: deleteAllReviews method tests", () => {
     });
 
     afterEach( () => {
+        jest.clearAllMocks();
         jest.restoreAllMocks();
     });
     
@@ -232,6 +237,6 @@ describe("ReviewDAO_5: deleteAllReviews method tests", () => {
         });
         const result = await reviewDAO.deleteAllReviews();
         expect(result).toBe(undefined);
-        //expect(mockDBRun).toHaveBeenCalledTimes(1);
+        expect(mockDBRun).toHaveBeenCalledTimes(1);
     });
 });
