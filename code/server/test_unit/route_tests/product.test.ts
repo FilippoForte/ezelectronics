@@ -84,6 +84,36 @@ describe("Products routes unit tests", () =>{
     });
 });
 
+describe("ProductRoutes_1: getProducts method tests", () => {
+  const baseURL = "/ezelectronics/products";
+  
+  // Test per utente non loggato
+  test("ProductRoutes_1.1: It should return 401 if the user is not logged in", async () => {
+    // Mock middleware per rispondere con 401
+    jest
+      .spyOn(Authenticator.prototype, "isLoggedIn")
+      .mockImplementation((req, res, next) => res.status(401).end());
+
+    // Simula il middleware isAdminOrManager
+    jest
+      .spyOn(Authenticator.prototype, "isAdminOrManager")
+      .mockImplementation((req, res, next) => next());
+
+    // Simula il metodo getProducts del controller
+    jest.spyOn(ProductController.prototype, "getProducts").mockResolvedValueOnce([]);
+
+    // Invia richiesta alla rotta
+    const response = await request(app)
+      .get(baseURL)
+      .query({ grouping: 'some-grouping', category: 'some-category', model: 'some-model' });
+
+    // Asserzioni
+    expect(response.status).toBe(401);
+    expect(ProductController.prototype.getProducts).not.toHaveBeenCalled();
+  });
+});
+
+
 
 
 });
