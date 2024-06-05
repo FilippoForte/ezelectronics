@@ -129,7 +129,7 @@ class CartDAO {
                         if (err1) {
                             return reject(err1);
                         }
-                        if (!rows) {
+                        if (rows.length == 0) {
                             return reject(new EmptyCartError);
                         }
                         for (let r of rows)
@@ -174,7 +174,12 @@ class CartDAO {
                     }
                     for (let row of rows)
                     {
-                        carts.push(await this.ProductInCartFunction(row.id, row.customer, row.paid, row.paymentDate));
+                        try {
+                            carts.push(await this.ProductInCartFunction(row.id, row.customer, row.paid, row.paymentDate));
+                        }
+                        catch (error) {
+                            return reject(error);
+                        }
                     }
                     return resolve(carts);
                 });
@@ -294,7 +299,12 @@ class CartDAO {
                     }
                     for (let row of rows)
                     {
-                        carts.push(await this.ProductInCartFunction(row.id, row.customer, row.paid, row.paymentDate));
+                        try {
+                            carts.push(await this.ProductInCartFunction(row.id, row.customer, row.paid, row.paymentDate));
+                        }
+                        catch (error) {
+                            return reject(error);
+                        }
                     }
                     return resolve(carts);
                 });
