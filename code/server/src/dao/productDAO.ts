@@ -138,9 +138,9 @@ class ProductDAO {
 
         let selectQuery = "SELECT * FROM products";
 
-        if (grouping == "model")
+        if (grouping == "model" && category==null && model!=null)
           selectQuery = "SELECT * FROM products WHERE model='" + model + "'";
-        else if (grouping == "category")
+        else if (grouping == "category" && category!=null && model==null)
           selectQuery = "SELECT * FROM products WHERE category='" + category + "'";
         else if (grouping == null)
           selectQuery = "SELECT * FROM products";
