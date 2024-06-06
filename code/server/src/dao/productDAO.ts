@@ -188,10 +188,10 @@ class ProductDAO {
 
         let selectQuery = "SELECT * FROM products WHERE quantity > 0";
 
-        if (grouping == "model")
-          selectQuery = "SELECT * FROM products WHERE model='" + model + " AND quantity > 0'";
-        else if (grouping == "category")
-          selectQuery = "SELECT * FROM products WHERE category='" + category + " AND quantity > 0'";
+        if (grouping == "model" && category==null && model!=null)
+          selectQuery = "SELECT * FROM products WHERE model='" + model + " AND quantity >= 0'";
+        else if (grouping == "category" && category!=null && model==null)
+          selectQuery = "SELECT * FROM products WHERE category='" + category + " AND quantity >= 0'";
         else if (grouping == null)
           selectQuery = "SELECT * FROM products WHERE quantity > 0";
         else
@@ -206,7 +206,7 @@ class ProductDAO {
             return reject(new ProductNotFoundError())
           }
 
-          const products: Product[] = rows.map(
+          const products: Product[] = rows.filter(row => row.quantity>0).map(
             (row) =>
               new Product(
                 row.sellingPrice,

@@ -831,3 +831,118 @@ describe("CartRoutes_7: deleteAllCarts method tests", () => {
   });
 });
 
+
+describe("CartRoutes_8: getAllCarts method tests", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+    jest.restoreAllMocks();
+  });
+
+  // Sample data for all carts
+  const allCarts = [
+    new Cart(customerUser.username, true, "2023-01-01", 50, [inputProduct1]),
+    new Cart(customerUser.username, false, "", 75, [inputProduct2])
+  ];
+
+  test("CartRoutes_8.1: It should return a 200 success code and all carts for a logged-in admin", async () => {
+    // Mock the isLoggedIn method of Authenticator to simulate a logged-in admin user
+    jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
+      req.user = adminUser;
+      return next();
+    });
+
+    // Mock the isAdminOrManager method of Authenticator to simulate an admin user
+    jest.spyOn(Authenticator.prototype, "isAdminOrManager").mockImplementation((req, res, next) => {
+      return next();
+    });
+
+    // Mock the getAllCarts method of CartController to return the sample all carts
+    jest.spyOn(CartController.prototype, "getAllCarts").mockResolvedValueOnce(allCarts);
+
+    // Make a GET request to the all URL and store the response
+    const response = await request(app).get(baseURL + "/all");
+
+    // Assert that the response status is 200
+    expect(response.status).toBe(200);
+
+    // Assert that the response body equals the sample all carts
+    expect(response.body).toEqual(allCarts);
+
+    // Assert that the isLoggedIn method was called once
+    expect(Authenticator.prototype.isLoggedIn).toHaveBeenCalledTimes(1);
+
+    // Assert that the isAdminOrManager method was called once
+    expect(Authenticator.prototype.isAdminOrManager).toHaveBeenCalledTimes(1);
+
+    // Assert that the getAllCarts method was called once
+    expect(CartController.prototype.getAllCarts).toHaveBeenCalledTimes(1);
+  });
+
+  test("CartRoutes_8.2: It should return a 200 success code and an empty array if no carts exist", async () => {
+    // Create an empty carts array
+    const emptyCarts: Cart[] = [];
+
+    // Mock the isLoggedIn method of Authenticator to simulate a logged-in admin user
+    jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
+      req.user = adminUser;
+      return next();
+    });
+
+    // Mock the isAdminOrManager method of Authenticator to simulate an admin user
+    jest.spyOn(Authenticator.prototype, "isAdminOrManager").mockImplementation((req, res, next) => {
+      return next();
+    });
+
+    // Mock the getAllCarts method of CartController to return the empty carts array
+    jest.spyOn(CartController.prototype, "getAllCarts").mockResolvedValueOnce(emptyCarts);
+
+    // Make a GET request to the all URL and store the response
+    const response = await request(app).get(baseURL + "/all");
+
+    // Assert that the response status is 200
+    expect(response.status).toBe(200);
+
+    // Assert that the response body equals the empty carts array
+    expect(response.body).toEqual(emptyCarts);
+
+    // Assert that the isLoggedIn method was called once
+    expect(Authenticator.prototype.isLoggedIn).toHaveBeenCalledTimes(1);
+
+    // Assert that the isAdminOrManager method was called once
+    expect(Authenticator.prototype.isAdminOrManager).toHaveBeenCalledTimes(1);
+
+    // Assert that the getAllCarts method was called once
+    expect(CartController.prototype.getAllCarts).toHaveBeenCalledTimes(1);
+  });
+
+  test("CartRoutes_8.3: It should return a 401 if the user is not logged in", async () => {
+    // Mock middleware to respond with 401
+    jest
+      .spyOn(Authenticator.prototype, "isLoggedIn")
+      .mockImplementation((req, res, next) => res.status(401).end());
+
+    // Make request to the route
+    const response = await request(app).get(`${baseURL}/all`);
+
+    // Assertions
+    expect(response.status).toBe(401);
+    expect(CartController.prototype.getAllCarts).toHaveBeenCalledTimes(0);
+  });
+
+  test("CartRoutes_8.4: It should return a 403 if the user is not an admin or manager", async () => {
+    // Mock middleware to set user as logged in but not an admin or manager
+    jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
+      req.user = customerUser;
+      next();
+    });
+    jest.spyOn(Authenticator.prototype, "isAdminOrManager").mockImplementation((req, res, next) => res.status(403).end());
+
+    // Make request to the route
+    const response = await request(app).get(`${baseURL}/all`);
+
+    // Assertions
+    expect(response.status).toBe(403);
+    expect(CartController.prototype.getAllCarts).toHaveBeenCalledTimes(0);
+  });
+});
+
