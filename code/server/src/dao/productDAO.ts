@@ -189,9 +189,9 @@ class ProductDAO {
         let selectQuery = "SELECT * FROM products WHERE quantity > 0";
 
         if (grouping == "model")
-          selectQuery = "SELECT * FROM products WHERE model='" + model + "AND quantity > 0'";
+          selectQuery = "SELECT * FROM products WHERE model='" + model + " AND quantity > 0'";
         else if (grouping == "category")
-          selectQuery = "SELECT * FROM products WHERE category='" + category + "AND quantity > 0'";
+          selectQuery = "SELECT * FROM products WHERE category='" + category + " AND quantity > 0'";
         else if (grouping == null)
           selectQuery = "SELECT * FROM products WHERE quantity > 0";
         else

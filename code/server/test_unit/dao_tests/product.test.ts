@@ -74,7 +74,7 @@ const dbProd3: databaseProduct = {
     sellingPrice: 1550,
     arrivalDate: "2023-10-13",
     details: "",
-    quantity: 15
+    quantity: 0
 }
 
 const prod1 = new Product(dbProd1.sellingPrice, dbProd1.model, Category.SMARTPHONE, dbProd1.arrivalDate, dbProd1.details, dbProd1.quantity);
@@ -168,7 +168,7 @@ describe("Product DAO unit tests", () => {
             const productDAO = new ProductDAO();
 
             mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
-                callback(null, dbProdOkDate);
+                callback(null, undefined);
             })
 
             mockDBRun.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null)) => void) => {
@@ -187,7 +187,7 @@ describe("Product DAO unit tests", () => {
             expect(mockDBGet).toHaveBeenCalledWith(expect.stringContaining("SELECT"), [dbProdOkDate.model], expect.any(Function));
             expect(mockDBRun).toHaveBeenCalled();
             expect(mockDBRun).toHaveBeenCalledWith(expect.stringContaining("INSERT"), expect.arrayContaining(
-                    [dbProdOkDate.model, dbProdOkDate.category, dbProdOkDate.quantity, dbProdOkDate.details, dbProdOkDate.sellingPrice, dayjs().format("YYYY-MM-DD")]),
+                    [dbProdOkDate.model, dbProdOkDate.category, dbProdOkDate.quantity, dbProdOkDate.details, dbProdOkDate.sellingPrice, dbProdOkDate.arrivalDate]),
                 expect.any(Function));
         });
 
@@ -512,6 +512,160 @@ describe("Product DAO unit tests", () => {
             })
 
             await expect(productDAO.getProducts(null, null, null))
+                .rejects
+                .toThrow(Error);
+
+            expect(mockDBAll).toHaveBeenCalled();
+            expect(mockDBAll).toHaveBeenCalledWith(expect.stringContaining("SELECT *"), [], expect.any(Function))
+        });
+    });
+
+    describe("ProductDAO_4: getAvailableProducts method tests", () => {
+        let mockDBAll: any;
+
+        beforeEach(async () => {
+            mockDBAll = jest.spyOn(db, "all");
+        });
+
+        afterEach(() => {
+            jest.restoreAllMocks();
+        });
+
+        test("ProductDAO_4.1: Get all available products in the database, no grouping (it should resolve an Array of Product)", async () => {
+            const productDAO = new ProductDAO();
+
+            mockDBAll.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+                callback(null, [dbProd1, dbProd2, dbProd3]);
+            })
+
+            const result = await productDAO.getAvailableProducts(null, null, null);
+
+            expect(result).toEqual([prod1, prod2]);
+            expect(mockDBAll).toHaveBeenCalled();
+            expect(mockDBAll).toHaveBeenCalledWith(expect.stringContaining("SELECT *"), [], expect.any(Function))
+        });
+
+        test("ProductDAO_4.2: Get all available products in the database, category grouping (it should resolve an Array of Product)", async () => {
+            const productDAO = new ProductDAO();
+
+            mockDBAll.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+                callback(null, [dbProd2, dbProd3]);
+            })
+
+            const result = await productDAO.getAvailableProducts("category", Category.LAPTOP, null);
+
+            expect(result).toEqual([prod2]);
+            expect(mockDBAll).toHaveBeenCalled();
+            expect(mockDBAll).toHaveBeenCalledWith(expect.stringContaining(Category.LAPTOP), [], expect.any(Function))
+        });
+
+        test("ProductDAO_4.3: Get all available products in the database, model grouping (it should resolve an Array of Product)", async () => {
+            const productDAO = new ProductDAO();
+
+            mockDBAll.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+                callback(null, [dbProd2]);
+            })
+
+            const result = await productDAO.getAvailableProducts("model", null, dbProd2.model);
+
+            expect(result).toEqual([prod2]);
+            expect(mockDBAll).toHaveBeenCalled();
+            expect(mockDBAll).toHaveBeenCalledWith(expect.stringContaining(dbProd2.model), [], expect.any(Function))
+        });
+
+        test("ProductDAO_4.4: Get all available products in the database, model grouping, quantity of provided model == 0 (it should resolve an empty Array)", async () => {
+            const productDAO = new ProductDAO();
+
+            mockDBAll.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+                callback(null, [dbProd3]);
+            })
+
+            const result = await productDAO.getAvailableProducts("model", null, dbProd3.model);
+
+            expect(result).toEqual([]);
+            expect(mockDBAll).toHaveBeenCalled();
+            expect(mockDBAll).toHaveBeenCalledWith(expect.stringContaining(prod3.model), [], expect.any(Function))
+        });
+
+        test("ProductDAO_4.5: Illegal grouping, grouping == \"model\", category not null (it should reject an Error)", async () => {
+            const productDAO = new ProductDAO();
+
+            await expect(productDAO.getAvailableProducts("model", Category.LAPTOP, "OMEN 16 2024")).rejects.toThrow(Error);
+
+            expect(mockDBAll).not.toHaveBeenCalled();
+        });
+
+        test("ProductDAO_4.6: Illegal grouping, grouping == \"category\", model not null (it should reject an Error)", async () => {
+            const productDAO = new ProductDAO();
+
+            await expect(productDAO.getAvailableProducts("category", Category.LAPTOP, "OMEN 16 2024")).rejects.toThrow(Error);
+
+            expect(mockDBAll).not.toHaveBeenCalled();
+        });
+
+        test("ProductDAO_4.7: Illegal grouping, grouping == \"model\", model is null (it should reject an Error)", async () => {
+            const productDAO = new ProductDAO();
+
+            await expect(productDAO.getAvailableProducts("model", null, null)).rejects.toThrow(Error);
+
+            expect(mockDBAll).not.toHaveBeenCalled();
+        });
+
+        test("ProductDAO_4.8: Illegal grouping, grouping == \"category\", category is null (it should reject an Error)", async () => {
+            const productDAO = new ProductDAO();
+
+            await expect(productDAO.getAvailableProducts("model", null, null)).rejects.toThrow(Error);
+
+            expect(mockDBAll).not.toHaveBeenCalled();
+        });
+
+        test("ProductDAO_4.9: Illegal grouping, grouping == unknown string (it should reject an Error)", async () => {
+            const productDAO = new ProductDAO();
+
+            await expect(productDAO.getAvailableProducts("iphone", null, null)).rejects.toThrow(Error);
+
+            expect(mockDBAll).not.toHaveBeenCalled();
+        });
+
+        test("ProductDAO_4.10: Model grouping, but model does not represent a product in the DB (it should reject ProductNotFoundError)", async () => {
+            const productDAO = new ProductDAO();
+
+            mockDBAll.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+                callback(null, []);
+            })
+
+            await expect(productDAO.getAvailableProducts("model", null, "iPhone X"))
+                .rejects
+                .toThrow(ProductNotFoundError);
+
+            expect(mockDBAll).toHaveBeenCalled();
+            expect(mockDBAll).toHaveBeenCalledWith(expect.stringContaining("iPhone X"), [], expect.any(Function))
+        });
+
+
+        test("ProductDAO_4.11: An SQL error occurs in the SQLite all method and it's passed to the callback (it should reject the error)", async () => {
+            const productDAO = new ProductDAO();
+
+            mockDBAll.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+                callback(new Error(), undefined);
+            })
+
+            await expect(productDAO.getAvailableProducts(null, null, null))
+                .rejects
+                .toThrow(Error);
+
+            expect(mockDBAll).toHaveBeenCalled();
+            expect(mockDBAll).toHaveBeenCalledWith(expect.stringContaining("SELECT *"), [], expect.any(Function))
+        });
+
+        test("ProductDAO_4.12: SQLite all method throws an Error (it should reject the error)", async () => {
+            const productDAO = new ProductDAO();
+
+            mockDBAll.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+                throw new Error();
+            })
+
+            await expect(productDAO.getAvailableProducts(null, null, null))
                 .rejects
                 .toThrow(Error);
 
