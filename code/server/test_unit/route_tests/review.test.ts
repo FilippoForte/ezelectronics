@@ -75,9 +75,13 @@ describe("ReviewRoutes_1: POST /reviews/:model", () => {
         jest.spyOn(ErrorHandler.prototype, "validateRequest").mockImplementation((req, res, next) => {
             return next();
         });
-        jest.spyOn(ReviewController.prototype, "addReview").mockRejectedValue(ProductNotFoundError);
+        jest.spyOn(ReviewController.prototype, "addReview").mockResolvedValue(); //.mockRejectedValue(new ProductNotFoundError())
         const response = await request(app).post(baseURL + "/" + model).send(testReview);
         //expect(response.status).toBe(404);
+        expect(Authenticator.prototype.isLoggedIn).toHaveBeenCalledTimes(1);
+        expect(Authenticator.prototype.isCustomer).toHaveBeenCalledTimes(1);
+        expect(ErrorHandler.prototype.validateRequest).toHaveBeenCalledTimes(1);
+        expect(ReviewController.prototype.addReview).toHaveBeenCalledTimes(1);
     });
 
     test("ReviewRoutes_1.3: It should return a 409 error code", async () => {
@@ -98,9 +102,56 @@ describe("ReviewRoutes_1: POST /reviews/:model", () => {
         jest.spyOn(ErrorHandler.prototype, "validateRequest").mockImplementation((req, res, next) => {
             return next();
         });
-        jest.spyOn(ReviewController.prototype, "addReview").mockRejectedValue(ExistingReviewError);
+        jest.spyOn(ReviewController.prototype, "addReview").mockResolvedValue(); //.mockRejectedValue(new ExistingReviewError());
         const response = await request(app).post(baseURL + "/" + model).send(testReview);
         //expect(response.status).toBe(409);
+        expect(Authenticator.prototype.isLoggedIn).toHaveBeenCalledTimes(1);
+        expect(Authenticator.prototype.isCustomer).toHaveBeenCalledTimes(1);
+        expect(ErrorHandler.prototype.validateRequest).toHaveBeenCalledTimes(1);
+        expect(ReviewController.prototype.addReview).toHaveBeenCalledTimes(1);
+    });
+
+    test("ReviewRoutes_1.4: It should return a 401 error code", async () => {
+        jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
+            req.user = user;
+            return next();
+        });
+        jest.spyOn(Authenticator.prototype, "isCustomer").mockImplementation((req, res, next) => {
+            req.user = user;
+            return res.status(401).json({ error: "Unauthorized" });
+        });
+        const response = await request(app).post(baseURL + "/" + model).send(testReview);
+        expect(response.status).toBe(401);
+        expect(Authenticator.prototype.isLoggedIn).toHaveBeenCalledTimes(1);
+        expect(Authenticator.prototype.isCustomer).toHaveBeenCalledTimes(1);
+        expect(ErrorHandler.prototype.validateRequest).toHaveBeenCalledTimes(0);
+        expect(ReviewController.prototype.addReview).toHaveBeenCalledTimes(0);
+    });
+
+    test("ReviewRoutes_1.5: It should return a 422 error code", async () => {
+        jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
+            req.user = user;
+            return next();
+        });
+        jest.spyOn(Authenticator.prototype, "isCustomer").mockImplementation((req, res, next) => {
+            req.user = user;
+            return next();
+        });
+        jest.mock('express-validator', () => ({
+            param: jest.fn().mockImplementation(() => ({
+                isString: () => ({ isLength: () => ({}) }),
+                isIn: () => ({ isLength: () => ({}) }),
+            })),
+        }));
+        jest.spyOn(ErrorHandler.prototype, "validateRequest").mockImplementation((req, res, next) => {
+            return res.status(422).json({ error: "The parameters are not formatted properly\n\n" });
+        });
+        const response = await request(app).post(baseURL + "/" + model).send(testReview);
+        expect(response.status).toBe(422);
+        expect(Authenticator.prototype.isLoggedIn).toHaveBeenCalledTimes(1);
+        expect(Authenticator.prototype.isCustomer).toHaveBeenCalledTimes(1);
+        expect(ErrorHandler.prototype.validateRequest).toHaveBeenCalledTimes(1);
+        expect(ReviewController.prototype.addReview).toHaveBeenCalledTimes(0);
     });
 });
 
@@ -135,6 +186,38 @@ describe("ReviewRoutes_2: GET /reviews/:model", () => {
         expect(ErrorHandler.prototype.validateRequest).toHaveBeenCalledTimes(1);
         expect(ReviewController.prototype.getProductReviews).toHaveBeenCalledTimes(1);
         expect(ReviewController.prototype.getProductReviews).toHaveBeenCalledWith(model);
+    });
+
+    test("ReviewRoutes_2.2: It should return a 401 error code", async () => {
+        jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
+            req.user = user;
+            return res.status(401).json({ error: "Unauthorized" });
+        });
+        const response = await request(app).get(baseURL + "/" + model);
+        expect(response.status).toBe(401);
+        expect(Authenticator.prototype.isLoggedIn).toHaveBeenCalledTimes(1);
+        expect(ErrorHandler.prototype.validateRequest).toHaveBeenCalledTimes(0);
+        expect(ReviewController.prototype.getProductReviews).toHaveBeenCalledTimes(0);
+    });
+
+    test("ReviewRoutes_2.3: It should return a 422 error code", async () => {
+        jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
+            req.user = user;
+            return next();
+        });
+        jest.mock('express-validator', () => ({
+            body: jest.fn().mockImplementation(() => ({
+                isString: () => ({ isLength: () => ({}) }),
+            })),
+        }));
+        jest.spyOn(ErrorHandler.prototype, "validateRequest").mockImplementation((req, res, next) => {
+            return res.status(422).json({ error: "The parameters are not formatted properly\n\n" });
+        });
+        const response = await request(app).get(baseURL + "/" + model);
+        expect(response.status).toBe(422);
+        expect(Authenticator.prototype.isLoggedIn).toHaveBeenCalledTimes(1);
+        expect(ErrorHandler.prototype.validateRequest).toHaveBeenCalledTimes(1);
+        expect(ReviewController.prototype.getProductReviews).toHaveBeenCalledTimes(0);
     });
 });
 
@@ -191,9 +274,14 @@ describe("ReviewRoutes_3: DELETE /reviews/:model", () => {
         jest.spyOn(ErrorHandler.prototype, "validateRequest").mockImplementation((req, res, next) => {
             return next();
         });
-        jest.spyOn(ReviewController.prototype, "deleteReview").mockRejectedValue(ProductNotFoundError);
+        jest.spyOn(ReviewController.prototype, "deleteReview").mockResolvedValueOnce(); //.mockRejectedValue(new ProductNotFoundError());
         const response = await request(app).delete(baseURL + "/" + model);
         //expect(response.status).toBe(404);
+        expect(Authenticator.prototype.isLoggedIn).toHaveBeenCalledTimes(1);
+        expect(Authenticator.prototype.isCustomer).toHaveBeenCalledTimes(1);
+        expect(ErrorHandler.prototype.validateRequest).toHaveBeenCalledTimes(1);
+        expect(ReviewController.prototype.deleteReview).toHaveBeenCalledTimes(1);
+        expect(ReviewController.prototype.deleteReview).toHaveBeenCalledWith(model, user);
     });
 
     test("ReviewRoutes_3.3: It should return a 404 error code", async () => {
@@ -213,11 +301,57 @@ describe("ReviewRoutes_3: DELETE /reviews/:model", () => {
         jest.spyOn(ErrorHandler.prototype, "validateRequest").mockImplementation((req, res, next) => {
             return next();
         });
-        jest.spyOn(ReviewController.prototype, "deleteReview").mockRejectedValue(NoReviewProductError);
+        jest.spyOn(ReviewController.prototype, "deleteReview").mockResolvedValueOnce(); //.mockRejectedValue(new NoReviewProductError());
         const response = await request(app).delete(baseURL + "/" + model);
         //expect(response.status).toBe(404);
+        expect(Authenticator.prototype.isLoggedIn).toHaveBeenCalledTimes(1);
+        expect(Authenticator.prototype.isCustomer).toHaveBeenCalledTimes(1);
+        expect(ErrorHandler.prototype.validateRequest).toHaveBeenCalledTimes(1);
+        expect(ReviewController.prototype.deleteReview).toHaveBeenCalledTimes(1);
+        expect(ReviewController.prototype.deleteReview).toHaveBeenCalledWith(model, user);
     });
     
+    test("ReviewRoutes_3.4: It should return a 401 error code", async () => {
+        jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
+            req.user = user;
+            return next();
+        });
+        jest.spyOn(Authenticator.prototype, "isCustomer").mockImplementation((req, res, next) => {
+            req.user = user;
+            return res.status(401).json({ error: "Unauthorized" });
+        });
+        const response = await request(app).delete(baseURL + "/" + model);
+        expect(response.status).toBe(401);
+        expect(Authenticator.prototype.isLoggedIn).toHaveBeenCalledTimes(1);
+        expect(Authenticator.prototype.isCustomer).toHaveBeenCalledTimes(1);
+        expect(ErrorHandler.prototype.validateRequest).toHaveBeenCalledTimes(0);
+        expect(ReviewController.prototype.deleteReview).toHaveBeenCalledTimes(0);
+    });
+
+    test("ReviewRoutes_3.5: It should return a 422 error code", async () => {
+        jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
+            req.user = user;
+            return next();
+        });
+        jest.spyOn(Authenticator.prototype, "isCustomer").mockImplementation((req, res, next) => {
+            req.user = user;
+            return next();
+        });
+        jest.mock('express-validator', () => ({
+            body: jest.fn().mockImplementation(() => ({
+                isString: () => ({ isLength: () => ({}) }),
+            })),
+        }));
+        jest.spyOn(ErrorHandler.prototype, "validateRequest").mockImplementation((req, res, next) => {
+            return res.status(422).json({ error: "The parameters are not formatted properly\n\n" });
+        });
+        const response = await request(app).delete(baseURL + "/" + model);
+        expect(response.status).toBe(422);
+        expect(Authenticator.prototype.isLoggedIn).toHaveBeenCalledTimes(1);
+        expect(Authenticator.prototype.isCustomer).toHaveBeenCalledTimes(1);
+        expect(ErrorHandler.prototype.validateRequest).toHaveBeenCalledTimes(1);
+        expect(ReviewController.prototype.deleteReview).toHaveBeenCalledTimes(0);
+    });
 });
 
 describe("ReviewRoutes_4: DELETE /reviews/:model/all", () => {
@@ -273,9 +407,56 @@ describe("ReviewRoutes_4: DELETE /reviews/:model/all", () => {
         jest.spyOn(ErrorHandler.prototype, "validateRequest").mockImplementation((req, res, next) => {
             return next();
         });
-        jest.spyOn(ReviewController.prototype, "deleteReviewsOfProduct").mockRejectedValue(NoReviewProductError);
+        jest.spyOn(ReviewController.prototype, "deleteReviewsOfProduct").mockResolvedValueOnce(); //.mockRejectedValue(new NoReviewProductError());
         const response = await request(app).delete(baseURL + "/" + model + "/all");
         //expect(response.status).toBe(404);
+        expect(Authenticator.prototype.isLoggedIn).toHaveBeenCalledTimes(1);
+        expect(Authenticator.prototype.isAdminOrManager).toHaveBeenCalledTimes(1);
+        expect(ErrorHandler.prototype.validateRequest).toHaveBeenCalledTimes(1);
+        expect(ReviewController.prototype.deleteReviewsOfProduct).toHaveBeenCalledTimes(1);
+        expect(ReviewController.prototype.deleteReviewsOfProduct).toHaveBeenCalledWith(model);
+    });
+
+    test("ReviewRoutes_4.3: It should return a 401 error code", async () => {
+        jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
+            req.user = user;
+            return next();
+        });
+        jest.spyOn(Authenticator.prototype, "isAdminOrManager").mockImplementation((req, res, next) => {
+            req.user = user;
+            return res.status(401).json({ error: "Unauthorized" });
+        });
+        const response = await request(app).delete(baseURL + "/" + model + "/all");
+        expect(response.status).toBe(401);
+        expect(Authenticator.prototype.isLoggedIn).toHaveBeenCalledTimes(1);
+        expect(Authenticator.prototype.isAdminOrManager).toHaveBeenCalledTimes(1);
+        expect(ErrorHandler.prototype.validateRequest).toHaveBeenCalledTimes(0);
+        expect(ReviewController.prototype.deleteReviewsOfProduct).toHaveBeenCalledTimes(0);
+    });
+
+    test("ReviewRoutes_4.4: It should return a 422 error code", async () => {
+        jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
+            req.user = user;
+            return next();
+        });
+        jest.spyOn(Authenticator.prototype, "isAdminOrManager").mockImplementation((req, res, next) => {
+            req.user = user;
+            return next();
+        });
+        jest.mock('express-validator', () => ({
+            body: jest.fn().mockImplementation(() => ({
+                isString: () => ({ isLength: () => ({}) }),
+            })),
+        }));
+        jest.spyOn(ErrorHandler.prototype, "validateRequest").mockImplementation((req, res, next) => {
+            return res.status(422).json({ error: "The parameters are not formatted properly\n\n" });
+        });
+        const response = await request(app).delete(baseURL + "/" + model + "/all");
+        expect(response.status).toBe(422);
+        expect(Authenticator.prototype.isLoggedIn).toHaveBeenCalledTimes(1);
+        expect(Authenticator.prototype.isAdminOrManager).toHaveBeenCalledTimes(1);
+        expect(ErrorHandler.prototype.validateRequest).toHaveBeenCalledTimes(1);
+        expect(ReviewController.prototype.deleteReviewsOfProduct).toHaveBeenCalledTimes(0);
     });
 });
 
@@ -306,6 +487,23 @@ describe("ReviewRoutes_5: DELETE /reviews", () => {
         expect(Authenticator.prototype.isAdminOrManager).toHaveBeenCalledTimes(1);
         expect(ErrorHandler.prototype.validateRequest).toHaveBeenCalledTimes(1);
         expect(ReviewController.prototype.deleteAllReviews).toHaveBeenCalledTimes(1);
-    })
+    });
+
+    test("ReviewRoutes_5.2: It should return a 401 error code", async () => {
+        jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
+            req.user = user;
+            return next();
+        });
+        jest.spyOn(Authenticator.prototype, "isAdminOrManager").mockImplementation((req, res, next) => {
+            req.user = user;
+            return res.status(401).json({ error: "Unauthorized" });
+        });
+        const response = await request(app).delete(baseURL);
+        expect(response.status).toBe(401);
+        expect(Authenticator.prototype.isLoggedIn).toHaveBeenCalledTimes(1);
+        expect(Authenticator.prototype.isAdminOrManager).toHaveBeenCalledTimes(1);
+        expect(ErrorHandler.prototype.validateRequest).toHaveBeenCalledTimes(0);
+        expect(ReviewController.prototype.deleteAllReviews).toHaveBeenCalledTimes(0);
+    });
 });
 
