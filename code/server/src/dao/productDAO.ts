@@ -23,7 +23,7 @@ class ProductDAO {
     sellingPrice: number,
     arrivalDate: string | null
   ) {
-    return new Promise<Boolean>((resolve, reject) => {
+    return new Promise<void>((resolve, reject) => {
       try {
         //validation
 
@@ -69,7 +69,7 @@ class ProductDAO {
                 if (err) {
                   return reject(err);
                 }
-                return resolve(true);
+                return resolve();
               }
             );
           } else {

@@ -108,7 +108,7 @@ describe("Product DAO unit tests", () => {
 
             const result = await productDAO.registerProducts(dbProdNoDate.model, dbProdNoDate.category, dbProdNoDate.quantity, dbProdNoDate.details, dbProdNoDate.sellingPrice, dbProdNoDate.arrivalDate);
 
-            expect(result).toBe(true);
+            expect(result).toBe(undefined);
             expect(mockDBGet).toHaveBeenCalled();
             expect(mockDBGet).toHaveBeenCalledWith(expect.stringContaining("SELECT"), [dbProdNoDate.model], expect.any(Function))
             expect(mockDBRun).toHaveBeenCalled();
