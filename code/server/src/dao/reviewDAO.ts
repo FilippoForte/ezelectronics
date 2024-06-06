@@ -21,7 +21,6 @@ class ReviewDAO {
     async addReview(model: string, user: User, score: number, comment: string) :Promise<void> {
         return new Promise<void>((resolve,reject)=> {
             try {
-                console.log(model,user.username);
                 const sql = "INSERT INTO reviews (model, user, score, date, comment) VALUES (?, ?, ?, ?, ?)";
                 const sql1 = "SELECT id FROM reviews WHERE reviews.user== ? AND reviews.model== ?";
                 const sql2= "SELECT model FROM products WHERE model == ?";
