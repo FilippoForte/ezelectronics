@@ -23,24 +23,24 @@ class ProductDAO {
     sellingPrice: number,
     arrivalDate: string | null
   ) {
-    return new Promise<void>((resolve, reject) => {
+    return new Promise<Boolean>((resolve, reject) => {
       try {
         //validation
 
-        if ((model = "")) return reject(new Error("Model cannot be empty"));
-
-        if (quantity <= 0)
-          return reject(new Error("Quantity should be greater then 0"));
-
-        if (sellingPrice <= 0)
-          return reject(new Error("Selling price should be greater then 0"));
-
-        if (
-          category != "Smartphone" &&
-          category != "Laptop" &&
-          category != "Appliance"
-        )
-          return reject(new Error("Not a valid category"));
+        // if ((model = "")) return reject(new Error("Model cannot be empty"));
+        //
+        // if (quantity <= 0)
+        //   return reject(new Error("Quantity should be greater then 0"));
+        //
+        // if (sellingPrice <= 0)
+        //   return reject(new Error("Selling price should be greater then 0"));
+        //
+        // if (
+        //   category != "Smartphone" &&
+        //   category != "Laptop" &&
+        //   category != "Appliance"
+        // )
+        //   return reject(new Error("Not a valid category"));
 
         if (arrivalDate == null) arrivalDate = dayjs().format("YYYY-MM-DD");
 
@@ -69,7 +69,7 @@ class ProductDAO {
                 if (err) {
                   return reject(err);
                 }
-                return resolve();
+                return resolve(true);
               }
             );
           } else {
@@ -90,10 +90,10 @@ class ProductDAO {
     return new Promise<number>((resolve, reject) => {
       //validation
 
-      if ((model = "")) return reject(new Error("Model cannot be empty"));
-
-      if (newQuantity <= 0)
-        return reject(Error("Quantity should be greater then 0"));
+      // if ((model = "")) return reject(new Error("Model cannot be empty"));
+      //
+      // if (newQuantity <= 0)
+      //   return reject(Error("Quantity should be greater then 0"));
 
       if (arrivalDate == null) arrivalDate = dayjs().format("YYYY-MM-DD");
 
