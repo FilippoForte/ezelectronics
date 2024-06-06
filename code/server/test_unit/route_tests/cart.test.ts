@@ -13,6 +13,10 @@ import { Role, User } from "../../src/components/user";
 import CartController from "../../src/controllers/cartController";
 import Authenticator from "../../src/routers/auth";
 import { EmptyProductStockError, ProductNotFoundError } from "../../src/errors/productError";
+import { afterEach } from "node:test";
+import { Cart } from "../../src/components/cart";
+import { Category, Product } from "../../src/components/product";
+import ErrorHandler from "../../src/helper";
 
 const baseURL = "/ezelectronics/carts";
 
@@ -86,7 +90,7 @@ describe("CartRoutes_1: addToCart method tests", () => {
 
     // Assertions
     expect(response.status).toBe(401);
-    expect(CartController.prototype.addToCart).not.toHaveBeenCalled();
+    expect(CartController.prototype.addToCart).toHaveBeenCalledTimes(0);
   });
 
   // Test for user not being a customer
@@ -105,11 +109,10 @@ describe("CartRoutes_1: addToCart method tests", () => {
 
     // Assertions
     expect(response.status).toBe(401);
-    expect(CartController.prototype.addToCart).not.toHaveBeenCalled();
+    expect(CartController.prototype.addToCart).toHaveBeenCalledTimes(0);
   });
 
 
-  /*
   test("CartRoutes_1.4: It should return 404 if the product model does not exist", async () => {
     const model = 'NonExistingProduct';
 
@@ -154,5 +157,53 @@ describe("CartRoutes_1: addToCart method tests", () => {
     expect(CartController.prototype.addToCart).toHaveBeenCalledWith(testUser, model);
   });
 
-*/
+});
+
+
+describe("CartRoutes_2: getCart method tests", () => {
+  const user = new User("username", "name", "surname", Role.CUSTOMER, "address", "birthdate");
+
+  const inputProduct1 = {
+    model: "model1",
+    category: Category.LAPTOP,
+    quantity: 1,
+    price: 15,
+  };
+
+  const inputProduct2 = {
+    model: "model2",
+    category: Category.APPLIANCE,
+    quantity: 2,
+    price: 15,
+  };
+
+  const cart = new Cart("username", false, "", 35, [inputProduct1, inputProduct2]);
+  const customer = "username";
+
+  test("CartRoutes_1: It should return a 200 success code and the cart", async () => {
+
+    jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
+      req.user = user;
+      return next();
+    });
+
+    jest.mock('express-validator', () => ({
+      param: jest.fn().mockImplementation(() => ({
+        isString: () => ({ isLength: () => ({}) }),
+      })),
+    }));
+
+    jest.spyOn(ErrorHandler.prototype, "validateRequest").mockImplementation((req, res, next) => {
+      return next();
+    });
+
+    jest.spyOn(CartController.prototype, "getCart").mockResolvedValueOnce(cart);
+    const response = await request(app).get(`/cart/${customer}`);
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual(cart);
+    expect(Authenticator.prototype.isLoggedIn).toHaveBeenCalledTimes(1);
+    expect(ErrorHandler.prototype.validateRequest).toHaveBeenCalledTimes(1);
+    expect(CartController.prototype.getCart).toHaveBeenCalledTimes(1);
+    expect(CartController.prototype.getCart).toHaveBeenCalledWith(customer);
+  });
 });

@@ -60,7 +60,11 @@ class ProductRoutes {
             "/",
             this.authenticator.isLoggedIn,
             this.authenticator.isAdminOrManager,
-            
+            body("model").isString().isLength({min:1}),
+            body("category").isString().isIn(["Smartphone", "Laptop", "Appliance"]),
+            body("quantity").isInt({min: 1}),
+            body("details").optional().isString(),
+            body("sellingPrice").isFloat({min:1}),
             (req: any, res: any, next: any) => this.controller.registerProducts(req.body.model, req.body.category, req.body.quantity, req.body.details, req.body.sellingPrice, req.body.arrivalDate)
                 .then(() => res.status(200).end())
                 .catch((err) => next(err))
@@ -79,9 +83,10 @@ class ProductRoutes {
             "/:model",
             this.authenticator.isLoggedIn,
             this.authenticator.isManager,
-            
+            body("model").isString().isLength({min:1}),
+            body("quantity").isInt({min: 1}),
             (req: any, res: any, next: any) => this.controller.changeProductQuantity(req.params.model, req.body.quantity, req.body.changeDate)
-                .then((quantity: any /**number */) => res.status(200).json({ quantity: quantity }))
+                .then((quantity: number ) => res.status(200).json({ quantity: quantity }))
                 .catch((err) => next(err))
         )
 
@@ -98,8 +103,10 @@ class ProductRoutes {
             "/:model/sell",
             this.authenticator.isLoggedIn,
             this.authenticator.isManager,
+            body("model").isString().isLength({min:1}),
+            body("quantity").isInt({min: 1}),
             (req: any, res: any, next: any) => this.controller.sellProduct(req.params.model, req.body.quantity, req.body.sellingDate)
-                .then((quantity: any /**number */) => res.status(200).json({ quantity: quantity }))
+                .then((quantity: number) => res.status(200).json({ quantity: quantity }))
                 .catch((err) => {
                     console.log(err)
                     next(err)

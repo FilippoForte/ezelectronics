@@ -10,6 +10,7 @@ import { ExistingReviewError, NoReviewProductError } from "../../src/errors/revi
 
 import ReviewController from "../../src/controllers/reviewController";
 import { rejects } from "assert";
+import { afterEach, describe } from "node:test";
 const baseURL = "/ezelectronics/reviews";
 
 jest.mock("../../src/controllers/reviewController");
@@ -77,11 +78,15 @@ describe("ReviewRoutes_1: POST /reviews/:model", () => {
         });
         jest.spyOn(ReviewController.prototype, "addReview").mockResolvedValue(); //.mockRejectedValue(new ProductNotFoundError())
         const response = await request(app).post(baseURL + "/" + model).send(testReview);
+<<<<<<< HEAD
         //expect(response.status).toBe(404);
         expect(Authenticator.prototype.isLoggedIn).toHaveBeenCalledTimes(1);
         expect(Authenticator.prototype.isCustomer).toHaveBeenCalledTimes(1);
         expect(ErrorHandler.prototype.validateRequest).toHaveBeenCalledTimes(1);
         expect(ReviewController.prototype.addReview).toHaveBeenCalledTimes(1);
+=======
+        expect(response.status).toBe(404);
+>>>>>>> 5aa8b00923845b418850c2519c3254cce15c2578
     });
 
     test("ReviewRoutes_1.3: It should return a 409 error code", async () => {
@@ -104,6 +109,7 @@ describe("ReviewRoutes_1: POST /reviews/:model", () => {
         });
         jest.spyOn(ReviewController.prototype, "addReview").mockResolvedValue(); //.mockRejectedValue(new ExistingReviewError());
         const response = await request(app).post(baseURL + "/" + model).send(testReview);
+<<<<<<< HEAD
         //expect(response.status).toBe(409);
         expect(Authenticator.prototype.isLoggedIn).toHaveBeenCalledTimes(1);
         expect(Authenticator.prototype.isCustomer).toHaveBeenCalledTimes(1);
@@ -152,6 +158,9 @@ describe("ReviewRoutes_1: POST /reviews/:model", () => {
         expect(Authenticator.prototype.isCustomer).toHaveBeenCalledTimes(1);
         expect(ErrorHandler.prototype.validateRequest).toHaveBeenCalledTimes(1);
         expect(ReviewController.prototype.addReview).toHaveBeenCalledTimes(0);
+=======
+        expect(response.status).toBe(409);
+>>>>>>> 5aa8b00923845b418850c2519c3254cce15c2578
     });
 });
 
