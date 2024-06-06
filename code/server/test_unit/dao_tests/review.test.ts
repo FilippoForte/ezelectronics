@@ -72,6 +72,17 @@ describe("ReviewDAO_1: addReview method tests", () => {
         expect(mockDBGet).toHaveBeenCalledTimes(2);
         expect(mockDBRun).toHaveBeenCalledTimes(0);
     });
+
+    test("ReviewDAO_1.4: It should return an SQL error", async () => {
+        const reviewDAO = new ReviewDAO();
+        mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: Error | null, row: any) => void) => {
+            callback(new Error(), undefined);
+            return {} as Database
+        });
+        await expect(reviewDAO.addReview(model, user, score, comment)).rejects.toThrow(Error);
+        expect(mockDBGet).toHaveBeenCalledTimes(1);
+        expect(mockDBRun).toHaveBeenCalledTimes(0);
+    });
 });
 
 describe("ReviewDAO_2: getProductReviews method tests", () => {
@@ -110,6 +121,16 @@ describe("ReviewDAO_2: getProductReviews method tests", () => {
         const result = await reviewDAO.getProductReviews(model);
         expect(mockDBAll).toHaveBeenCalledTimes(1);
         expect(result).toHaveLength(0);
+    });
+
+    test("ReviewDAO_2.3: It should return an SQL error", async () => {
+        const reviewDAO = new ReviewDAO();
+        mockDBAll.mockImplementationOnce((_sql: any, _params: any, callback: (err: Error | null, rows: any) => void) => {
+            callback(new Error(), undefined);
+            return {} as Database
+        });
+        await expect(reviewDAO.getProductReviews(model)).rejects.toThrow(Error);
+        expect(mockDBAll).toHaveBeenCalledTimes(1);
     });
 });
 
@@ -172,6 +193,17 @@ describe("ReviewDAO_3: deleteReview method tests", () => {
         expect(mockDBGet).toHaveBeenCalledTimes(2);
         expect(mockDBRun).toHaveBeenCalledTimes(0);
     });
+
+    test("ReviewDAO_3.4: It should return an SQL error", async () => {
+        const reviewDAO = new ReviewDAO();
+        mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: Error | null, row: any) => void) => {
+            callback(new Error(), undefined);
+            return {} as Database
+        });
+        await expect(reviewDAO.deleteReview(model, user)).rejects.toThrow(Error);
+        expect(mockDBGet).toHaveBeenCalledTimes(1);
+        expect(mockDBRun).toHaveBeenCalledTimes(0);
+    });
 });
 
 describe("ReviewDAO_4: deleteReviewsOfProduct method tests", () => {
@@ -205,13 +237,24 @@ describe("ReviewDAO_4: deleteReviewsOfProduct method tests", () => {
         expect(mockDBRun).toHaveBeenCalledTimes(1);
     });
 
-    test("ReviewDAO_4.2: It should return nothing", async () => {
+    test("ReviewDAO_4.2: It should return a ProductNotFoundError", async () => {
         const reviewDAO = new ReviewDAO();
         mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: Error | null, row: any) => void) => {
             callback(null, undefined);
             return {} as Database
         });
         await expect(reviewDAO.deleteReviewsOfProduct(model)).rejects.toThrow(ProductNotFoundError);
+        expect(mockDBGet).toHaveBeenCalledTimes(1);
+        expect(mockDBRun).toHaveBeenCalledTimes(0);
+    });
+
+    test("ReviewDAO_4.3: It should return an SQL error", async () => {
+        const reviewDAO = new ReviewDAO();
+        mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: Error | null, row: any) => void) => {
+            callback(new Error(), undefined);
+            return {} as Database
+        });
+        await expect(reviewDAO.deleteReviewsOfProduct(model)).rejects.toThrow(Error);
         expect(mockDBGet).toHaveBeenCalledTimes(1);
         expect(mockDBRun).toHaveBeenCalledTimes(0);
     });
@@ -237,6 +280,16 @@ describe("ReviewDAO_5: deleteAllReviews method tests", () => {
         });
         const result = await reviewDAO.deleteAllReviews();
         expect(result).toBe(undefined);
+        expect(mockDBRun).toHaveBeenCalledTimes(1);
+    });
+
+    test("ReviewDAO_5.2: It should return an SQL error", async () => {
+        const reviewDAO = new ReviewDAO();
+        mockDBRun.mockImplementation((_sql: any, callback: any) => {
+            callback(new Error())
+            return {} as Database
+        });
+        await expect(reviewDAO.deleteAllReviews()).rejects.toThrow(Error);
         expect(mockDBRun).toHaveBeenCalledTimes(1);
     });
 });

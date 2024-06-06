@@ -79,7 +79,7 @@ class UserRoutes {
             this.authService.isLoggedIn,
             this.authService.isAdmin,
             (req: any, res: any, next: any) => this.controller.getUsers()
-                .then((users: any /**User[] */) => res.status(200).json(users))
+                .then((users: User[]) => res.status(200).json(users))
                 .catch((err) => next(err))
         )
 
@@ -96,7 +96,7 @@ class UserRoutes {
             param("role").isIn(["Manager", "Customer", "Admin"]),
             this.errorHandler.validateRequest,
             (req: any, res: any, next: any) => this.controller.getUsersByRole(req.params.role)
-                .then((users: any /**User[] */) => res.status(200).json(users))
+                .then((users: User[]) => res.status(200).json(users))
                 .catch((err) => next(err))
         )
 
@@ -112,7 +112,7 @@ class UserRoutes {
             param("username").isString().isLength({ min: 1 }),
             this.errorHandler.validateRequest,        
             (req: any, res: any, next: any) => this.controller.getUserByUsername(req.user, req.params.username)
-                .then((user: any /**User */) => res.status(200).json(user))
+                .then((user: User ) => res.status(200).json(user))
                 .catch((err) => next(err))
         )
 
@@ -168,7 +168,7 @@ class UserRoutes {
             param("username").isString().isLength({ min: 1 }),
             this.errorHandler.validateRequest, 
             (req: any, res: any, next: any) => this.controller.updateUserInfo(req.user, req.body.name, req.body.surname, req.body.address, req.body.birthdate, req.params.username)
-                .then((user: any /**User */) => res.status(200).json(user))
+                .then((user: User ) => res.status(200).json(user))
                 .catch((err: any) => next(err))
         )
 
