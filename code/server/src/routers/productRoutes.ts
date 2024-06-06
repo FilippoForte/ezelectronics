@@ -60,7 +60,11 @@ class ProductRoutes {
             "/",
             this.authenticator.isLoggedIn,
             this.authenticator.isAdminOrManager,
-            
+            body("model").isString().isLength({min:1}),
+            body("category").isString().isIn(["Smartphone", "Laptop", "Appliance"]),
+            body("quantity").isInt({min: 1}),
+            body("details").optional().isString(),
+            body("sellingPrice").isFloat({min:1}),
             (req: any, res: any, next: any) => this.controller.registerProducts(req.body.model, req.body.category, req.body.quantity, req.body.details, req.body.sellingPrice, req.body.arrivalDate)
                 .then(() => res.status(200).end())
                 .catch((err) => next(err))
@@ -142,7 +146,7 @@ class ProductRoutes {
             this.authenticator.isLoggedIn,
             this.authenticator.isCustomer,
             (req: any, res: any, next: any) => this.controller.getAvailableProducts(req.query.grouping, req.query.category, req.query.model)
-                .then((products: any/*Product[]*/) => res.status(200).json(products))
+                .then((products: Product[]) => res.status(200).json(products))
                 .catch((err) => next(err))
         )
 
