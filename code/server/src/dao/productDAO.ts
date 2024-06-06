@@ -54,8 +54,6 @@ class ProductDAO {
 
         const insertQuery =
           "INSERT INTO products (model, category, quantity, details, arrivalDate, sellingPrice) VALUES (?,?,?,?,?,?)";
-        const updateQuery =
-          "UPDATE products SET quantity = quantity + ? WHERE model = ?";
 
         const getProductModel = "SELECT * FROM products WHERE model == ?";
 
@@ -63,25 +61,19 @@ class ProductDAO {
           if (err) {
             return reject(err);
           }
-
           if (!row) {
             db.run(
               insertQuery,
               [model, category, quantity, details, arrivalDate, sellingPrice],
               (err: Error | null) => {
                 if (err) {
-                  return reject(new ProductAlreadyExistsError());
+                  return reject(err);
                 }
                 return resolve();
               }
             );
           } else {
-            db.run(updateQuery, [quantity, model], (err: Error | null) => {
-              if (err) {
-                return reject(new ProductNotFoundError());
-              }
-              return resolve();
-            });
+            return reject(new ProductAlreadyExistsError());
           }
         });
       } catch (error) {
@@ -121,10 +113,10 @@ class ProductDAO {
         if (err) return reject(err);
         if (!row) {
           return reject(new ProductNotFoundError());
-        } else if(dayjs(row.arrivalDate).isAfter(dayjs(arrivalDate))){
+        } else if (dayjs(row.arrivalDate).isAfter(dayjs(arrivalDate))) {
           return reject(new FutureDateError())
         }
-        else{
+        else {
           const oldQuantity = row.quantity;
           db.run(updateQuery, [newQuantity, model], (err: Error | null) => {
             if (err) return reject(err);
