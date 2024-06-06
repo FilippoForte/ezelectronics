@@ -27,27 +27,30 @@ class ProductDAO {
       try {
         //validation
 
-        if ((model = "")) return reject(Error("Model cannot be empty"));
+        if ((model = "")) return reject(new Error("Model cannot be empty"));
 
         if (quantity <= 0)
-          return reject(Error("Quantity should be greater then 0"));
+          return reject(new Error("Quantity should be greater then 0"));
 
         if (sellingPrice <= 0)
-          return reject(Error("Selling price should be greater then 0"));
+          return reject(new Error("Selling price should be greater then 0"));
 
         if (
           category != "Smartphone" &&
           category != "Laptop" &&
           category != "Appliance"
         )
-          return reject(Error("Not a valid category"));
+          return reject(new Error("Not a valid category"));
 
         if (arrivalDate == null) arrivalDate = dayjs().format("YYYY-MM-DD");
 
         if (arrivalDate && dayjs(arrivalDate).isAfter(dayjs()))
-          return reject(new FutureDateError);
+          return reject(new FutureDateError());
 
-        //manca controllo che data inserita è nel giusto formato
+        const regex = /^\d{4}-\d{2}-\d{2}$/;
+        if (!regex.test(arrivalDate)) {
+          return reject(new Error("Date is in the wrong format"));
+        }
 
         const insertQuery =
           "INSERT INTO products (model, category, quantity, details, arrivalDate, sellingPrice) VALUES (?,?,?,?,?,?)";
@@ -95,7 +98,7 @@ class ProductDAO {
     return new Promise<number>((resolve, reject) => {
       //validation
 
-      if ((model = "")) return reject(Error("Model cannot be empty"));
+      if ((model = "")) return reject(new Error("Model cannot be empty"));
 
       if (newQuantity <= 0)
         return reject(Error("Quantity should be greater then 0"));
@@ -105,10 +108,10 @@ class ProductDAO {
       if (arrivalDate && dayjs(arrivalDate).isAfter(dayjs()))
         return reject(new FutureDateError());
 
-      //manca controllo che data inserita è nel giusto formato
-
-
-      //manca controllo che arrivalDate is before oldDate
+      const regex = /^\d{4}-\d{2}-\d{2}$/;
+      if (!regex.test(arrivalDate)) {
+        return reject(new Error("Date is in the wrong format"));
+      }
 
       const updateQuery =
         "UPDATE products SET quantity = quantity + ? WHERE model = ?";
@@ -118,7 +121,10 @@ class ProductDAO {
         if (err) return reject(err);
         if (!row) {
           return reject(new ProductNotFoundError());
-        } else {
+        } else if(dayjs(row.arrivalDate).isAfter(dayjs(arrivalDate))){
+          return reject(new FutureDateError())
+        }
+        else{
           const oldQuantity = row.quantity;
           db.run(updateQuery, [newQuantity, model], (err: Error | null) => {
             if (err) return reject(err);
@@ -144,9 +150,9 @@ class ProductDAO {
           selectQuery = "SELECT * FROM products WHERE model='" + model + "'";
         else if (grouping == "category")
           selectQuery = "SELECT * FROM products WHERE category='" + category + "'";
-        else if (grouping == null) 
+        else if (grouping == null)
           selectQuery = "SELECT * FROM products";
-        else 
+        else
           return reject(Error("Not a valid grouping"));
 
         db.all(selectQuery, [], (err: Error | null, rows: any[]) => {
@@ -154,7 +160,7 @@ class ProductDAO {
             return reject(err);
           }
 
-          if(rows.length==0 && grouping=="model"){
+          if (rows.length == 0 && grouping == "model") {
             return reject(new ProductNotFoundError())
           }
 
@@ -186,7 +192,6 @@ class ProductDAO {
     return new Promise<Product[]>((resolve, reject) => {
       try {
 
-
         //validation
 
         let selectQuery = "SELECT * FROM products WHERE quantity > 0";
@@ -195,34 +200,34 @@ class ProductDAO {
           selectQuery = "SELECT * FROM products WHERE model='" + model + "AND quantity > 0'";
         else if (grouping == "category")
           selectQuery = "SELECT * FROM products WHERE category='" + category + "AND quantity > 0'";
-        else if (grouping == null) 
+        else if (grouping == null)
           selectQuery = "SELECT * FROM products WHERE quantity > 0";
-        else 
+        else
           return reject(Error("Not a valid grouping"));
 
-          db.all(selectQuery, [], (err: Error | null, rows: any[]) => {
-            if (err) {
-              return reject(err);
-            }
-  
-            if(rows.length==0 && grouping=="model"){
-              return reject(new ProductNotFoundError())
-            }
-  
-            const products: Product[] = rows.map(
-              (row) =>
-                new Product(
-                  row.sellingPrice,
-                  row.model,
-                  row.category,
-                  row.arrivalDate,
-                  row.details,
-                  row.quantity
-                )
-            );
-  
-            return resolve(products);
-          });
+        db.all(selectQuery, [], (err: Error | null, rows: any[]) => {
+          if (err) {
+            return reject(err);
+          }
+
+          if (rows.length == 0 && grouping == "model") {
+            return reject(new ProductNotFoundError())
+          }
+
+          const products: Product[] = rows.map(
+            (row) =>
+              new Product(
+                row.sellingPrice,
+                row.model,
+                row.category,
+                row.arrivalDate,
+                row.details,
+                row.quantity
+              )
+          );
+
+          return resolve(products);
+        });
       } catch (error) {
         return reject(error);
       }
@@ -248,7 +253,10 @@ class ProductDAO {
         if (sellingDate && dayjs(sellingDate).isAfter(dayjs()))
           return reject(new FutureDateError());
 
-        //manca controllo che data inserita è nel giusto formato
+        const regex = /^\d{4}-\d{2}-\d{2}$/;
+        if (!regex.test(sellingDate)) {
+          return reject(new Error("Date is in the wrong format"));
+        }
 
         const getProductQuery = "SELECT * FROM products WHERE model == ?";
         const updateQuantityQuery = "UPDATE products SET quantity = quantity - ? WHERE model == ?";
@@ -262,11 +270,11 @@ class ProductDAO {
             return reject(new ProductNotFoundError());
           }
 
-          if(row.arrivalDate && dayjs(row.arrivalDate).isAfter(dayjs(sellingDate))){
+          if (row.arrivalDate && dayjs(row.arrivalDate).isAfter(dayjs(sellingDate))) {
             return reject(new FutureDateError())
           }
 
-          if(row.quantity==0){
+          if (row.quantity == 0) {
             return reject(new LowProductStockError());
           }
 

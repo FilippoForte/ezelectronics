@@ -180,7 +180,7 @@ describe("CartRoutes_2: getCart method tests", () => {
   // Create a cart object with sample data
   const cart = new Cart(testUser.username, false, "", 35, [inputProduct1, inputProduct2]);
 
-  test("CartRoutes_1: It should return a 200 success code and the cart", async () => {
+  test("CartRoutes_2.1: It should return a 200 success code and the cart", async () => {
     // Mock the isLoggedIn method of Authenticator to simulate a logged-in user
     jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
       req.user = testUser;
@@ -221,7 +221,7 @@ describe("CartRoutes_2: getCart method tests", () => {
     expect(CartController.prototype.getCart).toHaveBeenCalledWith(testUser);
   });
 
-  test("CartRoutes_2: It should return a 200 success code and an empty cart if no unpaid cart or unpaid cart with no products", async () => {
+  test("CartRoutes_2.2: It should return a 200 success code and an empty cart if no unpaid cart or unpaid cart with no products", async () => {
     // Create an empty cart object
     const emptyCart = new Cart(testUser.username, false, "", 0, []);
 
@@ -388,4 +388,97 @@ describe("CartRoutes_3: simulatePayment method tests", () => {
     expect(CartController.prototype.checkoutCart).toHaveBeenCalledWith(testUser);
   });
 */
+});
+
+
+describe("CartRoutes_3: getCartHistory method tests", () => {
+  // Run this code after each test to clear and restore all mocks
+  afterEach(() => {
+    jest.clearAllMocks();
+    jest.restoreAllMocks();
+  });
+
+  // Sample data for cart history
+  const cartHistory = [
+    new Cart(testUser.username, true, "2023-01-01", 50, [inputProduct1]),
+    new Cart(testUser.username, true, "2023-02-01", 75, [inputProduct2])
+  ];
+
+  test("CartRoutes_2.1: It should return a 200 success code and the cart history for a logged-in customer", async () => {
+    // Mock the isLoggedIn method of Authenticator to simulate a logged-in user
+    jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
+      req.user = testUser;
+      return next();
+    });
+
+    // Mock the isCustomer method of Authenticator to simulate a customer user
+    jest.spyOn(Authenticator.prototype, "isCustomer").mockImplementation((req, res, next) => {
+      return next();
+    });
+
+    // Mock the getCustomerCarts method of CartController to return the sample cart history
+    jest.spyOn(CartController.prototype, "getCustomerCarts").mockResolvedValueOnce(cartHistory);
+
+    // Make a GET request to the history URL and store the response
+    const response = await request(app).get(baseURL + "/history");
+
+    // Assert that the response status is 200
+    expect(response.status).toBe(200);
+
+    // Assert that the response body equals the sample cart history
+    expect(response.body).toEqual(cartHistory);
+
+    // Assert that the isLoggedIn method was called once
+    expect(Authenticator.prototype.isLoggedIn).toHaveBeenCalledTimes(1);
+
+    // Assert that the isCustomer method was called once
+    expect(Authenticator.prototype.isCustomer).toHaveBeenCalledTimes(1);
+
+    // Assert that the getCustomerCarts method was called once
+    expect(CartController.prototype.getCustomerCarts).toHaveBeenCalledTimes(1);
+
+    // Assert that the getCustomerCarts method was called with the testUser argument
+    expect(CartController.prototype.getCustomerCarts).toHaveBeenCalledWith(testUser);
+  });
+
+  test("CartRoutes_2.2: It should return a 200 success code and an empty array if no cart history exists", async () => {
+    // Create an empty cart history
+    const emptyCartHistory: Cart[] = [];
+
+
+    // Mock the isLoggedIn method of Authenticator to simulate a logged-in user
+    jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
+      req.user = testUser;
+      return next();
+    });
+
+    // Mock the isCustomer method of Authenticator to simulate a customer user
+    jest.spyOn(Authenticator.prototype, "isCustomer").mockImplementation((req, res, next) => {
+      return next();
+    });
+
+    // Mock the getCustomerCarts method of CartController to return the empty cart history
+    jest.spyOn(CartController.prototype, "getCustomerCarts").mockResolvedValueOnce(emptyCartHistory);
+
+    // Make a GET request to the history URL and store the response
+    const response = await request(app).get(baseURL + "/history");
+
+    // Assert that the response status is 200
+    expect(response.status).toBe(200);
+
+    // Assert that the response body equals the empty cart history
+    expect(response.body).toEqual(emptyCartHistory);
+
+    // Assert that the isLoggedIn method was called once
+    expect(Authenticator.prototype.isLoggedIn).toHaveBeenCalledTimes(1);
+
+    // Assert that the isCustomer method was called once
+    expect(Authenticator.prototype.isCustomer).toHaveBeenCalledTimes(1);
+
+    // Assert that the getCustomerCarts method was called once
+    expect(CartController.prototype.getCustomerCarts).toHaveBeenCalledTimes(1);
+
+    // Assert that the getCustomerCarts method was called with the testUser argument
+    expect(CartController.prototype.getCustomerCarts).toHaveBeenCalledWith(testUser);
+  });
 });
