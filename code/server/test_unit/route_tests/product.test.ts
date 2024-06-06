@@ -291,7 +291,7 @@ describe("Products routes unit tests", () =>{
         testLogin.mockRestore();
         testManager.mockRestore();
     });
-  /*  test('Routes_2.6: Change Date before arrival date. It should return a 400 error', async ()=>{
+    test('Routes_2.6: Change Date before arrival date. It should return a 400 error', async ()=>{
         const model = "testModel";
         const requestBody = {
             quantity: 5,
@@ -312,7 +312,7 @@ describe("Products routes unit tests", () =>{
         testController.mockRestore();
         testLogin.mockRestore();
         testManager.mockRestore();
-    });*/
+    });
 });
 
 describe("Routes_3:PATCH /products/:model/sell", ()=>{

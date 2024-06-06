@@ -81,7 +81,7 @@ class UserController {
      * Deletes all non-Admin users
      * @returns A Promise that resolves to true if all non-Admin users have been deleted.
      */
-    async deleteAll() {
+    async deleteAll() :Promise<Boolean> {
         return this.dao.deleteAll();
      }
 
