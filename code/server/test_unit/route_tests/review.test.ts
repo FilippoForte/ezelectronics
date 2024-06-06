@@ -10,6 +10,7 @@ import { ExistingReviewError, NoReviewProductError } from "../../src/errors/revi
 
 import ReviewController from "../../src/controllers/reviewController";
 import { rejects } from "assert";
+import { afterEach, describe } from "node:test";
 const baseURL = "/ezelectronics/reviews";
 
 jest.mock("../../src/controllers/reviewController");
@@ -77,7 +78,7 @@ describe("ReviewRoutes_1: POST /reviews/:model", () => {
         });
         jest.spyOn(ReviewController.prototype, "addReview").mockRejectedValue(ProductNotFoundError);
         const response = await request(app).post(baseURL + "/" + model).send(testReview);
-        //expect(response.status).toBe(404);
+        expect(response.status).toBe(404);
     });
 
     test("ReviewRoutes_1.3: It should return a 409 error code", async () => {
@@ -100,7 +101,7 @@ describe("ReviewRoutes_1: POST /reviews/:model", () => {
         });
         jest.spyOn(ReviewController.prototype, "addReview").mockRejectedValue(ExistingReviewError);
         const response = await request(app).post(baseURL + "/" + model).send(testReview);
-        //expect(response.status).toBe(409);
+        expect(response.status).toBe(409);
     });
 });
 
