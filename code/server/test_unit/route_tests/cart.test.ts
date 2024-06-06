@@ -17,7 +17,7 @@ import { EmptyProductStockError, ProductNotFoundError } from "../../src/errors/p
 import { Cart } from "../../src/components/cart";
 import { Category, Product } from "../../src/components/product";
 import ErrorHandler from "../../src/helper";
-import { CartNotFoundError, EmptyCartError, ProductInCartError } from "../../src/errors/cartError";
+import { CartNotFoundError, EmptyCartError, ProductInCartError, ProductNotInCartError } from "../../src/errors/cartError";
 
 const baseURL = "/ezelectronics/carts";
 
@@ -404,7 +404,7 @@ describe("CartRoutes_3: getCartHistory method tests", () => {
     new Cart(testUser.username, true, "2023-02-01", 75, [inputProduct2])
   ];
 
-  test("CartRoutes_2.1: It should return a 200 success code and the cart history for a logged-in customer", async () => {
+  test("CartRoutes_3.1: It should return a 200 success code and the cart history for a logged-in customer", async () => {
     // Mock the isLoggedIn method of Authenticator to simulate a logged-in user
     jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
       req.user = testUser;
@@ -441,7 +441,7 @@ describe("CartRoutes_3: getCartHistory method tests", () => {
     expect(CartController.prototype.getCustomerCarts).toHaveBeenCalledWith(testUser);
   });
 
-  test("CartRoutes_2.2: It should return a 200 success code and an empty array if no cart history exists", async () => {
+  test("CartRoutes_3.2: It should return a 200 success code and an empty array if no cart history exists", async () => {
     // Create an empty cart history
     const emptyCartHistory: Cart[] = [];
 
@@ -481,4 +481,160 @@ describe("CartRoutes_3: getCartHistory method tests", () => {
     // Assert that the getCustomerCarts method was called with the testUser argument
     expect(CartController.prototype.getCustomerCarts).toHaveBeenCalledWith(testUser);
   });
+});
+
+
+describe("CartRoutes_4: removeProductFromCart method tests", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+    jest.restoreAllMocks();
+  });
+
+  test("CartRoutes_4.1: It should return a 200 success code if the product was removed from the cart", async () => {
+    const model = "iPhone3";
+
+    // Mock middleware to set user as logged in and a customer
+    jest
+      .spyOn(Authenticator.prototype, "isLoggedIn")
+      .mockImplementation((req, res, next) => {
+        req.user = testUser;
+        next();
+      });
+
+    jest
+      .spyOn(Authenticator.prototype, "isCustomer")
+      .mockImplementation((req, res, next) => next());
+
+    // Mock controller method to resolve successfully
+    jest
+      .spyOn(CartController.prototype, "removeProductFromCart")
+      .mockResolvedValueOnce(true);
+
+    // Make request to the route
+    const response = await request(app).delete(`${baseURL}/products/${model}`);
+
+    // Assertions
+    expect(response.status).toBe(200);
+    expect(CartController.prototype.removeProductFromCart).toHaveBeenCalledWith(
+      testUser,
+      model
+    );
+  });
+
+  test("CartRoutes_4.2: It should return a 401 if the user is not logged in", async () => {
+    const model = "iPhone3";
+
+    // Mock middleware to respond with 401
+    jest
+      .spyOn(Authenticator.prototype, "isLoggedIn")
+      .mockImplementation((req, res, next) => res.status(401).end());
+
+    // Make request to the route
+    const response = await request(app).delete(`${baseURL}/products/${model}`);
+
+    // Assertions
+    expect(response.status).toBe(401);
+    expect(CartController.prototype.removeProductFromCart).toHaveBeenCalledTimes(0);
+  });
+
+  test("CartRoutes_4.3: It should return a 401 if the user is not a customer", async () => {
+    const model = "iPhone3";
+
+    // Mock middleware to set user as logged in but not a customer
+    jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
+      req.user = { id: 1, role: Role.ADMIN, username: 'adminUser' }; // Non-customer role
+      next();
+    });
+    jest.spyOn(Authenticator.prototype, "isCustomer").mockImplementation((req, res, next) => res.status(401).end());
+
+    // Make request to the route
+    const response = await request(app).delete(`${baseURL}/products/${model}`);
+
+    // Assertions
+    expect(response.status).toBe(401);
+    expect(CartController.prototype.removeProductFromCart).toHaveBeenCalledTimes(0);
+  });
+
+  test("CartRoutes_4.4: It should return a 400 if the model is not a non-empty string", async () => {
+    // Mock middleware to set user as logged in and a customer
+    jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
+      req.user = testUser;
+      next();
+    });
+    jest.spyOn(Authenticator.prototype, "isCustomer").mockImplementation((req, res, next) => next());
+
+    // Make request to the route with an invalid model
+    const response = await request(app).delete(`${baseURL}/products/`);
+
+    // Assertions
+    expect(response.status).toBe(422);
+    expect(CartController.prototype.removeProductFromCart).toHaveBeenCalledTimes(0);
+  });
+
+  test("CartRoutes_4.5: It should return a 404 if the product does not exist in the cart", async () => {
+    const model = "nonExistingModel";
+
+    // Mock middleware to set user as logged in and a customer
+    jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
+      req.user = testUser;
+      next();
+    });
+    jest.spyOn(Authenticator.prototype, "isCustomer").mockImplementation((req, res, next) => next());
+
+    // Mock controller method to reject with a 404 error
+    const error = new ProductNotInCartError();
+    jest.spyOn(CartController.prototype, "removeProductFromCart").mockRejectedValueOnce(error);
+
+    // Make request to the route
+    const response = await request(app).delete(`${baseURL}/products/${model}`);
+
+    // Assertions
+    expect(response.status).toBe(404);
+    expect(CartController.prototype.removeProductFromCart).toHaveBeenCalledWith(testUser, model);
+  });
+
+  test("CartRoutes_4.6: It should return a 404 if there is no unpaid cart or if the cart has no products", async () => {
+    const model = "iPhone3";
+
+    // Mock middleware to set user as logged in and a customer
+    jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
+      req.user = testUser;
+      next();
+    });
+    jest.spyOn(Authenticator.prototype, "isCustomer").mockImplementation((req, res, next) => next());
+
+    // Mock controller method to reject with a 404 error for unpaid cart or no products in cart
+    const error = new CartNotFoundError();
+    jest.spyOn(CartController.prototype, "removeProductFromCart").mockRejectedValueOnce(error);
+
+    // Make request to the route
+    const response = await request(app).delete(`${baseURL}/products/${model}`);
+
+    // Assertions
+    expect(response.status).toBe(404);
+    expect(CartController.prototype.removeProductFromCart).toHaveBeenCalledWith(testUser, model);
+  });
+
+  test("CartRoutes_4.7: It should return a 404 if model does not represent an existing product", async () => {
+    const model = "nonExistingProductModel";
+
+    // Mock middleware to set user as logged in and a customer
+    jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
+      req.user = testUser;
+      next();
+    });
+    jest.spyOn(Authenticator.prototype, "isCustomer").mockImplementation((req, res, next) => next());
+
+    // Mock controller method to reject with a 404 error for non-existing product
+    const error = new ProductNotFoundError();
+    jest.spyOn(CartController.prototype, "removeProductFromCart").mockRejectedValueOnce(error);
+
+    // Make request to the route
+    const response = await request(app).delete(`${baseURL}/products/${model}`);
+
+    // Assertions
+    expect(response.status).toBe(404);
+    expect(CartController.prototype.removeProductFromCart).toHaveBeenCalledWith(testUser, model);
+  });
+
 });
