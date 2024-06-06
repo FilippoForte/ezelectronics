@@ -86,7 +86,7 @@ describe("CartRoutes_1: addToCart method tests", () => {
 
     // Assertions
     expect(response.status).toBe(401);
-    expect(CartController.prototype.addToCart).not.toHaveBeenCalled();
+    expect(CartController.prototype.addToCart).toHaveBeenCalledTimes(0);
   });
 
   // Test for user not being a customer
@@ -105,7 +105,7 @@ describe("CartRoutes_1: addToCart method tests", () => {
 
     // Assertions
     expect(response.status).toBe(401);
-    expect(CartController.prototype.addToCart).not.toHaveBeenCalled();
+    expect(CartController.prototype.addToCart).toHaveBeenCalledTimes(0);
   });
 
 
