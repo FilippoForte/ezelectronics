@@ -63,7 +63,7 @@ class ProductRoutes {
             body("model").isString().isLength({ min: 1 }),
             body("category").isString().isIn(["Smartphone", "Laptop", "Appliance"]),
             body("quantity").isInt({ min: 1 }),
-            body("details").optional().isString(),
+            body("details").isString(),
             body("sellingPrice").isFloat({ min: 1 }),
             this.errorHandler.validateRequest,
             (req: any, res: any, next: any) => this.controller.registerProducts(req.body.model, req.body.category, req.body.quantity, req.body.details, req.body.sellingPrice, req.body.arrivalDate)
