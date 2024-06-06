@@ -3,6 +3,7 @@ import db from "../db/db";
 import dayjs from "dayjs";
 import { Product } from "../components/product";
 import {
+  EmptyProductStockError,
   FutureDateError,
   LowProductStockError,
   ProductNotFoundError,
@@ -47,10 +48,10 @@ class ProductDAO {
         if (arrivalDate && dayjs(arrivalDate).isAfter(dayjs()))
           return reject(new FutureDateError());
 
-        const regex = /^\d{4}-\d{2}-\d{2}$/;
-        if (!regex.test(arrivalDate)) {
-          return reject(new Error("Date is in the wrong format"));
-        }
+        // const regex = /^\d{4}-\d{2}-\d{2}$/;
+        // if (!regex.test(arrivalDate)) {
+        //   return reject(new Error("Date is in the wrong format"));
+        // }
 
         const insertQuery =
           "INSERT INTO products (model, category, quantity, details, arrivalDate, sellingPrice) VALUES (?,?,?,?,?,?)";
@@ -100,10 +101,10 @@ class ProductDAO {
       if (arrivalDate && dayjs(arrivalDate).isAfter(dayjs()))
         return reject(new FutureDateError());
 
-      const regex = /^\d{4}-\d{2}-\d{2}$/;
-      if (!regex.test(arrivalDate)) {
-        return reject(new Error("Date is in the wrong format"));
-      }
+      // const regex = /^\d{4}-\d{2}-\d{2}$/;
+      // if (!regex.test(arrivalDate)) {
+      //   return reject(new Error("Date is in the wrong format"));
+      // }
 
       const updateQuery =
         "UPDATE products SET quantity = quantity + ? WHERE model = ?";
@@ -235,20 +236,20 @@ class ProductDAO {
       try {
         //validation
 
-        if ((model = "")) return reject(Error("Model cannot be empty"));
-
-        if (quantity <= 0)
-          return reject(Error("Quantity should be greater then 0"));
+        // if ((model = "")) return reject(Error("Model cannot be empty"));
+        //
+        // if (quantity <= 0)
+        //   return reject(Error("Quantity should be greater then 0"));
 
         if (sellingDate == null) sellingDate = dayjs().format("YYYY-MM-DD");
 
         if (sellingDate && dayjs(sellingDate).isAfter(dayjs()))
           return reject(new FutureDateError());
 
-        const regex = /^\d{4}-\d{2}-\d{2}$/;
-        if (!regex.test(sellingDate)) {
-          return reject(new Error("Date is in the wrong format"));
-        }
+        // const regex = /^\d{4}-\d{2}-\d{2}$/;
+        // if (!regex.test(sellingDate)) {
+        //   return reject(new Error("Date is in the wrong format"));
+        // }
 
         const getProductQuery = "SELECT * FROM products WHERE model == ?";
         const updateQuantityQuery = "UPDATE products SET quantity = quantity - ? WHERE model == ?";
@@ -267,7 +268,7 @@ class ProductDAO {
           }
 
           if (row.quantity == 0) {
-            return reject(new LowProductStockError());
+            return reject(new EmptyProductStockError());
           }
 
           if (row.quantity < quantity) {
@@ -281,7 +282,7 @@ class ProductDAO {
               if (err) {
                 return reject(err);
               }
-              resolve(quantity);
+              resolve(row.quantity - quantity);
             }
           );
         });
@@ -314,7 +315,7 @@ class ProductDAO {
 
         //validation
 
-        if ((model = "")) return reject(Error("Model cannot be empty"));
+        // if ((model = "")) return reject(Error("Model cannot be empty"));
 
         const deleteQuery = "DELETE FROM products WHERE model == ?";
         const getProductQuery = "SELECT * FROM products WHERE model == ?";

@@ -3,7 +3,12 @@ import db from "../../src/db/db";
 import {Category, Product} from "../../src/components/product";
 import ProductDAO from "../../src/dao/productDAO";
 import dayjs from "dayjs";
-import {FutureDateError, ProductAlreadyExistsError, ProductNotFoundError} from "../../src/errors/productError";
+import {
+    EmptyProductStockError,
+    FutureDateError, LowProductStockError,
+    ProductAlreadyExistsError,
+    ProductNotFoundError
+} from "../../src/errors/productError";
 
 interface databaseProduct {
     category: string,
@@ -344,7 +349,7 @@ describe("Product DAO unit tests", () => {
                 callback(null, dbProdOkDate);
             })
 
-            mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null)) => void) => {
+            mockDBRun.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null)) => void) => {
                 callback(new Error());
             })
 
@@ -367,7 +372,7 @@ describe("Product DAO unit tests", () => {
         test("ProductDAO_2.8: SQLite get method throws an Error (it should reject the error)", async () => {
             const productDAO = new ProductDAO();
 
-            mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+            mockDBGet.mockImplementationOnce((_sql: any, _params: any, _callback: (err: (Error | null), row: any) => void) => {
                 throw new Error();
             })
 
@@ -507,7 +512,7 @@ describe("Product DAO unit tests", () => {
         test("ProductDAO_3.11: SQLite all method throws an Error (it should reject the error)", async () => {
             const productDAO = new ProductDAO();
 
-            mockDBAll.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+            mockDBAll.mockImplementationOnce((_sql: any, _params: any, _callback: (err: (Error | null), row: any) => void) => {
                 throw new Error();
             })
 
@@ -661,7 +666,7 @@ describe("Product DAO unit tests", () => {
         test("ProductDAO_4.12: SQLite all method throws an Error (it should reject the error)", async () => {
             const productDAO = new ProductDAO();
 
-            mockDBAll.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+            mockDBAll.mockImplementationOnce((_sql: any, _params: any, _callback: (err: (Error | null), row: any) => void) => {
                 throw new Error();
             })
 
@@ -671,6 +676,365 @@ describe("Product DAO unit tests", () => {
 
             expect(mockDBAll).toHaveBeenCalled();
             expect(mockDBAll).toHaveBeenCalledWith(expect.stringContaining("SELECT *"), [], expect.any(Function))
+        });
+    });
+
+    describe("ProductDAO_5: sellProduct method tests", () => {
+        let mockDBGet: any;
+        let mockDBRun: any;
+
+        beforeEach(async () => {
+            mockDBGet = jest.spyOn(db, "get");
+            mockDBRun = jest.spyOn(db, "run");
+        });
+
+        afterEach(() => {
+            jest.restoreAllMocks();
+        });
+
+        test("ProductDAO_5.1: Sell a product correctly, the selling date should be the current date (it should resolve true)", async () => {
+            const productDAO = new ProductDAO();
+            const soldQuantity = 5;
+
+            mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+                callback(null, dbProd1);
+            })
+
+            mockDBRun.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null)) => void) => {
+                callback(null);
+            });
+
+            const result = await productDAO.sellProduct(dbProd1.model, soldQuantity, null);
+
+            expect(result).toEqual(dbProd1.quantity - soldQuantity);
+            expect(mockDBGet).toHaveBeenCalled();
+            expect(mockDBGet).toHaveBeenCalledWith(expect.stringContaining("SELECT"), [dbProd1.model], expect.any(Function))
+            expect(mockDBRun).toHaveBeenCalled();
+            expect(mockDBRun).toHaveBeenCalledWith(expect.stringContaining("UPDATE"), expect.arrayContaining(
+                    [soldQuantity, dbProd1.model]), expect.any(Function));
+        });
+
+        test("ProductDAO_5.2: Sell a product correctly, the selling is provided (it should resolve true)", async () => {
+            const productDAO = new ProductDAO();
+            const soldQuantity = 5;
+
+            mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+                callback(null, dbProd2);
+            })
+
+            mockDBRun.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null)) => void) => {
+                callback(null);
+            });
+
+            const result = await productDAO.sellProduct(dbProd2.model, soldQuantity, "2024-06-05");
+
+            expect(result).toEqual(dbProd2.quantity - soldQuantity);
+            expect(mockDBGet).toHaveBeenCalled();
+            expect(mockDBGet).toHaveBeenCalledWith(expect.stringContaining("SELECT"), [dbProd2.model], expect.any(Function))
+            expect(mockDBRun).toHaveBeenCalled();
+            expect(mockDBRun).toHaveBeenCalledWith(expect.stringContaining("UPDATE"), expect.arrayContaining(
+                [soldQuantity, dbProd2.model]), expect.any(Function));
+        });
+
+        test("ProductDAO_5.2: The provided model does not represent a product in the DB (it should resolve ProductNotFoundError)", async () => {
+            const productDAO = new ProductDAO();
+            const soldQuantity = 5;
+
+
+            mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+                callback(null, undefined);
+            })
+
+            await expect(productDAO.sellProduct("iPhone X", soldQuantity, null))
+                .rejects
+                .toThrow(ProductNotFoundError);
+
+            expect(mockDBGet).toHaveBeenCalled();
+            expect(mockDBGet).toHaveBeenCalledWith(expect.stringContaining("SELECT"), ["iPhone X"], expect.any(Function))
+            expect(mockDBRun).not.toHaveBeenCalled();
+        });
+
+        test("ProductDAO_5.3: The provided selling date is after the current date (it should reject FutureDateError)", async () => {
+            const productDAO = new ProductDAO();
+            const soldQuantity = 5;
+
+            await expect(productDAO.sellProduct(dbProd1.model, soldQuantity, "2345-12-31"))
+                .rejects
+                .toThrow(FutureDateError);
+
+            expect(mockDBGet).not.toHaveBeenCalled();
+            expect(mockDBRun).not.toHaveBeenCalled();
+        });
+
+        test("ProductDAO_5.4: The provided selling date is before the set of products' current arrival date (it should reject FutureDateError)", async () => {
+            const productDAO = new ProductDAO();
+            const soldQuantity = 5;
+
+            mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+                callback(null, dbProd1);
+            })
+
+            await expect(productDAO.sellProduct(dbProd1.model, soldQuantity, "1492-10-12"))
+                .rejects
+                .toThrow(FutureDateError);
+
+            expect(mockDBGet).toHaveBeenCalled();
+            expect(mockDBGet).toHaveBeenCalledWith(expect.stringContaining("SELECT"), [dbProdPastDate.model], expect.any(Function))
+            expect(mockDBRun).not.toHaveBeenCalled();
+        });
+
+        test("ProductDAO_5.5: The provided model represents a product with an available quantity of 0 (it should resolve EmptyProductStockError)", async () => {
+            const productDAO = new ProductDAO();
+            const soldQuantity = 5;
+
+
+            mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+                callback(null, dbProd3);
+            })
+
+            await expect(productDAO.sellProduct(dbProd3.model, soldQuantity, null))
+                .rejects
+                .toThrow(EmptyProductStockError);
+
+            expect(mockDBGet).toHaveBeenCalled();
+            expect(mockDBGet).toHaveBeenCalledWith(expect.stringContaining("SELECT"), [dbProd3.model], expect.any(Function))
+            expect(mockDBRun).not.toHaveBeenCalled();
+        });
+
+        test("ProductDAO_5.6: The provided model represents a product with an available quantity of 0 (it should resolve EmptyProductStockError)", async () => {
+            const productDAO = new ProductDAO();
+            const soldQuantity = 6;
+
+
+            mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+                callback(null, dbProd1);
+            })
+
+            await expect(productDAO.sellProduct(dbProd1.model, soldQuantity, null))
+                .rejects
+                .toThrow(LowProductStockError);
+
+            expect(mockDBGet).toHaveBeenCalled();
+            expect(mockDBGet).toHaveBeenCalledWith(expect.stringContaining("SELECT"), [dbProd1.model], expect.any(Function))
+            expect(mockDBRun).not.toHaveBeenCalled();
+        });
+
+        test("ProductDAO_5.7: An SQL error occurs in the SQLite get method and it's passed to the callback (it should reject the error)", async () => {
+            const productDAO = new ProductDAO();
+            const soldQuantity = 5;
+
+
+            mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+                callback(new Error(), undefined);
+            })
+
+            await expect(productDAO.sellProduct(dbProd1.model, soldQuantity, null))
+                .rejects
+                .toThrow(Error);
+
+            expect(mockDBGet).toHaveBeenCalled();
+            expect(mockDBGet).toHaveBeenCalledWith(expect.stringContaining("SELECT"), [dbProd1.model], expect.any(Function))
+            expect(mockDBRun).not.toHaveBeenCalled();
+        });
+
+        test("ProductDAO_5.8: An SQL error occurs in the SQLite run method and it's passed to the callback (it should reject the error)", async () => {
+            const productDAO = new ProductDAO();
+            const soldQuantity = 5;
+
+
+            mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+                callback(null, dbProd1);
+            })
+
+            mockDBRun.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null)) => void) => {
+                callback(new Error());
+            });
+
+            await expect(productDAO.sellProduct(dbProd1.model, soldQuantity, null))
+                .rejects
+                .toThrow(Error);
+
+            expect(mockDBGet).toHaveBeenCalled();
+            expect(mockDBGet).toHaveBeenCalledWith(expect.stringContaining("SELECT"), [dbProd1.model], expect.any(Function))
+            expect(mockDBRun).toHaveBeenCalled();
+            expect(mockDBRun).toHaveBeenCalledWith(expect.stringContaining("UPDATE"), expect.arrayContaining(
+                [soldQuantity, dbProd1.model]), expect.any(Function));
+        });
+
+        test("ProductDAO_5.9: SQLite run method throws an Error (it should reject the error)", async () => {
+            const productDAO = new ProductDAO();
+            const soldQuantity = 5;
+
+
+            mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+                callback(null, dbProd1);
+            })
+
+            mockDBRun.mockImplementationOnce((_sql: any, _params: any, _callback: (err: (Error | null)) => void) => {
+                throw new Error();
+            });
+
+            await expect(productDAO.sellProduct(dbProd1.model, soldQuantity, null))
+                .rejects
+                .toThrow(Error);
+
+            expect(mockDBGet).toHaveBeenCalled();
+            expect(mockDBGet).toHaveBeenCalledWith(expect.stringContaining("SELECT"), [dbProd1.model], expect.any(Function))
+            expect(mockDBRun).toHaveBeenCalled();
+            expect(mockDBRun).toHaveBeenCalledWith(expect.stringContaining("UPDATE"), expect.arrayContaining(
+                [soldQuantity, dbProd1.model]), expect.any(Function));
+        });
+    });
+
+    describe("ProductDAO_6: deleteAllProducts method tests", () => {
+        let mockDBRun: any;
+
+        beforeEach(async () => {
+            mockDBRun = jest.spyOn(db, "run");
+        });
+
+        afterEach(() => {
+            jest.restoreAllMocks();
+        });
+
+        test("ProductDAO_6.1: Delete all products from the DB successfully (it should resolve true)", async () => {
+            const productDAO = new ProductDAO();
+
+            mockDBRun.mockImplementationOnce((_sql: any, callback: (err: (Error | null)) => void) => {
+                callback(null);
+            })
+
+            const result = await productDAO.deleteAllProducts();
+
+            expect(result).toBe(true);
+            expect(mockDBRun).toHaveBeenCalled();
+            expect(mockDBRun).toHaveBeenCalledWith(expect.stringContaining("DELETE FROM products"), expect.any(Function))
+        });
+
+        test("ProductDAO_6.2: An SQL error occurs in the SQLite run method and it's passed to the callback (it should reject the error)", async () => {
+            const productDAO = new ProductDAO();
+
+            mockDBRun.mockImplementationOnce((_sql: any, callback: (err: (Error | null)) => void) => {
+                callback(new Error());
+            })
+
+            await expect(productDAO.deleteAllProducts()).rejects.toThrow(Error);
+
+            expect(mockDBRun).toHaveBeenCalled();
+            expect(mockDBRun).toHaveBeenCalledWith(expect.stringContaining("DELETE FROM products"), expect.any(Function))
+        });
+
+        test("ProductDAO_6.2: SQLite run method throws an Error (it should reject the error)", async () => {
+            const productDAO = new ProductDAO();
+
+            mockDBRun.mockImplementationOnce((_sql: any, _callback: (err: (Error | null)) => void) => {
+                throw new Error();
+            })
+
+            await expect(productDAO.deleteAllProducts()).rejects.toThrow(Error);
+
+            expect(mockDBRun).toHaveBeenCalled();
+            expect(mockDBRun).toHaveBeenCalledWith(expect.stringContaining("DELETE FROM products"), expect.any(Function))
+        });
+    });
+
+    describe("ProductDAO_7: deleteProduct method tests", () => {
+        let mockDBGet: any;
+        let mockDBRun: any;
+
+        beforeEach(async () => {
+            mockDBGet = jest.spyOn(db, "get");
+            mockDBRun = jest.spyOn(db, "run");
+        });
+
+        afterEach(() => {
+            jest.restoreAllMocks();
+        });
+
+        test("ProductDAO_7.1: Delete a product from the DB successfully (it should resolve true)", async () => {
+            const productDAO = new ProductDAO();
+
+            mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+                callback(null, dbProd1);
+            })
+
+            mockDBRun.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null)) => void) => {
+                callback(null);
+            })
+
+            const result = await productDAO.deleteProduct(dbProd1.model);
+
+            expect(result).toBe(true);
+            expect(mockDBGet).toHaveBeenCalled();
+            expect(mockDBGet).toHaveBeenCalledWith(expect.stringContaining("SELECT * FROM products"), [dbProd1.model], expect.any(Function))
+            expect(mockDBRun).toHaveBeenCalled();
+            expect(mockDBRun).toHaveBeenCalledWith(expect.stringContaining("DELETE FROM products"), [dbProd1.model], expect.any(Function))
+        });
+
+        test("ProductDAO_7.2: The provided model does not represent a product in the DB (it should resolve true)", async () => {
+            const productDAO = new ProductDAO();
+
+            mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+                callback(null, undefined);
+            })
+
+            await expect(productDAO.deleteProduct("iPhone X")).rejects.toThrow(ProductNotFoundError);
+
+            expect(mockDBGet).toHaveBeenCalled();
+            expect(mockDBGet).toHaveBeenCalledWith(expect.stringContaining("SELECT * FROM products"), ["iPhone X"], expect.any(Function))
+            expect(mockDBRun).not.toHaveBeenCalled();
+        });
+
+        test("ProductDAO_7.3: An SQL error occurs in the SQLite get method and it's passed to the callback (it should reject the error)", async () => {
+            const productDAO = new ProductDAO();
+
+            mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+                callback(new Error(), undefined);
+            })
+
+            await expect(productDAO.deleteProduct(dbProd1.model)).rejects.toThrow(Error);
+
+            expect(mockDBGet).toHaveBeenCalled();
+            expect(mockDBGet).toHaveBeenCalledWith(expect.stringContaining("SELECT * FROM products"), [dbProd1.model], expect.any(Function))
+            expect(mockDBRun).not.toHaveBeenCalled();
+        });
+
+        test("ProductDAO_7.4: An SQL error occurs in the SQLite run method and it's passed to the callback (it should reject the error)", async () => {
+            const productDAO = new ProductDAO();
+
+            mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+                callback(null, dbProd1);
+            })
+
+            mockDBRun.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null)) => void) => {
+                callback(new Error());
+            })
+
+            await expect(productDAO.deleteProduct(dbProd1.model)).rejects.toThrow(Error);
+
+            expect(mockDBGet).toHaveBeenCalled();
+            expect(mockDBGet).toHaveBeenCalledWith(expect.stringContaining("SELECT * FROM products"), [dbProd1.model], expect.any(Function))
+            expect(mockDBRun).toHaveBeenCalled();
+            expect(mockDBRun).toHaveBeenCalledWith(expect.stringContaining("DELETE FROM products"), [dbProd1.model], expect.any(Function))
+        });
+
+        test("ProductDAO_7.5: SQLite run method throws an Error (it should reject the error)", async () => {
+            const productDAO = new ProductDAO();
+
+            mockDBGet.mockImplementationOnce((_sql: any, _params: any, callback: (err: (Error | null), row: any) => void) => {
+                callback(null, dbProd1);
+            })
+
+            mockDBRun.mockImplementationOnce((_sql: any, _params: any, _callback: (err: (Error | null)) => void) => {
+                throw new Error();
+            })
+
+            await expect(productDAO.deleteProduct(dbProd1.model)).rejects.toThrow(Error);
+
+            expect(mockDBGet).toHaveBeenCalled();
+            expect(mockDBGet).toHaveBeenCalledWith(expect.stringContaining("SELECT * FROM products"), [dbProd1.model], expect.any(Function))
+            expect(mockDBRun).toHaveBeenCalled();
+            expect(mockDBRun).toHaveBeenCalledWith(expect.stringContaining("DELETE FROM products"), [dbProd1.model], expect.any(Function))
         });
     });
 });
