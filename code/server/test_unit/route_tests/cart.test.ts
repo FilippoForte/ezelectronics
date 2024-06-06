@@ -93,7 +93,7 @@ describe("CartRoutes_1: addToCart method tests", () => {
   test("CartRoutes_1.3: It should return 401 if the user is not a customer", async () => {
     // Mock middleware to set user as logged in but not a customer
     jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
-      req.user = { id: 1, role: 'admin', username: 'adminUser' }; // Non-customer role
+      req.user = { id: 1, role: Role.ADMIN, username: 'adminUser' }; // Non-customer role
       next();
     });
     jest.spyOn(Authenticator.prototype, "isCustomer").mockImplementation((req, res, next) => res.status(401).end());
