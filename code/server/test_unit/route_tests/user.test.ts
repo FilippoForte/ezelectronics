@@ -55,6 +55,8 @@ describe("User route unit tests", () => {
             expect(UserController.prototype.createUser).toHaveBeenCalledWith(inputUser.username, inputUser.name, inputUser.surname, inputUser.password, inputUser.role)
         })
     })
+})
+    
     //test su input errati nel body
     //test username già nel db
     describe("Route_2: GET /users", () => {

@@ -101,10 +101,10 @@ class ProductDAO {
       if (arrivalDate && dayjs(arrivalDate).isAfter(dayjs()))
         return reject(new FutureDateError());
 
-      // const regex = /^\d{4}-\d{2}-\d{2}$/;
-      // if (!regex.test(arrivalDate)) {
-      //   return reject(new Error("Date is in the wrong format"));
-      // }
+      const regex = /^\d{4}-\d{2}-\d{2}$/;
+      if (!regex.test(arrivalDate)) {
+        return reject(new Error("Date is in the wrong format"));
+      }
 
       const updateQuery =
         "UPDATE products SET quantity = quantity + ? WHERE model = ?";

@@ -56,11 +56,11 @@ class UserRoutes {
          */
         this.router.post(
             "/",
-            body("username").isString().isLength({ min: 1 }), 
-            body("surname").isString().isLength({ min: 1 }), 
-            body("name").isString().isLength({ min: 1 }), 
-            body("password").isString().isLength({ min: 1 }), 
-            body("role").isString().isIn(["Manager", "Customer", "Admin"]), 
+            body("username").isString().isLength({ min: 1 }),
+            body("surname").isString().isLength({ min: 1 }),
+            body("name").isString().isLength({ min: 1 }),
+            body("password").isString().isLength({ min: 1 }),
+            body("role").isString().isIn(["Manager", "Customer", "Admin"]),
             this.errorHandler.validateRequest,
             (req: any, res: any, next: any) => this.controller.createUser(req.body.username, req.body.name, req.body.surname, req.body.password, req.body.role)
                 .then(() => res.status(200).end())
@@ -92,7 +92,7 @@ class UserRoutes {
         this.router.get(
             "/roles/:role",
             this.authService.isLoggedIn,
-            this.authService.isAdmin, 
+            this.authService.isAdmin,
             param("role").isIn(["Manager", "Customer", "Admin"]),
             this.errorHandler.validateRequest,
             (req: any, res: any, next: any) => this.controller.getUsersByRole(req.params.role)
@@ -108,11 +108,11 @@ class UserRoutes {
          */
         this.router.get(
             "/:username",
-            this.authService.isLoggedIn, 
+            this.authService.isLoggedIn,
             param("username").isString().isLength({ min: 1 }),
-            this.errorHandler.validateRequest,        
+            this.errorHandler.validateRequest,
             (req: any, res: any, next: any) => this.controller.getUserByUsername(req.user, req.params.username)
-                .then((user: User ) => res.status(200).json(user))
+                .then((user: User) => res.status(200).json(user))
                 .catch((err) => next(err))
         )
 
@@ -123,8 +123,8 @@ class UserRoutes {
          * It returns a 200 status code.
          */
         this.router.delete(
-            "/:username", 
-        this.authService.isLoggedIn,
+            "/:username",
+            this.authService.isLoggedIn,
             param("username").isString().isLength({ min: 1 }),
             this.errorHandler.validateRequest,
             (req: any, res: any, next: any) => this.controller.deleteUser(req.user, req.params.username)
@@ -141,7 +141,7 @@ class UserRoutes {
             "/",
             this.authService.isLoggedIn,
             this.authService.isAdmin,
-            this.errorHandler.validateRequest, 
+            this.errorHandler.validateRequest,
             (req: any, res: any, next: any) => this.controller.deleteAll()
                 .then(() => res.status(200).end())
                 .catch((err: any) => next(err))
@@ -161,14 +161,14 @@ class UserRoutes {
         this.router.patch(
             "/:username",
             this.authService.isLoggedIn,
-            body("name").isString().isLength({ min: 1 }), 
-            body("surname").isString().isLength({ min: 1 }), 
-            body("address").isString().isLength({ min: 1 }), 
+            body("name").isString().isLength({ min: 1 }),
+            body("surname").isString().isLength({ min: 1 }),
+            body("address").isString().isLength({ min: 1 }),
             body("birthdate").isString().isLength({ min: 1 }),
             param("username").isString().isLength({ min: 1 }),
-            this.errorHandler.validateRequest, 
+            this.errorHandler.validateRequest,
             (req: any, res: any, next: any) => this.controller.updateUserInfo(req.user, req.body.name, req.body.surname, req.body.address, req.body.birthdate, req.params.username)
-                .then((user: User ) => res.status(200).json(user))
+                .then((user: User) => res.status(200).json(user))
                 .catch((err: any) => next(err))
         )
 
