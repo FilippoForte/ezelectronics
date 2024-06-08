@@ -76,9 +76,11 @@ describe("ReviewRoutes_1: POST /reviews/:model", () => {
         jest.spyOn(ErrorHandler.prototype, "validateRequest").mockImplementation((req, res, next) => {
             return next();
         });
-        jest.spyOn(ReviewController.prototype, "addReview").mockResolvedValue(); //.mockRejectedValue(new ProductNotFoundError())
+
+        jest.spyOn(ReviewController.prototype, "addReview").mockRejectedValueOnce(new ProductNotFoundError()); //.mockRejectedValue(new ProductNotFoundError())
         const response = await request(app).post(baseURL + "/" + model).send(testReview);
         //expect(response.status).toBe(404);
+        
         expect(Authenticator.prototype.isLoggedIn).toHaveBeenCalledTimes(1);
         expect(Authenticator.prototype.isCustomer).toHaveBeenCalledTimes(1);
         expect(ErrorHandler.prototype.validateRequest).toHaveBeenCalledTimes(1);

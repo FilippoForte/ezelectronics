@@ -28,7 +28,7 @@ describe("Products routes unit tests", () =>{
         test("Routes_1.1:Correct registration of a set of products.It should return a 200 success code", async ()=>{
             const  inputProduct = {
                 model: "model",
-                category: "category",
+                category: "Smartphone",
                 quantity: 3,
                 details: "aa",
                 sellingPrice: 15,
@@ -66,7 +66,7 @@ describe("Products routes unit tests", () =>{
         test("Routes_1.2:Insertion of an already existing set of products. It should return a 409 error", async ()=>{
             const  inputProduct = {
                 model: "model",
-                category: "category",
+                category: "Smartphone",
                 quantity: 3,
                 details: "aa",
                 sellingPrice: 15,
@@ -103,7 +103,7 @@ describe("Products routes unit tests", () =>{
         test("Routes_1.3:Insertion of an arrivalDate after the current date. It should return a 400 error", async ()=>{
             const  inputProduct = {
                 model: "model",
-                category: "category",
+                category: "Smartphone",
                 quantity: 3,
                 details: "aa",
                 sellingPrice: 15,
@@ -326,7 +326,7 @@ describe("Products routes unit tests", () =>{
             quantity: 5,
             changeDate: "2020-12-12"
         };
-        const testController=jest.spyOn(ProductController.prototype, "changeProductQuantity").mockRejectedValue(new Error());
+        const testController=jest.spyOn(ProductController.prototype, "changeProductQuantity").mockRejectedValue(new FutureDateError());
         const testLogin=jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req,res,next)=>{
             return next()
         })

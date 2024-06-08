@@ -339,7 +339,7 @@ describe("CartRoutes_3: checkoutCart method tests", () => {
 
     // Mock controller method to reject with a 400 error
     const error = new EmptyCartError();
-    jest.spyOn(CartController.prototype, "checkoutCart").mockResolvedValueOnce(false);
+    jest.spyOn(CartController.prototype, "checkoutCart").mockRejectedValueOnce(error);
 
     // Make request to the route
     const response = await request(app).patch(baseURL);
@@ -573,7 +573,7 @@ describe("CartRoutes_5: removeProductFromCart method tests", () => {
     expect(CartController.prototype.removeProductFromCart).toHaveBeenCalledTimes(0);
   });
 
-  test("CartRoutes_5.4: It should return a 400 if the model is not a non-empty string", async () => {
+  test("CartRoutes_5.4: It should return a 404 if the model is a empty string", async () => {
     // Mock middleware to set user as logged in and a customer
     jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
       req.user = customerUser;
@@ -585,7 +585,7 @@ describe("CartRoutes_5: removeProductFromCart method tests", () => {
     const response = await request(app).delete(`${baseURL}/products/`);
 
     // Assertions
-    expect(response.status).toBe(422);
+    expect(response.status).toBe(404);
     expect(CartController.prototype.removeProductFromCart).toHaveBeenCalledTimes(0);
   });
 

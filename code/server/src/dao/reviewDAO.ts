@@ -101,7 +101,6 @@ class ReviewDAO {
                         db.run(sql, [model,user.username],(err:Error | null)=> {
                         if(err) {
                             reject(err)
-                            return
                         }else {
                             resolve();
                         }
@@ -133,7 +132,6 @@ class ReviewDAO {
                     db.run(sql, [model],(err:Error | null)=> {
                         if(err) {
                             reject(err)
-                            return
                         }else {
                             resolve();
                         }
