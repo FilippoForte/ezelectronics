@@ -42,12 +42,21 @@ describe("Products routes unit tests", () =>{
             const testManager=jest.spyOn(Authenticator.prototype, "isAdminOrManager").mockImplementation((req,res,next)=>{
                 return next()
             })
-
+            jest.mock('express-validator', () => ({
+                param: jest.fn().mockImplementation(() => ({
+                    isString: () => ({ isLength: () => ({}) }),
+                    isIn: () => ({ isLength: () => ({}) }),
+                })),
+            }))
+            jest.spyOn(ErrorHandler.prototype, "validateRequest").mockImplementation((req, res, next) => {
+                return next();
+            })
+           
             const response = await request(app).post(baseURL + "/products").send(inputProduct);
             expect(response.status).toBe(200);
             expect(ProductController.prototype.registerProducts).toHaveBeenCalledTimes(1);
             expect(ProductController.prototype.registerProducts).toHaveBeenCalledWith(inputProduct.model, inputProduct.category, inputProduct.quantity, inputProduct.details, inputProduct.sellingPrice, inputProduct.arrivalDate);
-        
+            
             testController.mockRestore();
             testLogin.mockRestore();
             testManager.mockRestore();
@@ -71,7 +80,15 @@ describe("Products routes unit tests", () =>{
             const testManager=jest.spyOn(Authenticator.prototype, "isAdminOrManager").mockImplementation((req,res,next)=>{
                 return next()
             })
-
+            jest.mock('express-validator', () => ({
+                param: jest.fn().mockImplementation(() => ({
+                    isString: () => ({ isLength: () => ({}) }),
+                    isIn: () => ({ isLength: () => ({}) }),
+                })),
+            }))
+            jest.spyOn(ErrorHandler.prototype, "validateRequest").mockImplementation((req, res, next) => {
+                return next();
+            })
             const response = await request(app).post(baseURL + "/products").send(inputProduct);
             expect(response.status).toBe(409);
             expect(ProductController.prototype.registerProducts).toHaveBeenCalledTimes(1);
@@ -100,7 +117,17 @@ describe("Products routes unit tests", () =>{
             const testManager=jest.spyOn(Authenticator.prototype, "isAdminOrManager").mockImplementation((req,res,next)=>{
                 return next()
             })
-
+            jest.mock('express-validator', () => ({
+                param: jest.fn().mockImplementation(() => ({
+                    isString: () => ({ isLength: () => ({}) }),
+                    isInt:()=>({  }),
+                    isFloat: ()=>({  }),
+                    isIn: () => ({ isLength: () => ({}) }),
+                })),
+            }))
+            jest.spyOn(ErrorHandler.prototype, "validateRequest").mockImplementation((req, res, next) => {
+                return next();
+            })
             const response = await request(app).post(baseURL + "/products").send(inputProduct);
             expect(response.status).toBe(400);
             expect(ProductController.prototype.registerProducts).toHaveBeenCalledTimes(1);
