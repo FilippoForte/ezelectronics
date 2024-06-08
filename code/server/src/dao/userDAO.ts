@@ -1,5 +1,5 @@
 import db from "../db/db";
-import { User } from "../components/user";
+import { Role, User } from "../components/user";
 import crypto from "crypto";
 import {
   UnauthorizedUserError,
@@ -305,9 +305,9 @@ class UserDAO {
 
           // Check if the user has permission to delete
           if (
-            (Utility.isAdmin(user) && !Utility.isAdmin(userToDelete)) ||
-            (!Utility.isAdmin(user) && user.username === username) ||
-            (Utility.isAdmin(user) && user.username === username)
+            (user.role==Role.ADMIN && userToDelete.role!=Role.ADMIN) ||
+            (user.role!=Role.ADMIN && user.username === username) ||
+            (user.role==Role.ADMIN && user.username === username)
           ) {
             const deleteQuery = "DELETE FROM users WHERE username = ?";
 
