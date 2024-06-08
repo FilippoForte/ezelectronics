@@ -54,6 +54,28 @@ let testCustomer = new User("customer", "customer", "customer", Role.CUSTOMER, "
             expect(UserController.prototype.createUser).toHaveBeenCalled()
             expect(UserController.prototype.createUser).toHaveBeenCalledWith(inputUser.username, inputUser.name, inputUser.surname, inputUser.password, inputUser.role)
         })
+        test("Route_1.2: Generic error from database", async () => {
+            const inputUser = { username: "test", name: "test", surname: "test", password: "test", role: "Manager" }
+            //We mock the express-validator 'body' method to return a mock object with the methods we need to validate the input parameters
+            //These methods all return an empty object, because we are not testing the validation logic here (we assume it works correctly)
+            jest.mock('express-validator', () => ({
+                body: jest.fn().mockImplementation(() => ({
+                    isString: () => ({ isLength: () => ({}) }),
+                    isIn: () => ({ isLength: () => ({}) }),
+                })),
+            }))
+            //We mock the ErrorHandler validateRequest method to return the next function, because we are not testing the validation logic here (we assume it works correctly)
+            jest.spyOn(ErrorHandler.prototype, "validateRequest").mockImplementation((req, res, next) => {
+                return next()
+            })
+            //We mock the UserController createUser method to return false, because we are not testing the UserController logic here (we assume it works correctly)
+            jest.spyOn(UserController.prototype, "createUser").mockRejectedValueOnce(new Error("Generic error"))
+            const response = await request(app).post(baseURL + "/users").send(inputUser)
+            expect(response.error)
+            expect(UserController.prototype.createUser).toHaveBeenCalledWith(inputUser.username, inputUser.name, inputUser.surname, inputUser.password, inputUser.role)
+
+
+        }) 
     })
 
 
@@ -110,6 +132,21 @@ describe("Route_2: GET /users", () => {
         const response = await request(app).get(baseURL + "/users")
         expect(response.status).toBe(401)
     })
+    test("Route_2.4: Generic error from database", async () => {
+        jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
+            return next();
+        })
+        jest.spyOn(Authenticator.prototype, "isAdmin").mockImplementation((req, res, next) => {
+            return next();
+        })
+
+        const testController =jest.spyOn(UserController.prototype, "getUsers").mockRejectedValueOnce(new Error("Generic error"))
+        const response = await request(app).get(baseURL + "/users")
+        expect(testController).toHaveBeenCalledTimes(1)
+        expect(response.error)
+        
+
+    }) 
 })
 
 describe("Route_3:GET /users/roles/:role", () => {
@@ -193,6 +230,29 @@ describe("Route_3:GET /users/roles/:role", () => {
         const response = await request(app).get(baseURL + "/users")
         expect(response.status).toBe(401)
     })
+    test("Route_3.5: Generic Error" ,async () => {
+        //In this case, we are testing the situation where the route returns an error code because the user is not an Admin
+        jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
+            return next();
+        })
+        jest.spyOn(Authenticator.prototype, "isAdmin").mockImplementation((req, res, next) => {
+            return next();
+        })
+        jest.spyOn(UserController.prototype, "getUsersByRole").mockRejectedValueOnce(new Error())
+
+        
+        jest.mock('express-validator', () => ({
+            param: jest.fn().mockImplementation(() => ({
+                isIn: () => ({ isLength: () => ({}) }),
+            })),
+        }))
+        jest.spyOn(ErrorHandler.prototype, "validateRequest").mockImplementation((req, res, next) => {
+            return next();
+        })
+        const response = await request(app).get(baseURL + "/users/roles/Customer")
+        expect(response.error)
+        expect(UserController.prototype.getUsersByRole).toHaveBeenCalledTimes(1)
+    })
 })
 
 describe("Route_4: GET /users/:username", () => {
@@ -238,26 +298,6 @@ describe("Route_4: GET /users/:username", () => {
         expect(UserController.prototype.getUserByUsername).toHaveBeenCalledTimes(0)
 
     });
-    /*
-    test("Route_4.3: username empty.It should return a 422 error", async () => {
-        jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
-            return next();
-        })
-        jest.mock('express-validator', () => ({
-            param: jest.fn().mockImplementation(() => {
-                throw new Error("Invalid value");
-            }),
-        }));
-        //We mock the 'validateRequest' method to receive an error and return a 422 error code, because we are not testing the validation logic here (we assume it works correctly)
-        jest.spyOn(ErrorHandler.prototype, "validateRequest").mockImplementation((req, res, next) => {
-            return res.status(422).json({ error: "The parameters are not formatted properly\n\n" });
-        })
-        const response = await request(app).get(baseURL + "/users/" )
-        
-        expect(UserController.prototype.getUserByUsername).toHaveBeenCalledTimes(0)
-        expect(response.status).toBe(422)
-
-    });*/
     test("Route_4.4: username not exists in the database.It should return a 404 error", async () => {
         const username = "notAUser"
         jest.spyOn(UserController.prototype, "getUserByUsername").mockRejectedValue(new UserNotFoundError());
@@ -298,6 +338,24 @@ describe("Route_4: GET /users/:username", () => {
         expect(response.status).toBe(401)
         expect(UserController.prototype.getUserByUsername).toHaveBeenCalled()
     });
+    test("Route_4.6: Generic error", async ()=>{
+
+        jest.spyOn(UserController.prototype, "getUserByUsername").mockRejectedValue(new Error());
+        jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
+            return next();
+        })
+        jest.mock('express-validator', () => ({
+            param: jest.fn().mockImplementation(() => ({
+                isString: () => ({ isLength: () => ({}) }),
+            })),
+        }))
+        jest.spyOn(ErrorHandler.prototype, "validateRequest").mockImplementation((req, res, next) => {
+            return next();
+        })
+        const response = await request(app).get(baseURL + "/users/" + testAdmin.username)
+        expect(response.error)
+        expect(UserController.prototype.getUserByUsername).toHaveBeenCalledTimes(1)
+    })
 })
 
 
@@ -346,29 +404,8 @@ describe("Route_5: DELETE /users/:username", () => {
         const response = await request(app).get(baseURL + "/users/" + testCustomer.username)
         expect(response.status).toBe(401)
         expect(UserController.prototype.deleteUser).toHaveBeenCalledTimes(0)
-
     });
-    /*
-    test("Route_5.3: username empty.It should return a 422 error", async () => {
-        jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
-            return next();
-        })
-        jest.mock('express-validator', () => ({
-            param: jest.fn().mockImplementation(() => {
-                throw new Error("Invalid value");
-            }),
-        }));
-        //We mock the 'validateRequest' method to receive an error and return a 422 error code, because we are not testing the validation logic here (we assume it works correctly)
-        jest.spyOn(ErrorHandler.prototype, "validateRequest").mockImplementation((req, res, next) => {
-            return res.status(422).json({ error: "The parameters are not formatted properly\n\n" });
-        })
-        const response = await request(app).get(baseURL + "/users/" )
-        
-        expect(UserController.prototype.deleteUser).toHaveBeenCalledTimes(0)
-        expect(response.status).toBe(422)
-
-    });
-    test("Route_5.4: username not exists in the database.It should return a 404 error", async () => {
+    test("Route_5.3: username not exists in the database.It should return a 404 error", async () => {
         const username ="notAUser"
         jest.spyOn(UserController.prototype, "deleteUser").mockRejectedValue(new UserNotFoundError());
         jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
@@ -390,7 +427,7 @@ describe("Route_5: DELETE /users/:username", () => {
         //expect(UserController.prototype.deleteUser).toHaveBeenCalledWith(testAdmin,testCustomer.username)
         
     });
-    test("Route_5.5: Customer tries to delete another user. It should return a 401 error", async () => {
+    test("Route_5.4: Customer tries to delete another user. It should return a 401 error", async () => {
 
         jest.spyOn(UserController.prototype, "deleteUser").mockRejectedValue(new UnauthorizedUserError());
         jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
@@ -408,8 +445,8 @@ describe("Route_5: DELETE /users/:username", () => {
         expect(response.status).toBe(401)
         expect(UserController.prototype.deleteUser).toHaveBeenCalled()
 });
-test("Route_5.6: Admin tries to delete another adnin It should return a 401 error", async () => {
-    jest.spyOn(UserController.prototype, "deleteUser").mockImplementation(new UnauthorizedUserError());
+test("Route_5.5: Admin tries to delete another admin It should return a 401 error", async () => {
+    jest.spyOn(UserController.prototype, "deleteUser").mockRejectedValueOnce(new UnauthorizedUserError());
         jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
             return next();
         })
@@ -430,8 +467,8 @@ test("Route_5.6: Admin tries to delete another adnin It should return a 401 erro
         //test 404 username non esistente
         //test username non uguale a username loggato e user loggato non admin
         //test admin elimina altro admin 
-})*/
 })
+
 describe("Route_6: DELETE/users/", () => {
     test("Route_6.1: Correct deletion of all users.It should return a 200 success code ", async () => {
         jest.spyOn(UserController.prototype, "deleteAll").mockResolvedValue(true);

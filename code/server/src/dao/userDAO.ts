@@ -65,7 +65,7 @@ class UserDAO {
    * @param role The role of the user. It must be one of the three allowed types ("Manager", "Customer", "Admin")
    * @returns A Promise that resolves to true if the user has been created.
    */
-  createUser(
+  async createUser(
     username: string,
     name: string,
     surname: string,
@@ -101,7 +101,7 @@ class UserDAO {
    * Returns a list of user object from the database.
    * @returns A Promise that resolves the list of all users
    */
-  getAllUsers(): Promise<User[]> {
+  async getAllUsers(): Promise<User[]> {
     return new Promise<User[]>((resolve, reject) => {
       try {
         let users: User[] = [];
@@ -167,7 +167,7 @@ class UserDAO {
    * Deletes all non-Admin users
    * @returns A Promise that resolves to true if all non-Admin users have been deleted.
    */
-  deleteAll(): Promise<Boolean> {
+  async deleteAll(): Promise<Boolean> {
     return new Promise<Boolean>((resolve, reject) => {
       try {
         const sql = "DELETE from users WHERE user.role <> 'ADMIN'";
@@ -230,7 +230,7 @@ class UserDAO {
    * @param username The username of the user to update. It must be equal to the username of the user parameter.
    * @returns A Promise that resolves to the updated user
    */
-  updateUserInfo(
+  async updateUserInfo(
     user: User,
     name: string,
     surname: string,
