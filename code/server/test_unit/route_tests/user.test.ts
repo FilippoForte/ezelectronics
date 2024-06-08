@@ -19,7 +19,7 @@ let testAdmin = new User("admin", "admin", "admin", Role.ADMIN, "", "")
 let testCustomer = new User("customer", "customer", "customer", Role.CUSTOMER, "", "")
 
 
-describe("User route unit tests", () => {
+
     afterEach(() => {
         jest.clearAllMocks();
         jest.restoreAllMocks();
@@ -55,7 +55,7 @@ describe("User route unit tests", () => {
             expect(UserController.prototype.createUser).toHaveBeenCalledWith(inputUser.username, inputUser.name, inputUser.surname, inputUser.password, inputUser.role)
         })
     })
-})
+
 
 //test su input errati nel body
 //test username già nel db
