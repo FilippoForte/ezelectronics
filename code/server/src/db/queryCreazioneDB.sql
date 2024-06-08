@@ -31,7 +31,7 @@ CREATE TABLE "carts" (
     "customer" TEXT NOT NULL,
     "paid" BOOLEAN NOT NULL,
     "paymentDate" TEXT,
-    FOREIGN KEY ("customer") REFERENCES "users"("username")
+    FOREIGN KEY ("customer") REFERENCES "users"("username") ON DELETE CASCADE ON UPDATE SET NULL
 );
 
 CREATE TABLE "productInCart" (
@@ -39,8 +39,8 @@ CREATE TABLE "productInCart" (
     "idCart" INTEGER NOT NULL,
     "quantityInCart" INTEGER NOT NULL,
     PRIMARY KEY("modelProduct", "idCart"),
-    FOREIGN KEY ("idCart") REFERENCES "carts"("id"),
-    FOREIGN KEY ("modelProduct") REFERENCES "products"("model")
+    FOREIGN KEY ("idCart") REFERENCES "carts"("id") ON DELETE CASCADE ON UPDATE SET NULL,
+    FOREIGN KEY ("modelProduct") REFERENCES "products"("model") ON DELETE CASCADE ON UPDATE SET NULL
 );
 
 CREATE TABLE "reviews" (
@@ -50,6 +50,6 @@ CREATE TABLE "reviews" (
     "score" INTEGER NOT NULL,
     "date" TEXT NOT NULL,
     "comment" TEXT NOT NULL,
-    FOREIGN KEY ("model") REFERENCES "products"("model"),
-    FOREIGN KEY ("user") REFERENCES "users"("username")
+    FOREIGN KEY ("model") REFERENCES "products"("model") ON DELETE CASCADE ON UPDATE SET NULL,
+    FOREIGN KEY ("user") REFERENCES "users"("username") ON DELETE CASCADE ON UPDATE SET NULL
 );
