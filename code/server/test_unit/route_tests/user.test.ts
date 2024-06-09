@@ -8,6 +8,7 @@ import { Role, User } from "../../src/components/user"
 import ErrorHandler from "../../src/helper"
 import { body } from "express-validator"
 import { UnauthorizedUserError, UserAlreadyExistsError, UserNotFoundError } from "../../src/errors/userError"
+import { FutureDateError } from "../../src/errors/productError"
 const baseURL = "/ezelectronics"
 
 //For unit tests, we need to validate the internal logic of a single component, without the need to test the interaction with other components
@@ -20,84 +21,84 @@ let testCustomer = new User("customer", "customer", "customer", Role.CUSTOMER, "
 
 
 
-    afterEach(() => {
-        jest.clearAllMocks();
-        jest.restoreAllMocks();
-    });
-    describe(" Route_1: POST /users", () => {
+afterEach(() => {
+    jest.clearAllMocks();
+    jest.restoreAllMocks();
+});
+describe(" Route_1: POST /users", () => {
 
-        test("Route_1.1: Correct creation of a user.It should return a 200 success code", async () => {
-            const inputUser = { username: "test", name: "test", surname: "test", password: "test", role: "Manager" }
-            //We mock the express-validator 'body' method to return a mock object with the methods we need to validate the input parameters
-            //These methods all return an empty object, because we are not testing the validation logic here (we assume it works correctly)
-            jest.mock('express-validator', () => ({
-                body: jest.fn().mockImplementation(() => ({
-                    isString: () => ({ isLength: () => ({}) }),
-                    isIn: () => ({ isLength: () => ({}) }),
-                })),
-            }))
-            //We mock the ErrorHandler validateRequest method to return the next function, because we are not testing the validation logic here (we assume it works correctly)
-            jest.spyOn(ErrorHandler.prototype, "validateRequest").mockImplementation((req, res, next) => {
-                return next()
-            })
-            //We mock the UserController createUser method to return true, because we are not testing the UserController logic here (we assume it works correctly)
-            jest.spyOn(UserController.prototype, "createUser").mockResolvedValueOnce(true)
-
-            /*We send a request to the route we are testing. We are in a situation where:
-                - The input parameters are 'valid' (= the validation logic is mocked to be correct)
-                - The user creation function is 'successful' (= the UserController logic is mocked to be correct)
-              We expect the 'createUser' function to have been called with the input parameters and to return a 200 success code
-              Since we mock the dependencies and we are testing the route in isolation, we do not need to check that the user has actually been created
-            */
-            const response = await request(app).post(baseURL + "/users").send(inputUser)
-            expect(response.status).toBe(200)
-            expect(UserController.prototype.createUser).toHaveBeenCalled()
-            expect(UserController.prototype.createUser).toHaveBeenCalledWith(inputUser.username, inputUser.name, inputUser.surname, inputUser.password, inputUser.role)
+    test("Route_1.1: Correct creation of a user.It should return a 200 success code", async () => {
+        const inputUser = { username: "test", name: "test", surname: "test", password: "test", role: "Manager" }
+        //We mock the express-validator 'body' method to return a mock object with the methods we need to validate the input parameters
+        //These methods all return an empty object, because we are not testing the validation logic here (we assume it works correctly)
+        jest.mock('express-validator', () => ({
+            body: jest.fn().mockImplementation(() => ({
+                isString: () => ({ isLength: () => ({}) }),
+                isIn: () => ({ isLength: () => ({}) }),
+            })),
+        }))
+        //We mock the ErrorHandler validateRequest method to return the next function, because we are not testing the validation logic here (we assume it works correctly)
+        jest.spyOn(ErrorHandler.prototype, "validateRequest").mockImplementation((req, res, next) => {
+            return next()
         })
-        test("Route_1.2: Generic error from database", async () => {
-            const inputUser = { username: "test", name: "test", surname: "test", password: "test", role: "Manager" }
-            //We mock the express-validator 'body' method to return a mock object with the methods we need to validate the input parameters
-            //These methods all return an empty object, because we are not testing the validation logic here (we assume it works correctly)
-            jest.mock('express-validator', () => ({
-                body: jest.fn().mockImplementation(() => ({
-                    isString: () => ({ isLength: () => ({}) }),
-                    isIn: () => ({ isLength: () => ({}) }),
-                })),
-            }))
-            //We mock the ErrorHandler validateRequest method to return the next function, because we are not testing the validation logic here (we assume it works correctly)
-            jest.spyOn(ErrorHandler.prototype, "validateRequest").mockImplementation((req, res, next) => {
-                return next()
-            })
-            //We mock the UserController createUser method to return false, because we are not testing the UserController logic here (we assume it works correctly)
-            jest.spyOn(UserController.prototype, "createUser").mockRejectedValueOnce(new Error("Generic error"))
-            const response = await request(app).post(baseURL + "/users").send(inputUser)
-            expect(response.error)
-            expect(UserController.prototype.createUser).toHaveBeenCalledWith(inputUser.username, inputUser.name, inputUser.surname, inputUser.password, inputUser.role)
+        //We mock the UserController createUser method to return true, because we are not testing the UserController logic here (we assume it works correctly)
+        jest.spyOn(UserController.prototype, "createUser").mockResolvedValueOnce(true)
 
-
-        }) 
-        test("Route_1.3: User already exists", async () => {
-            const inputUser = { username: "test", name: "test", surname: "test", password: "test", role: "Manager" }
-            //We mock the express-validator 'body' method to return a mock object with the methods we need to validate the input parameters
-            //These methods all return an empty object, because we are not testing the validation logic here (we assume it works correctly)
-            jest.mock('express-validator', () => ({
-                body: jest.fn().mockImplementation(() => ({
-                    isString: () => ({ isLength: () => ({}) }),
-                    isIn: () => ({ isLength: () => ({}) }),
-                })),
-            }))
-            //We mock the ErrorHandler validateRequest method to return the next function, because we are not testing the validation logic here (we assume it works correctly)
-            jest.spyOn(ErrorHandler.prototype, "validateRequest").mockImplementation((req, res, next) => {
-                return next()
-            })
-            //We mock the UserController createUser method to return false, because we are not testing the UserController logic here (we assume it works correctly)
-            jest.spyOn(UserController.prototype, "createUser").mockRejectedValueOnce(new UserAlreadyExistsError())
-            const response = await request(app).post(baseURL + "/users").send(inputUser)
-            expect(response.status).toBe(409)
-            expect(UserController.prototype.createUser).toHaveBeenCalledWith(inputUser.username, inputUser.name, inputUser.surname, inputUser.password, inputUser.role)
-
-        })
+        /*We send a request to the route we are testing. We are in a situation where:
+            - The input parameters are 'valid' (= the validation logic is mocked to be correct)
+            - The user creation function is 'successful' (= the UserController logic is mocked to be correct)
+          We expect the 'createUser' function to have been called with the input parameters and to return a 200 success code
+          Since we mock the dependencies and we are testing the route in isolation, we do not need to check that the user has actually been created
+        */
+        const response = await request(app).post(baseURL + "/users").send(inputUser)
+        expect(response.status).toBe(200)
+        expect(UserController.prototype.createUser).toHaveBeenCalled()
+        expect(UserController.prototype.createUser).toHaveBeenCalledWith(inputUser.username, inputUser.name, inputUser.surname, inputUser.password, inputUser.role)
     })
+    test("Route_1.2: Generic error from database", async () => {
+        const inputUser = { username: "test", name: "test", surname: "test", password: "test", role: "Manager" }
+        //We mock the express-validator 'body' method to return a mock object with the methods we need to validate the input parameters
+        //These methods all return an empty object, because we are not testing the validation logic here (we assume it works correctly)
+        jest.mock('express-validator', () => ({
+            body: jest.fn().mockImplementation(() => ({
+                isString: () => ({ isLength: () => ({}) }),
+                isIn: () => ({ isLength: () => ({}) }),
+            })),
+        }))
+        //We mock the ErrorHandler validateRequest method to return the next function, because we are not testing the validation logic here (we assume it works correctly)
+        jest.spyOn(ErrorHandler.prototype, "validateRequest").mockImplementation((req, res, next) => {
+            return next()
+        })
+        //We mock the UserController createUser method to return false, because we are not testing the UserController logic here (we assume it works correctly)
+        jest.spyOn(UserController.prototype, "createUser").mockRejectedValueOnce(new Error("Generic error"))
+        const response = await request(app).post(baseURL + "/users").send(inputUser)
+        expect(response.error)
+        expect(UserController.prototype.createUser).toHaveBeenCalledWith(inputUser.username, inputUser.name, inputUser.surname, inputUser.password, inputUser.role)
+
+
+    })
+    test("Route_1.3: User already exists", async () => {
+        const inputUser = { username: "test", name: "test", surname: "test", password: "test", role: "Manager" }
+        //We mock the express-validator 'body' method to return a mock object with the methods we need to validate the input parameters
+        //These methods all return an empty object, because we are not testing the validation logic here (we assume it works correctly)
+        jest.mock('express-validator', () => ({
+            body: jest.fn().mockImplementation(() => ({
+                isString: () => ({ isLength: () => ({}) }),
+                isIn: () => ({ isLength: () => ({}) }),
+            })),
+        }))
+        //We mock the ErrorHandler validateRequest method to return the next function, because we are not testing the validation logic here (we assume it works correctly)
+        jest.spyOn(ErrorHandler.prototype, "validateRequest").mockImplementation((req, res, next) => {
+            return next()
+        })
+        //We mock the UserController createUser method to return false, because we are not testing the UserController logic here (we assume it works correctly)
+        jest.spyOn(UserController.prototype, "createUser").mockRejectedValueOnce(new UserAlreadyExistsError())
+        const response = await request(app).post(baseURL + "/users").send(inputUser)
+        expect(response.status).toBe(409)
+        expect(UserController.prototype.createUser).toHaveBeenCalledWith(inputUser.username, inputUser.name, inputUser.surname, inputUser.password, inputUser.role)
+
+    })
+})
 
 
 //test su input errati nel body
@@ -161,13 +162,13 @@ describe("Route_2: GET /users", () => {
             return next();
         })
 
-        const testController =jest.spyOn(UserController.prototype, "getUsers").mockRejectedValueOnce(new Error("Generic error"))
+        const testController = jest.spyOn(UserController.prototype, "getUsers").mockRejectedValueOnce(new Error("Generic error"))
         const response = await request(app).get(baseURL + "/users")
         expect(testController).toHaveBeenCalledTimes(1)
         expect(response.error)
-        
 
-    }) 
+
+    })
 })
 
 describe("Route_3:GET /users/roles/:role", () => {
@@ -251,7 +252,7 @@ describe("Route_3:GET /users/roles/:role", () => {
         const response = await request(app).get(baseURL + "/users")
         expect(response.status).toBe(401)
     })
-    test("Route_3.5: Generic Error" ,async () => {
+    test("Route_3.5: Generic Error", async () => {
         //In this case, we are testing the situation where the route returns an error code because the user is not an Admin
         jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
             return next();
@@ -261,7 +262,7 @@ describe("Route_3:GET /users/roles/:role", () => {
         })
         jest.spyOn(UserController.prototype, "getUsersByRole").mockRejectedValueOnce(new Error())
 
-        
+
         jest.mock('express-validator', () => ({
             param: jest.fn().mockImplementation(() => ({
                 isIn: () => ({ isLength: () => ({}) }),
@@ -297,7 +298,6 @@ describe("Route_4: GET /users/:username", () => {
 
         expect(response.status).toBe(200)
         expect(UserController.prototype.getUserByUsername).toHaveBeenCalled()
-        //expect(UserController.prototype.getUserByUsername).toHaveBeenCalledWith(testAdmin,testCustomer.username)
         expect(response.body).toEqual(testCustomer)
 
     })
@@ -338,7 +338,6 @@ describe("Route_4: GET /users/:username", () => {
 
         expect(response.status).toBe(404)
         expect(UserController.prototype.getUserByUsername).toHaveBeenCalled()
-        //expect(UserController.prototype.getUserByUsername).toHaveBeenCalledWith(testAdmin,testCustomer.username)
 
     });
     test("Route_4.5: Customer tries to update another user. It should return a 401 error", async () => {
@@ -359,7 +358,7 @@ describe("Route_4: GET /users/:username", () => {
         expect(response.status).toBe(401)
         expect(UserController.prototype.getUserByUsername).toHaveBeenCalled()
     });
-    test("Route_4.6: Generic error", async ()=>{
+    test("Route_4.6: Generic error", async () => {
 
         jest.spyOn(UserController.prototype, "getUserByUsername").mockRejectedValue(new Error());
         jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
@@ -406,7 +405,6 @@ describe("Route_5: DELETE /users/:username", () => {
         const response = await request(app).delete(baseURL + "/users/" + testCustomer.username)
         expect(response.status).toBe(200)
         expect(UserController.prototype.deleteUser).toHaveBeenCalled()
-        // expect(UserController.prototype.deleteUser).toHaveBeenCalledWith(testAdmin.username,testAdmin.name,testAdmin.surname,testAdmin.role,testAdmin.address,testAdmin.birthdate,testCustomer.username)
 
     });
     test("Route_5.2: User not logged in.It should return a 401 error", async () => {
@@ -430,7 +428,7 @@ describe("Route_5: DELETE /users/:username", () => {
         const testUser = new User("username", "name", "surname", Role.CUSTOMER, "", "")
         jest.spyOn(UserController.prototype, "deleteUser").mockRejectedValue(new UserNotFoundError());
         jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
-            req.user==testAdmin.username;
+            req.user == testAdmin.username;
             return next();
         })
         jest.mock('express-validator', () => ({
@@ -444,7 +442,7 @@ describe("Route_5: DELETE /users/:username", () => {
         const response = await request(app).delete(baseURL + "/users/" + testUser.username)
         expect(response.status).toBe(404)
         expect(UserController.prototype.deleteUser).toHaveBeenCalled()
-        
+
     });
     test("Route_5.4: Customer tries to delete another user. It should return a 401 error", async () => {
 
@@ -463,9 +461,9 @@ describe("Route_5: DELETE /users/:username", () => {
         const response = await request(app).delete(baseURL + "/users/" + testAdmin.username)
         expect(response.status).toBe(401)
         expect(UserController.prototype.deleteUser).toHaveBeenCalled()
-});
-test("Route_5.5: Admin tries to delete another admin It should return a 401 error", async () => {
-    jest.spyOn(UserController.prototype, "deleteUser").mockRejectedValueOnce(new UnauthorizedUserError());
+    });
+    test("Route_5.5: Admin tries to delete another admin It should return a 401 error", async () => {
+        jest.spyOn(UserController.prototype, "deleteUser").mockRejectedValueOnce(new UnauthorizedUserError());
         jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
             return next();
         })
@@ -480,12 +478,26 @@ test("Route_5.5: Admin tries to delete another admin It should return a 401 erro
         const response = await request(app).delete(baseURL + "/users/" + testAdmin.username)
         expect(response.status).toBe(401)
         expect(UserController.prototype.deleteUser).toHaveBeenCalled()
-})
-        //test user non loggato
-        //test username vuoto
-        //test 404 username non esistente
-        //test username non uguale a username loggato e user loggato non admin
-        //test admin elimina altro admin 
+    })
+    test("Route_5.6: Generic error", async ()=>{
+
+        jest.spyOn(UserController.prototype, "deleteUser").mockRejectedValue(new Error());
+        jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
+            return next();
+        })
+        jest.mock('express-validator', () => ({
+            param: jest.fn().mockImplementation(() => ({
+                isString: () => ({ isLength: () => ({}) }),
+            })),
+        }))
+        jest.spyOn(ErrorHandler.prototype, "validateRequest").mockImplementation((req, res, next) => {
+            return next();
+        })
+        const response = await request(app).delete(baseURL + "/users/" + testAdmin.username)
+        expect(response.error)
+        expect(UserController.prototype.deleteUser).toHaveBeenCalledTimes(1)
+    })
+
 })
 
 describe("Route_6: DELETE/users/", () => {
@@ -524,17 +536,37 @@ describe("Route_6: DELETE/users/", () => {
         expect(response.status).toBe(401)
         expect(UserController.prototype.deleteAll).toHaveBeenCalledTimes(0)
     })
+    test("Route_6.4: Generic error", async ()=>{
+
+        jest.spyOn(UserController.prototype, "deleteAll").mockRejectedValue(new Error());
+        jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
+            return next();
+        })
+        jest.spyOn(Authenticator.prototype, "isAdmin").mockImplementation((req, res, next) => next());
+
+        jest.mock('express-validator', () => ({
+            param: jest.fn().mockImplementation(() => ({
+                isString: () => ({ isLength: () => ({}) }),
+            })),
+        }))
+        jest.spyOn(ErrorHandler.prototype, "validateRequest").mockImplementation((req, res, next) => {
+            return next();
+        })
+        const response = await request(app).delete(baseURL + "/users/")
+        expect(response.error)
+        expect(UserController.prototype.deleteAll).toHaveBeenCalledTimes(1)
+    })
 })
 describe("Route_7: PATCH /users/:username", () => {
-    
+
     test("Route_7.1: Correct update of a user.It should return a 200 success code ", async () => {
         let testAdmin = {
-            username:"admin",
-            name: "admin", 
-            surname:"admin", 
-            role:Role.ADMIN, 
-            address:"",
-            birthdate:""
+            username: "admin",
+            name: "admin",
+            surname: "admin",
+            role: Role.ADMIN,
+            address: "",
+            birthdate: ""
         };
         const bodyRequest = {
             name: "oldName",
@@ -561,5 +593,115 @@ describe("Route_7: PATCH /users/:username", () => {
         expect(UserController.prototype.updateUserInfo).toHaveBeenCalled()
         expect(response.body).toEqual(testCustomer)
     })
+    test("Route_7.2: username not exists in the database.It should return a 404 error", async () => {
+        let testAdmin = {
+            username: "admin",
+            name: "admin",
+            surname: "admin",
+            role: Role.ADMIN,
+            address: "",
+            birthdate: ""
+        };
+        const bodyRequest = {
+            name: "oldName",
+            surname: "oldSurname",
+            address: "oldAddress",
+            birthdate: "oldBirthdate"
+        }
+        jest.spyOn(UserController.prototype, "updateUserInfo").mockRejectedValue(new UserNotFoundError());
+        jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
+            req.user == testAdmin.username;
+            return next();
+        })
+        jest.mock('express-validator', () => ({
+            param: jest.fn().mockImplementation(() => ({
+                isString: () => ({ isLength: () => ({}) }),
+            })),
+        }))
+        jest.spyOn(ErrorHandler.prototype, "validateRequest").mockImplementation((req, res, next) => {
+            return next();
+        })
+        const response = await request(app).patch(baseURL + "/users/NotAUser").send(bodyRequest)
+        expect(response.status).toBe(404)
+        expect(UserController.prototype.updateUserInfo).toHaveBeenCalled()
+
+    });
+    test("Route_7.3: Customer tries to delete another user. It should return a 401 error", async () => {
+        const testUser = {
+            username: "user",
+            name: "user",
+            surname: "user",
+            role: Role.CUSTOMER,
+            address: "",
+            birthdate: ""
+        }
+        const bodyRequest = {
+            name: "oldName",
+            surname: "oldSurname",
+            address: "oldAddress",
+            birthdate: "oldBirthdate"
+        }
+        jest.spyOn(UserController.prototype, "updateUserInfo").mockRejectedValue(new UnauthorizedUserError());
+        jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
+            return next();
+        })
+        jest.mock('express-validator', () => ({
+            param: jest.fn().mockImplementation(() => ({
+                isString: () => ({ isLength: () => ({}) }),
+            })),
+        }))
+        jest.spyOn(ErrorHandler.prototype, "validateRequest").mockImplementation((req, res, next) => {
+            return next();
+        })
+        const response = await request(app).patch(baseURL + "/users/" + testUser.username).send(bodyRequest)
+        expect(response.status).toBe(401)
+        expect(UserController.prototype.updateUserInfo).toHaveBeenCalled()
+
+    })
+
+    test("Route_7.4: Birthdate is after current date. It should return a 400 error", async () => {
+        const bodyRequest = {
+            name: "oldName",
+            surname: "oldSurname",
+            address: "oldAddress",
+            birthdate: "2022-01-01"
+        }
+        jest.spyOn(UserController.prototype, "updateUserInfo").mockRejectedValue(new FutureDateError());
+        jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
+            return next();
+        })
+        jest.mock('express-validator', () => ({
+            param: jest.fn().mockImplementation(() => ({
+                isString: () => ({ isLength: () => ({}) }),
+            })),
+        }))
+        jest.spyOn(ErrorHandler.prototype, "validateRequest").mockImplementation((req, res, next) => {
+            return next();
+        })
+        const response = await request(app).patch(baseURL + "/users/" + testCustomer.username).send(bodyRequest)
+        expect(response.status).toBe(400)
+        expect(UserController.prototype.updateUserInfo).toHaveBeenCalled()
+    })
+    test("Route_7.5: Parameters not valid. It should return a 422 error", async () => {
+        const bodyRequest = {
+            name: "",
+            surname: "oldSurname",
+            address: "oldAddress",
+            birthdate: "oldBirthdate"
+        }
+        jest.mock('express-validator', () => ({
+            param: jest.fn().mockImplementation(() => {
+                throw new Error("Invalid value");
+            }),
+        }));
+        //We mock the 'validateRequest' method to receive an error and return a 422 error code, because we are not testing the validation logic here (we assume it works correctly)
+        jest.spyOn(ErrorHandler.prototype, "validateRequest").mockImplementation((req, res, next) => {
+            return res.status(422).json({ error: "The parameters are not formatted properly\n\n" });
+        });
+        const response = await request(app).patch(baseURL + "/users/" + testCustomer.username).send(bodyRequest)
+        expect(response.status).toBe(422)
+        expect(UserController.prototype.updateUserInfo).toHaveBeenCalledTimes(0)
+    })
+
 })
 
