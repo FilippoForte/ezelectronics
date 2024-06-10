@@ -9,6 +9,7 @@ import ErrorHandler from "../../src/helper"
 import { body } from "express-validator"
 import { UnauthorizedUserError, UserAlreadyExistsError, UserNotFoundError } from "../../src/errors/userError"
 import { FutureDateError } from "../../src/errors/productError"
+import { DateError } from "../../src/utilities"
 const baseURL = "/ezelectronics"
 
 //For unit tests, we need to validate the internal logic of a single component, without the need to test the interaction with other components
@@ -666,7 +667,7 @@ describe("Route_7: PATCH /users/:username", () => {
             address: "oldAddress",
             birthdate: "2022-01-01"
         }
-        jest.spyOn(UserController.prototype, "updateUserInfo").mockRejectedValue(new FutureDateError());
+        jest.spyOn(UserController.prototype, "updateUserInfo").mockRejectedValue(new DateError());
         jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
             return next();
         })
@@ -702,6 +703,6 @@ describe("Route_7: PATCH /users/:username", () => {
         expect(response.status).toBe(422)
         expect(UserController.prototype.updateUserInfo).toHaveBeenCalledTimes(0)
     })
-
+    
 })
 
