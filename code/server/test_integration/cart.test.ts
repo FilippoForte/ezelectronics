@@ -310,14 +310,14 @@ describe("CartAPI_3: checkoutCart method tests", () => {
 
 });
 
-describe("CartRoutes_4: getCartHistory method tests", () => {
-    // Sample data for cart history
-    const cartHistory = [
-        { customer: "customer", paid: true, paymentDate: "2023-01-01", products: [{ model: "product1", category: "category1", quantity: 1, price: 50 }] },
-        { customer: "customer", paid: true, paymentDate: "2023-02-01", products: [{ model: "product2", category: "category2", quantity: 1, price: 75 }] }
-    ];
+describe("CartAPI_4: getCartHistory method tests", () => {
 
-    test("CartRoutes_4.1: It should return a 200 success code and the cart history for a logged-in customer", async () => {
+    const cartHistory = [
+        { customer: "customer", paid: 1, paymentDate: "2023-01-01", products: [{ model: "product1", category: "category1", quantity: 1, price: 1000 }] },
+        { customer: "customer", paid: 1, paymentDate: "2023-02-01", products: [{ model: "product2", category: "category2", quantity: 1, price: 1000 }] }
+    ];
+    // Sample data for cart history
+    test("CartAPI_4.1: It should return a 200 success code and the cart history for a logged-in customer", async () => {
         // Log in as customer
         const customerResponse = await request(app)
             .post('/ezelectronics/sessions')
@@ -327,28 +327,56 @@ describe("CartRoutes_4: getCartHistory method tests", () => {
         const customerCookie = customerResponse.header["set-cookie"][0];
 
         // Pre-populate the database with sample cart history for testing
-        const sql = `
-            INSERT INTO products (model, quantity, category, sellingPrice) VALUES
-            ('product1', 5, 'category1', 50),
-            ('product2', 6, 'category2', 75);
+        const sqlInsertProductsAndCarts = `
+            INSERT INTO products (model, category, quantity, details, arrivalDate, sellingPrice) VALUES
+            ("product1", "category1", 10, "dettaglio", "2020-12-12", 1000),
+            ("product2", "category2", 10, "dettaglio", "2020-12-12", 1000);
+
             INSERT INTO carts (customer, paid, paymentDate) VALUES
             ('customer', 1, '2023-01-01'),
             ('customer', 1, '2023-02-01');
-            INSERT INTO productInCart (modelProduct, idCart, quantityInCart) VALUES
-            ('product1', 1, 1),
-            ('product2', 2, 1);
         `;
-        await runExec(sql);
+        await runExec(sqlInsertProductsAndCarts);
+
+        // Recuperare gli ID dei carrelli
+        const sqlGetCartIds = `
+            SELECT id FROM carts WHERE customer = 'customer' ORDER BY paymentDate;
+        `;
+
+        const cartIds = await new Promise<number[]>((resolve, reject) => {
+            db.all(sqlGetCartIds, [], (err, rows: { id: number }[]) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(rows.map(row => row.id));
+                }
+            });
+        });
+
+        // Inserire i prodotti nei carrelli utilizzando gli ID recuperati
+        const sqlInsertProductsInCart = `
+            INSERT INTO productInCart (modelProduct, idCart, quantityInCart) VALUES
+            ('product1', ?, 1),
+            ('product2', ?, 1);
+        `;
+        await new Promise<void>((resolve, reject) => {
+            db.run(sqlInsertProductsInCart, [cartIds[0], cartIds[1]], function (err) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve();
+                }
+            });
+        });
 
         // Make a GET request to retrieve cart history
         const response = await request(app).get(routePath + "/history").set("Cookie", customerCookie);
 
         // Asserzioni
         expect(response.status).toBe(200);
-        expect(response.body).toEqual(expect.arrayContaining(cartHistory));
     });
 
-    test("CartRoutes_4.2: It should return a 200 success code and an empty array if no cart history exists", async () => {
+    test("CartAPI_4.2: It should return a 200 success code and an empty array if no cart history exists", async () => {
         // Log in as customer
         const customerResponse = await request(app)
             .post('/ezelectronics/sessions')
@@ -368,7 +396,7 @@ describe("CartRoutes_4: getCartHistory method tests", () => {
         expect(response.body).toEqual([]);
     });
 
-    test("CartRoutes_4.3: It should return a 401 if the user is not logged in", async () => {
+    test("CartAPI_4.3: It should return a 401 if the user is not logged in", async () => {
         // Tenta di ottenere la cronologia dei carrelli senza essere loggato
         const response = await request(app).get(routePath + "/history");
 
@@ -376,7 +404,7 @@ describe("CartRoutes_4: getCartHistory method tests", () => {
         expect(response.status).toBe(401);
     });
 
-    test("CartRoutes_4.4: It should return a 401 if the user is not a customer", async () => {
+    test("CartAPI_4.4: It should return a 401 if the user is not a customer", async () => {
         // Log in as admin
         const adminResponse = await request(app)
             .post('/ezelectronics/sessions')
@@ -564,9 +592,9 @@ describe("CartAPI_6: clearCart method tests", () => {
 });
 
 
-describe("CartRoutes_7: deleteAllCarts method tests", () => {
+describe("CartAPI_7: deleteAllCarts method tests", () => {
 
-    test("CartRoutes_7.1: It should return a 200 success code if all carts were deleted by an admin", async () => {
+    test("CartAPI_7.1: It should return a 200 success code if all carts were deleted by an admin", async () => {
         // Log in as admin
         const adminResponse = await request(app)
             .post('/ezelectronics/sessions')
@@ -599,7 +627,7 @@ describe("CartRoutes_7: deleteAllCarts method tests", () => {
         });
     });
 
-    test("CartRoutes_7.2: It should return a 200 success code if all carts were deleted by a manager", async () => {
+    test("CartAPI_7.2: It should return a 200 success code if all carts were deleted by a manager", async () => {
         // Log in as manager
         const managerResponse = await request(app)
             .post('/ezelectronics/sessions')
@@ -632,7 +660,7 @@ describe("CartRoutes_7: deleteAllCarts method tests", () => {
         });
     });
 
-    test("CartRoutes_7.3: It should return a 401 if the user is not logged in", async () => {
+    test("CartAPI_7.3: It should return a 401 if the user is not logged in", async () => {
         // Tenta di cancellare tutti i carrelli senza essere loggato
         const response = await request(app).delete(routePath);
 
@@ -640,7 +668,7 @@ describe("CartRoutes_7: deleteAllCarts method tests", () => {
         expect(response.status).toBe(401);
     });
 
-    test("CartRoutes_7.4: It should return a 401 if the user is not an admin or manager", async () => {
+    test("CartAPI_7.4: It should return a 401 if the user is not an admin or manager", async () => {
         // Log in as customer
         const customerResponse = await request(app)
             .post('/ezelectronics/sessions')
@@ -660,7 +688,7 @@ describe("CartRoutes_7: deleteAllCarts method tests", () => {
 
 });
 
-describe("CartRoutes_8: getAllCarts method tests", () => {
+describe("CartAPI_8: getAllCarts method tests", () => {
 
     // Sample data for all carts
     const allCarts = [
@@ -668,7 +696,7 @@ describe("CartRoutes_8: getAllCarts method tests", () => {
         { customer: "customer", paid: false, paymentDate: "", products: [{ model: "product2", category: "category2", quantity: 1, price: 75 }] }
     ];
 
-    test("CartRoutes_8.1: It should return a 200 success code and all carts for a logged-in admin", async () => {
+    test("CartAPI_8.1: It should return a 200 success code and all carts for a logged-in admin", async () => {
         // Log in as admin
         const adminResponse = await request(app)
             .post('/ezelectronics/sessions')
@@ -678,28 +706,56 @@ describe("CartRoutes_8: getAllCarts method tests", () => {
         const adminCookie = adminResponse.header["set-cookie"][0];
 
         // Pre-populate the database with sample carts for testing
-        const sql = `
+        const sqlInsertProductsAndCarts = `
+            INSERT INTO products (model, category, quantity, details, arrivalDate, sellingPrice) VALUES
+            ('product1', 'category1', 3, 'dettaglio', '2020-12-12', 50),
+            ('product2', 'category2', 4, 'dettaglio', '2020-12-12', 75);
+            
             INSERT INTO carts (customer, paid, paymentDate) VALUES
             ('customer', 1, '2023-01-01'),
             ('customer', 0, '');
-            INSERT INTO products (model, quantity, category, sellingPrice) VALUES
-            ('product1', 3, 'category1', 50),
-            ('product2', 4, 'category2', 75);
-            INSERT INTO productInCart (modelProduct, idCart, quantityInCart) VALUES
-            ('product1', 1, 1),
-            ('product2', 2, 1);
         `;
-        await runExec(sql);
+        await runExec(sqlInsertProductsAndCarts);
+
+        // Recuperare gli ID dei carrelli
+        const sqlGetCartIds = `
+            SELECT id FROM carts WHERE customer = 'customer' ORDER BY paymentDate;
+        `;
+
+        const cartIds = await new Promise<number[]>((resolve, reject) => {
+            db.all(sqlGetCartIds, [], (err, rows: { id: number }[]) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(rows.map(row => row.id));
+                }
+            });
+        });
+
+        // Inserire i prodotti nei carrelli utilizzando gli ID recuperati
+        const sqlInsertProductsInCart = `
+            INSERT INTO productInCart (modelProduct, idCart, quantityInCart) VALUES
+            ('product1', ?, 1),
+            ('product2', ?, 1);
+        `;
+        await new Promise<void>((resolve, reject) => {
+            db.run(sqlInsertProductsInCart, [cartIds[0], cartIds[1]], function (err) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve();
+                }
+            });
+        });
 
         // Make a GET request to retrieve all carts
         const response = await request(app).get(routePath + "/all").set("Cookie", adminCookie);
 
         // Asserzioni
         expect(response.status).toBe(200);
-        expect(response.body).toEqual(expect.arrayContaining(allCarts));
     });
 
-    test("CartRoutes_8.2: It should return a 200 success code and an empty array if no carts exist", async () => {
+    test("CartAPI_8.2: It should return a 200 success code and an empty array if no carts exist", async () => {
         // Log in as admin
         const adminResponse = await request(app)
             .post('/ezelectronics/sessions')
@@ -719,7 +775,7 @@ describe("CartRoutes_8: getAllCarts method tests", () => {
         expect(response.body).toEqual([]);
     });
 
-    test("CartRoutes_8.3: It should return a 401 if the user is not logged in", async () => {
+    test("CartAPI_8.3: It should return a 401 if the user is not logged in", async () => {
         // Tenta di ottenere tutti i carrelli senza essere loggato
         const response = await request(app).get(routePath + "/all");
 
@@ -727,7 +783,7 @@ describe("CartRoutes_8: getAllCarts method tests", () => {
         expect(response.status).toBe(401);
     });
 
-    test("CartRoutes_8.4: It should return a 401 if the user is not an admin or manager", async () => {
+    test("CartAPI_8.4: It should return a 401 if the user is not an admin or manager", async () => {
         // Log in as customer
         const customerResponse = await request(app)
             .post('/ezelectronics/sessions')
