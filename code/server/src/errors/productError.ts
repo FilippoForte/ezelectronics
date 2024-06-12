@@ -69,6 +69,27 @@ class LowProductStockError extends Error {
     }
 }
 
+class InvalidDateFormat extends Error {
+    customMessage: string
+    customCode: number
+
+    constructor() {
+        super()
+        this.customMessage = "Date is in the wrong format"
+        this.customCode = 422
+    }
+}
+
+class InvalidGrouping extends Error {
+    customMessage: string
+    customCode: number
+
+    constructor() {
+        super()
+        this.customMessage = "Invalid grouping"
+        this.customCode = 422
+    }
+}
 
 /**
  * Represents an error that occurs when the date is after the current date
@@ -85,4 +106,4 @@ class FutureDateError extends Error {
 }
 
 
-export { ProductNotFoundError, ProductAlreadyExistsError, ProductSoldError, EmptyProductStockError, LowProductStockError, FutureDateError }
+export { ProductNotFoundError, ProductAlreadyExistsError, ProductSoldError, EmptyProductStockError, LowProductStockError, FutureDateError, InvalidDateFormat, InvalidGrouping }

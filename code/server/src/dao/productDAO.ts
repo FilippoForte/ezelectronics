@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 import { Product } from "../components/product";
 import {
   EmptyProductStockError,
-  FutureDateError,
+  FutureDateError, InvalidDateFormat,
   LowProductStockError,
   ProductNotFoundError,
 } from "../errors/productError";
@@ -48,10 +48,10 @@ class ProductDAO {
         if (arrivalDate && dayjs(arrivalDate).isAfter(dayjs()))
           return reject(new FutureDateError());
 
-        // const regex = /^\d{4}-\d{2}-\d{2}$/;
-        // if (!regex.test(arrivalDate)) {
-        //   return reject(new Error("Date is in the wrong format"));
-        // }
+        const regex = /^\d{4}-\d{2}-\d{2}$/;
+        if (!regex.test(arrivalDate)) {
+          return reject(new InvalidDateFormat());
+        }
 
         const insertQuery =
           "INSERT INTO products (model, category, quantity, details, arrivalDate, sellingPrice) VALUES (?,?,?,?,?,?)";
@@ -103,11 +103,11 @@ class ProductDAO {
 
       const regex = /^\d{4}-\d{2}-\d{2}$/;
       if (!regex.test(arrivalDate)) {
-        return reject(new Error("Date is in the wrong format"));
+        return reject(new InvalidDateFormat());
       }
 
       const updateQuery =
-        "UPDATE products SET quantity = quantity + ? WHERE model = ?";
+        "UPDATE products SET quantity = quantity + ?, arrivalDate = ? WHERE model = ?";
       const getProductModel = "SELECT * FROM products WHERE model = ?";
 
       db.get(getProductModel, [model], (err: Error | null, row: any) => {
@@ -119,7 +119,7 @@ class ProductDAO {
         }
         else {
           const oldQuantity = row.quantity;
-          db.run(updateQuery, [newQuantity, model], (err: Error | null) => {
+          db.run(updateQuery, [newQuantity, arrivalDate, model], (err: Error | null) => {
             if (err) return reject(err);
             return resolve(oldQuantity + newQuantity);
           });
@@ -140,9 +140,9 @@ class ProductDAO {
         let selectQuery = "SELECT * FROM products";
 
         if (grouping == "model" && category==null && model!=null)
-          selectQuery = "SELECT * FROM products WHERE model='" + model + "'";
+          selectQuery = "SELECT * FROM products WHERE model=" + "'" + model + "'";
         else if (grouping == "category" && category!=null && model==null)
-          selectQuery = "SELECT * FROM products WHERE category='" + category + "'";
+          selectQuery = "SELECT * FROM products WHERE category=" + "'" + category + "'";
         else if (grouping == null)
           selectQuery = "SELECT * FROM products";
         else
@@ -190,9 +190,9 @@ class ProductDAO {
         let selectQuery = "SELECT * FROM products WHERE quantity > 0";
 
         if (grouping == "model" && category==null && model!=null)
-          selectQuery = "SELECT * FROM products WHERE model='" + model + " AND quantity >= 0'";
+          selectQuery = "SELECT * FROM products WHERE model=" + "'" + model + "'" + " AND quantity >= 0";
         else if (grouping == "category" && category!=null && model==null)
-          selectQuery = "SELECT * FROM products WHERE category='" + category + " AND quantity >= 0'";
+          selectQuery = "SELECT * FROM products WHERE category=" + "'" + category + "'" + " AND quantity >= 0";
         else if (grouping == null)
           selectQuery = "SELECT * FROM products WHERE quantity > 0";
         else
@@ -246,10 +246,10 @@ class ProductDAO {
         if (sellingDate && dayjs(sellingDate).isAfter(dayjs()))
           return reject(new FutureDateError());
 
-        // const regex = /^\d{4}-\d{2}-\d{2}$/;
-        // if (!regex.test(sellingDate)) {
-        //   return reject(new Error("Date is in the wrong format"));
-        // }
+        const regex = /^\d{4}-\d{2}-\d{2}$/;
+        if (!regex.test(sellingDate)) {
+          return reject(new InvalidDateFormat());
+        }
 
         const getProductQuery = "SELECT * FROM products WHERE model == ?";
         const updateQuantityQuery = "UPDATE products SET quantity = quantity - ? WHERE model == ?";

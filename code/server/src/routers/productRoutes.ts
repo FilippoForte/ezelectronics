@@ -83,7 +83,7 @@ class ProductRoutes {
         this.router.patch(
             "/:model",
             this.authenticator.isLoggedIn,
-            this.authenticator.isManager,
+            this.authenticator.isAdminOrManager,
             body("quantity").isInt({ min: 1 }),
             this.errorHandler.validateRequest,
             (req: any, res: any, next: any) => this.controller.changeProductQuantity(req.params.model, req.body.quantity, req.body.changeDate)
@@ -103,7 +103,7 @@ class ProductRoutes {
         this.router.patch(
             "/:model/sell",
             this.authenticator.isLoggedIn,
-            this.authenticator.isManager,
+            this.authenticator.isAdminOrManager,
             body("quantity").isInt({ min: 1 }),
             this.errorHandler.validateRequest,
             (req: any, res: any, next: any) => this.controller.sellProduct(req.params.model, req.body.quantity, req.body.sellingDate)

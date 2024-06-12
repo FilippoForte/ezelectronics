@@ -714,7 +714,7 @@ describe("Product DAO unit tests", () => {
                     [soldQuantity, dbProd1.model]), expect.any(Function));
         });
 
-        test("ProductDAO_5.2: Sell a product correctly, the selling is provided (it should resolve true)", async () => {
+        test("ProductDAO_5.2: Sell a product correctly, the selling date is provided (it should resolve true)", async () => {
             const productDAO = new ProductDAO();
             const soldQuantity = 5;
 
@@ -801,7 +801,7 @@ describe("Product DAO unit tests", () => {
             expect(mockDBRun).not.toHaveBeenCalled();
         });
 
-        test("ProductDAO_5.6: The provided model represents a product with an available quantity of 0 (it should resolve EmptyProductStockError)", async () => {
+        test("ProductDAO_5.6: The provided quantity is higher than the available quantity in stock (it should resolve LowProductStockQuantity)", async () => {
             const productDAO = new ProductDAO();
             const soldQuantity = 6;
 
