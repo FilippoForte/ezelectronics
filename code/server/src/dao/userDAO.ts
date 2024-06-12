@@ -170,21 +170,35 @@ class UserDAO {
   async deleteAll(): Promise<Boolean> {
     return new Promise<Boolean>((resolve, reject) => {
       try {
-        const sql = "DELETE from users WHERE user.role <> 'ADMIN'";
-
-        db.run(sql, (err: Error | null) => {
+        const sql1 = "SELECT * from users WHERE role <> 'Admin'";
+        
+        db.all(sql1, (err: Error | null, rows: any) => {
           if (err) {
             reject(err);
             return;
-          } else {
-            resolve(true);
           }
+          
+          if (!rows || rows.length === 0) {
+            resolve(false);
+            return;
+          }
+          
+          const sql2 = "DELETE from users WHERE role <> 'Admin'";
+          
+          db.run(sql2, (err: Error | null) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(true);
+            }
+          });
         });
       } catch (error) {
         reject(error);
       }
     });
   }
+  
   /**
    * Returns all users with a specific role.
    * @param role - The role of the users to retrieve. It can only be one of the three allowed types ("Manager", "Customer", "Admin")
