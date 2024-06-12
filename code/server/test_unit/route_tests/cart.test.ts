@@ -348,66 +348,7 @@ describe("CartRoutes_3: checkoutCart method tests", () => {
     expect(response.status).toBe(400);
     expect(CartController.prototype.checkoutCart).toHaveBeenCalledWith(customerUser);
   });
-
-
-  /*
-  test("CartRoutes_3.4: It should return 409 if the product model has zero available quantity", async () => {
-    const model = 'OutOfStockProduct';
-    const cartWithOutOfStockProduct = new Cart(customerUser.username, false, "", 45, [{
-      model: "model2",
-      category: Category.APPLIANCE,
-      quantity: 0,
-      price: 15,
-    }, inputProduct2]);
-
-    // Mock middleware to set user as logged in and a customer
-    jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
-      req.user = customerUser;
-      next();
-    });
-    jest.spyOn(Authenticator.prototype, "isCustomer").mockImplementation((req, res, next) => next());
-
-    // Mock controller method to reject with a 409 error
-    const error = new ProductInCartError();
-    jest.spyOn(CartController.prototype, "checkoutCart").mockResolvedValueOnce(false);
-
-    // Make request to the route
-    const response = await request(app).patch(baseURL);
-
-    // Assertions
-    expect(response.status).toBe(409);
-    expect(CartController.prototype.checkoutCart).toHaveBeenCalledWith(customerUser);
-  });
-
-  test("CartRoutes_3.5: It should return 409 if the product quantity exceeds the available quantity in the stock", async () => {
-    const cartWithExceededProduct = new Cart(customerUser.username, false, "", 45, [{
-      model: "model2",
-      category: Category.APPLIANCE,
-      quantity: 999999999,
-      price: 15,
-    }, inputProduct2]);
-
-    // Mock middleware to set user as logged in and a customer
-    jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req, res, next) => {
-      req.user = customerUser;
-      next();
-    });
-    jest.spyOn(Authenticator.prototype, "isCustomer").mockImplementation((req, res, next) => next());
-
-    // Mock controller method to reject with a 409 error
-    const error = new ProductInCartError();
-    jest.spyOn(CartController.prototype, "checkoutCart").mockResolvedValueOnce(false);
-
-    // Make request to the route
-    const response = await request(app).patch(baseURL);
-
-    // Assertions
-    expect(response.status).toBe(409);
-    expect(CartController.prototype.checkoutCart).toHaveBeenCalledWith(customerUser);
-  });
-*/
-});
-
+})
 
 describe("CartRoutes_4: getCartHistory method tests", () => {
   // Run this code after each test to clear and restore all mocks
