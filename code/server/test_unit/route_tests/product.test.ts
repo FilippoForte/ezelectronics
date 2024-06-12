@@ -42,6 +42,7 @@ describe("Products routes unit tests", () =>{
             const testManager=jest.spyOn(Authenticator.prototype, "isAdminOrManager").mockImplementation((req,res,next)=>{
                 return next()
             })
+
             jest.mock('express-validator', () => ({
                 param: jest.fn().mockImplementation(() => ({
                     isString: () => ({ isLength: () => ({}) }),
