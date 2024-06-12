@@ -17,3 +17,22 @@ export function cleanup() {
         db.run("DELETE FROM reviews")
     })
 }
+
+export async function cleanupAsync(): Promise<void> {
+    const tables = ["users", "products", "productInCart", "carts", "reviews"];
+    return new Promise((resolve, reject) => {
+        let remaining = tables.length;
+
+        tables.forEach((table) => {
+            db.run(`DELETE FROM ${table}`, (err: Error | null) => {
+                if (err) {
+                    return reject(err);
+                }
+                remaining -= 1;
+                if (remaining === 0) {
+                    resolve();
+                }
+            });
+        });
+    });
+}
