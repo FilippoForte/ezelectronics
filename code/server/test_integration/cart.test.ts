@@ -275,12 +275,16 @@ describe("CartAPI_3: checkoutCart method tests", () => {
         // Inserisci un prodotto con quantità 0
         const sql = `
             INSERT INTO products (model, category, quantity, details, arrivalDate, sellingPrice) VALUES
-            ("OutOfStockProduct", "Appliance", 0, "Out of stock product", "2020-12-12", 500);
+            ("OutOfStockProduct", "Appliance", 1, "Out of stock product", "2020-12-12", 500);
         `;
         await runExec(sql);
 
         // Aggiungi il prodotto esaurito al carrello dell'utente cliente
         await request(app).post(routePath).send({ model: "OutOfStockProduct" }).set("Cookie", customerCookie);
+
+        const sql2 = `UPDATE PRODUCTS SET quantity=0 WHERE model="OutOfStockProduct"`
+
+        await runExec(sql2);
 
         // Tenta di eseguire il checkout del carrello con il prodotto esaurito
         const response = await request(app).patch(routePath).set("Cookie", customerCookie);
