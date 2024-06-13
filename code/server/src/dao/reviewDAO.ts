@@ -33,7 +33,7 @@ class ReviewDAO {
                             reject(new ExistingReviewError);
                         }else
                         {
-                            db.run(sql, [model, user.username, score, dayjs().format("YYYY/MM/DD"),comment], (err: Error | null) => {
+                            db.run(sql, [model, user.username, score, dayjs().format("YYYY-MM-DD"),comment], (err: Error | null) => {
                                 if (err) {
                                     reject(err)
                                 }
@@ -151,7 +151,7 @@ class ReviewDAO {
     deleteAllReviews() :Promise<void>  {
         return new Promise<void> ((resolve,reject)=> {
             try{
-                const sql= "DELETE * from reviews "
+                const sql= "DELETE from reviews"
                 db.run(sql, (err:Error | null)=> {
                     if(err) {
                         reject(err)
