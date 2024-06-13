@@ -54,9 +54,7 @@ describe("Product routes integration tests", () => {
 
     beforeEach(async () => {
         await postUser(admin);
-        await postUser(customer)
         adminCookie = await login(adminInfo);
-        customerCookie = await login(customerInfo)
     });
 
     afterEach(async () => {
@@ -453,7 +451,7 @@ describe("Product routes integration tests", () => {
             query.append('model', productInfo1.model);
             const url = `${routePath}/products?${query.toString()}`;
 
-            const product = await request(app)
+            await request(app)
                 .get(url)
                 .set("Cookie", adminCookie)
                 .expect(404)
@@ -489,6 +487,11 @@ describe("Product routes integration tests", () => {
     });
 
     describe("ProductAPI_5: GET /products/available", () => {
+        beforeEach(async () => {
+            await postUser(customer)
+            customerCookie = await login(customerInfo)
+        });
+
         test("ProductAPI_5.1: It should return a 200 success code and retrieve all the available products", async () => {
             await request(app)
                 .post(routePath + "/products")
@@ -643,6 +646,76 @@ describe("Product routes integration tests", () => {
             await request(app).get(url2).set("Cookie", customerCookie).expect(422);
             await request(app).get(url3).set("Cookie", customerCookie).expect(422);
             await request(app).get(url4).set("Cookie", customerCookie).expect(422);
+        });
+    });
+
+    describe("ProductAPI_6: DELETE /products", () => {
+        test("ProductAPI_6.1: It should return a 200 success code and delete all products", async () => {
+            await request(app)
+                .post(routePath + "/products")
+                .set("Cookie", adminCookie)
+                .send(productInfo1)
+                .expect(200);
+
+            await request(app)
+                .post(routePath + "/products")
+                .set("Cookie", adminCookie)
+                .send(productInfo2)
+                .expect(200);
+
+            await request(app)
+                .delete(routePath + "/products")
+                .set("Cookie", adminCookie)
+                .expect(200)
+
+            const query = new URLSearchParams();
+            const url = `${routePath}/products?${query.toString()}`;
+
+            const product = await request(app)
+                .get(url)
+                .set("Cookie", adminCookie)
+                .expect(200)
+
+            expect(product.body).toHaveLength(0);
+        });
+    });
+
+    describe("ProductAPI_7: DELETE /products/:model", () => {
+        test("ProductAPI_7.1: It should return a 200 success code and delete the product represented by the model", async () => {
+            await request(app)
+                .post(routePath + "/products")
+                .set("Cookie", adminCookie)
+                .send(productInfo1)
+                .expect(200);
+
+            await request(app)
+                .post(routePath + "/products")
+                .set("Cookie", adminCookie)
+                .send(productInfo2)
+                .expect(200);
+
+            await request(app)
+                .delete(routePath + "/products/" + productInfo1.model)
+                .set("Cookie", adminCookie)
+                .expect(200)
+
+            const query = new URLSearchParams();
+            const url = `${routePath}/products?${query.toString()}`;
+
+            const product = await request(app)
+                .get(url)
+                .set("Cookie", adminCookie)
+                .expect(200)
+
+            expect(product.body).toHaveLength(1);
+            expect(product.body[0]).toEqual(productInfo2);
+        });
+
+        test("ProductAPI_7.2: It should return a 404 error code when the model does not represent a product in the database", async () => {
+            await request(app)
+                .delete(routePath + "/products/" + productInfo1.model)
+                .set("Cookie", adminCookie)
+                .expect(404)
         });
     });
 });
