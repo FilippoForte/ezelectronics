@@ -377,9 +377,21 @@ describe("User DAO unit tests", () => {
 
     describe("UserDAO_5: deleteAll method tests", () => {
         let mockDBRun: any;
+        let mockDBAll: any;
+        let rowList: any[];
+        let row1, row2: any;
 
         beforeEach(async () => {
             mockDBRun = jest.spyOn(db, "run");
+            mockDBAll = jest.spyOn(db, "all");
+
+            row1 = {...dbRow};
+            row2 = {...dbRow};
+            row1.username = "row1";
+            row2.username = "row2";
+            row2.role = Role.CUSTOMER;
+
+            rowList = [row1, row2];
         });
 
         afterEach(() => {
@@ -389,6 +401,10 @@ describe("User DAO unit tests", () => {
         test("UserDAO_5.1: Deletes all Users except for Admins (it should resolve true)", async () => {
             const userDAO = new UserDAO();
 
+            mockDBAll.mockImplementationOnce((_sql: any, callback: (err: Error | null, rows: any[]) => void) => {
+                callback(null, rowList);
+            });
+
             mockDBRun.mockImplementationOnce((_sql: any, callback: (err: Error | null) => void) => {
                 callback(null);
                 return {} as Database;
@@ -397,29 +413,60 @@ describe("User DAO unit tests", () => {
             const result = await userDAO.deleteAll();
 
             expect(result).toBe(true);
+            expect(mockDBAll).toHaveBeenCalledTimes(1);
             expect(mockDBRun).toHaveBeenCalledTimes(1);
         });
 
-        test("UserDAO_5.2: An SQL error occurs in the SQLite run method and it's passed to the callback (it should reject the error)", async () => {
+        test("UserDAO_5.2: There are no non-admin users (it should resolve false)", async () => {
             const userDAO = new UserDAO();
+
+            mockDBAll.mockImplementationOnce((_sql: any, callback: (err: Error | null, rows: any[]) => void) => {
+                callback(null, []);
+            });
+
+            const result = await userDAO.deleteAll();
+
+            expect(result).toBe(false);
+            expect(mockDBAll).toHaveBeenCalledTimes(1);
+        });
+
+        test("UserDAO_5.3: An SQL error occurs in the SQLite all method and it's passed to the callback (it should reject the error)", async () => {
+            const userDAO = new UserDAO();
+
+            mockDBAll.mockImplementationOnce((_sql: any, callback: (err: Error | null, rows: any[]) => void) => {
+                callback(new Error(), undefined);
+            });
+
+            await expect(userDAO.deleteAll()).rejects.toThrow(Error);
+            expect(mockDBAll).toHaveBeenCalledTimes(1);
+            expect(mockDBRun).toHaveBeenCalledTimes(0);
+        });
+
+        test("UserDAO_5.4: An SQL error occurs in the SQLite run method and it's passed to the callback (it should reject the error)", async () => {
+            const userDAO = new UserDAO();
+
+            mockDBAll.mockImplementationOnce((_sql: any, callback: (err: Error | null, rows: any[]) => void) => {
+                callback(null, rowList);
+            });
 
             mockDBRun.mockImplementationOnce((_sql: any, callback: (err: Error | null) => void) => {
                 callback(new Error());
             });
 
             await expect(userDAO.deleteAll()).rejects.toThrow(Error);
+            expect(mockDBAll).toHaveBeenCalledTimes(1);
             expect(mockDBRun).toHaveBeenCalledTimes(1);
         });
 
-        test("UserDAO_5.3: SQLite run method throws an Error (it should reject the error)", async () => {
+        test("UserDAO_5.5: SQLite all method throws an Error (it should reject the error)", async () => {
             const userDAO = new UserDAO();
 
-            mockDBRun.mockImplementationOnce((_sql: any, _callback: (err: Error | null) => void) => {
+            mockDBAll.mockImplementationOnce((_sql: any, _callback: (err: Error | null) => void) => {
                 throw new Error();
             });
 
             await expect(userDAO.deleteAll()).rejects.toThrow(Error);
-            expect(mockDBRun).toHaveBeenCalledTimes(1);
+            expect(mockDBAll).toHaveBeenCalledTimes(1);
         });
     });
 

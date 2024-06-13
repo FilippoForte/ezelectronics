@@ -7,7 +7,7 @@ import db from "../src/db/db"
 import dayjs from "dayjs";
 const routePath = "/ezelectronics" //Base route path for the API
 
-//Default user information. We use them to create users and evaluate the returned values
+//Default user and product information. We use them to create users and evaluate the returned values
 const customer = { username: "customer", name: "customer", surname: "customer", password: "customer", role: Role.CUSTOMER }
 const admin = { username: "admin", name: "admin", surname: "admin", password: "admin", role: Role.ADMIN }
 const adminInfo = { username: "admin", password: "admin" }
@@ -19,10 +19,6 @@ const productInfo3 = {model: "model3", category: "Smartphone", quantity: 4, deta
 //Cookies for the users. We use them to keep users logged in. Creating them once and saving them in a variables outside of the tests will make cookies reusable
 let customerCookie: string
 let adminCookie: string
-
-//Helper function that creates a new user in the database.
-//Can be used to create a user before the tests or in the tests
-//Is an implicit test because it checks if the return code is successful
 
 //Helper function that logs in a user and returns the cookie
 //Can be used to log in a user before the tests or in the tests
@@ -41,6 +37,9 @@ const login = async (userInfo: any) => {
     })
 }
 
+//Helper function that creates a new user in the database.
+//Can be used to create a user before the tests or in the tests
+//Is an implicit test because it checks if the return code is successful
 const postUser = async (user: any) => {
     await request(app)
         .post(`/ezelectronics/users`)
