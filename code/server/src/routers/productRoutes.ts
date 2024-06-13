@@ -4,6 +4,7 @@ import { body, param, query } from "express-validator"
 import ProductController from "../controllers/productController"
 import Authenticator from "./auth"
 import { Product } from "../components/product"
+import { format } from "path"
 
 /**
  * Represents a class that defines the routes for handling proposals.
@@ -32,6 +33,19 @@ class ProductRoutes {
      */
     getRouter(): Router {
         return this.router
+    }
+
+
+    groupingOk(req: any, res: any, next: any) {
+
+        if (req.query.grouping == "model" && req.query.category == null && req.query.model != null) { return next() }
+
+        if (req.query.grouping == "category" && req.query.category != null && req.query.model == null) { return next() }
+
+        if (req.query.grouping == null && req.query.category == null && req.query.model == null) { return next() }
+
+        return res.status(422).json({ error: "Invalid grouping" })
+
     }
 
     /**
@@ -65,6 +79,7 @@ class ProductRoutes {
             body("quantity").isInt({ min: 1 }),
             body("details").isString(),
             body("sellingPrice").isFloat({ min: 1 }),
+            body("arrivalDate").isString().isDate({ format: "YYYY-MM-DD" }).optional(),
             this.errorHandler.validateRequest,
             (req: any, res: any, next: any) => this.controller.registerProducts(req.body.model, req.body.category, req.body.quantity, req.body.details, req.body.sellingPrice, req.body.arrivalDate)
                 .then(() => res.status(200).end())
@@ -85,6 +100,7 @@ class ProductRoutes {
             this.authenticator.isLoggedIn,
             this.authenticator.isAdminOrManager,
             body("quantity").isInt({ min: 1 }),
+            body("changeDate").isString().isDate({ format: "YYYY-MM-DD" }).optional(),
             this.errorHandler.validateRequest,
             (req: any, res: any, next: any) => this.controller.changeProductQuantity(req.params.model, req.body.quantity, req.body.changeDate)
                 .then((quantity: number) => res.status(200).json({ quantity: quantity }))
@@ -105,6 +121,7 @@ class ProductRoutes {
             this.authenticator.isLoggedIn,
             this.authenticator.isAdminOrManager,
             body("quantity").isInt({ min: 1 }),
+            body("sellingDate").isString().isDate({ format: "YYYY-MM-DD" }).optional(),
             this.errorHandler.validateRequest,
             (req: any, res: any, next: any) => this.controller.sellProduct(req.params.model, req.body.quantity, req.body.sellingDate)
                 .then((quantity: number) => res.status(200).json({ quantity: quantity }))
@@ -126,11 +143,15 @@ class ProductRoutes {
             "/",
             this.authenticator.isLoggedIn,
             this.authenticator.isAdminOrManager,
-            (req: any, res: any, next: any) => this.controller.getProducts(req.query.grouping, req.query.category, req.query.model)
+            this.groupingOk,
+            (req: any, res: any, next: any) => {
+                
+                this.controller.getProducts(req.query.grouping, req.query.category, req.query.model)
                 .then((products: Product[]) => res.status(200).json(products))
                 .catch((err) => {
                     next(err)
                 })
+            }
         )
 
         /**
@@ -146,6 +167,7 @@ class ProductRoutes {
             "/available",
             this.authenticator.isLoggedIn,
             this.authenticator.isCustomer,
+            this.groupingOk,
             (req: any, res: any, next: any) => this.controller.getAvailableProducts(req.query.grouping, req.query.category, req.query.model)
                 .then((products: Product[]) => res.status(200).json(products))
                 .catch((err) => next(err))
