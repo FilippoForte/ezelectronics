@@ -267,7 +267,6 @@ describe("Products routes unit tests", () =>{
         expect(response.status).toBe(401);
         expect(ProductController.prototype.changeProductQuantity).toHaveBeenCalledTimes(0);
 
-
         testLogin.mockRestore();
         testManager.mockRestore();
     
