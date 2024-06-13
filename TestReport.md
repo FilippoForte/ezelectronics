@@ -31,9 +31,137 @@
 
 <in the table below list the test cases defined For each test report the object tested, the test level (API, integration, unit) and the technique used to define the test case (BB/ eq partitioning, BB/ boundary, WB/ statement coverage, etc)> <split the table if needed>
 
-| Test case name | Object(s) tested | Test level | Technique used |
-| :------------: | :--------------: | :--------: | :------------: |
-|                |                  |            |                |
+| Test case name             | Object(s) tested                       | Test level   | Technique used |
+| :------------------------: | :------------------------------------: | :----------: | :------------: |
+|   CartDAO                  |                                        |              |                |
+|   CartDAO_1                | addToCart method                       |  unit        |  WB            |
+|   CartDAO_2                | getCart method                         |  unit        |  WB            |
+|   CartDAO_3                | checkoutCart method                    |  unit        |  WB            |
+|   CartDAO_4                | getCustomerCarts method                |  unit        |  WB            |
+|   CartDAO_5                | removeProductFromCart method           |  unit        |  WB            |
+|   CartDAO_6                | clearCart method                       |  unit        |  WB            |
+|   CartDAO_7                | deleteAllCarts method                  |  unit        |  WB            |
+|   CartDAO_8                | getAllCarts method                     |  unit        |  WB            |
+|   CartController           |                                        |              |                |
+|   CartController_1         | addToCart method                       |  unit        |  WB            |
+|   CartController_2         | getCart method                         |  unit        |  WB            |
+|   CartController_3         | checkoutCart method                    |  unit        |  WB            |
+|   CartController_4         | getCustomerCarts method                |  unit        |  WB            |
+|   CartController_5         | removeProductFromCart method           |  unit        |  WB            |
+|   CartController_6         | clearCart method                       |  unit        |  WB            |
+|   CartController_7         | deleteAllCarts method                  |  unit        |  WB            |
+|   CartController_8         | getAllCarts method                     |  unit        |  WB            |
+|   CartRoutes               |                                        |              |                |
+|   CartRoutes_1             | route GET /carts                       |  unit        |  WB            |
+|   CartRoutes_2             | route POST /carts                      |  unit        |  WB            |
+|   CartRoutes_3             | route PATCH /carts                     |  unit        |  WB            |
+|   CartRoutes_4             | route GET /carts/history               |  unit        |  WB            |
+|   CartRoutes_5             | route DELETE /carts/products/:model    |  unit        |  WB            |
+|   CartRoutes_6             | route DELETE /carts/current            |  unit        |  WB            |
+|   CartRoutes_7             | route DELETE /carts                    |  unit        |  WB            |
+|   CartRoutes_8             | route DELETE /carts/all                |  unit        |  WB            |
+|   CartAPI                  |                                        |              |                |
+|   CartAPI_1                | route GET /carts                       |  API         |  BB            |
+|   CartAPI_2                | route POST /carts                      |  API         |  BB            |
+|   CartAPI_3                | route PATCH /carts                     |  API         |  BB            |
+|   CartAPI_4                | route GET /carts/history               |  API         |  BB            |
+|   CartAPI_5                | route DELETE /carts/products/:model    |  API         |  BB            |
+|   CartAPI_6                | route DELETE /carts/current            |  API         |  BB            |
+|   CartAPI_7                | route DELETE /carts                    |  API         |  BB            |
+|   CartAPI_8                | route DELETE /carts/all                |  API         |  BB            |
+|                            |                                        |              |                |
+|   ProductDAO               |                                        |              |                |
+|   ProductDAO_1             | registerProducts method                |  unit        |  WB            |
+|   ProductDAO_2             | changeProductQuantity method           |  unit        |  WB            |
+|   ProductDAO_3             | getProducts method                     |  unit        |  WB            |
+|   ProductDAO_4             | getAvailableProducts method            |  unit        |  WB            |
+|   ProductDAO_5             | sellProduct method                     |  unit        |  WB            |
+|   ProductDAO_6             | deleteAllProducts method               |  unit        |  WB            |
+|   ProductDAO_7             | deleteProduct method                   |  unit        |  WB            |
+|   ProductController        |                                        |              |                |
+|   ProductController_1      | registerProducts method                |  unit        |  WB            |
+|   ProductController_2      | changeProductQuantity method           |  unit        |  WB            |
+|   ProductController_3      | getProducts method                     |  unit        |  WB            |
+|   ProductController_4      | getAvailableProducts method            |  unit        |  WB            |
+|   ProductController_5      | sellProduct method                     |  unit        |  WB            |
+|   ProductController_6      | deleteAllProducts method               |  unit        |  WB            |
+|   ProductController_7      | deleteProduct method                   |  unit        |  WB            |
+|   ProductRoutes            |                                        |              |                |
+|   ProductRoutes_1          | route POST /products                   |  unit        |  WB            |
+|   ProductRoutes_2          | route PATCH /products/:model           |  unit        |  WB            |
+|   ProductRoutes_3          | route PATCH /products/:model/sell      |  unit        |  WB            |
+|   ProductRoutes_4          | route GET /products                    |  unit        |  WB            |
+|   ProductRoutes_5          | route GET /products/available          |  unit        |  WB            |
+|   ProductRoutes_6          | route DELETE /products/:model          |  unit        |  WB            |
+|   ProductRoutes_7          | route DELETE /products                 |  unit        |  WB            |
+|   ProductAPI               |                                        |              |                |
+|   ProductAPI_1             | route POST /products                   |  API         |  BB            |
+|   ProductAPI_2             | route PATCH /products/:model           |  API         |  BB            |
+|   ProductAPI_3             | route PATCH /products/:model/sell      |  API         |  BB            |
+|   ProductAPI_4             | route GET /products                    |  API         |  BB            |
+|   ProductAPI_5             | route GET /products/available          |  API         |  BB            |
+|   ProductAPI_6             | route DELETE /products/:model          |  API         |  BB            |
+|   ProductAPI_7             | route DELETE /products                 |  API         |  BB            |
+|                            |                                        |              |                |
+|   ReviewDAO                |                                        |              |                |
+|   ReviewDAO_1              | addReview method                       |  unit        |  WB            |
+|   ReviewDAO_2              | getProductReviews method               |  unit        |  WB            |
+|   ReviewDAO_3              | deleteReview method                    |  unit        |  WB            |
+|   ReviewDAO_4              | deleteReviewsOfProduct method          |  unit        |  WB            |
+|   ReviewDAO_5              | deleteAllReviews method                |  unit        |  WB            |
+|   ReviewController         |                                        |              |                |
+|   ReviewController_1       | addReview method                       |  unit        |  WB            |
+|   ReviewController_2       | getProductReviews method               |  unit        |  WB            |
+|   ReviewController_3       | deleteReview method                    |  unit        |  WB            |
+|   ReviewController_4       | deleteReviewsOfProduct method          |  unit        |  WB            |
+|   ReviewController_5       | deleteAllReviews method                |  unit        |  WB            |
+|   ReviewRoutes             |                                        |              |                |
+|   ReviewRoutes_1           | route POST /reviews/:model             |  unit        |  WB            |
+|   ReviewRoutes_2           | route GET /reviews/:model              |  unit        |  WB            |
+|   ReviewRoutes_3           | route DELETE /reviews/:model           |  unit        |  WB            |
+|   ReviewRoutes_4           | route DELETE /reviews/:model/all       |  unit        |  WB            |
+|   ReviewRoutes_5           | route DELETE /reviews                  |  unit        |  WB            |
+|   ReviewAPI                |                                        |              |                |
+|   ReviewAPI_1              | route POST /reviews/:model             |  API         |  BB            |
+|   ReviewAPI_2              | route GET /reviews/:model              |  API         |  BB            |
+|   ReviewAPI_3              | route DELETE /reviews/:model           |  API         |  BB            |
+|   ReviewAPI_4              | route DELETE /reviews/:model/all       |  API         |  BB            |
+|   ReviewAPI_5              | route DELETE /reviews                  |  API         |  BB            |
+|                            |                                        |              |                |
+|   UserDAO                  |                                        |              |                |
+|   UserDAO_1                | getIsUserAuthenticated method          |  unit        |  WB            |
+|   UserDAO_2                | createUser method                      |  unit        |  WB            |
+|   UserDAO_3                | getUserByUsername method               |  unit        |  WB            |
+|   UserDAO_4                | getAllUsers method                     |  unit        |  WB            |
+|   UserDAO_5                | deleteAll method                       |  unit        |  WB            |
+|   UserDAO_6                | getUsersByRole method                  |  unit        |  WB            |
+|   UserDAO_7                | updateUserInfo method                  |  unit        |  WB            |
+|   UserDAO_8                | deleteUser method                      |  unit        |  WB            |
+|   UserController           |                                        |              |                |
+|   UserController_1         | getIsUserAuthenticated method          |  unit        |  WB            |
+|   UserController_2         | createUser method                      |  unit        |  WB            |
+|   UserController_3         | getUserByUsername method               |  unit        |  WB            |
+|   UserController_4         | getAllUsers method                     |  unit        |  WB            |
+|   UserController_5         | deleteAll method                       |  unit        |  WB            |
+|   UserController_6         | getUsersByRole method                  |  unit        |  WB            |
+|   UserController_7         | updateUserInfo method                  |  unit        |  WB            |
+|   UserController_8         | deleteUser method                      |  unit        |  WB            |
+|   UserRoutes               |                                        |              |                |
+|   UserRoutes_1             | route POST /users                      |  unit        |  WB            |
+|   UserRoutes_2             | route GET /users                       |  unit        |  WB            |
+|   UserRoutes_3             | route GET /users/roles/:role           |  unit        |  WB            |
+|   UserRoutes_4             | route GET /users/:username             |  unit        |  WB            |
+|   UserRoutes_5             | route DELETE /users/:username          |  unit        |  WB            |
+|   UserRoutes_6             | route DELETE /users                    |  unit        |  WB            |
+|   UserRoutes_7             | route PATCH /users/:username           |  unit        |  WB            |
+|   UserAPI                  |                                        |              |                |
+|   UserAPI_1                | route POST /users                      |  API         |  BB            |
+|   UserAPI_2                | route GET /users                       |  API         |  BB            |
+|   UserAPI_3                | route GET /users/roles/:role           |  API         |  BB            |
+|   UserAPI_4                | route GET /users/:username             |  API         |  BB            |
+|   UserAPI_5                | route DELETE /users/:username          |  API         |  BB            |
+|   UserAPI_6                | route DELETE /users                    |  API         |  BB            |
+|   UserAPI_7                | route PATCH /users/:username           |  API         |  BB            |
 
 # Coverage
 
@@ -50,3 +178,5 @@
 ## Coverage white box
 
 Report here the screenshot of coverage values obtained with jest-- coverage
+
+![coverage](./img/coverage.png)
