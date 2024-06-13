@@ -27,6 +27,8 @@
 
     <One step will  correspond to API testing, or testing unit route.js>
 
+Abbiamo sviluppato gli integration test in maniera Top Down
+
 # Tests
 
 <in the table below list the test cases defined For each test report the object tested, the test level (API, integration, unit) and the technique used to define the test case (BB/ eq partitioning, BB/ boundary, WB/ statement coverage, etc)> <split the table if needed>
@@ -59,7 +61,7 @@
 |   CartRoutes_5             | route DELETE /carts/products/:model    |  unit        |  WB            |
 |   CartRoutes_6             | route DELETE /carts/current            |  unit        |  WB            |
 |   CartRoutes_7             | route DELETE /carts                    |  unit        |  WB            |
-|   CartRoutes_8             | route DELETE /carts/all                |  unit        |  WB            |
+|   CartRoutes_8             | route GET /carts/all                   |  unit        |  WB            |
 |   CartAPI                  |                                        |              |                |
 |   CartAPI_1                | route GET /carts                       |  API         |  BB            |
 |   CartAPI_2                | route POST /carts                      |  API         |  BB            |
@@ -68,7 +70,7 @@
 |   CartAPI_5                | route DELETE /carts/products/:model    |  API         |  BB            |
 |   CartAPI_6                | route DELETE /carts/current            |  API         |  BB            |
 |   CartAPI_7                | route DELETE /carts                    |  API         |  BB            |
-|   CartAPI_8                | route DELETE /carts/all                |  API         |  BB            |
+|   CartAPI_8                | route GET /carts/all                   |  API         |  BB            |
 |                            |                                        |              |                |
 |   ProductDAO               |                                        |              |                |
 |   ProductDAO_1             | registerProducts method                |  unit        |  WB            |
@@ -169,11 +171,46 @@
 
 <Report in the following table the coverage of functional requirements and scenarios(from official requirements) >
 
-| Functional Requirement or scenario | Test(s) |
-| :--------------------------------: | :-----: |
-|                FRx                 |         |
-|                FRy                 |         |
-|                ...                 |         |
+| Functional Requirement or scenario | Test(s)                                                           |
+| :--------------------------------: | :---------------------------------------------------------------: |
+|                FR1                 |                                                                   |
+|               FR1.1                |                                                                   |
+|               FR1.2                |                                                                   |
+|               FR1.3                | UserDAO_2, UserController_2, UserRoutes_1, UserAPI_1              |
+|                FR2                 |                                                                   |
+|               FR2.1                | UserDAO_4, UserController_4, UserRoutes_2, UserAPI_2              |
+|               FR2.2                | UserDAO_6, UserController_6, UserRoutes_3, UserAPI_3              |
+|               FR2.3                | UserDAO_3, UserController_3, UserRoutes_4, UserAPI_4              |
+|               FR2.4                | UserDAO_7, UserController_7, UserRoutes_7, UserAPI_7              |
+|               FR2.5                | UserDAO_8, UserController_8, UserRoutes_5, UserAPI_5              |
+|               FR2.6                | UserDAO_5, UserController_5, UserRoutes_6, UserAPI_6              |
+|                FR3                 |                                                                   |
+|               FR3.1                | ProductDAO_1, ProductController_1, ProductRoutes_1, ProductAPI_1  |
+|               FR3.2                | ProductDAO_2, ProductController_2, ProductRoutes_2, ProductAPI_2  |
+|               FR3.3                | ProductDAO_5, ProductController_5, ProductRoutes_3, ProductAPI_3  |
+|               FR3.4                | ProductDAO_3, ProductController_3, ProductRoutes_4, ProductAPI_4  |
+|              FR3.4.1               | ProductDAO_4, ProductController_4, ProductRoutes_5, ProductAPI_5  |
+|               FR3.5                | ProductDAO_3, ProductController_3, ProductRoutes_4, ProductAPI_4  |
+|              FR3.5.1               | ProductDAO_4, ProductController_4, ProductRoutes_5, ProductAPI_5  |
+|               FR3.6                | ProductDAO_3, ProductController_3, ProductRoutes_4, ProductAPI_4  |
+|              FR3.6.1               | ProductDAO_4, ProductController_4, ProductRoutes_5, ProductAPI_5  |
+|               FR3.7                | ProductDAO_7, ProductController_7, ProductRoutes_6, ProductAPI_6  |
+|               FR3.8                | ProductDAO_6, ProductController_6, ProductRoutes_7, ProductAPI_7  |
+|                FR4                 |                                                                   |
+|               FR4.1                | ReviewDAO_1, ReviewController_1, ReviewRoutes_1, ReviewAPI_1      |
+|               FR4.2                | ReviewDAO_2, ReviewController_2, ReviewRoutes_2, ReviewAPI_2      |
+|               FR4.3                | ReviewDAO_3, ReviewController_3, ReviewRoutes_3, ReviewAPI_3      |
+|               FR4.4                | ReviewDAO_4, ReviewController_4, ReviewRoutes_4, ReviewAPI_4      |
+|               FR4.5                | ReviewDAO_5, ReviewController_5, ReviewRoutes_5, ReviewAPI_5      |
+|                FR5                 |                                                                   |
+|               FR5.1                | CartDAO_2, CartController_2, CartRoutes_1, CartAPI_1              |
+|               FR5.2                | CartDAO_1, CartController_1, CartRoutes_2, CartAPI_2              |
+|               FR5.3                | CartDAO_3, CartController_3, CartRoutes_3, CartAPI_3              |
+|               FR5.4                | CartDAO_4, CartController_4, CartRoutes_4, CartAPI_4              |
+|               FR5.5                | CartDAO_5, CartController_5, CartRoutes_5, CartAPI_5              |
+|               FR5.6                | CartDAO_6, CartController_6, CartRoutes_6, CartAPI_6              |
+|               FR5.7                | CartDAO_7, CartController_7, CartRoutes_7, CartAPI_7              |
+|               FR5.8                | CartDAO_8, CartController_8, CartRoutes_8, CartAPI_8              |
 
 ## Coverage white box
 
