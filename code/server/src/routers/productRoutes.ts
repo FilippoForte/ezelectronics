@@ -38,11 +38,11 @@ class ProductRoutes {
 
     groupingOk(req: any, res: any, next: any) {
 
-        if (req.query.grouping == "model" && req.query.category == null && req.query.model != null) { return next() }
+        if (req.query.grouping == 'model' && req.query.category == undefined && req.query.model != undefined) { return next() }
 
-        if (req.query.grouping == "category" && req.query.category != null && req.query.model == null) { return next() }
+        if (req.query.grouping == 'category' && req.query.category != undefined && req.query.model == undefined) { return next() }
 
-        if (req.query.grouping == null && req.query.category == null && req.query.model == null) { return next() }
+        if (req.query.grouping == undefined && req.query.category == undefined  && req.query.model == undefined) { return next() }
 
         return res.status(422).json({ error: "Invalid grouping" })
 
@@ -145,12 +145,12 @@ class ProductRoutes {
             this.authenticator.isAdminOrManager,
             this.groupingOk,
             (req: any, res: any, next: any) => {
-                
+
                 this.controller.getProducts(req.query.grouping, req.query.category, req.query.model)
-                .then((products: Product[]) => res.status(200).json(products))
-                .catch((err) => {
-                    next(err)
-                })
+                    .then((products: Product[]) => res.status(200).json(products))
+                    .catch((err) => {
+                        next(err)
+                    })
             }
         )
 

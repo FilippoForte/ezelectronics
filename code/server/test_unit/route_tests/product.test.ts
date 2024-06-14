@@ -548,11 +548,11 @@ describe("Routes_4: GET /products", ()=>{
             
             return next()
         })
-        const response = (await request(app).get(baseURL + "/products?grouping=&category=&model="));
+        const response = (await request(app).get(baseURL + "/products"));
         expect(response.status).toBe(200);
         expect(response.body).toEqual([testProductSmartphone,testProductLaptop]);
         expect(ProductController.prototype.getProducts).toHaveBeenCalledTimes(1);
-        expect(ProductController.prototype.getProducts).toHaveBeenCalledWith("", "", "");
+        expect(ProductController.prototype.getProducts).toHaveBeenCalledWith(undefined, undefined, undefined);
         testController.mockRestore();
         testLogin.mockRestore();
         testManager.mockRestore();
@@ -613,10 +613,10 @@ describe("Routes_4: GET /products", ()=>{
             
             return next()
         })
-        const response = (await request(app).get(baseURL + "/products?grouping=" + grouping + "&category=&model=" + model ));
+        const response = (await request(app).get(baseURL + "/products?grouping=" + grouping + "&model=" + model ));
         expect(response.status).toBe(404);
         expect(ProductController.prototype.getProducts).toHaveBeenCalledTimes(1);
-        expect(ProductController.prototype.getProducts).toHaveBeenCalledWith(grouping, "", model);
+        expect(ProductController.prototype.getProducts).toHaveBeenCalledWith(grouping, undefined, model);
 
         testController.mockRestore();
         testLogin.mockRestore();
@@ -638,11 +638,11 @@ describe('Routes_5: GET /products/available', () => {
             
             return next()
         })
-        const response = (await request(app).get(baseURL + '/products/available?grouping=&category=&model='));
+        const response = (await request(app).get(baseURL + '/products/available'));
         expect(response.status).toBe(200);
         expect(response.body).toEqual([testProductSmartphone, testProductLaptop]);
         expect(ProductController.prototype.getAvailableProducts).toHaveBeenCalledTimes(1);
-        expect(ProductController.prototype.getAvailableProducts).toHaveBeenCalledWith("", "", "");
+        expect(ProductController.prototype.getAvailableProducts).toHaveBeenCalledWith(undefined, undefined, undefined);
 
 
 
@@ -677,10 +677,10 @@ describe('Routes_5: GET /products/available', () => {
         const testCustomer = jest.spyOn(Authenticator.prototype, 'isCustomer').mockImplementation((req, res, next) => {
             return next();
         })
-        const response = (await request(app).get(baseURL + "/products/available?grouping=" + grouping + "&category=&model=" + model ));
+        const response = (await request(app).get(baseURL + "/products/available?grouping=" + grouping + "&model=" + model ));
         expect(response.status).toBe(404);
         expect(ProductController.prototype.getAvailableProducts).toHaveBeenCalledTimes(1);
-        expect(ProductController.prototype.getAvailableProducts).toHaveBeenCalledWith(grouping, "", model);
+        expect(ProductController.prototype.getAvailableProducts).toHaveBeenCalledWith(grouping, undefined, model);
 
         testController.mockRestore();
         testLogin.mockRestore();
