@@ -99,6 +99,7 @@ class ProductRoutes {
             "/:model",
             this.authenticator.isLoggedIn,
             this.authenticator.isAdminOrManager,
+            param("model").isString().isLength( { min: 1 }),
             body("quantity").isInt({ min: 1 }),
             body("changeDate").isString().isDate({ format: "YYYY-MM-DD" }).optional(),
             this.errorHandler.validateRequest,
@@ -120,6 +121,7 @@ class ProductRoutes {
             "/:model/sell",
             this.authenticator.isLoggedIn,
             this.authenticator.isAdminOrManager,
+            param("model").isString().isLength( { min: 1 }),
             body("quantity").isInt({ min: 1 }),
             body("sellingDate").isString().isDate({ format: "YYYY-MM-DD" }).optional(),
             this.errorHandler.validateRequest,
@@ -197,6 +199,7 @@ class ProductRoutes {
             "/:model",
             this.authenticator.isLoggedIn,
             this.authenticator.isAdminOrManager,
+            param("model").isString().isLength( { min: 1 }),
             (req: any, res: any, next: any) => this.controller.deleteProduct(req.params.model)
                 .then(() => res.status(200).end())
                 .catch((err: any) => next(err))
