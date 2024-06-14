@@ -6,6 +6,7 @@ import Authenticator from "../../src/routers/auth"
 import {Product, Category} from "../../src/components/product"
 import ErrorHandler from "../../src/helper"
 import { FutureDateError, LowProductStockError, ProductAlreadyExistsError, ProductNotFoundError } from "../../src/errors/productError"
+import ProductRoutes from "../../src/routers/productRoutes"
 
 
 const baseURL = "/ezelectronics"
@@ -211,7 +212,7 @@ describe("Products routes unit tests", () =>{
             const testLogin=jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req,res,next)=>{
                 return next()
             })
-            const testManager=jest.spyOn(Authenticator.prototype, "isManager").mockImplementation((req,res,next)=>{
+            const testManager=jest.spyOn(Authenticator.prototype, "isAdminOrManager").mockImplementation((req,res,next)=>{
                 return next()
             })
             const response = await request(app).patch(baseURL + "/products/testModel").send(requestBody);
@@ -236,7 +237,7 @@ describe("Products routes unit tests", () =>{
         const testLogin=jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req,res,next)=>{
             return res.status(401).json({error: "Unauthenticated user"})
         })
-        const testManager=jest.spyOn(Authenticator.prototype, "isManager").mockImplementation((req,res,next)=>{
+        const testManager=jest.spyOn(Authenticator.prototype, "isAdminOrManager").mockImplementation((req,res,next)=>{
             return res.status(401).json({error: "User is not a manager"})
         })
 
@@ -259,7 +260,7 @@ describe("Products routes unit tests", () =>{
         const testLogin=jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req,res,next)=>{
             return next()
         })
-        const testManager=jest.spyOn(Authenticator.prototype, "isManager").mockImplementation((req,res,next)=>{
+        const testManager=jest.spyOn(Authenticator.prototype, "isAdminOrManager").mockImplementation((req,res,next)=>{
             return res.status(401).json({error: "User is not a manager"})
         })
 
@@ -285,7 +286,7 @@ describe("Products routes unit tests", () =>{
         const testLogin=jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req,res,next)=>{
             return next()
         })
-        const testManager=jest.spyOn(Authenticator.prototype, "isManager").mockImplementation((req,res,next)=>{
+        const testManager=jest.spyOn(Authenticator.prototype, "isAdminOrManager").mockImplementation((req,res,next)=>{
             return next()
         })
         const response = await request(app).patch(baseURL + "/products/" + model).send(requestBody);
@@ -308,7 +309,7 @@ describe("Products routes unit tests", () =>{
         const testLogin=jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req,res,next)=>{
             return next()
         })
-        const testManager=jest.spyOn(Authenticator.prototype, "isManager").mockImplementation((req,res,next)=>{
+        const testManager=jest.spyOn(Authenticator.prototype, "isAdminOrManager").mockImplementation((req,res,next)=>{
             return next()
         })
         const response = await (request(app).patch(baseURL + "/products/" + model).send(requestBody));
@@ -330,7 +331,7 @@ describe("Products routes unit tests", () =>{
         const testLogin=jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req,res,next)=>{
             return next()
         })
-        const testManager=jest.spyOn(Authenticator.prototype, "isManager").mockImplementation((req,res,next)=>{
+        const testManager=jest.spyOn(Authenticator.prototype, "isAdminOrManager").mockImplementation((req,res,next)=>{
             return next()
         })
         const response = await (request(app).patch(baseURL + "/products/" + model).send(requestBody));
@@ -356,7 +357,7 @@ describe("Routes_3:PATCH /products/:model/sell", ()=>{
         const testLogin=jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req,res,next)=>{
             return next()
         })
-        const testManager=jest.spyOn(Authenticator.prototype, "isManager").mockImplementation((req,res,next)=>{
+        const testManager=jest.spyOn(Authenticator.prototype, "isAdminOrManager").mockImplementation((req,res,next)=>{
             return next()
         })
         const response = await request(app).patch(baseURL + "/products/testModel/sell").send(requestBody);
@@ -385,7 +386,7 @@ describe("Routes_3:PATCH /products/:model/sell", ()=>{
         const testLogin=jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req,res,next)=>{
             return next()
         })
-        const testManager=jest.spyOn(Authenticator.prototype, "isManager").mockImplementation((req,res,next)=>{
+        const testManager=jest.spyOn(Authenticator.prototype, "isAdminOrManager").mockImplementation((req,res,next)=>{
             return next()
         })
         const response = await request(app).patch(baseURL + "/products/" + model + "/sell").send(requestBody);
@@ -408,7 +409,7 @@ describe("Routes_3:PATCH /products/:model/sell", ()=>{
         const testLogin=jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req,res,next)=>{
             return next()
         })
-        const testManager=jest.spyOn(Authenticator.prototype, "isManager").mockImplementation((req,res,next)=>{
+        const testManager=jest.spyOn(Authenticator.prototype, "isAdminOrManager").mockImplementation((req,res,next)=>{
             return next()
         })
         
@@ -432,7 +433,7 @@ describe("Routes_3:PATCH /products/:model/sell", ()=>{
         const testLogin=jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req,res,next)=>{
             return next()
         })
-        const testManager=jest.spyOn(Authenticator.prototype, "isManager").mockImplementation((req,res,next)=>{
+        const testManager=jest.spyOn(Authenticator.prototype, "isAdminOrManager").mockImplementation((req,res,next)=>{
             return next()
         })
         const response = (await (request(app).patch(baseURL + "/products/" + model + "/sell").send(requestBody)));
@@ -455,7 +456,7 @@ describe("Routes_3:PATCH /products/:model/sell", ()=>{
         const testLogin=jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req,res,next)=>{
             return next()
         })
-        const testManager=jest.spyOn(Authenticator.prototype, "isManager").mockImplementation((req,res,next)=>{
+        const testManager=jest.spyOn(Authenticator.prototype, "isAdminOrManager").mockImplementation((req,res,next)=>{
             return next()
         })
         const response = (await (request(app).patch(baseURL + "/products/" + model + "/sell").send(requestBody)));
@@ -478,7 +479,7 @@ describe("Routes_3:PATCH /products/:model/sell", ()=>{
         const testLogin=jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req,res,next)=>{
             return next()
         })
-        const testManager=jest.spyOn(Authenticator.prototype, "isManager").mockImplementation((req,res,next)=>{
+        const testManager=jest.spyOn(Authenticator.prototype, "isAdminOrManager").mockImplementation((req,res,next)=>{
             return next()
         })
         const response = (await (request(app).patch(baseURL + "/products/" + model + "/sell").send(requestBody)));
@@ -500,7 +501,7 @@ describe("Routes_3:PATCH /products/:model/sell", ()=>{
         const testLogin=jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req,res,next)=>{
             return res.status(401).json({error:"Unauthenticated user"})
         })
-        const testManager=jest.spyOn(Authenticator.prototype, "isManager").mockImplementation((req,res,next)=>{
+        const testManager=jest.spyOn(Authenticator.prototype, "isAdminOrManager").mockImplementation((req,res,next)=>{
             return res.status(401).json({error:"Unauthenticated user"})
         })
         const response = (await (request(app).patch(baseURL + "/products/" + model + "/sell").send(requestBody)));
@@ -521,7 +522,7 @@ describe("Routes_3:PATCH /products/:model/sell", ()=>{
         const testLogin=jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req,res,next)=>{
             return next()
         })
-        const testManager=jest.spyOn(Authenticator.prototype, "isManager").mockImplementation((req,res,next)=>{
+        const testManager=jest.spyOn(Authenticator.prototype, "isAdminOrManager").mockImplementation((req,res,next)=>{
             return res.status(401).json({error:"User is not a manager"})
         })
         const response = (await (request(app).patch(baseURL + "/products/" + model + "/sell").send(requestBody)));
@@ -543,7 +544,10 @@ describe("Routes_4: GET /products", ()=>{
         const testManager=jest.spyOn(Authenticator.prototype, "isAdminOrManager").mockImplementation((req,res,next)=>{
             return next()
         })
-
+        const testGrouping=jest.spyOn(ProductRoutes.prototype, "groupingOk").mockImplementation((req,res,next)=>{
+            
+            return next()
+        })
         const response = (await request(app).get(baseURL + "/products?grouping=&category=&model="));
         expect(response.status).toBe(200);
         expect(response.body).toEqual([testProductSmartphone,testProductLaptop]);
@@ -552,6 +556,7 @@ describe("Routes_4: GET /products", ()=>{
         testController.mockRestore();
         testLogin.mockRestore();
         testManager.mockRestore();
+        testGrouping.mockRestore();
     });
     //correct con category?
     //correct con model?
@@ -562,12 +567,17 @@ describe("Routes_4: GET /products", ()=>{
         const testManager=jest.spyOn(Authenticator.prototype, "isAdminOrManager").mockImplementation((req,res,next)=>{
             return res.status(401).json({error:"User is not an admin or manager"})
         })
+        const testGrouping=jest.spyOn(ProductRoutes.prototype, "groupingOk").mockImplementation((req,res,next)=>{
+            
+            return next()
+        })
         const response = (await request(app).get(baseURL + "/products?grouping=&category=&model="));
         expect(response.status).toBe(401);
         expect(ProductController.prototype.getProducts).toHaveBeenCalledTimes(0);
         
         testLogin.mockRestore();
         testManager.mockRestore();
+        testGrouping.mockRestore();
     });
     test("Routes_4.3: User not an admin or manager. It should return a 401 error", async ()=>{
         const testLogin=jest.spyOn(Authenticator.prototype, "isLoggedIn").mockImplementation((req,res,next)=>{
@@ -576,12 +586,17 @@ describe("Routes_4: GET /products", ()=>{
         const testManager=jest.spyOn(Authenticator.prototype, "isAdminOrManager").mockImplementation((req,res,next)=>{
             return res.status(401).json({error:"User is not an admin or manager"})
         })
+        const testGrouping=jest.spyOn(ProductRoutes.prototype, "groupingOk").mockImplementation((req,res,next)=>{
+            
+            return next()
+        })
         const response = (await request(app).get(baseURL + "/products?grouping=&category=&model="));
         expect(response.status).toBe(401);
         expect(ProductController.prototype.getProducts).toHaveBeenCalledTimes(0);
         
         testLogin.mockRestore();
         testManager.mockRestore();
+        testGrouping.mockRestore();
     });
     //se model c'è non può essere empty
     test("Routes_4.4: Model does not represent a product in db. It should return a 404 error", async ()=>{
@@ -594,7 +609,10 @@ describe("Routes_4: GET /products", ()=>{
         const testManager=jest.spyOn(Authenticator.prototype, "isAdminOrManager").mockImplementation((req,res,next)=>{
             return next()
         });
-
+        const testGrouping=jest.spyOn(ProductRoutes.prototype, "groupingOk").mockImplementation((req,res,next)=>{
+            
+            return next()
+        })
         const response = (await request(app).get(baseURL + "/products?grouping=" + grouping + "&category=&model=" + model ));
         expect(response.status).toBe(404);
         expect(ProductController.prototype.getProducts).toHaveBeenCalledTimes(1);
@@ -603,6 +621,7 @@ describe("Routes_4: GET /products", ()=>{
         testController.mockRestore();
         testLogin.mockRestore();
         testManager.mockRestore();
+        testGrouping.mockRestore();
     });
     //test error 422 per grouping non corretti
 });
@@ -615,6 +634,10 @@ describe('Routes_5: GET /products/available', () => {
         const testCustomer = jest.spyOn(Authenticator.prototype, 'isCustomer').mockImplementation((req, res, next) => {
             return next();
         });
+        const testGrouping=jest.spyOn(ProductRoutes.prototype, "groupingOk").mockImplementation((req,res,next)=>{
+            
+            return next()
+        })
         const response = (await request(app).get(baseURL + '/products/available?grouping=&category=&model='));
         expect(response.status).toBe(200);
         expect(response.body).toEqual([testProductSmartphone, testProductLaptop]);
@@ -626,6 +649,7 @@ describe('Routes_5: GET /products/available', () => {
         testController.mockRestore();
         testLogin.mockRestore();
         testCustomer.mockRestore();
+        testGrouping.mockRestore();
     
     });
     //CORRECT CON CATEGORY?
@@ -670,13 +694,17 @@ describe('Routes_5: GET /products/available', () => {
         const testCustomer=jest.spyOn(Authenticator.prototype, "isCustomer").mockImplementation((req,res,next)=>{
             return res.status(401).json({error: "User is not a customer"});
         });
-
+        const testGrouping=jest.spyOn(ProductRoutes.prototype, "groupingOk").mockImplementation((req,res,next)=>{
+            
+            return next()
+        })
         const response = (await request(app).get(baseURL + "/products/available?grouping=&category=&model="));
         expect(response.status).toBe(401);
         expect(ProductController.prototype.getAvailableProducts).toHaveBeenCalledTimes(0);
 
         testLogin.mockRestore();  
         testCustomer.mockRestore();  
+        testGrouping.mockRestore();
     });
 
 
