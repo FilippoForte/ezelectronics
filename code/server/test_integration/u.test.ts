@@ -1,7 +1,7 @@
 import { describe, test, expect, beforeAll, afterAll } from "@jest/globals"
 import request from 'supertest'
 import { app } from "../index"
-import { cleanup } from "../src/db/cleanup"
+import {cleanup, cleanupAsync} from "../src/db/cleanup"
 import { User, Role } from "../src/components/user"
 import db from "../src/db/db"
 const routePath = "/ezelectronics" //Base route path for the API
@@ -43,7 +43,7 @@ const login = async (userInfo: any) => {
 
 //After executing tests, we remove everything from our test database
 afterAll(async () => {
-    await cleanup();
+    await cleanupAsync();
     db.close();
 })
 

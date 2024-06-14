@@ -3,7 +3,7 @@ import request from 'supertest'
 import { app } from "../index"
 import db from "../src/db/db"
 import { response } from "express"
-import { cleanup } from "../src/db/cleanup"
+import {cleanup, cleanupAsync} from "../src/db/cleanup"
 import { Role } from "../src/components/user"
 
 const routePath = "/ezelectronics/carts" //Base route path for the API
@@ -20,17 +20,27 @@ let adminCookie: string
 let managerCookie: string
 let customerCookie: string
 
-const beforeAllScript = `
-INSERT INTO products (model, category, quantity, details, arrivalDate, sellingPrice) VALUES
- ("iPhoneX", "Smartphone", 10, "dettaglio", "2020-12-12", 1000)`;
+const beforeEachScript = "INSERT INTO products (model, category, quantity, details, arrivalDate, sellingPrice) VALUES (?, ?, ?, ?, ?, ?)";
 
-const runExec = (sql: string) => {
+const dbRunAsync = (sql: string, params: any[]) => {
     return new Promise<void>((resolve, reject) => {
-        db.exec(sql, function (err) {
+        db.run(sql, params, (err: Error | null) => {
             if (err) {
                 reject(err);
             } else {
                 resolve();
+            }
+        });
+    });
+};
+
+const dbGetAsync = (sql: string, params: any[]) => {
+    return new Promise<void>((resolve, reject) => {
+        db.get(sql, params, (err: Error | null, row: any) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(row);
             }
         });
     });
@@ -62,9 +72,13 @@ const login = async (userInfo: any) => {
     })
 }
 
+beforeAll (async () => {
+    jest.setTimeout(20000);
+    await cleanupAsync();
+});
 
 beforeEach(async () => {
-    await runExec(beforeAllScript);
+    await dbRunAsync(beforeEachScript, ["iPhoneX", "Smartphone", 10, "dettaglio", "2020-12-12", 1000]);
 
     await postUser(admin);
     adminCookie = await login({ username: admin.username, password: admin.password });
@@ -79,7 +93,7 @@ beforeEach(async () => {
 
 //After executing tests, we remove everything from our test database
 afterEach(async () => {
-    cleanup();
+    await cleanupAsync();
 })
 
 afterAll(async () => {
@@ -106,9 +120,8 @@ describe("CartAPI_1: addToCart method tests", () => {
             WHERE u.username = ?;
         `;
 
-        db.get(sql, [custInfo.username], (err: Error | null, row: any) => {
-            expect(row).toEqual({ model });
-        });
+        const row: any = await dbGetAsync(sql, [custInfo.username]);
+        expect(row).toEqual({ model });
 
     });
 
@@ -162,9 +175,9 @@ describe("CartAPI_1: addToCart method tests", () => {
         // Insert a product with zero quantity
         const sql = `
             INSERT INTO products (model, category, quantity, details, arrivalDate, sellingPrice) VALUES
-            ("OutOfStockProduct", "Appliance", 0, "Out of stock product", "2020-12-12", 500);
+            (?, ?, ?, ?, ?, ?);
         `;
-        await runExec(sql);
+        await dbRunAsync(sql, ["OutOfStockProduct", "Appliance", 0, "Out of stock product", "2020-12-12", 500]);
 
         const model = 'OutOfStockProduct';
 
@@ -232,21 +245,20 @@ describe("CartAPI_3: checkoutCart method tests", () => {
             FROM carts
             WHERE customer = ?;
         `;
-        db.get(sql, [custInfo.username], (err: Error | null, row: any) => {
-            expect(row.paid).toBe(1);
-            const today = new Date().toISOString().split('T')[0];
-            expect(row.paymentDate).toBe(today);
-        });
+
+        const row1: any = await dbGetAsync(sql, [custInfo.username]);
+        expect(row1.paid).toBe(1);
+        const today1 = new Date().toISOString().split('T')[0];
+        expect(row1.paymentDate).toBe(today1);
 
         // Verifica che la quantità disponibile dei prodotti nel carrello sia stata ridotta correttamente
         const productSql = `
-            SELECT quantity
+            SELECT *
             FROM products
-            WHERE model = ?;
-        `;
-        db.get(productSql, ["iPhoneX"], (err: Error | null, row: any) => {
-            expect(row.quantity).toBe(9); // Assumendo che la quantità iniziale fosse 10
-        });
+            WHERE model = ?`;
+
+        const row2: any = await dbGetAsync(productSql, ["iPhoneX"]);
+        expect(row2.quantity).toBe(9);
     });
 
     test("CartAPI_3.2: It should return 404 if there is no information about an unpaid cart in the database", async () => {
@@ -263,7 +275,7 @@ describe("CartAPI_3: checkoutCart method tests", () => {
         await request(app).post(routePath).send({ model: "iPhoneX" }).set("Cookie", customerCookie);
 
         //svuota carrello
-        await runExec("DELETE FROM productInCart");
+        await dbRunAsync("DELETE FROM productInCart", []);
 
         // Tenta di eseguire il checkout del carrello vuoto
         const response = await request(app).patch(routePath).set("Cookie", customerCookie);
@@ -275,16 +287,16 @@ describe("CartAPI_3: checkoutCart method tests", () => {
         // Inserisci un prodotto con quantità 0
         const sql = `
             INSERT INTO products (model, category, quantity, details, arrivalDate, sellingPrice) VALUES
-            ("OutOfStockProduct", "Appliance", 1, "Out of stock product", "2020-12-12", 500);
+                (?, ?, ?, ?, ?, ?); 
         `;
-        await runExec(sql);
+        await dbRunAsync(sql, ["OutOfStockProduct", "Appliance", 1, "Out of stock product", "2020-12-12", 500]);
 
         // Aggiungi il prodotto esaurito al carrello dell'utente cliente
         await request(app).post(routePath).send({ model: "OutOfStockProduct" }).set("Cookie", customerCookie);
 
-        const sql2 = `UPDATE PRODUCTS SET quantity=0 WHERE model="OutOfStockProduct"`
+        const sql2 = `UPDATE PRODUCTS SET quantity=0 WHERE model= ?`
 
-        await runExec(sql2);
+        await dbRunAsync(sql2, ["OutOfStockProduct"]);
 
         // Tenta di eseguire il checkout del carrello con il prodotto esaurito
         const response = await request(app).patch(routePath).set("Cookie", customerCookie);
@@ -297,9 +309,9 @@ describe("CartAPI_3: checkoutCart method tests", () => {
         // Inserisci un prodotto con quantità 1
         const sql = `
             INSERT INTO products (model, category, quantity, details, arrivalDate, sellingPrice) VALUES
-            ("LimitedStockProduct", "Appliance", 1, "Limited stock product", "2020-12-12", 500);
+                (?, ?, ?, ?, ?, ?);
         `;
-        await runExec(sql);
+        await dbRunAsync(sql, ["LimitedStockProduct", "Appliance", 1, "Limited stock product", "2020-12-12", 500]);
 
         // Aggiungi il prodotto con quantità superiore a quella disponibile al carrello dell'utente cliente
         await request(app).post(routePath).send({ model: "LimitedStockProduct" }).set("Cookie", customerCookie);
@@ -331,16 +343,14 @@ describe("CartAPI_4: getCartHistory method tests", () => {
         const customerCookie = customerResponse.header["set-cookie"][0];
 
         // Pre-populate the database with sample cart history for testing
-        const sqlInsertProductsAndCarts = `
-            INSERT INTO products (model, category, quantity, details, arrivalDate, sellingPrice) VALUES
-            ("product1", "category1", 10, "dettaglio", "2020-12-12", 1000),
-            ("product2", "category2", 10, "dettaglio", "2020-12-12", 1000);
+        const sqlInsertProduct = `INSERT INTO products (model, category, quantity, details, arrivalDate, sellingPrice) VALUES(?, ?, ?, ?, ?, ?)`;
+        const sqlInsertCart = `INSERT INTO carts (customer, paid, paymentDate) VALUES(?, ?, ?)`;
 
-            INSERT INTO carts (customer, paid, paymentDate) VALUES
-            ('customer', 1, '2023-01-01'),
-            ('customer', 1, '2023-02-01');
-        `;
-        await runExec(sqlInsertProductsAndCarts);
+
+        await dbRunAsync(sqlInsertProduct, ["product1", "category1", 10, "dettaglio", "2020-12-12", 1000]);
+        await dbRunAsync(sqlInsertProduct, ["product2", "category2", 10, "dettaglio", "2020-12-12", 1000]);
+        await dbRunAsync(sqlInsertCart, ['customer', 1, '2023-01-01']);
+        await dbRunAsync(sqlInsertCart, ['customer', 1, '2023-02-01']);
 
         // Recuperare gli ID dei carrelli
         const sqlGetCartIds = `
@@ -390,7 +400,7 @@ describe("CartAPI_4: getCartHistory method tests", () => {
         const customerCookie = customerResponse.header["set-cookie"][0];
 
         // Ensure there are no paid carts in the database
-        await runExec('DELETE FROM carts WHERE paid = 1');
+        await dbRunAsync('DELETE FROM carts WHERE paid = ?', [1]);
 
         // Make a GET request to retrieve cart history
         const response = await request(app).get(routePath + "/history").set("Cookie", customerCookie);
@@ -428,8 +438,6 @@ describe("CartAPI_4: getCartHistory method tests", () => {
 
 });
 
-
-
 describe("CartAPI_5: removeProductFromCart method tests", () => {
 
     test("CartAPI_5.1: It should return a 200 success code if the product was removed from the cart", async () => {
@@ -450,9 +458,9 @@ describe("CartAPI_5: removeProductFromCart method tests", () => {
             FROM productInCart
             WHERE modelProduct = ? AND idCart IN (SELECT id FROM carts WHERE customer = ? AND paid = 0);
         `;
-        db.get(sql, [model, custInfo.username], (err: Error | null, row: any) => {
-            expect(row.count).toBe(0);
-        });
+
+        const row: any = await dbGetAsync(sql, [model, custInfo.username])
+        expect(row.count).toBe(0);
     });
 
     test("CartAPI_5.2: It should return a 401 if the user is not logged in", async () => {
@@ -525,7 +533,6 @@ describe("CartAPI_5: removeProductFromCart method tests", () => {
 
 });
 
-
 describe("CartAPI_6: clearCart method tests", () => {
 
     test("CartAPI_6.1: It should return a 200 success code if the products were removed from the cart", async () => {
@@ -546,15 +553,12 @@ describe("CartAPI_6: clearCart method tests", () => {
             FROM carts
             LEFT JOIN productInCart ON carts.id = productInCart.idCart
             LEFT JOIN products ON productInCart.modelProduct = products.model
-            WHERE carts.customer = ? AND carts.paid = false;
+            WHERE carts.customer = ? AND carts.paid = ?;
         `;
-        db.get(sql, [custInfo.username], (err: Error | null, row: any) => {
-            if (err) {
-                throw err;
-            }
-            expect(row.totalCost).toBe(0);
-            expect(row.count).toBe(0);
-        });
+
+        const row: any = await dbGetAsync(sql, [custInfo.username, false])
+        expect(row.totalCost).toBe(0);
+        expect(row.count).toBe(0);
     });
 
 
@@ -595,7 +599,6 @@ describe("CartAPI_6: clearCart method tests", () => {
     });
 });
 
-
 describe("CartAPI_7: deleteAllCarts method tests", () => {
 
     test("CartAPI_7.1: It should return a 200 success code if all carts were deleted by an admin", async () => {
@@ -623,12 +626,9 @@ describe("CartAPI_7: deleteAllCarts method tests", () => {
             SELECT COUNT(*) as count
             FROM carts;
         `;
-        db.get(sql, [], (err: Error | null, row: any) => {
-            if (err) {
-                throw err;
-            }
-            expect(row.count).toBe(0);
-        });
+
+        const row: any = await dbGetAsync(sql, [])
+        expect(row.count).toBe(0);
     });
 
     test("CartAPI_7.2: It should return a 200 success code if all carts were deleted by a manager", async () => {
@@ -656,12 +656,9 @@ describe("CartAPI_7: deleteAllCarts method tests", () => {
             SELECT COUNT(*) as count
             FROM carts;
         `;
-        db.get(sql, [], (err: Error | null, row: any) => {
-            if (err) {
-                throw err;
-            }
-            expect(row.count).toBe(0);
-        });
+
+        const row: any = await dbGetAsync(sql, []);
+        expect(row.count).toBe(0);
     });
 
     test("CartAPI_7.3: It should return a 401 if the user is not logged in", async () => {
@@ -710,16 +707,13 @@ describe("CartAPI_8: getAllCarts method tests", () => {
         const adminCookie = adminResponse.header["set-cookie"][0];
 
         // Pre-populate the database with sample carts for testing
-        const sqlInsertProductsAndCarts = `
-            INSERT INTO products (model, category, quantity, details, arrivalDate, sellingPrice) VALUES
-            ('product1', 'category1', 3, 'dettaglio', '2020-12-12', 50),
-            ('product2', 'category2', 4, 'dettaglio', '2020-12-12', 75);
-            
-            INSERT INTO carts (customer, paid, paymentDate) VALUES
-            ('customer', 1, '2023-01-01'),
-            ('customer', 0, '');
-        `;
-        await runExec(sqlInsertProductsAndCarts);
+        const sqlInsertProduct = `INSERT INTO products (model, category, quantity, details, arrivalDate, sellingPrice) VALUES(?, ?, ?, ?, ?, ?)`;
+        const sqlInsertCart = `INSERT INTO carts (customer, paid, paymentDate) VALUES(?, ?, ?)`;
+
+        await dbRunAsync(sqlInsertProduct, ["product1", "category1", 3, "dettaglio", "2020-12-12", 50]);
+        await dbRunAsync(sqlInsertProduct, ["product2", "category2", 4, "dettaglio", "2020-12-12", 75]);
+        await dbRunAsync(sqlInsertCart, ['customer', 1, '2023-01-01']);
+        await dbRunAsync(sqlInsertCart, ['customer', 0, '']);
 
         // Recuperare gli ID dei carrelli
         const sqlGetCartIds = `
@@ -769,7 +763,7 @@ describe("CartAPI_8: getAllCarts method tests", () => {
         const adminCookie = adminResponse.header["set-cookie"][0];
 
         // Ensure there are no carts in the database
-        await runExec('DELETE FROM carts');
+        await dbRunAsync('DELETE FROM carts', []);
 
         // Make a GET request to retrieve all carts
         const response = await request(app).get(routePath + "/all").set("Cookie", adminCookie);
