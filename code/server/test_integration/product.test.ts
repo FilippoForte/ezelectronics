@@ -378,8 +378,7 @@ describe("Product routes integration tests", () => {
                 .send(productInfo2)
                 .expect(200);
 
-            const query = new URLSearchParams();
-            const url = `${routePath}/products?${query.toString()}`;
+            const url = `${routePath}/products?}`;
 
             const product = await request(app)
                 .get(url)
@@ -517,8 +516,7 @@ describe("Product routes integration tests", () => {
                 .send({quantity: productInfo3.quantity})
                 .expect(200);
 
-            const query = new URLSearchParams();
-            const url = `${routePath}/products/available?${query.toString()}`;
+            const url = `${routePath}/products/available`;
 
             const product = await request(app)
                 .get(url)
