@@ -52,7 +52,7 @@ afterAll(async () => {
 //In this example, tests are for the user routes
 //Inner 'describe' blocks define tests for each route
 describe("User routes integration tests", () => {
-    describe("POST /users", () => {
+    describe("User_API_1:POST /users", () => {
         //A 'test' block is a single test. It should be a single logical unit of testing for a specific functionality and use case (e.g. correct behavior, error handling, authentication checks)
         test("It should return a 200 success code and create a new user", async () => {
             //A 'request' function is used to send a request to the server. It is similar to the 'fetch' function in the browser
@@ -110,7 +110,7 @@ describe("User routes integration tests", () => {
         })
     })
 
-    describe("GET /users", () => {
+    describe("User_API_2:GET /users", () => {
         test("It should return an array of users", async () => {
             
             const loginAdmin = await request(app)
@@ -143,7 +143,7 @@ describe("User routes integration tests", () => {
         })
     })
 
-    describe("GET /users/roles/:role", () => {
+    describe("User_API_3:GET /users/roles/:role", () => {
         
         test("It should return a 200 success code andan array of users with a specific role", async () => {
             //Route parameters are set in this way by placing directly the value in the path
@@ -180,8 +180,7 @@ describe("User routes integration tests", () => {
             await request(app).get(`${routePath}/users/roles/Admin`).expect(401)
         })
     })
-    //get users/:username
-    describe("GET /users/:username", () => {
+    describe("User_API_4:GET /users/:username", () => {
 
         test("It should return a 200 success code and the user with the specified username", async () => {
             customerCookie = await login(customer)
@@ -216,7 +215,7 @@ describe("User routes integration tests", () => {
         })
     
     })
-    describe("DELETE /users/:username", () => {
+    describe("User_API_5:DELETE /users/:username", () => {
 
         test("It should delete the user with the specified username", async () => {
             customerCookie = await login(customer)
@@ -255,9 +254,7 @@ describe("User routes integration tests", () => {
             await request(app).delete(`${routePath}/users/admin2`).set("Cookie", adminCookie).expect(401)
     })
     })
-        //DELETE ALL
-        //PATCH
-    describe("DELETE /users", () => {
+    describe("User_API_6:DELETE /users", () => {
         
         test("It should delete all non-admin users", async () => {
             
@@ -284,7 +281,7 @@ describe("User routes integration tests", () => {
             await request(app).delete(`${routePath}/users`).set("Cookie", customerCookie).expect(401)
         })
     })
-    describe("PATCH /users/:username", () => {
+    describe("User_API_7:PATCH /users/:username", () => {
 
         test("It should update the user with the specified username", async () => {
          
@@ -340,6 +337,32 @@ describe("User routes integration tests", () => {
         await request(app).patch(`${routePath}/users/test`).send({ name: "new name" , surname: "new surname", address: "new address", birthdate:"new birthdate"}).set("Cookie", loginCustomer.header["set-cookie"][0]).expect(401)
 
 
+    })
+
+    describe("User_API_8:DELETE /current", () => {
+        test("It should return a 200 success code if the user is logged in", async () => {
+            const loginAdmin = await request(app)
+            .post(routePath + "/sessions")
+            .send({ username: "admin2", password: "admin2" })
+        expect(loginAdmin.status).toBe(200)
+            await request(app).delete(`${routePath}/sessions/current`).set("Cookie", loginAdmin.header["set-cookie"][0]).expect(200)
+        })
+    })
+    describe("User_API_9:POST /sessions", ()=> {
+        test("It should return a 200 success code if the parameters are correct", async ()=>{
+            const loginAdmin = await request(app)
+            .post(routePath + "/sessions")
+            .send({ username: "admin2", password: "admin2" })
+        expect(loginAdmin.status).toBe(200)
+        
+        })
+        test("It should return a 401 error code if the parameters are incorrect", async ()=>{
+            
+            await request(app)
+            .post(routePath + "/sessions")
+            .send({ username: "notAUser", password: "notAUser" })
+            .expect(401)
+        })
     })
 })
 })

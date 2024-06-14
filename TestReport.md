@@ -19,15 +19,11 @@
 
 # Integration approach
 
-    <Write here the integration sequence you adopted, in general terms (top down, bottom up, mixed) and as sequence
-
-    (ex: step1: unit A, step 2: unit A+B, step 3: unit A+B+C, etc)>
-
-    <Some steps may  correspond to unit testing (ex step1 in ex above)>
-
-    <One step will  correspond to API testing, or testing unit route.js>
-
-Abbiamo sviluppato gli integration test in maniera Top Down
+Abbiamo sviluppato gli integration test in maniera Bottom Up, partendo dai test unit su DAO, Controller e Routes; in seguito abbiamo testato l'integrazione delle varie unità tra loro attraverso i test API.
+- step1: unit DAO
+- step2: unit Controller
+- step3: unit Routes
+- step4: unit DAO + Controller + Routes
 
 # Tests
 
@@ -164,7 +160,8 @@ Abbiamo sviluppato gli integration test in maniera Top Down
 |   UserAPI_5                | route DELETE /users/:username          |  API         |  BB            |
 |   UserAPI_6                | route DELETE /users                    |  API         |  BB            |
 |   UserAPI_7                | route PATCH /users/:username           |  API         |  BB            |
-
+|   UserAPI_8                | route DELETE /sessions/current         |  API         |  BB            |
+|   UserAPI_9                | route POST /sessions                   |  API         |  BB            |
 # Coverage
 
 ## Coverage of FR
@@ -174,8 +171,8 @@ Abbiamo sviluppato gli integration test in maniera Top Down
 | Functional Requirement or scenario | Test(s)                                                           |
 | :--------------------------------: | :---------------------------------------------------------------: |
 |                FR1                 |                                                                   |
-|               FR1.1                |                                                                   |
-|               FR1.2                |                                                                   |
+|               FR1.1                | User_API_9                                                        |
+|               FR1.2                |  User_API_8                                                       |
 |               FR1.3                | UserDAO_2, UserController_2, UserRoutes_1, UserAPI_1              |
 |                FR2                 |                                                                   |
 |               FR2.1                | UserDAO_4, UserController_4, UserRoutes_2, UserAPI_2              |

@@ -219,8 +219,7 @@ class AuthRoutes {
         this.router.post(
             "/",
             (req, res, next) => this.authService.login(req, res, next)
-                .then((user: User) => res.status(200).json(user))
-                .catch((err: any) => { res.status(401).json(err) })
+                .then((user: User) => res.status(200).json(user)).catch((err: any) => { res.status(401).json(err) })
         )
 
         /**
@@ -231,8 +230,7 @@ class AuthRoutes {
         this.router.delete(
             "/current",
             (req, res, next) => this.authService.logout(req, res, next)
-                .then(() => res.status(200).end())
-                .catch((err: any) => next(err))
+                .then(() => res.status(200).end()).catch((err: any) => next(err))
         )
 
         /**
