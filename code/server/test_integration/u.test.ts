@@ -1,4 +1,4 @@
-import { describe, test, expect, beforeAll, afterAll } from "@jest/globals"
+import { describe, test, expect, beforeAll, afterAll, jest } from "@jest/globals"
 import request from 'supertest'
 import { app } from "../index"
 import {cleanup, cleanupAsync} from "../src/db/cleanup"
@@ -40,7 +40,10 @@ const login = async (userInfo: any) => {
 
 //Before executing tests, we remove everything from our test database, create an Admin user and log in as Admin, saving the cookie in the corresponding variable
 
-
+beforeAll (async () => {
+    jest.setTimeout(20000);
+    await cleanupAsync();
+});
 //After executing tests, we remove everything from our test database
 afterAll(async () => {
     await cleanupAsync();

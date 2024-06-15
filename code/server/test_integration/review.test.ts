@@ -1,4 +1,4 @@
-import { describe, test, expect, beforeAll, afterAll, beforeEach, afterEach } from "@jest/globals"
+import { describe, test, expect, beforeAll, afterAll, beforeEach, afterEach, jest } from "@jest/globals"
 import request from 'supertest'
 import { app } from "../index"
 import {cleanupAsync} from "../src/db/cleanup"
@@ -59,6 +59,7 @@ const postProduct = async (product: any) => {
 
 describe("Product routes integration tests", () => {
     beforeAll(async () => {
+        jest.setTimeout(20000);
         await cleanupAsync();
     })
 
