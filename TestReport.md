@@ -210,7 +210,13 @@ Nella colonna "Test case name" abbiamo inserito il nome della test suite che si 
 |               FR5.8                | CartDAO_8, CartController_8, CartRoutes_8, CartAPI_8              |
 
 ## Coverage white box
-
-Report here the screenshot of coverage values obtained with jest-- coverage
-
 ![coverage](./img/coverage.png)
+
+### Coverage All files
+![coverage](./img/allFilesCoverage.png)
+### Coverage Routes
+![coverage](./img/routesCoverage.png)
+### Coverage Controllers
+![coverage](./img/controllersCoverage.png)
+### Coverage DAO
+![coverage](./img/daoCoverage.png)
