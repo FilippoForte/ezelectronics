@@ -40,7 +40,7 @@ class ProductRoutes {
 
         if (req.query.grouping == 'model' && req.query.category == undefined && req.query.model != undefined) { return next() }
 
-        if (req.query.grouping == 'category' && req.query.category != undefined && req.query.model == undefined) { return next() }
+        if (req.query.grouping == 'category' && (req.query.category == "Smartphone" || req.query.category == "Laptop" || req.query.category == "Appliance") && req.query.model == undefined) { return next() }
 
         if (req.query.grouping == undefined && req.query.category == undefined  && req.query.model == undefined) { return next() }
 
@@ -168,7 +168,6 @@ class ProductRoutes {
         this.router.get(
             "/available",
             this.authenticator.isLoggedIn,
-            this.authenticator.isCustomer,
             this.groupingOk,
             (req: any, res: any, next: any) => this.controller.getAvailableProducts(req.query.grouping, req.query.category, req.query.model)
                 .then((products: Product[]) => res.status(200).json(products))
