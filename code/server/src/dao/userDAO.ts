@@ -1,4 +1,5 @@
 import db from "../db/db";
+import dayjs from "dayjs";
 import { Role, User } from "../components/user";
 import crypto from "crypto";
 import {
@@ -6,7 +7,7 @@ import {
   UserAlreadyExistsError,
   UserNotFoundError,
 } from "../errors/userError";
-import { Utility } from "../utilities";
+import { DateError, Utility } from "../utilities";
 import { error } from "console";
 
 /**
@@ -257,6 +258,7 @@ class UserDAO {
         const sql =
           "UPDATE users SET name = ?, surname = ?, address = ?, birthdate = ? WHERE username = ?";
         const sql1 = "SELECT * FROM users WHERE username = ?";
+        if(dayjs(birthdate).isAfter(dayjs())){ return reject(new DateError()); }
         db.get(sql1, [username], (err: Error, row: any) => {
           if (err) {
             reject(err);

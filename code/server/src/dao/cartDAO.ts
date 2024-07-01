@@ -80,7 +80,7 @@ class CartDAO {
         return new Promise<Cart>((resolve, reject) => {
             try {
                 let products: ProductInCart[] = [];
-                let cart: Cart = new Cart("", null, null, 0, products);
+                let cart: Cart = new Cart(user.username, null, null, 0, products);
                 const sql = "SELECT * FROM carts WHERE customer == ? and paid == 0";
                 const sql1 = "SELECT modelProduct, quantityInCart, category, sellingPrice FROM productInCart PC, products P WHERE PC.modelProduct==P.model and idCart == ?";
                 db.get(sql, [user.username], (err: Error | null, row: any) => {

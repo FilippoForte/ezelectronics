@@ -60,6 +60,7 @@ class ReviewDAO {
             try {
                 let reviews: ProductReview[]=[];
                 const sql= "SELECT * FROM reviews where model==?";
+                db.get("SELECT model FROM products WHERE model == ?", [model], (err: Error | null, row:any)=>{ if (!row) reject(new ProductNotFoundError);
                 db.all(sql,[model], (err: Error | null, rows:any) => {
                     if (err) {
                         return reject(err);
@@ -69,6 +70,7 @@ class ReviewDAO {
                         reviews.push(new ProductReview(r.model, r.user, r.score, r.date, r.comment));
                     }
                     return resolve(reviews);
+                });
                 });
             }catch(error){
                 return reject(error);

@@ -97,11 +97,7 @@ class UserController {
      * @returns A Promise that resolves to the updated user
      */
     async updateUserInfo(user: User, name: string, surname: string, address: string, birthdate: string, username: string) :Promise<User> { 
-        if(dayjs(birthdate).isAfter(dayjs()) || (dayjs(birthdate).toString() != dayjs(birthdate).format("YYYY-MM-DD"))){
-            throw new DateError();
-        }else{
-            return this.dao.updateUserInfo(user,name,surname,address,birthdate,username);
-        }
+        return this.dao.updateUserInfo(user, name, surname, address, birthdate, username);
     }
 }
 

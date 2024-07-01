@@ -164,7 +164,7 @@ class UserRoutes {
             body("name").isString().isLength({ min: 1 }),
             body("surname").isString().isLength({ min: 1 }),
             body("address").isString().isLength({ min: 1 }),
-            body("birthdate").isString().isLength({ min: 1 }),
+            body("birthdate").isDate({ format: "YYYY-MM-DD" }),
             param("username").isString().isLength({ min: 1 }),
             this.errorHandler.validateRequest,
             (req: any, res: any, next: any) => this.controller.updateUserInfo(req.user, req.body.name, req.body.surname, req.body.address, req.body.birthdate, req.params.username)
@@ -229,6 +229,7 @@ class AuthRoutes {
          */
         this.router.delete(
             "/current",
+            this.authService.isLoggedIn,
             (req, res, next) => this.authService.logout(req, res, next)
                 .then(() => res.status(200).end()).catch((err: any) => next(err))
         )
@@ -240,6 +241,7 @@ class AuthRoutes {
          */
         this.router.get(
             "/current",
+            this.authService.isLoggedIn,
             (req: any, res: any) => res.status(200).json(req.user)
         )
     }

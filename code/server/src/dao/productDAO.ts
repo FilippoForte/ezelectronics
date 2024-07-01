@@ -107,7 +107,7 @@ class ProductDAO {
       }
 
       const updateQuery =
-        "UPDATE products SET quantity = quantity + ?, arrivalDate = ? WHERE model = ?";
+        "UPDATE products SET quantity = quantity + ? WHERE model = ?";
       const getProductModel = "SELECT * FROM products WHERE model = ?";
 
       db.get(getProductModel, [model], (err: Error | null, row: any) => {
@@ -119,7 +119,7 @@ class ProductDAO {
         }
         else {
           const oldQuantity = row.quantity;
-          db.run(updateQuery, [newQuantity, arrivalDate, model], (err: Error | null) => {
+          db.run(updateQuery, [newQuantity, model], (err: Error | null) => {
             if (err) return reject(err);
             return resolve(oldQuantity + newQuantity);
           });
