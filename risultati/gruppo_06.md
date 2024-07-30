@@ -59,9 +59,9 @@ Le percentuali di v2 sono state riscalate in quanto la media pesata delle percen
 
 ## Studenti
 
-| Nome | Matricola | Email | Bonus | Voto Primo Appello | Voto Progetto | Voto Finale |
-| --- | --- | --- | --- | --- | --- | --- |
-| ALESSANDRA CICCIARELLI | 332242 | s332242@studenti.polito.it | 1 | 14.18 | 11.90 | 27 |
-| RICCARDO DANIELE TURCO | 328946 | s328946@studenti.polito.it | 0 | 15.48 | 11.24 | 27 |
-| FILIPPO FORTE | 322788 | s322788@studenti.polito.it | 1 |  | 12.17 |  |
-| GIULIO ARECCO | 334165 | s334165@studenti.polito.it | 0 |  | 11.96 |  |
+| Nome | Matricola | Email | Bonus | Voto Primo Appello | Voto Secondo Appello | Voto Progetto | Voto Finale |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| ALESSANDRA CICCIARELLI | 332242 | s332242@studenti.polito.it | 1 | 14.18 | | 11.90 | 27 |
+| RICCARDO DANIELE TURCO | 328946 | s328946@studenti.polito.it | 0 | 15.48 | | 11.24 | 27 |
+| FILIPPO FORTE | 322788 | s322788@studenti.polito.it | 1 |  | 15| 12.17 | 28 |
+| GIULIO ARECCO | 334165 | s334165@studenti.polito.it | 0 |  | 13.8 | 11.96 | 26 |
